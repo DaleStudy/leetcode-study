@@ -8,16 +8,9 @@
 
 https://discord.gg/6TwzdnW6ze
 
-## 스터디 맴버
+## 스터디 멤버
 
-- 리더 1: [Bumsu-Yi](https://github.com/Bumsu-Yi)
-- 리더 2: [leokim0922](https://github.com/leokim0922)
-- 맴버 1: (추가 바람)
-- 맴버 2: (추가 바람)
-- 맴버 3: (추가 바람)
-- 맴버 4: (추가 바람)
-- 맴버 5: (추가 바람)
-- 맴버 6: (추가 바람)
+https://github.com/DaleStudy/leetcode-study/issues/7
 
 ## 답안 코드 작성법
 
