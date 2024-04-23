@@ -1,12 +1,12 @@
 # 리트코드 스터디
 
-해외 취업을 위한 LeetCode 문제 풀이 + 인터뷰 준비 스터디 그룹
+🛫 해외 취업을 위한 LeetCode 문제 풀이 + 인터뷰 준비 스터디 그룹
 
 ## 디스코드 커뮤니티
 
 스터디에 참여하고 싶으신 분은 아래 링크를 통해 디스코드 서버에 들어와주세요! 😃
 
-https://discord.gg/7bZeDcmS2d
+https://discord.gg/6TwzdnW6ze
 
 ## 스터디 맴버
 
