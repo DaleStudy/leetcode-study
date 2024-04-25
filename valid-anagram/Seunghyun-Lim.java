@@ -26,24 +26,22 @@ class Solution {
         Map<Character, Integer> map = new HashMap<>();
 
         for (int i = 0; i < s.length(); i++) {
-            if (!map.containsKey(word)) {
-                map.put(s.charAt(i), 1);
-            } else {
-                map.put(s.charAt(i), (map.get(s.charAt(i)) + 1));
-            }
+            char word = s.charAt(i);
+            map.put(word, (map.getOrDefault(word, 0) + 1));
         }
 
         for (int i = 0; i < t.length(); i++) {
-            if (!map.containsKey(t.charAt(i))) {
+            char word = t.charAt(i);
+            if (!map.containsKey(word)) {
                 return false;
             }
 
-            if (map.get(t.charAt(i)) != 0) {
-                int v = map.get(t.charAt(i)) - 1;
+            if (map.get(word) != 0) {
+                int v = map.get(word) - 1;
                 if (v == 0) {
-                    map.remove(t.charAt(i));
+                    map.remove(word);
                 } else {
-                    map.put(t.charAt(i), (map.get(t.charAt(i)) - 1));
+                    map.put(word, (map.get(word) - 1));
                 }
             }
         }
