@@ -26,7 +26,7 @@ class Solution {
         Map<Character, Integer> map = new HashMap<>();
 
         for (int i = 0; i < s.length(); i++) {
-            if (map.get(s.charAt(i)) == null) {
+            if (!map.containsKey(word)) {
                 map.put(s.charAt(i), 1);
             } else {
                 map.put(s.charAt(i), (map.get(s.charAt(i)) + 1));
@@ -48,6 +48,6 @@ class Solution {
             }
         }
 
-        return map.size() == 0;
+        return map.isEmpty();
     }
 }
