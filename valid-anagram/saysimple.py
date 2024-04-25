@@ -1,6 +1,8 @@
 """
 https://leetcode.com/problems/valid-anagram/
 """
+# - time complexity : O(n)
+# - space complexity : O(n)
 
 from collections import Counter
 

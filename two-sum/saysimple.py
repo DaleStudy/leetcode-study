@@ -1,11 +1,13 @@
 """
 https://leetcode.com/problems/two-sum/
 """
+# - time complexity : O(nlogn)
+# - space complexity : O(n)
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         s, e = 0, len(nums) - 1
-        arr = [[n, i] for i, n in enumerate(nums)]
+        arr = [nums[i]:=[n,i] for i, n in enumerate(nums)]
 
         arr.sort(key=lambda x: x[0])
 
