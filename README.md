@@ -23,7 +23,7 @@ https://seongjin.me/how-to-contribute-to-open-source/amp/
 
 예를 들어,
 ```sh
-$ git clone git@github.com:Bumsu-Yi/leetcode-study.git
+$ git clone https://github.com/Bumsu-Yi/leetcode-study.git
 ```
 
 푸시려는 문제의 폴더에서 자기 GitHub 유저네임으로 파일을 생성합니다.
