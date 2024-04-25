@@ -1,19 +1,9 @@
-/*
- * https://leetcode.com/problems/valid-palindrome/
- * time complexity : O(n)
- * space complexity : O(n)
- * https://jonghoonpark.com/2024/04/24/leetcode-125
- */
+- https://leetcode.com/problems/valid-palindrome/
+- time complexity : O(n)
+- space complexity : O(n)
+- https://algorithm.jonghoonpark.com/2024/04/24/leetcode-125
 
-/*
-
-void main() {
-    Solution solution = new Solution();
-    System.out.println(solution.isPalindrome("A man, a plan, a canal: Panama")); // true
-    System.out.println(solution.isPalindrome("race a car")); // false
-    System.out.println(solution.isPalindrome(" ")); // true
-}
-
+```java
 class Solution {
     public boolean isPalindrome(String s) {
         StringBuilder filtered = new StringBuilder();
@@ -35,5 +25,4 @@ class Solution {
         return true;
     }
 }
-
-*/
+```

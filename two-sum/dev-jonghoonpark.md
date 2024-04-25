@@ -1,11 +1,9 @@
-/*
- * https://leetcode.com/problems/two-sum/
- * time complexity : O(n)
- * space complexity : O(n)
- * https://jonghoonpark.com/2024/01/03/leetcode-1
- */
+- https://leetcode.com/problems/two-sum/
+- time complexity : O(n)
+- space complexity : O(n)
+- https://algorithm.jonghoonpark.com/2024/01/03/leetcode-1
 
-/*
+```java
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,4 +24,4 @@ class Solution {
         return null;
     }
 }
-*/
+```

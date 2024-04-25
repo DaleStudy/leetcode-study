@@ -1,11 +1,9 @@
-/*
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
- * time complexity : O(n)
- * space complexity : O(1)
- * https://jonghoonpark.com/2024/02/20/leetcode-121
- */
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+- time complexity : O(n)
+- space complexity : O(1)
+- https://algorithm.jonghoonpark.com/2024/02/20/leetcode-121
 
-/*
+```java
 class Solution {
     public int maxProfit(int[] prices) {
         int buyAt = 0;
@@ -22,4 +20,4 @@ class Solution {
         return profit;
     }
 }
-*/
+```
