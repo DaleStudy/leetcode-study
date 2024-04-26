@@ -41,7 +41,7 @@ class Solution {
                 if (v == 0) {
                     map.remove(word);
                 } else {
-                    map.put(word, (map.get(word) - 1));
+                    map.put(word, v);
                 }
             }
         }
