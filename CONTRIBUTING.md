@@ -3,7 +3,7 @@
 ## 답안 코드 작성법
 
 참조 링크 :
-https://seongjin.me/how-to-contribute-to-open-source/amp/
+[깃허브(GitHub)에서의 오픈 소스 프로젝트 기여를 위한 초보자 가이드](https://seongjin.me/how-to-contribute-to-open-source/amp/)
 
 먼저, 현재 페이지 우상단에 있는 버튼들 중 `Fork` 버튼 클릭하여 개인 원격 저장소로 복사해줍니다.
 
