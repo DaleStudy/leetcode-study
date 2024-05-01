@@ -7,8 +7,7 @@ Algorithm:
     3. Check if the string is equal to its reverse.
 
 Time complexity: O(n)
-Space complexity: O(n)
-
+Space complexity: O(n) 
 """
 
 
