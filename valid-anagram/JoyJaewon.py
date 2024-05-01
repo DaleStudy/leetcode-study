@@ -16,10 +16,7 @@ def isAnagram(s, t):
     
     count = {}
     for char in s:
-        if char in count:
-            count[char] += 1
-        else:
-            count[char] = 1
+        count[char] = count.get(char, 0) + 1  
     
     for char in t:
         if char in count:
@@ -39,5 +36,4 @@ print(isAnagram("rat", "car") == False)
 
 #Edge case
 print(isAnagram("", "") == True) 
-
 

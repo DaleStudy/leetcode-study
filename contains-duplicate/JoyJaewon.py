@@ -28,3 +28,4 @@ print(containsDuplicate([1, 2, 3, 4]) == False)
 #Edge case
 print(containsDuplicate([1]) == False)
 print(containsDuplicate([]) == False) 
+

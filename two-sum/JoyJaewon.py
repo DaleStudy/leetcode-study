@@ -30,3 +30,4 @@ print(twoSum([3, 2, 4], 6) == [1, 2])
 #Edge case
 print(twoSum([1, 2], 3) == [0, 1])
 print(twoSum([1, 5, 10], 20) == None) 
+
