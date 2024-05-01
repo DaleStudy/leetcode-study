@@ -1,15 +1,14 @@
 """
 https://leetcode.com/problems/contains-duplicate/
 """
-
+# - time complexity : O(n)
+# - space complexity : O(n)
 
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        my_dict = {}
-
-        for num in nums:
-            if num in my_dict:
+        visited = {}
+        for n in nums:
+            if n in visited:
                 return True
-            my_dict[num] = 0
-
+            visited[n] = True
         return False
