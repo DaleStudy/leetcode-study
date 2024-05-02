@@ -13,9 +13,9 @@ Space complexity: O(n)
 
 from typing import List
 
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        
         hashmap = {}
 
         for i in range(len(nums)):
@@ -25,18 +25,15 @@ class Solution:
 
             hashmap[nums[i]] = i
 
+
 def main():
-    test_cases = [
-        [2,7,11,15], 9, [0,1],
-        [3,2,4], 6, [1,2],
-        [3,3], 6, [0,1]
-    ]
+    test_cases = [[2, 7, 11, 15], 9, [0, 1], [3, 2, 4], 6, [1, 2], [3, 3], 6, [0, 1]]
     s = Solution()
-    
+
     for test_case in test_cases:
         nums_input, target_input, expected = test_case
         assert sorted(s.twoSum(nums_input, target_input)) == expected
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
-    
