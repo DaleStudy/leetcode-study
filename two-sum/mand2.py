@@ -6,7 +6,6 @@ def solutions(nums, target_num):
 
     for i, value in enumerate(nums):
         look = target_num - value
-        print('look:', look)
         # value -> idx로 바로 치환하기가 어렵..
         if look in table and i != table[look]:
             look_idx = table[look]
