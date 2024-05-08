@@ -8,7 +8,7 @@
 
 ## 스터디 멤버
 
-[스터디 참여 희망자 리스트](https://github.com/DaleStudy/leetcode-study/issues/7)
+[스터디 참여 희망자 리스트](https://github.com/DaleStudy/leetcode-study/discussions/52)
 
 ## 기여 방법
 
