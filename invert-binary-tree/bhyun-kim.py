@@ -42,37 +42,3 @@ class Solution:
             root.left, root.right = root.right, None
 
         return root
-
-
-def main():
-    test_cases = [
-        [
-            TreeNode(
-                4,
-                TreeNode(2, TreeNode(1), TreeNode(3)),
-                TreeNode(7, TreeNode(6), TreeNode(9)),
-            ),
-            TreeNode(
-                4,
-                TreeNode(7, TreeNode(9), TreeNode(6)),
-                TreeNode(2, TreeNode(3), TreeNode(1)),
-            ),
-        ],
-        [
-            TreeNode(2, TreeNode(1), TreeNode(3)),
-            TreeNode(2, TreeNode(3), TreeNode(1)),
-        ],
-        [
-            TreeNode(),
-            TreeNode(),
-        ],
-    ]
-    s = Solution()
-
-    for test_case in test_cases:
-        root_input, expected = test_case
-        assert s.invertTree(root_input) == expected
-
-
-if __name__ == "__main__":
-    main()
