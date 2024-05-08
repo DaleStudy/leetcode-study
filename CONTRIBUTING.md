@@ -47,7 +47,7 @@ $ git push origin main
 
 `Create pull request` 를 누르기에 앞서, 상단에 있는 `base repository` 와 `head repositry` 가 각각 원본 원경 저장소의 main 브렌치와 본인이 작업한 브렌치가 맞는 지 확인해줍니다.
 
-확인이 되었으면, `Create pull request`를 누르고, `Title`에 본인의 디스코드 닉네임을 포함 시켜주고 `Create pull request` 버튼을 클릭합니다.
+확인이 되었으면, `Create pull request`를 누르고, `Title`에 **본인의 디스코드 닉네임을 포함 시켜주고** `Create pull request` 버튼을 클릭합니다.
 
 그러면 디스코드에도 알림이 올겁니다.
 
