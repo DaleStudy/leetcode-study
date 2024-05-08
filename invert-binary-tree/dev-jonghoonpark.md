@@ -1,6 +1,6 @@
 - https://leetcode.com/problems/invert-binary-tree/
 - time complexity : O(n)
-- space complexity : O(log n)
+- space complexity : O(h), h = tree height
 - https://algorithm.jonghoonpark.com/2024/03/31/leetcode-226
 
 ```java

@@ -6,36 +6,27 @@
 ```java
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode head = null;
-        ListNode tail = null;
+        ListNode head = new ListNode(0);
+        ListNode tail = head;
 
-        while(!(list1 == null && list2 == null)) {
-            ListNode selected;
-            if (list1 == null) {
-                selected = list2;
-                list2 = list2.next;
-            } else if (list2 == null) {
-                selected = list1;
-                list1 = list1.next;
-            } else if (list1.val < list2.val) {
-                selected = list1;
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                tail.next = list1;
                 list1 = list1.next;
             } else {
-                selected = list2;
+                tail.next = list2;
                 list2 = list2.next;
             }
-
-            ListNode newNode = new ListNode(selected.val);
-            if(head == null) {
-                head = newNode;
-            } else {
-                tail.next = newNode;
-            }
-
-            tail = newNode;
+            tail = tail.next;
         }
 
-        return head;
+        if (list1 != null) {
+            tail.next = list1;
+        } else {
+            tail.next = list2;
+        }
+
+        return head.next;
     }
 }
 ```
