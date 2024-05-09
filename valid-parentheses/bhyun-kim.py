@@ -37,7 +37,4 @@ class Solution:
                 else:
                     return False
 
-        if len(stack) > 0:
-            return False
-        else:
-            return True
+        return len(stack) == 0
