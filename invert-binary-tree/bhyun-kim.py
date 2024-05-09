@@ -31,14 +31,10 @@ class Solution:
         has_right = hasattr(root, "right")
 
         if has_left and has_right:
-            root.left = self.invertTree(root.left)
-            root.right = self.invertTree(root.right)
-            root.left, root.right = root.right, root.left
+            root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
         elif has_left:
-            root.left = self.invertTree(root.left)
-            root.left, root.right = None, root.left
+            root.left, root.right = None, self.invertTree(root.left)
         elif has_right:
-            root.right = self.invertTree(root.right)
-            root.left, root.right = root.right, None
+            root.left, root.right = self.invertTree(root.right), None
 
         return root
