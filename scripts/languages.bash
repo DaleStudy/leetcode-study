@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+declare -A language_extensions=(
+  ["cpp"]="cpp"
+  ["java"]="java"
+  ["python"]="py"
+  ["c"]="c"
+  ["csharp"]="cs"
+  ["javascript"]="js"
+  ["typescript"]="ts"
+  ["php"]="php"
+  ["swift"]="swift"
+  ["kotlin"]="kt"
+  ["dart"]="dart"
+  ["go"]="go"
+  ["ruby"]="rb"
+  ["scala"]="scala"
+  ["rust"]="rs"
+  ["racket"]="rkt"
+  ["erlang"]="erl"
+  ["elixir"]="ex"
+)
+
+declare -A language_comments=(
+  ["cpp"]="// "
+  ["java"]="// "
+  ["python"]="# "
+  ["c"]="// "
+  ["csharp"]="// "
+  ["javascript"]="// "
+  ["typescript"]="// "
+  ["php"]="// "
+  ["swift"]="// "
+  ["kotlin"]="// "
+  ["dart"]="// "
+  ["go"]="// "
+  ["ruby"]="# "
+  ["scala"]="// "
+  ["rust"]="// "
+  ["racket"]="; "
+  ["erlang"]="% "
+  ["elixir"]="# "
+)
