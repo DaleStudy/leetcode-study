@@ -9,6 +9,20 @@ function main() {
   # Check if required commands are installed
   check_command "jq"
   check_command "bash"
+  check_command "brew"
+
+  # Set the required Bash version
+  local required_bash_version="4.0.0"
+
+  # Check Bash version and proceed with installation if necessary
+  if check_bash_version "$required_bash_version"; then
+    echo "Bash version meets the minimum requirement (>= $required_bash_version). Skipping installation."
+  else
+    echo "Bash version does not meet the minimum requirement (>= $required_bash_version). Proceeding with installation using Homebrew..."
+    # Add your Homebrew installation commands here
+    brew update
+    brew install bash
+  fi
 
   # Check if the problem title-slug or URL is provided
   if [ "$#" -eq 1 ]; then

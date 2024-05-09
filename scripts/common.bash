@@ -26,6 +26,34 @@ function load_env_vars() {
   fi
 }
 
+# Check if Bash version meets the minimum requirement
+function check_bash_version() {
+  local required_version=$1
+  local bash_version
+  bash_version=$(bash --version | head -n1 | awk '{print $4}' | sed 's/\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/')
+
+  if [[ $bash_version =~ ^([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
+    local major=${BASH_REMATCH[1]}
+    local minor=${BASH_REMATCH[2]}
+    local patch=${BASH_REMATCH[3]}
+
+    IFS='.' read -r -a required_parts <<<"$required_version"
+    local required_major=${required_parts[0]}
+    local required_minor=${required_parts[1]}
+    local required_patch=${required_parts[2]}
+
+    if ((major > required_major || (\
+      major == required_major && minor > required_minor) || (\
+      major == required_major && minor == required_minor && patch >= required_patch))); then
+      return 0
+    else
+      return 1
+    fi
+  else
+    return 1
+  fi
+}
+
 # Check if a command is installed
 function check_command() {
   local command="$1"
