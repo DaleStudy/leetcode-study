@@ -15,7 +15,7 @@ class Solution:
                 if not stack:
                     return False
                 # if closing bracket doesnt match with the latest type of opening bracket
-                elif ch != parentheses[stack.pop()]:
+                if ch != parentheses[stack.pop()]:
                     return False
 
         # True if stack is empty after going through the process above
