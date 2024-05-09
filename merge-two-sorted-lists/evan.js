@@ -9,42 +9,22 @@ function ListNode(val, next) {
  * @return {ListNode}
  */
 var mergeTwoLists = function (list1, list2) {
-  if (!list1 && !list2) {
-    return null;
-  }
+  const dummy = new ListNode();
+  let current = dummy;
 
-  if (!list1 || !list2) {
-    return [list1, list2].find(Boolean);
-  }
-
-  // firstPointer is a head of list who has the smallest value of node
-  let [firstPointer, secondPointer] =
-    list1.val < list2.val ? [list1, list2] : [list2, list1];
-  const mergedList = firstPointer;
-
-  if (firstPointer.next === null) {
-    firstPointer.next = secondPointer;
-    return mergedList;
-  }
-
-  while (secondPointer !== null) {
-    let nextFirstPointer = firstPointer.next;
-    const nextSecondPointer = secondPointer.next;
-
-    while (
-      firstPointer.next !== null &&
-      firstPointer.next.val < secondPointer?.val
-    ) {
-      firstPointer = firstPointer.next;
-      nextFirstPointer = firstPointer.next;
+  while (list1 !== null && list2 !== null) {
+    if (list1.val < list2.val) {
+      current.next = list1;
+      list1 = list1.next;
+    } else {
+      current.next = list2;
+      list2 = list2.next;
     }
 
-    firstPointer.next = secondPointer;
-    firstPointer.next.next = nextFirstPointer;
-
-    secondPointer = nextSecondPointer;
-    firstPointer = firstPointer.next;
+    current = current.next;
   }
 
-  return mergedList;
+  current.next = list1 !== null ? list1 : list2;
+
+  return dummy.next;
 };
