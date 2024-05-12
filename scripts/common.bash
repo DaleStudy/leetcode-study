@@ -4,25 +4,27 @@ source scripts/languages.bash
 
 # Load environment variables from .env file
 function load_env_vars() {
-  if [ -f .env ]; then
-    # shellcheck disable=SC2046
-    export echo $(sed <.env 's/#.*//g' | xargs | envsubst)
+  if [ ! -f .env ]; then
+    echo "Error: .env file not found."
+    exit 1
+  fi
 
-    # Check if required variables are set and not equal to default values
-    if [ "$NICKNAME" = "your_nickname" ] || [ "$LANGUAGE" = "choose_your_language" ]; then
-      echo "Error: Required environment variables are set to default values."
-      echo "Please update NICKNAME and LANGUAGE in the .env file with appropriate values."
-      exit 1
-    fi
+  # shellcheck disable=SC2046
+  export $(sed <.env 's/#.*//g' | xargs | envsubst)
 
-    # Check if the specified language is valid
+  # Check if NICKNAME and LANGUAGE variables are set
+  if [ -z "$NICKNAME" ] || [ -z "$LANGUAGE" ]; then
+    echo "Error: Required environment variables NICKNAME and/or LANGUAGE are not set."
+    echo "Please set NICKNAME and LANGUAGE in the .env file with appropriate values."
+    exit 1
+  fi
 
-    if [[ ! "${!language_extensions[@]}" =~ $LANGUAGE ]]; then
-      echo "Error: Invalid language specified in the .env file."
-      echo "Please set LANGUAGE to one of the following valid languages:"
-      echo "${!language_extensions[@]}"
-      exit 1
-    fi
+  # Check if the specified language is valid
+  if [[ ! "${!language_extensions[@]}" =~ $LANGUAGE ]]; then
+    echo "Error: Invalid language specified in the .env file."
+    echo "Please set LANGUAGE to one of the following valid languages:"
+    echo "${!language_extensions[@]}"
+    exit 1
   fi
 }
 
