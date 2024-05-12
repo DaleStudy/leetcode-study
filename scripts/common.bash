@@ -16,9 +16,18 @@ function setup_env_file() {
   for i in "${!languages[@]}"; do
     echo "$((i + 1))) ${languages[$i]}"
   done
-  read -r -p "Enter the number (default: 4): " language_index
-  language_index=${language_index:-4}
-  language=${languages[$((language_index - 1))]}
+
+  while true; do
+    read -r -p "Enter the number (default: 4): " language_index
+    language_index=${language_index:-4}
+
+    if [[ $language_index -ge 1 && $language_index -le ${#languages[@]} ]]; then
+      language=${languages[$((language_index - 1))]}
+      break
+    else
+      echo "Invalid input. Please enter a number between 1 and ${#languages[@]}."
+    fi
+  done
 
   # Create .env file with user input or default values
   echo "NICKNAME=$nickname" >.env
