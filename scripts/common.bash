@@ -12,7 +12,7 @@ function setup_env_file() {
 
   # Prompt user for LANGUAGE
   echo "Select your preferred language:"
-  languages=("cpp" "java" "python" "python3" "c" "csharp" "javascript" "typescript" "php" "swift" "kotlin" "dart" "golang" "ruby" "scala" "rust" "racket" "erlang" "elixir")
+  languages=("cpp" "java" "python" "python3" "c" "csharp" "javascript" "typescript" "php" "swift" "kotlin" "dart" "go" "ruby" "scala" "rust" "racket" "erlang" "elixir")
   for i in "${!languages[@]}"; do
     echo "$((i + 1))) ${languages[$i]}"
   done
