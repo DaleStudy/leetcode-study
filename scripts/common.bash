@@ -2,11 +2,37 @@
 
 source scripts/languages.bash
 
+# Set up .env file if it doesn't exist
+function setup_env_file() {
+  echo ".env file not found. Let's create one!"
+
+  # Prompt user for NICKNAME
+  read -r -p "Enter your nickname (default: Unknown): " nickname
+  nickname=${nickname:-Unknown}
+
+  # Prompt user for LANGUAGE
+  echo "Select your preferred language:"
+  languages=("cpp" "java" "python" "python3" "c" "csharp" "javascript" "typescript" "php" "swift" "kotlin" "dart" "golang" "ruby" "scala" "rust" "racket" "erlang" "elixir")
+  for i in "${!languages[@]}"; do
+    echo "$((i + 1))) ${languages[$i]}"
+  done
+  read -r -p "Enter the number (default: 4): " language_index
+  language_index=${language_index:-4}
+  language=${languages[$((language_index - 1))]}
+
+  # Create .env file with user input or default values
+  echo "NICKNAME=$nickname" >.env
+  echo "LANGUAGE=$language" >>.env
+
+  echo ".env file created with the following values:"
+  echo "NICKNAME: $nickname"
+  echo "LANGUAGE: $language"
+}
+
 # Load environment variables from .env file
 function load_env_vars() {
   if [ ! -f .env ]; then
-    echo "Error: .env file not found."
-    exit 1
+    setup_env_file
   fi
 
   # shellcheck disable=SC2046
