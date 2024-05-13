@@ -1,5 +1,5 @@
-# Time complexity : O(n*m)
-# Space complexity : Space complexity: O(h) h is the height of the call stack during the recursive traversal.
+# Time complexity: O(n*m)
+# Space complexity: O(r + s) isSubtree() method is internally calling isSameTree() so the total depth of the stack is sum of isSubtree() call stacks and isSameTree()'s call stacks.
 class Solution:
     def isSubtree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if not q:
