@@ -1,0 +1,2 @@
+- 문제: https://leetcode.com/problems/contains-duplicate/
+- 해설: https://www.algodale.com/problems/contains-duplicate/
