@@ -2,27 +2,64 @@
 
 source scripts/languages.bash
 
+# Set up .env file if it doesn't exist
+function setup_env_file() {
+  echo ".env file not found. Let's create one!"
+
+  # Prompt user for NICKNAME
+  read -r -p "Enter your nickname (default: Unknown): " nickname
+  nickname=${nickname:-Unknown}
+
+  # Prompt user for LANGUAGE
+  echo "Select your preferred language:"
+  languages=("cpp" "java" "python" "python3" "c" "csharp" "javascript" "typescript" "php" "swift" "kotlin" "dart" "go" "ruby" "scala" "rust" "racket" "erlang" "elixir")
+  for i in "${!languages[@]}"; do
+    echo "$((i + 1))) ${languages[$i]}"
+  done
+
+  while true; do
+    read -r -p "Enter the number (default: 4): " language_index
+    language_index=${language_index:-4}
+
+    if [[ $language_index -ge 1 && $language_index -le ${#languages[@]} ]]; then
+      language=${languages[$((language_index - 1))]}
+      break
+    else
+      echo "Invalid input. Please enter a number between 1 and ${#languages[@]}."
+    fi
+  done
+
+  # Create .env file with user input or default values
+  echo "NICKNAME=$nickname" >.env
+  echo "LANGUAGE=$language" >>.env
+
+  echo ".env file created with the following values:"
+  echo "NICKNAME: $nickname"
+  echo "LANGUAGE: $language"
+}
+
 # Load environment variables from .env file
 function load_env_vars() {
-  if [ -f .env ]; then
-    # shellcheck disable=SC2046
-    export echo $(sed <.env 's/#.*//g' | xargs | envsubst)
+  if [ ! -f .env ]; then
+    setup_env_file
+  fi
 
-    # Check if required variables are set and not equal to default values
-    if [ "$NICKNAME" = "your_nickname" ] || [ "$LANGUAGE" = "choose_your_language" ]; then
-      echo "Error: Required environment variables are set to default values."
-      echo "Please update NICKNAME and LANGUAGE in the .env file with appropriate values."
-      exit 1
-    fi
+  # shellcheck disable=SC2046
+  export $(sed <.env 's/#.*//g' | xargs | envsubst)
 
-    # Check if the specified language is valid
+  # Check if NICKNAME and LANGUAGE variables are set
+  if [ -z "$NICKNAME" ] || [ -z "$LANGUAGE" ]; then
+    echo "Error: Required environment variables NICKNAME and/or LANGUAGE are not set."
+    echo "Please set NICKNAME and LANGUAGE in the .env file with appropriate values."
+    exit 1
+  fi
 
-    if [[ ! "${!language_extensions[@]}" =~ $LANGUAGE ]]; then
-      echo "Error: Invalid language specified in the .env file."
-      echo "Please set LANGUAGE to one of the following valid languages:"
-      echo "${!language_extensions[@]}"
-      exit 1
-    fi
+  # Check if the specified language is valid
+  if [[ ! "${!language_extensions[@]}" =~ $LANGUAGE ]]; then
+    echo "Error: Invalid language specified in the .env file."
+    echo "Please set LANGUAGE to one of the following valid languages:"
+    echo "${!language_extensions[@]}"
+    exit 1
   fi
 }
 
