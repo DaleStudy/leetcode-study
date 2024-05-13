@@ -8,12 +8,11 @@
 
 final class Solution {
   func climbStairs(_ n: Int) -> Int {
-    var dp: [Int] = .init(repeating: 0, count: 45)
-    dp[0] = 1
-    dp[1] = 2
-    for i in 2 ..< 45 {
-      dp[i] = dp[i - 1] + dp[i - 2]
+    var prevWays = 1
+    var prevPrevWays = 1
+    for _ in stride(from: 2, through: n, by: 1) {
+      (prevWays, prevPrevWays) = (prevPrevWays, prevWays + prevPrevWays)
     }
-    return dp[n - 1]
+    return prevPrevWays
   }
 }
