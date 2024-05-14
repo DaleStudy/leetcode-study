@@ -9,6 +9,6 @@ class Solution:
         if p and q:
             return p.val == q.val and self.isSameTree(p.right, q.right) and self.isSameTree(p.left, q.left)
         else:
-            return p == q
+            return p is None and q is None
 
         ## TC: O(n), SC: O(n) or O(logn) if it is balanced

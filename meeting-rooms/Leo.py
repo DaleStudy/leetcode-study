@@ -8,4 +8,4 @@ class Solution:
 
         return True
 
-        ## TC: n(nlogn), SC: O(1)
+        ## TC: O(nlogn), SC: O(1)

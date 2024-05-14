@@ -9,4 +9,4 @@ class Solution:
 
         return fast
 
-        ## TC: O(n), SC(1)
+        ## TC: O(n), SC:O(1)

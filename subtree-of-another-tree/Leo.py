@@ -6,24 +6,25 @@
 #         self.right = right
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        def dfs(root, subroot):
-            if not root and not subroot:
+
+        def dfs(root, subRoot):
+            if not root and not subRoot:
                 return True
-            if not root or not subroot:
+            if not root or not subRoot:
                 return False
-            if root.val != subroot.val:
+            if root.val != subRoot.val:
                 return False
 
-            return dfs(root.left, subroot.left) and dfs(root.right, subroot.right)
+            return dfs(root.left, subRoot.left) and dfs(root.right, subRoot.right)
 
-        def solve(root, subroot):
+        def solve(root):
             if not root:
                 return False
-            if dfs(root, subroot):
+            if dfs(root, subRoot):
                 return True
-            return solve(root.left, subroot) or solve(root.right, subroot)
+            return solve(root.left) or solve(root.right)
 
-        return solve(root, subRoot)
+        return solve(root)
 
         ## TC: O(mn), where m and n denote len(subroot) and len(root)
         ## SC: O(m+n)
