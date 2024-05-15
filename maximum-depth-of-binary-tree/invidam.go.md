@@ -70,3 +70,6 @@ func maxDepth(root *TreeNode) int {
     return depth
 }
 ```
+
+# What I learned
+- **Slice**
