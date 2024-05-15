@@ -26,13 +26,13 @@ func maxDepth(root *TreeNode) int {
 ```
 - - -
 # Intuition
-Implement Stack can be troublesome, but it is effective to problem that require tracking depths or levels.
+Implement Queue can be troublesome, but it is effective to problem that require tracking depths or levels.
 <!-- Describe your first thoughts on how to solve this problem. -->
 
 # Approach
 <!-- Describe your approach to solving the problem. -->
-1. Maintain Element belonging to the same level in the stack.
-2. While Iterating through the stack, remove the current level and save the next level.
+1. Maintain Element belonging to the same level in the queue.
+2. While Iterating through the queue, remove the current level and save the next level.
 - In GoLang, `range for loop` capture only first once. So We can maintain current level's easily.
 3. increase depth while iterationg through all elements until the end.
 # Complexity
