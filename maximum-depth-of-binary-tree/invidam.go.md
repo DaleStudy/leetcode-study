@@ -72,4 +72,4 @@ func maxDepth(root *TreeNode) int {
 ```
 
 # What I learned
-- **Slice**
+- [Slice](https://velog.io/@invidam/GoLang-Slice)
