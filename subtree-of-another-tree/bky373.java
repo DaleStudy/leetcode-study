@@ -1,6 +1,9 @@
 /**
- * TC: O(M * N) - M: 메인 트리(root)의 노드 수, N: 서브 트리(subtree)의 노드 수
- * SC: O(N) - N: 메인 트리(root)의 높이
+ * TC: O(M * N) - N: 메인 트리(root)의 노드 수, M: 서브 트리(subtree)의 노드 수
+ * SC: O(M + N)
+ * - isSubtree() 콜 스택은 최대 N 개 발생할 수 있고,
+ * - 각각 isSameTree() 콜 스택(M 개)을 더한 값까지 늘어날 수 있다.
+ * = isSameTree() 콜 스택은 호출 이후 사라지므로, 공간 복잡도는 최대 M + N 이다.
  */
 class Solution {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
