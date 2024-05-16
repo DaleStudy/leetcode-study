@@ -28,9 +28,10 @@ Complexity analysis:
         The is_identical function has a time complexity of O(m).
         Therefore, the overall time complexity is O(n*m).
 
-    Space complexity: O(n)
-        Where n is the number of nodes in the tree.
-        The space complexity is O(n) because of the recursive calls to the depth_first_search function.
+    Space complexity: O(m+n)
+        Where n is the number of nodes in the tree and m is the number of nodes in the subtree.
+        The space complexity is O(m+n) because of the recursive calls to the depth_first_search function
+        and is_identical.
 """
 
 
