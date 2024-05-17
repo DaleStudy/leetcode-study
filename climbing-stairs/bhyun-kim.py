@@ -33,7 +33,7 @@ class Solution:
 
         output = 0
 
-        for i in range(n // 2 + 1):
+        for i in range((n >> 1) + 1):
             num_ways = factorials[n - i] // factorials[n - (i * 2)] // factorials[i]
             output += num_ways
         return int(output)
