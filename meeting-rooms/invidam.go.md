@@ -27,3 +27,8 @@ func CanAttendMeetings(intervals []*Interval) bool {
 	return true
 }
 ```
+
+# What I learned
+GoLang Sort
+- mechanism: [Pattern-defeating Quicksort](https://www.youtube.com/watch?v=jz-PBiWwNjc)
+- usage: https://hackthedeveloper.com/how-to-sort-in-go/ 
