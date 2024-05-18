@@ -1,3 +1,4 @@
+# TC: O(n), SC: O(1)
 class Solution:
     def canAttendMeetings(self, intervals: List[Interval]) -> bool:
         if not intervals:
