@@ -46,7 +46,7 @@ Implement Queue can be troublesome, but it is effective to problem that require 
 (N: size of node.)
 
 # Code
-```
+```go
 func maxDepth(root *TreeNode) int {
 	if root == nil {
 		return 0
