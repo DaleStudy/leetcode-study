@@ -48,26 +48,26 @@ Implement Queue can be troublesome, but it is effective to problem that require 
 # Code
 ```
 func maxDepth(root *TreeNode) int {
-    if root == nil {
-        return 0
-    }
-    depth := 0
-    currLevel := []*TreeNode{root}
-    
-    for len(currLevel) != 0 {
-        depth++
-        for _, curr := range currLevel {
-            if curr.Left != nil {
-                currLevel = append(currLevel, curr.Left)
-            }
-            if curr.Right != nil {
-                currLevel = append(currLevel, curr.Right)
-            }
-            currLevel = currLevel[1:]
-        }
-    }
+	if root == nil {
+		return 0
+	}
+	depth := 0
+	currLevel := []*TreeNode{root}
 
-    return depth
+	for len(currLevel) != 0 {
+		depth++
+		for _, curr := range currLevel {
+			if curr.Left != nil {
+				currLevel = append(currLevel, curr.Left)
+			}
+			if curr.Right != nil {
+				currLevel = append(currLevel, curr.Right)
+			}
+			currLevel = currLevel[1:]
+		}
+	}
+
+	return depth
 }
 ```
 

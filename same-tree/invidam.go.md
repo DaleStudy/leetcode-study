@@ -16,13 +16,13 @@ Recursion is natural method to iterate trees. (Particularly, multiple trees!)
 
 (n and m are number of nodes in trees p and q. $$h_n$$ and $$h_m$$ are their heights.)
 # Code
-```
+```go
 func isSameTree(p *TreeNode, q *TreeNode) bool {
-    if p == nil || q == nil {
-        return p == nil && q == nil
-    }
+	if p == nil || q == nil {
+		return p == nil && q == nil
+	}
 
-    return p.Val == q.Val && isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
+	return p.Val == q.Val && isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
 }
 ```
 - - -
@@ -40,7 +40,7 @@ func isSameTree(p *TreeNode, q *TreeNode) bool {
 
 (n and m are number of nodes in trees p and q.)
 # Code
-```
+```go
 func updateQueue(node *TreeNode, queue []*TreeNode) []*TreeNode {
 	queue = append(queue, node.Left)
 	queue = append(queue, node.Right)

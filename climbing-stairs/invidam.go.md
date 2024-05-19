@@ -24,24 +24,24 @@ DP has two methods: tabulation and memoization. I'll introduce both methods.
 
 (n is value of `n`)
 # Code
-```
+```go
 func climbStairsV1(n int) int {
-    climbData := make([]int, n+2, n+2)
-    climbData[0], climbData[1] = 1, 1
-    for s := 0; s < n; s++ {
-        climbData[s+2] = climbData[s] + climbData[s+1]
-    }
+	climbData := make([]int, n+2, n+2)
+	climbData[0], climbData[1] = 1, 1
+	for s := 0; s < n; s++ {
+		climbData[s+2] = climbData[s] + climbData[s+1]
+	}
 
-    return climbData[n]
+	return climbData[n]
 }
 
 func climbStairsV2(n int) int {
-    prev, curr := 1, 1
-    for s := 1; s < n; s++ {
-        prev, curr = curr, prev + curr
-    }
+	prev, curr := 1, 1
+	for s := 1; s < n; s++ {
+		prev, curr = curr, prev+curr
+	}
 
-    return curr
+	return curr
 }
 ```
 
@@ -65,7 +65,7 @@ func climbStairsV2(n int) int {
 <!-- Add your space complexity here, e.g. $$O(n)$$ -->
 (n is value of `n`)
 # Code
-```
+```go
 var cache map[int]int = map[int]int{}
 func climbStairs(n int) int {
 	if n == 0 || n == 1 {
