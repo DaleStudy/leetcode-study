@@ -16,16 +16,16 @@ Space complexity: O(1)
     - No extra space is used
 """
 
+
 class Solution:
     def hammingWeight(self, n: int) -> int:
         output = 0
 
         i = 1 << 31
-        while(i > 0) :
-        
-            if((n & i) != 0) :
+        while i > 0:
+            if (n & i) != 0:
                 output += 1
-                
+
             i = i // 2
 
         return output

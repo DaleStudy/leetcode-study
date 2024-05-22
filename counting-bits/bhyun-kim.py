@@ -19,11 +19,11 @@ Space complexity: O(n)
 
 from typing import List
 
+
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        
         output = []
-        for i in range(n+1):
+        for i in range(n + 1):
             _str = str(bin(i))[2:]
             _sum = sum(map(int, _str.strip()))
             output.append(_sum)

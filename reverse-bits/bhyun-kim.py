@@ -18,8 +18,9 @@ Space complexity: O(1)
 
 """
 
+
 class Solution:
     def reverseBits(self, n: int) -> int:
         n_bin = bin(n)[2:].zfill(32)
-        n_bin = ''.join(reversed(n_bin))
+        n_bin = "".join(reversed(n_bin))
         return int(n_bin, base=2)
