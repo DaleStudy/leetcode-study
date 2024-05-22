@@ -1,5 +1,5 @@
 # TC : O(n)
-# SC : O(n)
+# SC : O(1)
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         n = len(nums)
