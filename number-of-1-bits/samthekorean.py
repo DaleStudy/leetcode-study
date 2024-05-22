@@ -1,4 +1,5 @@
-# TC : O(n)
+# TC : O(log n)
+# reason : bin method internally devides n by 2 while transitioning to binary number
 # SC : O(1)
 class Solution:
     def hammingWeight(self, n: int) -> int:
