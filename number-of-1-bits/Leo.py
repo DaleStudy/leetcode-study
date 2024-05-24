@@ -8,7 +8,7 @@ class Solution:
 
         return counter
 
-        ## TC: O(n), SC: O(1)
+        ## TC: O(k), SC: O(1), since given int(n) has constant length
 
         # counter = 0
 
