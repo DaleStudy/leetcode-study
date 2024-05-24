@@ -10,4 +10,15 @@ final class Solution {
   func hammingWeight(_ n: Int) -> Int {
     n.nonzeroBitCount
   }
+  
+  func hammingWeight2(_ n: Int) -> Int {
+    var number = n
+    var answer = 0
+    while number != 0 {
+      answer += number & 1
+      number >>= 1
+    }
+
+    return answer
+  }
 }
