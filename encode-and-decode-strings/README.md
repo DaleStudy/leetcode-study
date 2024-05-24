@@ -1,0 +1,4 @@
+- 문제
+	- 유료: https://leetcode.com/problems/encode-and-decode-strings/
+	- 무료: https://www.lintcode.com/problem/659/
+- 풀이: https://www.algodale.com/problems/encode-and-decode-strings/
