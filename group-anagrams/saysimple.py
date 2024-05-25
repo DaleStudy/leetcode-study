@@ -1,3 +1,5 @@
+# TC: O(n), SC: O(n)
+
 from collections import defaultdict
 
 class Solution:
