@@ -30,3 +30,7 @@ func missingNumber(nums []int) int {
 	return num
 }
 ```
+
+# Today I Learned
+- 다른 풀이로 풀 때, `abs()`를 이용해서 해결하려고 하였는데 해당 라이브러리가 존재하지 않았다. 왜 그런지 찾아봤는데 너무 간단한 라이브러리는 철학에 안맞는다고 안넣어준다 하더라.
+  - 참고: https://go.dev/doc/faq#x_in_std
