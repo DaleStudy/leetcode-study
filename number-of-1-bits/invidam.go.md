@@ -13,7 +13,7 @@
 <!-- Add your space complexity here, e.g. $$O(n)$$ -->
 : 별도 자료구조를 사용하지 않는다.
 # Code
-```
+```go
 func hammingWeight(n int) int {
 	cnt := 0
 	for mask := 1; mask <= n; mask = mask << 1 {
