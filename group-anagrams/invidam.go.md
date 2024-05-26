@@ -8,7 +8,7 @@
 4. 반복문을 순회하며 `이전 문자열과 같은지` 여부를 그룹을 판단하여 인덱스들을 그루핑해 모아놓는다.
 5. 그루핑한 인덱스들을 문자열(원본 문자열을 참조해서)로 치환하여 최종적으로 반환한다.
 # Complexity
-- Time complexity: $$O(n)$$
+- Time complexity: $$O(nklog(n))$$
 <!-- Add your time complexity here, e.g. $$O(nklog(n))$$ -->
 : 배열의 길이 `n`, 문자열의 길이 `k`. 문자열을 기준으로 정렬할 때 발생하는 비용이다.
 - Space complexity: $$O(nk)$$
