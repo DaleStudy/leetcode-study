@@ -29,15 +29,18 @@ from typing import List
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        hash_table = []
-        counters = []
-        for s in strs:
-            count_s = "".join(sorted(s))
-            if count_s in hash_table:
-                idx = hash_table.index(count_s)
-                counters[idx].append(s)
-            else:
-                hash_table.append(count_s)
-                counters.append([s])
+        
+        hash_table = dict()
+        output = []
 
-        return counters
+        for s in strs:
+            count_s = ''.join(sorted(s))
+            if count_s in hash_table:
+                idx = hash_table[count_s]
+                output[idx].append(s)
+            else:
+                hash_table[count_s] = len(output)
+                output.append([s])
+                 
+        return output
+
