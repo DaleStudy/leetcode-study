@@ -26,6 +26,6 @@ class Solution:
             if (n & i) != 0:
                 output += 1
 
-            i = i // 2
+            i = i >> 1
 
         return output
