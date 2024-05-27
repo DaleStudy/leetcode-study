@@ -1,5 +1,5 @@
 // Time Complexity: O(n)
-// Space Complexity: O(m)
+// Space Complexity: O(n)
 
 var topKFrequent = function(nums, k) {
     const frequencyMap = new Map();
