@@ -18,9 +18,7 @@ var topKFrequent = function(nums, k) {
     const result = [];
     // iterate from the highest possible frequency down to the lowest.
     for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
-        if (buckets[i].length > 0) {
-            result.push(...buckets[i]);
-        }
+        result.push(...buckets[i]);
     }
 
     // ensure the result length is k.
