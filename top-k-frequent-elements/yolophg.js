@@ -5,7 +5,7 @@ var topKFrequent = function(nums, k) {
     const frequencyMap = new Map();
     // for each number in the array, update frequency.
     for (const num of nums) {
-        frequencyMap.set(num, (frequencyMap.get(num) || 0));
+        frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
     }
 
     // create buckets where index represents frequency.
