@@ -4,7 +4,7 @@ class Solution:
     @return: encodes a list of strings to a single string.
     """
 
-    # TC : O(n*m) where n is the length of strings in strs. m is the average length of the strings
+    # TC : O(n) where n is the combined length of the string in the list of strings.
     # SC : O(S), where S is the sum of the lengths of all strings in strs
     def encode(self, strs):
         res = ""
