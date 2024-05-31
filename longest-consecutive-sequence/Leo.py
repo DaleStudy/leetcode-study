@@ -14,3 +14,5 @@ class Solution:
                 longest = max(length, longest)
 
         return longest
+
+        ## TC: O(n), SC: O(n)
