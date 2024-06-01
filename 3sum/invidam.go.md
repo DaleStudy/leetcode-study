@@ -11,7 +11,7 @@
 
 # Complexity
 - Time complexity: $$O(n^2)$$
-  - 입력 배열의 길이 n에 대하여, 
+  - 입력 배열의 길이 n에 대하여, `i`, `j와 k`를 순회한다.
 
 - Space complexity: $$O(n)$$
   - 입력으로 들어온 배열의 길이 n에 대하여, 생성하는 결과 배열의 길이 역시 이와 동일하다.

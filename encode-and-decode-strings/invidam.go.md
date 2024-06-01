@@ -12,6 +12,7 @@
 
 # Code
 ```go
+const DIVIDE_CHAR_V1 = 'ㄱ'
 func encodeV1(strs []string) string {
 	ret := strings.Join(strs, string(DIVIDE_CHAR_V1))
 	return ret
@@ -38,6 +39,7 @@ func decodeV1(encoded string) []string {
 
 # Code
 ```go
+const DIVIDE_CHAR = '-'
 func encode(strs []string) string {
 	ret := ""
 	for _, str := range strs {

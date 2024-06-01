@@ -8,7 +8,7 @@
 - Time complexity: $$O(nlog(n))$$
   - 배열의 길이 n에 대하여, 정렬비용으로 소모된다.
 
-- Space complexity: $$O(n+m)$$
+- Space complexity: $$O(n+k)$$
   - 배열의 길이 n과 원소의 범위 k에 대하여, 빈도수 저장을 위해 선언하는 비용 `k`와 정렬된 원소를 저장하는 비용 `n`이 소모된다.
 
 # Code
