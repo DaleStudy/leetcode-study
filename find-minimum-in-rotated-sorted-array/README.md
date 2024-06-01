@@ -1,0 +1,2 @@
+- 문제: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+- 풀이: https://www.algodale.com/problems/find-minimum-in-rotated-sorted-array/
