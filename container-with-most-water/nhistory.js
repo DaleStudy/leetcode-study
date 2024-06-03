@@ -2,7 +2,7 @@ var maxArea = function (height) {
   // Two pointer: left and right
   // Amount of water: math.Min(height[left], height[right]) * (right-left)
 
-  // Eception case
+  // Exception case
   if (height.length === 0) return 0;
 
   let left = 0;
