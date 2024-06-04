@@ -1,4 +1,4 @@
-// Time Complexity: O(n log n)
+// Time Complexity: O(log n)
 // Space Complexity: O(1)
 
 var findMin = function(nums) {
