@@ -12,7 +12,7 @@ Solution: Binary Search
     - Otherwise, recursively call the function with the second part
 
 Time complexity: O(log n)
-Space complexity: O(1)
+Space complexity: O(n)
 
 """
 
