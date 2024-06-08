@@ -12,30 +12,28 @@ class Solution {
     let array = Array(s)
 
     var set: Set<Character> = []
-    var temp: Int = 0
     var startIndex = 0
     for index in array.indices {
       if set.contains(array[index]) == false {
         set.insert(array[index])
-        temp += 1
         continue
       }
 
-      if longest < temp {
-        longest = temp
+      if longest < index - startIndex {
+        longest = index - startIndex
       }
 
       while array[startIndex] != array[index] {
         set.remove(array[startIndex])
-        temp -= 1
         startIndex += 1
       }
       startIndex += 1
     }
 
-    if longest < temp {
-      longest = temp
+    if longest < array.endIndex - startIndex {
+      longest = array.endIndex - startIndex
     }
+
 
     return longest
   }
