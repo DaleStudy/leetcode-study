@@ -64,3 +64,11 @@ func search(nums []int, target int) int {
 }
 
 ```
+# I learned
+`whitespace around operator`(연산자 근처에서 공백 사용)에 대한 golang의 해석이 일반적인 언어들과 다른 걸 알게되었다.
+- 일반언어: `lo + 1 < hi`
+- GoLang: `lo+1 < hi`
+
+즉, 모든 연산자 근처에 공백을 추가하는 것이 아니라 낮은 우선순위의 연산자에 대해서만 추가한다.
+
+참고: https://news.ycombinator.com/item?id=10796427
