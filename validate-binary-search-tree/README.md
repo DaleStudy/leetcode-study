@@ -1,0 +1,2 @@
+- 문제: https://leetcode.com/problems/validate-binary-search-tree/
+- 풀이: https://www.algodale.com/problems/validate-binary-search-tree/
