@@ -35,8 +35,8 @@ class Solution1:
 
         dummy_node = ListNode()
         tail = dummy_node
-        _n = len(vals) - n
-        vals = vals[:_n] + vals[_n+1:]
+        idx_to_remove = len(vals) - n
+        vals = vals[:idx_to_remove] + vals[idx_to_remove+1:]
 
         for v in vals:
             tail.next = ListNode(val=v)
