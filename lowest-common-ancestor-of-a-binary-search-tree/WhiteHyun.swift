@@ -22,14 +22,12 @@
 
 class Solution {
   func lowestCommonAncestor(_ root: TreeNode?, _ p: TreeNode?, _ q: TreeNode?) -> TreeNode? {
-    if root == nil { return nil }
-    if root == p { return p }
-    if root == q { return q }
-    let left = lowestCommonAncestor(root?.left, p, q)
-    let right = lowestCommonAncestor(root?.right, p, q)
-
-    if left != nil, right != nil { return root }
-    else if left != nil { return left }
-    else { return right }
+    guard let root else { return nil }
+    if root.val < p!.val, root.val < q!.val {
+      return lowestCommonAncestor(root.right, p, q)
+    } else if root.val > p!.val, root.val > q!.val {
+      return lowestCommonAncestor(root.left, p, q)
+    }
+    return root
   }
 }
