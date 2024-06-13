@@ -22,24 +22,12 @@
  * }
  */
 class Solution {
+  private var previousNode: TreeNode?
   func isValidBST(_ node: TreeNode?) -> Bool {
     guard let node else { return true }
-
-    var left = node.left
-    var right = node.right
-
-    while left?.right != nil {
-      left = left?.right
-    }
-    while right?.left != nil {
-      right = right?.left
-    }
-
-    if left?.val ?? .min < node.val,
-       node.val < right?.val ?? .max {
-      return isValidBST(node.left) && isValidBST(node.right)
-    }
-
-    return false
+    if isValidBST(node.left) == false { return false }
+    if let previousNode, previousNode.val >= node.val { return false }
+    previousNode = node
+    return isValidBST(node.right)
   }
 }
