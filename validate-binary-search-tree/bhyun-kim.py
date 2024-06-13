@@ -6,13 +6,14 @@ https://leetcode.com/problems/validate-binary-search-tree/
 """
 from typing import Optional
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-    
+
 """
 Solution1:
     Recursion
@@ -34,44 +35,39 @@ Space complexity: O(N)
     - The function stores the range of values for each node
 """
 
+
 class Solution1:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        maximum = float('inf')
-        minimum = float('-inf')
-        return self.isValidSubTree(
-            root, maximum, minimum
-        )
+        maximum = float("inf")
+        minimum = float("-inf")
+        return self.isValidSubTree(root, maximum, minimum)
 
     def isValidSubTree(self, root, maximum, minimum):
-        if root.left is not None: 
-            if root.val <= root.left.val: 
+        if root.left is not None:
+            if root.val <= root.left.val:
                 return False
             if not minimum < root.left.val < maximum:
-                return False 
+                return False
 
-        if root.right is not None :
-            if root.val >= root.right.val: 
+        if root.right is not None:
+            if root.val >= root.right.val:
                 return False
             if not minimum < root.right.val < maximum:
-                return False 
+                return False
 
         if root.left is not None:
             l_max = min(maximum, root.val)
-            is_left_valid = self.isValidSubTree(
-                root.left, l_max, minimum
-                )
+            is_left_valid = self.isValidSubTree(root.left, l_max, minimum)
         else:
             is_left_valid = True
 
         if root.right is not None:
             r_min = max(minimum, root.val)
-            is_right_valid = self.isValidSubTree(
-                root.right, maximum, r_min 
-                )
+            is_right_valid = self.isValidSubTree(root.right, maximum, r_min)
         else:
             is_right_valid = True
-        
+
         if is_left_valid and is_right_valid:
             return True
-        else: 
+        else:
             return False

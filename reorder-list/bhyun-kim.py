@@ -5,10 +5,12 @@ https://leetcode.com/problems/reorder-list/
 
 from typing import Optional
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 """
 Solution:
@@ -52,7 +54,7 @@ class Solution:
         """
         if not head or not head.next:
             return
-        
+
         slow, fast = head, head
         while fast and fast.next:
             slow = slow.next
