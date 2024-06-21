@@ -43,15 +43,12 @@ class Solution1:
         return self.isValidSubTree(root, maximum, minimum)
 
     def isValidSubTree(self, root, maximum, minimum):
-
         if root is None:
             return True
 
-        if not minimum < root.val < maximum: 
-            return False 
-        
+        if not minimum < root.val < maximum:
+            return False
+
         return self.isValidSubTree(
             root.left, root.val, minimum
-            ) and self.isValidSubTree(
-            root.right, maximum, root.val 
-            )
+        ) and self.isValidSubTree(root.right, maximum, root.val)

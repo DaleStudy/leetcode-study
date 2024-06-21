@@ -37,13 +37,14 @@ Space complexity: O(l)
 
 from typing import List
 
+
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         if not board or not word:
             return False
 
         m, n = len(board), len(board[0])
-        
+
         # Step 1: Check if all characters in the word exist in the board
         char_count = {}
         for row in board:
@@ -62,7 +63,7 @@ class Solution:
         def dfs(i, j, word_index):
             if word_index == len(word):
                 return True
-            
+
             if i < 0 or i >= m or j < 0 or j >= n or board[i][j] != word[word_index]:
                 return False
 
@@ -70,10 +71,12 @@ class Solution:
             board[i][j] = "#"  # mark as visited
 
             # Explore all possible directions
-            found = (dfs(i + 1, j, word_index + 1) or
-                    dfs(i - 1, j, word_index + 1) or
-                    dfs(i, j + 1, word_index + 1) or
-                    dfs(i, j - 1, word_index + 1))
+            found = (
+                dfs(i + 1, j, word_index + 1)
+                or dfs(i - 1, j, word_index + 1)
+                or dfs(i, j + 1, word_index + 1)
+                or dfs(i, j - 1, word_index + 1)
+            )
 
             board[i][j] = temp  # unmark
             return found

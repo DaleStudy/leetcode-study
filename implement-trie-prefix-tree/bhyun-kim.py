@@ -20,14 +20,14 @@ Space complexity: O(n)
     - The list of words may have all the words in the trie.
 """
 
-class Trie:
 
+class Trie:
     def __init__(self):
         self.words = []
 
     def insert(self, word: str) -> None:
         self.words.append(word)
-        
+
     def search(self, word: str) -> bool:
         return word in self.words
 
@@ -36,8 +36,7 @@ class Trie:
             if word.startswith(prefix):
                 return True
 
-        return False 
-        
+        return False
 
 
 # Your Trie object will be instantiated and called as such:

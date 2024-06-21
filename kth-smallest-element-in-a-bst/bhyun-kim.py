@@ -18,6 +18,7 @@ Space complexity: O(n)
 
 from typing import Optional
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -25,13 +26,14 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        return self.inOrderSearch(root)[k-1]
+        return self.inOrderSearch(root)[k - 1]
 
     def inOrderSearch(self, root):
         output = []
-        if root: 
+        if root:
             output += self.inOrderSearch(root.left)
             output += [root.val]
             output += self.inOrderSearch(root.right)
