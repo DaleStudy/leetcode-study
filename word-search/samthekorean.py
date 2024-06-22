@@ -1,3 +1,5 @@
+# TC : O(N * 4^L), where N is the number of cells in the board and L is the length of the word.
+# SC : O(L) due to the recursive calls in the backtrack function, where L is the length of the word.
 class Solution:
     def exist(self, board, word):
         def backtrack(i, j, k):
