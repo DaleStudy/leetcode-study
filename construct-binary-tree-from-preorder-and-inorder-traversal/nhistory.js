@@ -13,5 +13,5 @@ var buildTree = function (preorder, inorder) {
   return root;
 };
 
-// TC: O(n)
+// TC: O(n^2)
 // SC: O(n)
