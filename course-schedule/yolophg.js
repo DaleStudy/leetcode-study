@@ -1,5 +1,5 @@
-// Time Complexity: O(m * n)
-// Space Complexity: O(m * n)
+// Time Complexity: O(numCourses * E)
+// Space Complexity: O(numCourses * E)
 
 // initialize an array to keep track of the in-degrees for each course
 let inDegree = new Array(numCourses).fill(0);
