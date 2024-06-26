@@ -32,6 +32,6 @@ WordDictionary.prototype.search = function (word) {
   }
 };
 
-// n: number of node | m: length of the word
+// n: number of words | m: length of the word
 // TC: O(n*m)
 // SC: O(n*m)
