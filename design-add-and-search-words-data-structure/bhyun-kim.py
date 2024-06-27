@@ -29,10 +29,12 @@ Space complexity: O(n)
     - We use a trie data structure to store the words.
 """
 
+
 class TrieNode:
     def __init__(self):
         self.children = {}
         self.is_end_of_word = False
+
 
 class WordDictionary:
     def __init__(self):
@@ -50,7 +52,7 @@ class WordDictionary:
         def dfs(j, node):
             for i in range(j, len(word)):
                 char = word[i]
-                if char == '.':
+                if char == ".":
                     for child in node.children.values():
                         if dfs(i + 1, child):
                             return True
@@ -60,5 +62,5 @@ class WordDictionary:
                         return False
                     node = node.children[char]
             return node.is_end_of_word
-        
+
         return dfs(0, self.root)

@@ -23,9 +23,9 @@ Space complexity: O(m x n)
 
 from typing import List
 
+
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
-        
         if not heights or not heights[0]:
             return []
 
@@ -34,7 +34,12 @@ class Solution:
             reachable.add((x, y))
             for dx, dy in directions:
                 nx, ny = x + dx, y + dy
-                if 0 <= nx < m and 0 <= ny < n and (nx, ny) not in reachable and matrix[nx][ny] >= matrix[x][y]:
+                if (
+                    0 <= nx < m
+                    and 0 <= ny < n
+                    and (nx, ny) not in reachable
+                    and matrix[nx][ny] >= matrix[x][y]
+                ):
                     dfs(matrix, reachable, nx, ny)
 
         m, n = len(heights), len(heights[0])

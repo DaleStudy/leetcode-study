@@ -31,6 +31,7 @@ Space complexity: O(m + n)
 from collections import defaultdict
 from typing import List
 
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         adj_list = defaultdict(list)
@@ -45,12 +46,12 @@ class Solution:
                 return True
             if state[v] == 2:  # Node has been visited, no cycle here
                 return False
-            
+
             state[v] = 1
             for neighbor in adj_list[v]:
                 if has_cycle(neighbor):
                     return True
-            
+
             state[v] = 2
             return False
 
@@ -58,5 +59,5 @@ class Solution:
             if state[course] == 0:
                 if has_cycle(course):
                     return False
-        
+
         return True
