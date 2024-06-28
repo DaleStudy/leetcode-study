@@ -1,4 +1,4 @@
-// Time Complexity: O(N + E) Node + Edge
+// Time Complexity: O(N + E) N = Node + E = Edge
 // Space Complexity: O(N + E)
 
 var cloneGraph = function (node) {

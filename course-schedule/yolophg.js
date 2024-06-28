@@ -1,4 +1,4 @@
-// Time Complexity: O(numCourses * E)
+// Time Complexity: O(numCourses * E) E = Edge
 // Space Complexity: O(numCourses * E)
 
 // initialize an array to keep track of the in-degrees for each course

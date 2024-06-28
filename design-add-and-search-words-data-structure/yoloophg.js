@@ -1,5 +1,5 @@
-// AddWord Method : Time Complexity: O(L)/Space Complexity: O(L)
-// Search Method : Time Complexity: O(M)/Space Complexity: O(1)
+// AddWord Method : Time Complexity: O(L)/Space Complexity: O(L) L = the length of the word being added
+// Search Method : Time Complexity: O(M)/Space Complexity: O(1) M = the length of the word being searched
 // SearchInNode Method : Time Complexity: O(M)/Space Complexity: O(1)
 
 var WordDictionary = function () {

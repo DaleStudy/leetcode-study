@@ -1,4 +1,4 @@
-// Time Complexity: O(m * n)
+// Time Complexity: O(m * n) m = rows n = cols
 // Space Complexity: O(m * n)
 
 var numIslands = function (grid) {
