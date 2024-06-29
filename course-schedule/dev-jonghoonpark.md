@@ -3,12 +3,12 @@
 
 ```java
 public class Solution {
-	public boolean canFinish(int numCourses, int[][] prerequisites) {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
         if (prerequisites.length == 0) {
             return true;
         }
 
-		Map<Integer, Node> vertexMap = new HashMap<>();
+        Map<Integer, Node> vertexMap = new HashMap<>();
 
         for (int[] prerequisite : prerequisites) {
             vertexMap.putIfAbsent(prerequisite[0], new Node(prerequisite[0]));
@@ -23,7 +23,7 @@ public class Solution {
 
         Deque<Integer> deque = new LinkedList<>();
 
-		int[] degrees = new int[numCourses];
+        int[] degrees = new int[numCourses];
         for (int i = 0; i < degrees.length; i++) {
             Node vertex = vertexMap.get(i);
             if (vertex != null) {
@@ -47,18 +47,18 @@ public class Solution {
         }
 
         return vertexMap.isEmpty();
-	}
+    }
 }
 
 class Node {
-	int id;
-	List<Node> edges;
+    int id;
+    List<Node> edges;
     List<Node> reversedEdges;
 
-	public Node(int id) {
-		this.id = id;
-		edges = new ArrayList<>();
+    public Node(int id) {
+        this.id = id;
+        edges = new ArrayList<>();
         reversedEdges = new ArrayList<>();
-	}
+    }
 }
 ```
