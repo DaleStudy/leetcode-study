@@ -1,0 +1,4 @@
+- 문제
+	- 유료: https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
+	- 무료: https://www.lintcode.com/problem/3651/
+- 풀이: https://www.algodale.com/problems/number-of-connected-components-in-an-undirected-graph/
