@@ -23,7 +23,6 @@ func Constructor() Trie {
 
 func (this *Trie) Insert(word string) {
 	if len(word) == 0 {
-		ㅋ
 		return
 	}
 
