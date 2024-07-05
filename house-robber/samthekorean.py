@@ -1,5 +1,5 @@
 # TC : O(n)
-# SC : O(1)
+# SC : O(n)
 class Solution:
     def rob(self, nums):
         n = len(nums)
