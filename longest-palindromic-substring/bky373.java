@@ -35,8 +35,8 @@ class Solution {
     }
 
     /*
-     * Approach 2.
-     * time: O(n^2)
+     * Approach 2-1.
+     * time: 시간 복잡도는 평균적으로 O(n)이고, palindrome 의 길이가 n 에 가까워지면 시간 복잡도 역시 O(n^2) 에 가까워 진다.
      * space: O(1)
      */
     class Solution {
@@ -70,5 +70,35 @@ class Solution {
             }
             return s.substring(maxStart, maxEnd + 1);
         }
+    }
+
+    /*
+     * Approach 2-2.
+     * time: 시간 복잡도는 평균적으로 O(n)이고, palindrome 의 길이가 n 에 가까워지면 시간 복잡도 역시 O(n^2) 에 가까워 진다.
+     * space: O(1)
+     */
+    class Solution {
+        int maxStart = 0;
+        int maxEnd = 0;
+
+        public String longestPalindrome(String s) {
+            for (int i = 0; i < s.length(); i++) {
+                calculateMaxLength(i, i, s);
+                calculateMaxLength(i, i+1, s);
+            }
+            return s.substring(maxStart, maxEnd + 1);
+        }
+
+        public void calculateMaxLength(int start, int end, String s){
+            while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
+                if (this.maxEnd - this.maxStart < end - start) {
+                    this.maxStart = start;
+                    this.maxEnd = end;
+                }
+                start--;
+                end++;
+            }
+        }
+
     }
 }
