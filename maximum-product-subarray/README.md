@@ -1,0 +1,2 @@
+- 문제: https://leetcode.com/problems/maximum-product-subarray/
+- 풀이: https://www.algodale.com/problems/maximum-product-subarray/
