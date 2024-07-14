@@ -8,7 +8,7 @@ var coinChange = function (coins, amount) {
   dp[0] = 0;
 
   for (let i = 0; i <= amount; i++) {
-    for (let coin of coins) {
+    for (const coin of coins) {
       if (coin <= i) dp[i] = Math.min(dp[i - coin] + 1, dp[i]);
     }
   }

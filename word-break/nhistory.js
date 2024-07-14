@@ -9,7 +9,7 @@ var wordBreak = function (s, wordDict) {
       return true;
     }
 
-    for (let word of wordDict) {
+    for (const word of wordDict) {
       if (s.substring(start, start + word.length) === word) {
         if (dfs(start + word.length)) {
           memo[start] = true;
