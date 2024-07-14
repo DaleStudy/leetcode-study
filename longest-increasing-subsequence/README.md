@@ -1,0 +1,2 @@
+- 문제: https://leetcode.com/problems/longest-increasing-subsequence/
+- 풀이: https://www.algodale.com/problems/longest-increasing-subsequence/
