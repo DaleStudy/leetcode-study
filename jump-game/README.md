@@ -1,0 +1,2 @@
+- 문제: https://leetcode.com/problems/jump-game/
+- 풀이: https://www.algodale.com/problems/jump-game/
