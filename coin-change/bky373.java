@@ -1,3 +1,5 @@
+// time: O(n * m), where n is the amount and m is the number of coins
+// space: O(n)
 class Solution {
 
     public int coinChange(int[] coins, int amount) {
