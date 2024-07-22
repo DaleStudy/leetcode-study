@@ -1,0 +1,2 @@
+- 문제: https://leetcode.com/problems/merge-intervals/
+- 풀이: https://www.algodale.com/problems/merge-intervals/
