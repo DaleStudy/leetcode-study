@@ -1,3 +1,5 @@
+# TS : O(n log n)
+# SC : O(n)
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         pairs = []
