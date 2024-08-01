@@ -21,4 +21,4 @@ var setZeroes = function (matrix) {
 };
 
 // TC: O(m*n)
-// SC: O(m*n)
+// SC: O(m+n)
