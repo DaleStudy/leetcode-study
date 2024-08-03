@@ -1,5 +1,5 @@
 # TC: O(m * n)
-# SC: O(m * n)
+# SC: O(1)
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         rows, cols = len(matrix), len(matrix[0])
