@@ -13,24 +13,18 @@ class Solution {
         ListNode current = mergedList;
 
         while (true) {
-            boolean done = true;
-            int minIndex = 0;
+            int minIndex = -1;
             int currentMin = Integer.MAX_VALUE;
 
             for (int i = 0; i < lists.length; i++) {
                 ListNode node = lists[i];
-                if (node == null) {
-                    continue;
-                }
-
-                if (node.val < currentMin) {
+                if (node != null && node.val < currentMin) {
                     minIndex = i;
                     currentMin = node.val;
-                    done = false;
                 }
             }
 
-            if (done) {
+            if (minIndex == -1) {
                 break;
             }
 
