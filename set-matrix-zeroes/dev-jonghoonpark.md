@@ -50,9 +50,7 @@ n == matrix[0].length
 
 시간복잡도는 `O(n * m)` 공간복잡도는 `O(n * m)` 이다.
 
-## in place 방식으로 접근해보기
-
-문제를 자세히 읽어보면 [in place](https://en.wikipedia.org/wiki/In-place_algorithm) 방식으로 풀라고 되어있다.
+## simple improvement
 
 ```java
 class Solution {
@@ -98,3 +96,78 @@ n == matrix[0].length
 ```
 
 시간복잡도는 `O(n * m)` 공간복잡도는 `O(n + m)` 이다. 공간 복잡도가 개선되었다.
+
+## in place 방식으로 접근해보기
+
+문제를 자세히 읽어보면 [in place](https://en.wikipedia.org/wiki/In-place_algorithm) 방식으로 풀라고 되어있다.
+
+```java
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        boolean shouldUpdateFirstRow = false;
+        boolean shouldUpdateFirstColumn = false;
+
+        for (int i = 0; i < matrix.length; i++) {
+            if (matrix[i][0] == 0) {
+                shouldUpdateFirstColumn = true;
+                break;
+            }
+        }
+
+        for (int j = 0; j < matrix[0].length; j++) {
+            if (matrix[0][j] == 0) {
+                shouldUpdateFirstRow = true;
+                break;
+            }
+        }
+
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[0].length; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+
+        // update row
+        for (int i = 1; i < matrix.length; i++) {
+            if (matrix[i][0] == 0) {
+                Arrays.fill(matrix[i], 0);
+            }
+        }
+
+        // update column
+        for (int j = 1; j < matrix[0].length; j++) {
+            if (matrix[0][j] == 0) {
+                for (int i = 0; i < matrix.length; i++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+
+        // update first row if contains zero
+        if (shouldUpdateFirstRow) {
+            Arrays.fill(matrix[0], 0);
+        }
+
+        // update first column if contains zero
+        if (shouldUpdateFirstColumn) {
+            for (int i = 0; i < matrix.length; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+    }
+}
+```
+
+#### TC, SC
+
+문제에서 m과 n이 다음과 같이 정의되어 있다.
+
+```
+m == matrix.length
+n == matrix[0].length
+```
+
+시간복잡도는 `O(n * m)` 공간복잡도는 `O(1)` 이다. 공간 복잡도가 한 번 더 개선되었다.
