@@ -1,0 +1,2 @@
+- 문제: https://leetcode.com/problems/find-median-from-data-stream/
+- 풀이: https://www.algodale.com/problems/find-median-from-data-stream/
