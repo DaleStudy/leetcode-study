@@ -10,6 +10,7 @@ class `contains-duplicate`{
     }
 
     // 시간초과
+    // 시간복잡도: O(n^2), 공간복잡도: O(1)
     private fun first(nums: IntArray): Boolean {
         nums.forEachIndexed { i, e1 ->
             nums.forEachIndexed { j, e2 ->
@@ -21,8 +22,9 @@ class `contains-duplicate`{
         return false
     }
 
+    // 시간복잡도:  O(n * log(n)), 공간복잡도: O(1)
     private fun second(nums: IntArray): Boolean {
-        nums.sort() // DualPivotQuicksort
+        nums.sort() // DualPivotQuicksort -> O(n log(n))
         for (index in 1 until nums.size) {
             val prev = nums[index - 1]
             val curr = nums[index]
@@ -33,6 +35,7 @@ class `contains-duplicate`{
         return false
     }
 
+    // 시간복잡도: O(n), 공간복잡도: O(n)
     private fun third(nums: IntArray): Boolean {
         val set = nums.toSet()
         return nums.size != set.size

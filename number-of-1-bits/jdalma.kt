@@ -9,6 +9,7 @@ class `number-of-1-bits` {
         return second(n)
     }
 
+    // 시간복잡도: O(log n), 공간복잡도: O(1)
     private fun first(n: Int): Int {
         var calc = n
         var count = 0
@@ -21,6 +22,7 @@ class `number-of-1-bits` {
         return count
     }
 
+    // 시간복잡도: O(log n), 공간복잡도: O(1)
     private fun second(n: Int): Int {
         var calc = n
         var count = 0

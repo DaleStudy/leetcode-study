@@ -11,6 +11,7 @@ class `top-k-frequent-elements` {
     }
 
     // Map 정렬
+    // 시간복잡도: O(n * log(n)), 공간복잡도: O(n)
     private fun first(nums: IntArray, k: Int): IntArray {
         val map = mutableMapOf<Int, Int>()
 
@@ -27,7 +28,8 @@ class `top-k-frequent-elements` {
             .toIntArray()
     }
 
-    // 우선순위 큐 사용
+    // 우선순위 큐
+    // 시간복잡도: O(n * log(k)), 공간복잡도: O(n + k)
     private fun second(nums: IntArray, k: Int): IntArray {
         val map = mutableMapOf<Int, Int>()
 
@@ -43,6 +45,7 @@ class `top-k-frequent-elements` {
     }
 
     // 이차원배열로 빈번도 저장
+    // 시간복잡도: O(n), 공간복잡도: O(n)
     private fun third(nums: IntArray, k: Int): IntArray {
         val map = mutableMapOf<Int, Int>()
 
@@ -74,5 +77,6 @@ class `top-k-frequent-elements` {
         topKFrequent(intArrayOf(1,1,1,2,2,3,3,4), 3) shouldBe intArrayOf(1,2,3)
         topKFrequent(intArrayOf(2,2,3,3,1,1,4), 3) shouldBe intArrayOf(2,3,1)
         topKFrequent(intArrayOf(4,1,-1,2,-1,2,3), 2) shouldBe intArrayOf(-1,2)
+
     }
 }
