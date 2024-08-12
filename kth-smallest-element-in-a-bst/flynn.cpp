@@ -1,10 +1,14 @@
 /**
  * For the height H of the given BST,
  * 
- * Time complexity: O(H) at worst
+ * Time complexity: O(max(H, K))
+ *   - if H > K, O(H) at worst
+ *   - else, O(K)
  * 
- * Space complexity: O(H + K) at worst
- *   - call stack + additional vector to save nums
+ * Space complexity: O(H > K ? H + K : K)
+ *   - additional vector to save nums O(K)
+ *   - if H > K, call stack O(H)
+ *   - else, O(K)
  */
 
 /**
