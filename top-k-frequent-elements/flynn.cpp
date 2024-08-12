@@ -21,7 +21,7 @@ public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         vector<int> res;
         priority_queue<pair<int, int>> pq;
-        unorderd_map<int, int> m;
+        unordered_map<int, int> m;
 
         auto nums_it = nums.begin();
         while (nums_it != nums.end()) {
