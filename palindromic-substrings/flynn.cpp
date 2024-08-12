@@ -13,18 +13,19 @@ public:
 
         for (int i = 0; i < s.size(); i++) {
             for (int j = i; j < s.size(); j++) {
-                int start = i, end = j, flag = 0;
+                int start = i, end = j;
+                bool is_palindrome = true;
 
                 while (start <= end) {
                     if (s[start] != s[end]) {
-                        flag = 1;
+                        is_palindrome = false;
                         break;
                     }
                     start++;
                     end--;
                 }
 
-                if (!flag) res++;
+                if (is_palindrome) res++;
             }
         }
 
