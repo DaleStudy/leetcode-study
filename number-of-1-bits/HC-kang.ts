@@ -23,11 +23,12 @@ The input binary string 1111111111111111111111111111101 has a total of thirty se
 function hammingWeight(n: number): number {
   // Time complexity: O(logn)
   // Space complexity: O(logn)
-  // but it has a better readability
+  // it has a better readability and not so bad in space complexity
   return n.toString(2).split('1').length - 1;
 
   // Time complexity: O(logn)
   // Space complexity: O(1)
+  // it's better in space complexity, but sometimes the bitwise operation is not easy to understand
   let count = 0;
   while (n !== 0) {
     count += n & 1;
