@@ -1,3 +1,6 @@
+// Time complexity: O(n) 왜냐하면, while문
+// Space complexity: O(1)
+
 class Solution {
 public:
     int hammingWeight(int n) {
