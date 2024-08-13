@@ -13,11 +13,11 @@ Output: [1]
 // Time complexity: O(nlogn)
 // Space complexity: O(n)
 function topKFrequent(nums: number[], k: number): number[] {
-  const acc = new Map<number, number>();
+  const frequentMap = new Map<number, number>();
   for (const num of nums) { // s.c. O(n)
-    acc.set(num, (acc.get(num) || 0) + 1);
+    frequentMap.set(num, (frequentMap.get(num) || 0) + 1);
   }
-  return Array.from(acc.entries())
+  return Array.from(frequentMap.entries())
     .sort((a, b) => b[1] - a[1]) // this will cost t.c. O(nlogn)
     .slice(0, k)
     .map((v) => v[0]);
