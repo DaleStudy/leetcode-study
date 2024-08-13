@@ -1,7 +1,7 @@
 """
-    TC : O(klogn)
-
-    used max heap
+    TC : O(n)
+    SC: O(n)
+    used bucket sort
     index -> count number
     list value -> frequent nums
 """
