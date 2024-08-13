@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test
 class `number-of-1-bits` {
 
     fun hammingWeight(n: Int): Int {
-        return second(n)
+        return bitOperation(n)
     }
 
+    // 1. 직접 2진수를 구함
     // 시간복잡도: O(log n), 공간복잡도: O(1)
-    private fun first(n: Int): Int {
+    private fun binary(n: Int): Int {
         var calc = n
         var count = 0
         while(calc > 0) {
@@ -22,8 +23,9 @@ class `number-of-1-bits` {
         return count
     }
 
+    // 2. 비트 논리 연산자 사용
     // 시간복잡도: O(log n), 공간복잡도: O(1)
-    private fun second(n: Int): Int {
+    private fun bitOperation(n: Int): Int {
         var calc = n
         var count = 0
         while (calc > 0) {

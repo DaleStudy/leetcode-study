@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test
 class `contains-duplicate`{
 
     fun containsDuplicate(nums: IntArray): Boolean {
-        return third(nums)
+        return usingSet(nums)
     }
 
-    // 시간초과
+    // 1. 중첩 반복문 - 시간초과
     // 시간복잡도: O(n^2), 공간복잡도: O(1)
-    private fun first(nums: IntArray): Boolean {
+    private fun usingNestedLoop(nums: IntArray): Boolean {
         nums.forEachIndexed { i, e1 ->
             nums.forEachIndexed { j, e2 ->
                 if (i != j && e1 == e2) {
@@ -22,8 +22,9 @@ class `contains-duplicate`{
         return false
     }
 
+    // 2. 정렬 후 순회
     // 시간복잡도:  O(n * log(n)), 공간복잡도: O(1)
-    private fun second(nums: IntArray): Boolean {
+    private fun usingSort(nums: IntArray): Boolean {
         nums.sort() // DualPivotQuicksort -> O(n log(n))
         for (index in 1 until nums.size) {
             val prev = nums[index - 1]
@@ -35,8 +36,9 @@ class `contains-duplicate`{
         return false
     }
 
+    // 3. 자료구조 Set 사용
     // 시간복잡도: O(n), 공간복잡도: O(n)
-    private fun third(nums: IntArray): Boolean {
+    private fun usingSet(nums: IntArray): Boolean {
         val set = nums.toSet()
         return nums.size != set.size
     }

@@ -10,7 +10,7 @@ class `top-k-frequent-elements` {
         return third(nums, k)
     }
 
-    // Map 정렬
+    // 1. Map 정렬
     // 시간복잡도: O(n * log(n)), 공간복잡도: O(n)
     private fun first(nums: IntArray, k: Int): IntArray {
         val map = mutableMapOf<Int, Int>()
@@ -28,7 +28,7 @@ class `top-k-frequent-elements` {
             .toIntArray()
     }
 
-    // 우선순위 큐
+    // 2. 우선순위 큐
     // 시간복잡도: O(n * log(k)), 공간복잡도: O(n + k)
     private fun second(nums: IntArray, k: Int): IntArray {
         val map = mutableMapOf<Int, Int>()
@@ -44,7 +44,7 @@ class `top-k-frequent-elements` {
         return (0 until k).map { heap.poll().key }.toIntArray()
     }
 
-    // 이차원배열로 빈번도 저장
+    // 3. 이차원배열로 빈번도 저장
     // 시간복잡도: O(n), 공간복잡도: O(n)
     private fun third(nums: IntArray, k: Int): IntArray {
         val map = mutableMapOf<Int, Int>()
