@@ -8,3 +8,6 @@ var containsDuplicate = function (nums) {
 console.log(containsDuplicate([])); // false
 console.log(containsDuplicate([1, 2, 3, 1])); // true
 console.log(containsDuplicate([1, 2, 3, 4])); // false
+
+// space - O(n) - creating a set to store elements
+// time - O(n) - traverse through the array
