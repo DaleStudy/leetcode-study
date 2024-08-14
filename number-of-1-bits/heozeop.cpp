@@ -1,3 +1,6 @@
+// Time Complexity: O(log(n))
+// Spatial Complexity: O(1)
+
 class Solution {
 public:
     int hammingWeight(int n) {
