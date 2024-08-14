@@ -16,7 +16,7 @@ class Solution:
 
     """
     Runtime: 50 ms (Beats 25.03%)
-    Analyze Complexity: O(n)
+    Analyze Complexity: O(n * log n), 순회에 n, heap push에 log n
     Memory: 19.55 MB (Beats 15.91%)
     """
     def solve_1(self, root: Optional[TreeNode], k: int) -> int:
