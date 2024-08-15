@@ -11,12 +11,12 @@ function countSubstrings(s: string): number {
     result = 0;
 
   for (let i = 0; i < len; i++) {
-    // Set pit[i]
+    // If i is within the rightmost center, copy the pit value from the mirror
     if (i < right) {
       pit[i] = Math.min(right - i, pit[center * 2 - i]);
     }
 
-    // Expand around i
+    // Expand around i until it's not a palindrome and not over left or right
     while (
       i + pit[i] + 1 < len &&
       i - pit[i] - 1 >= 0 &&
@@ -25,13 +25,13 @@ function countSubstrings(s: string): number {
       pit[i]++;
     }
 
-    // Update center and right
+    // If pit value is the new rightmost center, update center and right
     if (i + pit[i] > right) {
       center = i;
       right = i + pit[i];
     }
 
-    // Add to result
+    // Add the number of palindromes with center i to the result
     result += Math.floor((pit[i] + 1) / 2);
   }
 
