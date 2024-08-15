@@ -8,7 +8,6 @@ final class MaxHeap<T: Comparable> {
         heapifyUp(from: heap.count - 1)
     }
     
-    @discardableResult
     func pop() -> T? {
         guard !heap.isEmpty else {
             return nil
@@ -84,7 +83,7 @@ struct Item: Comparable {
     let count: Int
 
     static func < (lhs: Item, rhs: Item) -> Bool {
-        return lhs.count <= rhs.count
+        return lhs.count < rhs.count
     }
 }
 
