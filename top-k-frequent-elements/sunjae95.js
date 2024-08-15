@@ -16,16 +16,14 @@
 
 var topKFrequent = function (nums, k) {
   const answer = [];
-  const array = [];
   const hashTable = new Map();
 
   nums.forEach((num) => hashTable.set(num, (hashTable.get(num) ?? 0) + 1));
 
-  hashTable.forEach((count, number) => array.push({ number, count }));
+  hashTable.forEach((count, number) => answer.push({ number, count }));
 
-  array.sort((a, b) => b.count - a.count);
-
-  for (let i = 0; i < k; i++) answer.push(array[i].number);
-
-  return answer;
+  return answer
+    .sort((a, b) => b.count - a.count)
+    .slice(0, k)
+    .map(({ number }) => number);
 };
