@@ -7,7 +7,7 @@ class Solution {
      *     - 데이터 순서 보장 필요 없음
      */
     public boolean containsDuplicate(int[] nums) {
-        HashSet<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
         for (int num: nums) {
             if (set.contains(num)) {
                 return true;
