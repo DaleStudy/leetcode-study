@@ -3,57 +3,37 @@
  * SC: O(n)
  * */
 function countSubstrings(s: string): number {
-  const t = "#" + s.split("").join("#") + "#";
-  const n = t.length;
-  const p = new Array(n).fill(0);
+  const str = "#" + s.split("").join("#") + "#";
+  const len = str.length;
+  const pit = new Array(len).fill(0);
   let center = 0,
     right = 0,
-    l = 0;
+    result = 0;
 
-  const mirror = (i: number, p: number[], c: number, r: number) => {
-    return Math.min(r - i, p[c * 2 - i]);
-  };
-
-  const isRightBound = (i: number, p: number[], n: number) => {
-    return i + p[i] + 1 < n;
-  };
-
-  const isLeftBound = (i: number, p: number[]) => {
-    return i - p[i] - 1 >= 0;
-  };
-
-  const isPalindrome = (i: number, p: number[], t: string) => {
-    return t[i + p[i] + 1] === t[i - p[i] - 1];
-  };
-
-  const isLongest = (i: number, p: number[], r: number) => {
-    return i + p[i] > r;
-  };
-
-  const calcTotal = (i: number, p: number[]) => {
-    return Math.floor((p[i] + 1) / 2);
-  };
-
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < len; i++) {
+    // Set pit[i]
     if (i < right) {
-      p[i] = mirror(i, p, center, right);
+      pit[i] = Math.min(right - i, pit[center * 2 - i]);
     }
 
+    // Expand around i
     while (
-      isRightBound(i, p, n) &&
-      isLeftBound(i, p) &&
-      isPalindrome(i, p, t)
+      i + pit[i] + 1 < len &&
+      i - pit[i] - 1 >= 0 &&
+      str[i + pit[i] + 1] === str[i - pit[i] - 1]
     ) {
-      p[i]++;
+      pit[i]++;
     }
 
-    if (isLongest(i, p, right)) {
+    // Update center and right
+    if (i + pit[i] > right) {
       center = i;
-      right = i + p[i];
+      right = i + pit[i];
     }
 
-    l += calcTotal(i, p);
+    // Add to result
+    result += Math.floor((pit[i] + 1) / 2);
   }
 
-  return l;
+  return result;
 }
