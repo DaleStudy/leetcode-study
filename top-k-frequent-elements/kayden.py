@@ -1,3 +1,5 @@
+# 시간복잡도: O(Nlog N)
+# 공간복잡도: O(N)
 from collections import Counter
 
 class Solution:

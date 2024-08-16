@@ -1,3 +1,5 @@
+# 시간복잡도: O(N^2)
+# 공간복잡도: O(N^2)
 class Solution:
     def countSubstrings(self, s: str) -> int:
         n = len(s)

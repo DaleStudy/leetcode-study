@@ -1,3 +1,5 @@
+# 시간복잡도: O(N)
+# 공간복잡도: O(1)
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
