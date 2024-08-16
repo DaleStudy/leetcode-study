@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,12 +15,10 @@ class SolutionTopKFrequentElements {
     }
 
     // 빈도순 정렬
-    int[] sortedNums = freq.keySet().stream()
+    return freq.keySet().stream()
       .sorted((a, b) -> freq.get(b) - freq.get(a))
       .mapToInt(i -> i)
+      .limit(k) // 배열에서 상위 k개만 반환
       .toArray();
-
-    // 배열에서 상위 k개만 반환
-    return Arrays.copyOf(sortedNums, k);
   }
 }
