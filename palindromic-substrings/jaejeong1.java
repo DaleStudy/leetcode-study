@@ -6,7 +6,7 @@ class SolutionPalindromicSubstrings {
   // rt가 끝에 도달하면 lt를 증가시키고, rt를 lt+1로 만든다. 모든 과정에서 팰린드롬 여부를 검사한다
   // 시간복잡도: O(N), 공간복잡도: O(1)
   // 결과
-  // 시간복잡도: O(N), 공간복잡도: O(1)
+  // 시간복잡도: O(N^2), 공간복잡도: O(1)
 
   public int countSubstrings(String s) {
     var subStrings = s.toCharArray();
