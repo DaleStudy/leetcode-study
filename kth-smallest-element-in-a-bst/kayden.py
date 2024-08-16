@@ -27,4 +27,4 @@ class Solution:
 
         dfs(root)
 
-        return self.result   
+        return self.result
