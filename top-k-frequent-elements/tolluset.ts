@@ -6,11 +6,10 @@ type Nums = [number, number][];
  * */
 function topKFrequent(nums: number[], k: number): number[] {
   const counting = (arr: number[]) =>
-    arr.reduce((acc, n) => {
-      const val = acc.get(n) ?? 0;
-      acc.set(n, val + 1);
-      return acc;
-    }, new Map<number, number>());
+    arr.reduce(
+      (acc, n) => acc.set(n, (acc.get(n) ?? 0) + 1),
+      new Map<number, number>(),
+    );
 
   const toValues = (map: Map<number, number>) => Array.from(map.entries());
 
