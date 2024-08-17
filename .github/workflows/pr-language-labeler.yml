@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  label:
+  labeling-languages:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
