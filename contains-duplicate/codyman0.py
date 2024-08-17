@@ -6,10 +6,10 @@ https://leetcode.com/problems/contains-duplicate/
 
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        sortedArrary = sorted(nums)
-        for i in range(len(sortedArrary)): 
-            if i == len(sortedArrary) - 1: 
+        sortedArray = sorted(nums)
+        for i in range(len(sortedArray)): 
+            if i == len(sortedArray) - 1: 
                 return False
-            if sortedArrary[i] == sortedArrary[i + 1] :
+            if sortedArray[i] == sortedArray[i + 1] :
                 return True
         return False
