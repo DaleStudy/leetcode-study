@@ -4,8 +4,8 @@ function countSubstrings(s: string): number {
   const n = s.length;
 
   // TC: O(N^2)
-  for (let start = 0; start < n; start++) {
-    for (let end = start; end >= 0; end--) {
+  for (let start = n; start >= 0; start--) {
+    for (let end = start; end < n; end++) {
       if (start === end) {
         dict.set(`${start}:${end}`, true);
       } else if (start + 1 === end) {
