@@ -24,8 +24,7 @@ var topKFrequent = function(nums, k) {
         result.push(...buckets[i]);
     }
 
-    return result.slice(0, k);
-
+    return result
 };
 
 console.log(topKFrequent([1,1,1,2,2,3],2))
