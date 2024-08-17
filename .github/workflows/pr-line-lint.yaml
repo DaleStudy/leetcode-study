@@ -1,0 +1,57 @@
+name: PR Line Lint
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  line-ending-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get list of changed files
+        id: changed-files
+        run: |
+          changed_files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+          echo "Changed files:"
+          echo "$changed_files"
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$changed_files" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Check for missing newlines
+        id: newline-check
+        run: |
+          readarray -t changed_files <<< "${{ steps.changed-files.outputs.files }}"
+          files_without_newline=""
+          for file in "${changed_files[@]}"; do
+            if [ -f "$file" ] && [ "$(tail -c 1 "$file" | wc -l)" -eq 0 ]; then
+              files_without_newline+="- ${file}\n"  # 포맷을 맞추기 위해 파일 이름을 백틱으로 감쌉니다.
+            fi
+          done
+          if [ -n "$files_without_newline" ]; then
+            echo "Files without newline at end:"
+            echo -e "$files_without_newline"
+            echo "files<<EOF" >> $GITHUB_OUTPUT
+            echo -e "$files_without_newline" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      - name: Set Job Summary
+        if: always()
+        run: |
+          if [ -n "${{ steps.newline-check.outputs.files }}" ]; then
+            echo "아래 파일들에 공백 줄을 추가해주세요." >> $GITHUB_STEP_SUMMARY
+            echo -e "${{ steps.newline-check.outputs.files }}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "모든 파일이 올바르게 개행 처리되어 있습니다." >> $GITHUB_STEP_SUMMARY
+          fi
