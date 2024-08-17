@@ -20,8 +20,5 @@ var containsDuplicate = function (nums) {
   const arrToSet = new Set(nums);
   const setLength = arrToSet.size;
 
-  if (arrLength !== setLength) {
-    return true;
-  }
-  return false;
+  return arrLength !== setLength;
 };
