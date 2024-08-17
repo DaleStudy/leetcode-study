@@ -7,4 +7,6 @@ class Solution:
             appeared[n] += 1
         
         return False
+# T: O(n)
+# S: O(n)
 
