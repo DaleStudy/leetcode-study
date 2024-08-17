@@ -3,6 +3,7 @@ from typing import List
 
 
 class Solution:
+    # Time complexity: O(nlogn) -> O(n) + O(nlogn) + O(k)
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         counter_dict = defaultdict(int)
 

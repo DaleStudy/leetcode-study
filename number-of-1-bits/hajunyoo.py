@@ -1,4 +1,5 @@
 class Solution:
+    # Time complexity: O(log n)
     def hammingWeight(self, n: int) -> int:
         n = int(n)
         cnt = 0

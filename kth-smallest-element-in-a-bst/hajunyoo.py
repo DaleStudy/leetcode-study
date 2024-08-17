@@ -8,6 +8,7 @@ from collections import defaultdict
 
 
 class Solution:
+    # Time complexity: O(n)
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
 
         self.count = 0

@@ -1,4 +1,5 @@
 class Solution:
+    # Time complexity: O(n)
     def containsDuplicate(self, nums: List[int]) -> bool:
         string_len = len(nums)
         set_len = len(set(nums))
