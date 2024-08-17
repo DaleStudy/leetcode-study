@@ -1,4 +1,4 @@
-// 시간복잡도: O(n log n)
+// 시간복잡도: O(n)
 // 공간복잡도: O(n)
 
 /**
@@ -13,10 +13,18 @@ var topKFrequent = function(nums, k) {
         map.set(nums[i], (map.get(nums[i]) || 0) + 1);
     }
 
-    const frequencyArr  = [...map]
-    const sortedArr = frequencyArr.toSorted((a,b) => b[1] - a[1])
+    const buckets = Array.from({length: nums.length + 1}, () => [])
 
-    return sortedArr.slice(0,k).map(([key,value]) => key);
+    for (const [num, frequency] of map.entries()) {
+        buckets[frequency].push(num);
+    }
+
+    const result = [];
+    for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
+        result.push(...buckets[i]);
+    }
+
+    return result.slice(0, k);
 
 };
 
