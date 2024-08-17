@@ -1,0 +1,11 @@
+name: 🔄 Integration
+
+on:
+  pull_request:
+
+jobs:
+  linelint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: fernandrone/linelint@0.0.6
