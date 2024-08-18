@@ -25,5 +25,7 @@ var kthSmallest = function(root, k) {
 
     dfs(root)
 
+    results.sort((a,b) => a - b)
+
     return results[k-1]
 };
