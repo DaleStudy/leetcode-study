@@ -1,6 +1,8 @@
 class Solution {
     private int i, p;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
+        // Time complexity: O(n)
+        // Space complexity: O(n)
         return builder(preorder, inorder, Integer.MIN_VALUE);
     }
 
