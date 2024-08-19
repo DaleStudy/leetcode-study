@@ -1,12 +1,12 @@
 /**
- * Let's say sum of lengths of given strings N, and the length of the longest string M
+ * For the number of given strings N, and the length of the longest string M,
  * 
  * Encode
  * - Time complexity: O(N)
  * - Space complexity: O(1)
  * 
  * Decode
- * - Time complexity: O(N)
+ * - Time complexity: O(NM)
  * - Space complexity: O(M)
  */
 
