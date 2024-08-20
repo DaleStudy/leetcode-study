@@ -27,3 +27,27 @@ public:
         return memo[s.size()];
     }
 };
+
+/**
+ * Space complexity O(1) solution
+ */
+
+// class Solution {
+// public:
+//     int numDecodings(string s) {
+//         if (s[0] == '0') return 0;
+
+//         int one_digit_memo = 1, two_digit_memo = 1;
+
+//         for (int i = 1; i < s.size(); i++) {
+//             int tmp = 0;
+//             if (s[i] != '0') tmp = one_digit_memo;
+//             int two_digits = stoi(s.substr(i - 1, 2));
+//             if (10 <= two_digits && two_digits <= 26) tmp += two_digit_memo;
+//             two_digit_memo = one_digit_memo;
+//             one_digit_memo = tmp;
+//         } 
+
+//         return one_digit_memo;
+//     }
+// };
