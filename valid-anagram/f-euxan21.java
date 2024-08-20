@@ -1,19 +1,16 @@
 // time : O(n)
-// space : O(n)
+// space : O(1)
 
 class Solution {
     public boolean isAnagram(String s, String t) {
-        char[] sToChar = s.toCharArray();
-        char[] tToChar = t.toCharArray();
+
+        if(s.length() != t.length()) return false;
         
         int[] charCount = new int[26];
 
-        for(char c : sToChar) {
-            charCount[c - 'a']++;
-        }
-
-        for(char c : tToChar) {
-            charCount[c - 'a']--;
+        for(int i = 0; i < s.length(); i++) {
+            charCount[s.charAt(i) - 'a']++;
+            charCount[t.charAt(i) - 'a']--;
         }
 
         for(int i : charCount) {
