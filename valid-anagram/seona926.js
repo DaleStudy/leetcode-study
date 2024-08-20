@@ -30,3 +30,11 @@ let isAnagram = function (s, t) {
 
   return true;
 };
+
+/*
+  1. 시간복잡도 : O(n)
+  각 반복문의 시간복잡도가 모두 O(n)
+
+  2. 공간복잡도 : O(n)
+  주어진 문자열인 s와 t갯수만큼 공간을 차지함
+*/
