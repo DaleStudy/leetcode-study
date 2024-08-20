@@ -3,6 +3,7 @@ https://leetcode.com/problems/contains-duplicate/
 """
 
 # Time complexity : O(n)
+# lineBreak : True
 
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
