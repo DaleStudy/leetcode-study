@@ -3,6 +3,10 @@ name: 🔄 Integration
 on:
   pull_request:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   linelint:
     runs-on: ubuntu-latest
