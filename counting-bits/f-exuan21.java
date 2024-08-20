@@ -2,6 +2,9 @@
 //space : O(n)
 
 class Solution {
+
+    // f(n) = f(n >> 1) + (n & 1)
+
     public int[] countBits(int n) {
         int[] answer = new int[n + 1];
 
