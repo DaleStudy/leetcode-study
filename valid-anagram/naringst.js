@@ -46,3 +46,29 @@ var isAnagram = function (s, t) {
 
   return isSameDict(sDict, tDict);
 };
+
+/**
+ * 같은 로직인데 53ms 걸린 다른 풀이
+ */
+
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) {
+    return false;
+  }
+
+  const countA = {};
+  const countB = {};
+
+  for (let i = 0; i < s.length; i++) {
+    countA[s[i]] = 1 + (countA[s[i]] || 0);
+    countB[t[i]] = 1 + (countB[t[i]] || 0);
+  }
+
+  for (const key in countA) {
+    if (countA[key] !== countB[key]) {
+      return false;
+    }
+  }
+
+  return true;
+};
