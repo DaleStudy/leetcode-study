@@ -27,15 +27,16 @@ public:
     // Decodes a single string to a list of strings.
     vector<string> decode(string s) {
         vector<string> res;
-        int str_size = 0;
-        string tmp = "";
 
         auto it = s.begin();
         while (it != s.end()) {
-            do {
+            int str_size = 0;
+            string tmp = "";
+
+            while (*it != '.') {
                 str_size = str_size * 10 + (*it - '0');
                 it++;
-            } while (*it != '.');
+            } 
 
             it++;
 
@@ -45,8 +46,6 @@ public:
             }
 
             res.push_back(tmp);
-            str_size = 0;
-            tmp = "";
         }
 
         return res;
