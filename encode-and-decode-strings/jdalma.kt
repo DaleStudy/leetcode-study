@@ -20,7 +20,7 @@ class `encode-and-decode-strings` {
         val result = mutableListOf<String>()
         while (index < string.length) {
             val delimiterIndex = string.indexOf(DELIMITER, startIndex = index)
-            val size = string.substring(index , delimiterIndex).toInt()
+            val size = string.substring(index, delimiterIndex).toInt()
             result.add(string.substring(delimiterIndex + 1, delimiterIndex + size + 1))
             index = delimiterIndex + size + 1
         }
