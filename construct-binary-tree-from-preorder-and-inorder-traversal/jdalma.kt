@@ -17,19 +17,18 @@ class `construct-binary-tree-from-preorder-and-inorder-traversal` {
     /**
      * preorder에서 조회한 부모 노드의 값은 inorder의 중간에 위치한다.
      * 그 중간 위치 기준으로 왼쪽 노드, 오른쪽 노드로 분리하여 재귀적으로 탐색할 수 있다.
+     * 시간복잡도: O(n), 공간복잡도: O(n)
      */
     private fun traversal(
         preorder: IntArray, inorder: IntArray, inorderIndices: Map<Int, Int>,
         preStart: Int = 0, inStart: Int = 0, inEnd: Int = inorder.size - 1
     ): TreeNode? {
         if (preStart > preorder.size - 1 || inStart > inEnd) {
-            println("preStart: $preStart, inStart: $inStart, inEnd: $inEnd --- return null")
             return null
         }
         val value = preorder[preStart]
         val rootIndexInInorder = inorderIndices[value]!!
 
-        println("value: $value, preStart: $preStart, rootIndexInInorder: $rootIndexInInorder, inStart: $inStart, inEnd: $inEnd")
         return TreeNode(value).apply {
             this.left = traversal(
                 preorder, inorder, inorderIndices,
