@@ -8,4 +8,42 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: fernandrone/linelint@0.0.6
+        with:
+          fetch-depth: 0
+
+      - name: Get list of changed files
+        id: changed-files
+        run: |
+          changed_files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | jq -R -s -c 'split("\n")[:-1]')
+          echo "changed_files: $changed_files"
+          echo "files=$changed_files" >> $GITHUB_OUTPUT
+
+      - name: Check for missing newlines
+        id: newline-check
+        run: |
+          files_without_newline=()
+          while IFS= read -r file; do
+            if [ -f "$file" ]; then
+              last_char=$(tail -c 1 "$file")
+              if [ -n "$last_char" ]; then
+                files_without_newline+=("$file")
+              fi
+            fi
+          done < <(echo '${{ steps.changed-files.outputs.files }}' | jq -r '.[]')
+
+          if [ ${#files_without_newline[@]} -gt 0 ]; then
+            json_files=$(printf '%s\n' "${files_without_newline[@]}" | jq -R -s -c 'split("\n")[:-1]')
+            echo "files_without_newline: $json_files"
+            echo "files=$json_files" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      - name: Set Job Summary
+        if: failure()
+        run: |
+          if [ -n '${{ steps.newline-check.outputs.files }}' ]; then
+          echo "🛠️ 아래 파일들에 공백 줄을 추가해주세요:" >> $GITHUB_STEP_SUMMARY
+          echo '${{ steps.newline-check.outputs.files }}' |
+            jq -r '.[]' |
+            sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
+          fi
