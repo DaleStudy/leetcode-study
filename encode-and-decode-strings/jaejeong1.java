@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class SolutionEncodeAndDecodeStrings {
+
   private static final char SEPERATOR = '/';
   /*
    * @param strs: a list of strings
@@ -14,9 +15,9 @@ class SolutionEncodeAndDecodeStrings {
     var answer = new StringBuilder();
 
     for (var str : strs) {
-      answer.append(str.length())
-          .append(str)
-          .append(SEPERATOR);
+      answer.append(SEPERATOR)
+          .append(str.length())
+          .append(str);
     }
 
     return answer.toString();
@@ -31,16 +32,12 @@ class SolutionEncodeAndDecodeStrings {
   public List<String> decode(String str) {
     // write your code here
     List<String> answer = new ArrayList<>();
-    var charArray = str.toCharArray();
-    for (int i=0; i<charArray.length; i++) {
-      if (charArray[i] == SEPERATOR) {
-        var size = (int) charArray[i-1];
-        char[] word = new char[size];
-        System.arraycopy(charArray, i + 1, word, 0, size);
-
-        i+=size;
-        answer.add(String.valueOf(word));
-      }
+    var i = 0;
+    while (i < str.length()) {
+      var seperatorIdx = str.indexOf(SEPERATOR, i) + 1;
+      var size = Integer.parseInt(str.substring(seperatorIdx, seperatorIdx + 1));
+      i = seperatorIdx + size + 1;
+      answer.add(str.substring(seperatorIdx + 1, i));
     }
 
     return answer;
