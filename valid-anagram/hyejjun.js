@@ -26,3 +26,8 @@ var isAnagram = function (s, t) {
 
 console.log(isAnagram("anagram", "nagaram"));
 console.log(isAnagram("rat", "car"));
+
+/*
+시간 복잡도: O(n)
+공간 복잡도: O(n)
+*/

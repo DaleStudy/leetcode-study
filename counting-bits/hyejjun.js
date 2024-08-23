@@ -24,3 +24,8 @@ var countBits = function (n) {
 
 console.log(countBits(2));
 console.log(countBits(5));
+
+/*
+시간 복잡도: O(n * log n)
+공간 복잡도: O(n)
+*/
