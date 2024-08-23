@@ -88,3 +88,77 @@ var countSubstrings = function (s) {
 
   return answer.length;
 };
+
+/**
+ * @description
+ * WEEK 01 Feedback
+ * 1. remove slice and change to endpoint
+ * 2. kadane's algorithm
+ *
+ * time complexity: O(N^3)
+ * space complexity: O(1)
+ *
+ * result
+ * solution 1 apply
+ */
+var countSubstrings = function (s) {
+  let answer = 0;
+  const len = s.length;
+
+  for (let startIndex = 0; startIndex < len; startIndex++) {
+    let subStr = "";
+    let isSubPalindromic = true;
+    answer++;
+
+    for (let endIndex = startIndex + 1; endIndex < len; endIndex++) {
+      if (isSubPalindromic && s[startIndex] === s[endIndex]) answer++;
+      subStr += s[endIndex];
+      isSubPalindromic = isPalindromic(subStr);
+    }
+  }
+
+  return answer;
+};
+
+function isPalindromic(str) {
+  const len = str.length;
+  const middleIndex = Math.floor(len / 2);
+
+  for (let i = 0; i < middleIndex; i++) {
+    if (str[i] !== str[len - 1 - i]) return false;
+  }
+
+  return true;
+}
+/**
+ * @description
+ * WEEK 01 Feedback
+ * 1. remove slice and change to endpoint
+ * 2. kadane's algorithm
+ *
+ * time complexity: O(N^2)
+ * space complexity: O(1)
+ *
+ * result
+ * solve 3(https://www.algodale.com/problems/palindromic-substrings/) include 1,2 solution
+ */
+var countSubstrings = function (s) {
+  let count = 0;
+  const len = s.length;
+
+  for (let i = 0; i < len; i++) {
+    let [start, end] = [i, i];
+
+    while (s[start] === s[end] && start >= 0 && end < len) {
+      count++;
+      [start, end] = [start - 1, end + 1];
+    }
+    [start, end] = [i, i + 1];
+    while (s[start] === s[end] && start >= 0 && end < len) {
+      count++;
+      [start, end] = [start - 1, end + 1];
+    }
+  }
+
+  return count;
+};
