@@ -13,6 +13,11 @@ jobs:
   label-lang:
     runs-on: ubuntu-latest
     continue-on-error: true
+
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -81,5 +86,5 @@ jobs:
             }
           }
 
-          run().catch(err => console.error(err));
+          run();
           "
