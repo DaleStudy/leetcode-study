@@ -2,6 +2,8 @@ from collections import defaultdict
 
 
 class Solution:
+    # Time complexity: O(n)
+    # Space complexity: O(n)
     def isAnagram(self, s: str, t: str) -> bool:
         char_map = defaultdict(int)
         for s1 in s:
