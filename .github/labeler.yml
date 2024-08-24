@@ -1,0 +1,89 @@
+JavaScript:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.js"
+
+TypeScript:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.ts"
+
+Python:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.py"
+
+Java:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.java"
+
+C++:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.cpp"
+
+C:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.c"
+
+C#:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.cs"
+
+PHP:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.php"
+
+Swift:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.swift"
+
+Kotlin:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.kt"
+
+Dart:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.dart"
+
+Go:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.go"
+
+Ruby:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.rb"
+
+Scala:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.scala"
+
+Rust:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.rs"
+
+Racket:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.rkt"
+
+Erlang:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.erl"
+
+Elixir:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.ex"
