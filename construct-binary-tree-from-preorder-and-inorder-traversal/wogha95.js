@@ -19,10 +19,6 @@ var buildTree = function (preorder, inorder) {
     return null;
   }
 
-  if (inorder.length === 1) {
-    return new TreeNode(inorder[0]);
-  }
-
   const rootValue = preorder[0];
   const leftNodeLength = inorder.findIndex((value) => value === rootValue);
   const leftNode = buildTree(
