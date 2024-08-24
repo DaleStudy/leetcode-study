@@ -11,7 +11,7 @@ class TreeNode {
 }
 
 // T.C: O(N)
-// S.C: O(N)
+// S.C: O(N^2) - Slice makes n-1, n-2, ..., 1 for n times. So, it's O(N^2).
 function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
   if (preorder.length === 0 || inorder.length === 0) {
     return null;
