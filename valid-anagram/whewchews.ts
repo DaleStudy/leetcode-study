@@ -9,8 +9,8 @@ function isAnagram(s: string, t: string): boolean {
   for (let i = 0; i <= s.length - 1; i++) {
     const sChar = s[i];
     const tChar = t[i];
-    count[sChar] = (count[sChar] || 0) + 1;
-    count[tChar] = (count[tChar] || 0) - 1;
+    count[sChar] = (count[sChar] ?? 0) + 1;
+    count[tChar] = (count[tChar] ?? 0) - 1;
   }
 
   // TC: O(N)
