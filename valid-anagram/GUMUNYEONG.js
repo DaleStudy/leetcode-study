@@ -5,7 +5,6 @@
  */
 var isAnagram = function (s, t) {
     const countHash = {};
-    let result = true;
 
     if (s.length !== t.length) return false;
 
@@ -17,12 +16,11 @@ var isAnagram = function (s, t) {
         if (countHash[str_s]) {
             countHash[str_s]--;
         } else {
-            result = false;
-            break;
+            return false;
         }
     }
 
-    return result;
+    return true;
 };
 
 // TC : O(n)
