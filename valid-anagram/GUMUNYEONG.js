@@ -24,3 +24,9 @@ var isAnagram = function (s, t) {
 
     return result;
 };
+
+// TC : O(n)
+// n(=s의 길이 = t의 길이) 만큼 반복 하므로 On(n)
+
+// SC : O(n)
+// 최대크기 n(=s의 길이 = t의 길이)만큼인 객체를 생성하므로 공간 복잡도도 O(n)
