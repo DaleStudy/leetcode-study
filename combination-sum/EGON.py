@@ -44,7 +44,6 @@ class Solution:
     def solveWithBackTracking(self, candidates: List[int], target: int) -> List[List[int]]:
         return []
 
-
 class _LeetCodeTestCases(TestCase):
     def test_1(self):
         candidates = [2, 3, 6, 7]
