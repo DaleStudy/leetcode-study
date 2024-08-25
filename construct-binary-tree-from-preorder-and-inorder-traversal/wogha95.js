@@ -1,5 +1,5 @@
 // TC: O(N^2)
-// SC: O(N)
+// SC: O(N^2)
 
 /**
  * Definition for a binary tree node.
