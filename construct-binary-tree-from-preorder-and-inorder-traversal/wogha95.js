@@ -1,4 +1,4 @@
-// TC: O(N) - leetcode analyze 기준
+// TC: O(N^2)
 // SC: O(N)
 
 /**
