@@ -5,38 +5,34 @@ from collections import defaultdict
 
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        return self.solve_with_dfs(coins, amount)
+        return self.solve_with_dp(coins, amount)
 
-    """
-    Runtime: 2039 ms (Beats 5.01%)
-    Time Complexity: ?
-
-    Memory: 16.81 MB (Beats 11.09%)
-    Space Complexity: ?
-    """
-
-    # TIME LIMIT
-    def solve_with_dfs(self, coins: List[int], amount: int) -> int:
+    # Unbounded Knapsack Problem
+    def solve_with_dp(self, coins: List[int], amount: int) -> int:
         if amount == 0:
             return 0
 
-        result = float('INF')
-        stack = []
-        for coin in coins:
-            stack.append([[coin], coin])
-        while stack:
-            curr_coins, curr_amount = stack.pop()
+        coins.sort()
 
-            if amount < curr_amount:
+        if amount < coins[0]:
+            return -1
+
+        dp = [[0] * (amount + 1) for _ in range(len(coins) + 1)]
+        for curr_r in range(1, len(coins) + 1):
+            coin_index = curr_r - 1
+            curr_coin = coins[coin_index]
+            if amount < curr_coin:
                 continue
 
-            if curr_amount == amount:
-                result = min(result, len(curr_coins))
+            dp[curr_r][curr_coin] += 1
+            for curr_amount in range(curr_coin + 1, amount + 1):
+                for coin in coins:
+                    if 0 < dp[curr_r][curr_amount - coin]:
+                        dp[curr_r][curr_amount] = max(dp[curr_r - 1][curr_amount], dp[curr_r][curr_amount - coin] + 1)
+                    else:
+                        dp[curr_r][curr_amount] = dp[curr_r - 1][curr_amount]
 
-            for coin in coins:
-                stack.append([curr_coins + [coin], curr_amount + coin])
-
-        return -1 if result == float('INF') else result
+        return dp[-1][-1] if 0 < dp[-1][-1] else -1
 
 
 class _LeetCodeTestCases(TestCase):
@@ -56,6 +52,12 @@ class _LeetCodeTestCases(TestCase):
         coins = [1]
         amount = 0
         output = 0
+        self.assertEqual(Solution.coinChange(Solution(), coins, amount), output)
+
+    def test_4(self):
+        coins = [1, 2147483647]
+        amount = 2
+        output = -1
         self.assertEqual(Solution.coinChange(Solution(), coins, amount), output)
 
 
