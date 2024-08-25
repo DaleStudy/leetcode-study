@@ -1,4 +1,4 @@
-// Time Complexity: O(n^2)
+// Time Complexity: O(nlogn)
 // Spatial Complexity: O(n)
 
 class Solution {
