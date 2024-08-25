@@ -1,3 +1,7 @@
+/*
+ * TC: O(nm)
+ * SC: O(nm)
+ * */
 function encode(arr: string[]): string {
   return arr.join("🎃");
 }
