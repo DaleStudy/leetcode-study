@@ -8,4 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: fernandrone/linelint@0.0.6
+        with:
+          fetch-depth: 0
+
+      - name: Find files missing end line break
+        run: |
+          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+          success=true
+          for file in $files; do
+            if [ "$(tail -c 1 $file | wc -l)" -eq 0 ]; then
+              echo "- $file" >> $GITHUB_STEP_SUMMARY
+              success=false
+            fi
+          done
+
+          if [ "$success" = false ]; then
+            echo -e "\n:warning: 위 파일들의 끝에 누락된 줄 바꿈을 추가해 주세요." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
