@@ -9,3 +9,4 @@ var climbStairs = function (n) {
 };
 
 // time - O(n) iterate up to n times
+// space - O(n) creates an array upto n elements
