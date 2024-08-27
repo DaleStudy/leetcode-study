@@ -1,4 +1,9 @@
 class Solution:
+    # Space complexity: O(n)
+    #  - n: len(candidates)
+    #  - Stack Frame -> O(n) 
+    #  - list_of_combination -> O(n) ? 
+    # Time complexity: O(n!)
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         list_of_combination = [] 
         n = len(candidates)
