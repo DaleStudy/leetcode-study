@@ -1,7 +1,7 @@
 class Solution:
     # Space complexity: O(n)
     # Time complexity: O(n)
-    def _v1(self, nums: list[int]) -> list[int]:
+    def naive(self, nums: list[int]) -> list[int]:
         prefix = [1]
         for num in nums[:-1]:
             prefix.append(prefix[-1] * num)
@@ -16,7 +16,7 @@ class Solution:
 
     # Space complexity: O(1)
     # Time complexity: O(n)
-    def _v2(self, nums: list[int]) -> list[int]:
+    def with_constant_space(self, nums: list[int]) -> list[int]:
         n = len(nums)
         answer = [1] * n
 
@@ -41,6 +41,6 @@ class Solution:
         # 1 -> [0] - [2, 3]
         # 2 -> [0, 1] - [3] 
         # 3 -> [0, 1, 2] -
-        return self._v2(nums)
+        return self.with_constant_space(nums)
         
 
