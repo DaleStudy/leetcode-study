@@ -1,5 +1,5 @@
 // Time Complexity: O(nlogn)
-// Spatial Complexity: O(nlogn)
+// Spatial Complexity: O(n)
 
 class Solution {
 public:
