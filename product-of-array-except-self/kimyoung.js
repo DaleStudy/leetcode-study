@@ -15,4 +15,4 @@ var productExceptSelf = function (nums) {
 };
 
 // time - O(n) iterate through the nums array twice - 2n, remove constant which ends up to be n
-// space - O(1) result array not part of space complexity 
+// space - O(1) result array not part of space complexity
