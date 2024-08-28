@@ -78,7 +78,6 @@ class Solution:
         dfs([], 0, 0)
         return result
 
-
 class _LeetCodeTestCases(TestCase):
     def test_1(self):
         candidates = [2, 3, 6, 7]

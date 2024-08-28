@@ -27,7 +27,7 @@ class Solution:
 
         if amount < coins[0]:
             return -1
-
+          
         dp = [float('inf')] * (amount + 1)
 
         for coin in coins:
