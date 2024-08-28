@@ -8,11 +8,12 @@ class Solution:
             check[num] = idx
 
         for idx, num in enumerate(nums):
+            # 동일한 숫자 두 개가 합쳐져서 목표값이 되는 경우
             if num * 2 == target:
+                # 그리고 그 숫자가 리스트에 두 개 이상 존재할 경우
                 if check[num] != idx:
                     return [idx, check[num]]
-                else:
-                    continue
+                continue
 
             if target - num in check:
                 return [check[num], check[target - num]]
