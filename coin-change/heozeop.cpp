@@ -20,10 +20,6 @@ public:
                     continue;
                 }
 
-                if (dp[i - coin] == MAX_VALUE) {
-                    continue;
-                }
-
                 dp[i] = min(1 + dp[i - coin], dp[i]);
             }
         }
