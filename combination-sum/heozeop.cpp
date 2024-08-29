@@ -1,5 +1,7 @@
-// Time Complexity: O(n^2)
-// Spatial Complexity: O(n);
+// Time Complexity: O(n^target);
+//    - target에 비례하는 tree 깊이에 따라 n번 순회 발생
+// Spatial Complexity: O(target);
+//    - target에 비례하는 visited vector, answer vector만 있으면 됨.
 
 class Solution {
 public:
