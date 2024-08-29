@@ -4,16 +4,16 @@
  */
 function combinationSum(candidates: number[], target: number): number[][] {
   const result: number[][] = [];
-  const dfs = (start: number, spot: number, path: number[]) => {
-    if (spot === 0) {
+  const dfs = (start: number, stop: number, path: number[]) => {
+    if (stop === 0) {
       result.push([...path]);
       return;
     }
 
     for (let i = start; i < candidates.length; i++) {
-      if (candidates[i] <= spot) {
+      if (candidates[i] <= stop) {
         path.push(candidates[i]);
-        dfs(i, spot - candidates[i], path);
+        dfs(i, stop - candidates[i], path);
         path.pop();
       }
     }
