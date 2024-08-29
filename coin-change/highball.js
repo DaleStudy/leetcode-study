@@ -1,36 +1,15 @@
 const coinChange = function (coins, target) {
-  if (target === 0) return 0;
+  const dp = new Array(target + 1).fill(target + 1);
 
-  let level = 0;
-  let found = false;
-
-  let queue = [...coins];
-  let visit = new Set(coins);
-
-  while (queue.length > 0) {
-    level++;
-
-    const queueLength = queue.length;
-    for (let i = 0; i < queueLength; i++) {
-      const sum = queue.shift();
-
-      if (sum === target) {
-        found = true;
-        break;
-      }
-
-      for (let j = 0; j < coins.length; j++) {
-        if (sum + coins[j] > target || visit.has(sum + coins[j])) continue;
-        queue.push(sum + coins[j]);
-        visit.add(sum + coins[j]);
+  dp[0] = 0;
+  for (let i = 1; i <= target; i++) {
+    for (let j = 0; j < coins.length; j++) {
+      if (i >= coins[j]) {
+        dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
       }
     }
-
-    if (found) break;
   }
-
-  if (found) return level;
-  else return -1;
+  return dp[target] === target + 1 ? -1 : dp[target];
 };
 
 console.log(coinChange([1, 2, 5], 11)); //3
