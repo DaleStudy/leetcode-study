@@ -19,7 +19,9 @@ class `two-sum` {
         nums.forEachIndexed { i, e ->
             val diff: Int = target - e
             if (map.containsKey(diff) && map[diff] != i) {
-                return intArrayOf(i , map[diff]!!)
+                return map[diff]?.let {
+                    intArrayOf(it, i)
+                } ?: intArrayOf()
             }
         }
         return intArrayOf()
@@ -35,7 +37,9 @@ class `two-sum` {
         for (index in nums.indices) {
             val diff = target - nums[index]
             if (map.containsKey(diff)) {
-                return intArrayOf(map[diff]!!, index)
+                return map[diff]?.let {
+                    intArrayOf(it, index)
+                } ?: intArrayOf()
             }
             map[nums[index]] = index
         }
