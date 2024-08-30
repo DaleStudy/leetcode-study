@@ -8,8 +8,7 @@ function coinChange(coins: number[], amount: number): number {
    * coins를 순회하면서 누적액에 동전을 더한 값이 amount보다 작으면 queue에 넣는다.
    * queue가 빌때까지 반복
    * 큐가 비어있고 amount를 만들수 없으면 -1을 return
-   */
-  const queue = [[0, 0]]; // [number of coins, accumulated amount]
+   */ const queue = [[0, 0]]; // [number of coins, accumulated amount]
   const visited = new Set();
 
   while (queue.length > 0) {
@@ -28,6 +27,6 @@ function coinChange(coins: number[], amount: number): number {
     }
   }
   return -1;
-  // TC: 각 금액(amount)마다 동전(coins)을 순회하므로 O(N*M) N: amount, M: coins.length
-  // SC: O(N) N: amount
 }
+// TC: 각 금액(amount)마다 동전(coins)을 순회하므로 O(N*M) N: amount, M: coins.length
+// SC: O(N) N: amount
