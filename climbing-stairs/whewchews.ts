@@ -7,26 +7,26 @@ function climbStairs(n: number): number {
     * 1 -> [1]
     * 2 -> [1,1]              [2]                                     
     * 3 -> [1,1,1]            [2,1] [1,2]                             
-    * 4 -> [1,1,1,1]          [2,1,1] [1,2,1] [1,1,2]                      [2,2]     
+    * 4 -> [1,1,1,1]          [2,1,1] [1,2,1] [1,1,2]                            [2,2]     
     * 5 -> [1,1,1,1,1]        [2,1,1,1] [1,2,1,1] [1,1,2,1] [1,1,1,2]      [2,2,1], [1,2,2], [2,1,2]
-    * 6 -> [1,1,1,1,1,1]      [2,1,1,1,1] [...] [1,1,1,1,2]                [2,2,1,1], [2,1,2,1], [2,1,1,2] [1,1,2,2], [1,2,1,2], [1,2,2,1]
-    =>     (1-n, 2-0) n가지   (1:n-2, 2:1) (n-1)*(n-2)/(n-2) 가지          (1: n-4, 2: n/2) (n-2)*(n-3)/2 가지   
+    * 6 -> [1,1,1,1,1,1]      [2,1,1,1,1] [...] [1,1,1,1,2]                     [2,2,1,1], [2,1,2,1], [2,1,1,2] [1,1,2,2], [1,2,1,2], [1,2,2,1]
+    =>     (1:n, 2:0) n가지   (1:n-2, 2:1) / n가지                         (1: n-4, 2: n/2) C(n, n/2) 가지   
     */
 
-  // # solution 1
-  // TC: O(N)
-  // SC: O(N)
+  // # Solution 1
+
   // const stair = {1: 1, 2:2}
   // for(let i = 3; i<=n; i++){
   //     stair[i] = stair[i-1] + stair[i-2]
   // }
-
-  // # solution 2
   // TC: O(N)
-  // SC: O(1)
+  // SC: O(N)
+
+  // # Solution 2
+
   //     if(n < 3) return n
-  //     let curr = 2
-  //     let prev = 1
+  //     let curr = 2 // 현재 계단을 오르는 방법 수
+  //     let prev = 1 // 이전 계단을 오르는 방법 수
 
   //     for(let i=0; i<n-2; i++){
   //         const next = prev + curr;
@@ -35,10 +35,10 @@ function climbStairs(n: number): number {
   //     }
 
   //     return curr
+  // TC: O(N)
+  // SC: O(1)
 
   // # Solution 3: 재귀
-  // TC: O(N)
-  // SC: O(N)
   const memo = { 1: 1, 2: 2 };
   function calculateClimbingWay(n, memo) {
     if (!(n in memo)) {
@@ -51,4 +51,6 @@ function climbStairs(n: number): number {
     return memo[n];
   }
   return calculateClimbingWay(n, memo);
+  // TC: O(N)
+  // SC: O(N)
 }
