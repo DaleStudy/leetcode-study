@@ -1,10 +1,5 @@
 class SolutionClimbStairs {
 
-  public static void main(String[] args) {
-    SolutionClimbStairs s = new SolutionClimbStairs();
-    System.out.println(s.climbStairs(3));
-  }
-
   public int climbStairs(int n) {
     if (n == 1) {
       return 1;
