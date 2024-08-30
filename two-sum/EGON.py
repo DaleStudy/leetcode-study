@@ -10,10 +10,11 @@ class Solution:
     """
     Runtime: 3762 ms (Beats 5.00%)
     Time Complexity: O(n ** 2)
-        - 크기가 n인 nums 배열을 2중으로 조회하므로 O(n ** 2)
+        > 크기가 n인 nums 배열을 2중으로 조회하므로 O(n ** 2)
 
     Memory: 17.42 MB (Beats 61.58%)
-    Space Complexity: ?
+    Space Complexity: O(1)
+        > 딱히 저장하는 변수 없음 (반환하는 list 제외)
     """
     def solveWithBruteForce(self, nums: List[int], target: int) -> List[int]:
         for i in range(len(nums)):
