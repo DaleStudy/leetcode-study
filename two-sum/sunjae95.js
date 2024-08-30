@@ -8,7 +8,7 @@
 /**
  * @description brainstorming 1 solve
  * time complexity: O(n^2)
- * space complexity: O(n)
+ * space complexity: O(1)
  */
 var twoSum = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
