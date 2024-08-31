@@ -1,16 +1,16 @@
+/* #Solution 1
+ * sum: 전체 곱을 구한다.
+ * zeroCount: 0의 개수가 몇개인지 센다.
+ * 1. 자신이 0이면,
+ * 1-1. 자신이외의 0이 있는지 확인하고 있으면 0을 return
+ * 1-2. 자신 이외에 0이 없으면 전체 곱을 return
+ * 2. 자신이 0이 아니면
+ * 2-1. zeroCount가 있는지 보고 있으면 0을 return
+ * 2-2. zero가 없으면 sum/self를 return
+ *
+ * 그러나... 문제에 나누기 연산자를 쓰면 안된다고 했으므로 Solution 2로 가자.
+ */
 function productExceptSelf(nums: number[]): number[] {
-  /* #Solution 1
-   * sum: 전체 곱을 구한다.
-   * zeroCount: 0의 개수가 몇개인지 센다.
-   * 1. 자신이 0이면,
-   * 1-1. 자신이외의 0이 있는지 확인하고 있으면 0을 return
-   * 1-2. 자신 이외에 0이 없으면 전체 곱을 return
-   * 2. 자신이 0이 아니면
-   * 2-1. zeroCount가 있는지 보고 있으면 0을 return
-   * 2-2. zero가 없으면 sum/self를 return
-   *
-   * 그러나... 문제에 나누기 연산자를 쓰면 안된다고 했으므로 Solution 2로 가자.
-   */
   //   let zeroCount = 0;
   //   const sum = nums.reduce((p, c) => {
   //     if (c === 0) {

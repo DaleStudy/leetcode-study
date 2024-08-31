@@ -36,8 +36,7 @@ function combinationSum(candidates: number[], target: number): number[][] {
     * 
     */
 
-    // TC: O(2^N) N = candidates.length
-    // SC: O(T) T = target
+
       function backtrack(candidates: number[], start:number, total:number){
           if(target === total){
               result.push([...path])
@@ -64,8 +63,8 @@ function combinationSum(candidates: number[], target: number): number[][] {
       return result
 
   };
-  // TC: O(2^N) 
-  // SC: O(2^N)
+    // TC: O(n^t) n = candidates.length, t = target 크기
+    // SC: O(t)
 
   /*  #Solution 2 : DP
   * candidates을 가지고 target 값을 만들 수 있는 모든 조합을 미리 찾아둔다.
@@ -99,17 +98,13 @@ function combinationSum(candidates: number[], target: number): number[][] {
 
 
 
-  // SC: O(T+1) T = target
+  // SC: O(t) t = target
   const dp = Array.from({ length: target + 1 }, () => []);
   dp[0] = [[]];
 
 
-// TC: O(C), C = candidates.length
   for (let candidate of candidates) {
-  // TC: O(T) T = target
     for (let i = candidate; i <= target; i++) {
-    // TC: O(K) K = dp[i - candidate].length
-    // SC: O(K)
       for (let combination of dp[i - candidate]) {
         dp[i].push([...combination, candidate]);
       }
@@ -119,5 +114,5 @@ function combinationSum(candidates: number[], target: number): number[][] {
   return dp[target];
 }
 
-// TC: O(C * T * K)
-// SC: O((T+1) * K* T)
+// TC: O(n * t * 2^n)  n = candidates.length, t = target
+// SC: O((t*2^n) // 최악의 경우 모든 조합(2^n) 저장 가능

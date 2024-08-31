@@ -1,5 +1,4 @@
-function climbStairs(n: number): number {
-  /*
+/*
     * 아이디어 
     * 층수 제한: 1 <= n <= 45
     * 1 or 2 step 만 올라갈 수 있음
@@ -12,7 +11,7 @@ function climbStairs(n: number): number {
     * 6 -> [1,1,1,1,1,1]      [2,1,1,1,1] [...] [1,1,1,1,2]                     [2,2,1,1], [2,1,2,1], [2,1,1,2] [1,1,2,2], [1,2,1,2], [1,2,2,1]
     =>     (1:n, 2:0) n가지   (1:n-2, 2:1) / n가지                         (1: n-4, 2: n/2) C(n, n/2) 가지   
     */
-
+function climbStairs(n: number): number {
   // # Solution 1
 
   // const stair = {1: 1, 2:2}
@@ -41,13 +40,14 @@ function climbStairs(n: number): number {
   // # Solution 3: 재귀
   const memo = { 1: 1, 2: 2 };
   function calculateClimbingWay(n, memo) {
-    if (!(n in memo)) {
-      if (n < 3) {
-        return n;
-      }
-      memo[n] =
-        calculateClimbingWay(n - 1, memo) + calculateClimbingWay(n - 2, memo);
+    if (n in memo) return memo[n];
+
+    if (n < 3) {
+      return n;
     }
+    memo[n] =
+      calculateClimbingWay(n - 1, memo) + calculateClimbingWay(n - 2, memo);
+
     return memo[n];
   }
   return calculateClimbingWay(n, memo);
