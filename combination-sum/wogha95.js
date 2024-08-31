@@ -45,7 +45,7 @@ var combinationSum = function (candidates, target) {
 
 // 1차
 // dfs를 활용하여 각 요소를 추가 -> 재귀 -> 제거로 순회합니다.
-// TC: O(C^T)
+// TC: O(2^C)
 // SC: O(T)
 // C: candidates.length, T: target
 
