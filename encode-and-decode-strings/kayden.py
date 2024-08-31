@@ -31,4 +31,3 @@ class Solution:
             idx += num
 
         return res
-    
