@@ -17,7 +17,7 @@ var twoSum = function (nums, target) {
         let list = [];
         const reverseKey = numPair[key];
 
-        if (numPair[reverseKey] && parseInt(key) === numPair[reverseKey]) {
+        if (parseInt(key) === numPair[reverseKey]) {
             let firstNum;
             let secNum;
 
@@ -46,3 +46,4 @@ var twoSum = function (nums, target) {
 
 // SC : O(n)
 // 크기가 n만큼인 객체(numPair)를 생성하므로 공간 복잡도도 O(n)
+
