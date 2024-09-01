@@ -19,13 +19,11 @@ function isPalindrome(s: string): boolean {
   return true;
 }
 
-// Time complexity: O(n)
-
 const t1 = isPalindrome("A man, a plan, a canal: Panama");
-console.info("🚀 : tolluset.ts:18: t1=", t1);
+console.info("🚀 : tolluset.ts:18: t1=", t1); // true
 
 const t2 = isPalindrome("race a car");
-console.info("🚀 : tolluset.ts:21: t2=", t2);
+console.info("🚀 : tolluset.ts:21: t2=", t2); // false
 
 const t3 = isPalindrome(" ");
-console.info("🚀 : tolluset.ts:24: t3=", t3);
+console.info("🚀 : tolluset.ts:24: t3=", t3); // ture
