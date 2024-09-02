@@ -17,8 +17,6 @@ class `word-search` {
     private fun usingBacktracking(board: Array<CharArray>, word: String): Boolean {
         fun dfs(board: Array<CharArray>, visited: Array<BooleanArray>, word: String, position: Position, index: Int): Boolean {
             if (index == word.length) return true
-            visited[position.x][position.y] = true
-
             for (move in MOVES) {
                 val next = position + move
                 if (next.isNotOutOfIndexed(board) && !visited[next.x][next.y] && board[next.x][next.y] == word[index]) {
@@ -36,6 +34,7 @@ class `word-search` {
 
         for (x in board.indices) {
             for (y in board[x].indices) {
+                visited[x][y] = true
                 if (board[x][y] == word[0] && dfs(board, visited, word, Position(x,y), 1)) {
                     return true
                 }
