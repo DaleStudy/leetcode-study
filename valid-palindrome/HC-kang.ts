@@ -1,5 +1,7 @@
 /**
  * https://leetcode.com/problems/valid-palindrome/
+ * T.C.: O(n)
+ * S.C.: O(1)
  */
 function isPalindrome(s: string): boolean {
   function isAlNum(char: string): boolean {
