@@ -28,16 +28,10 @@ function longestConsecutive(nums: number[]): number {
 
     const isConsecutive = isLeft || isRight;
 
-    if (isConsecutive) {
+    if (isConsecutive && (!isLeft || isRight)) {
       bucket[cursor].add(current);
-
-      if (isLeft && !isRight) {
-        cursor++;
-      }
     } else {
       cursor++;
-
-      continue;
     }
   }
 
@@ -59,4 +53,4 @@ const t3 = longestConsecutive([9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6]);
 console.info("🚀 : tolluset.ts:40: t3=", t3); // 7
 
 const t4 = longestConsecutive([-6, -1, -1, 9, -8, -6, -6, 4, 4, -3, -8, -1]);
-console.info("🚀 : tolluset.ts:59: t4=", t4); //1
+console.info("🚀 : tolluset.ts:59: t4=", t4); // 1
