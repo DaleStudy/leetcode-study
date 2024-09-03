@@ -1,3 +1,7 @@
+/*
+ * TC: O(n)
+ * SC: O(1)
+ * */
 function maxProduct(nums: number[]): number {
   const n = nums.length;
 
