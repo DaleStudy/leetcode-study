@@ -1,14 +1,21 @@
 // TC: O(n)
-// SC: O(n)
+// SC: O(1)
 class Solution {
     public boolean isPalindrome(String s) {
-        s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int start = 0;
+        int end = s.length() - 1;
 
-        if (s.length() == 1) return true;
+        while (start < end) {
+            while (!Character.isLetterOrDigit(s.charAt(start)) && start < end) start += 1;
+            while (!Character.isLetterOrDigit(s.charAt(end)) && start < end) end -= 1;
 
-        for (int i = 0; i < s.length() / 2; i++) {
-            if (s.charAt(i) != s.charAt(s.length() - i - 1)) return false;
+            if (Character.toLowerCase(s.charAt(start))
+                    != Character.toLowerCase( s.charAt(end))) return false;
+
+            start += 1;
+            end -= 1;
         }
+
         return true;
     }
 }
