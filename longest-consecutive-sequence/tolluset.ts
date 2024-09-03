@@ -28,8 +28,12 @@ function longestConsecutive(nums: number[]): number {
 
     const isConsecutive = isLeft || isRight;
 
-    if (isConsecutive && (!isLeft || isRight)) {
+    if (isConsecutive) {
       bucket[cursor].add(current);
+
+      if (isLeft && !isRight) {
+        cursor++;
+      }
     } else {
       cursor++;
     }
