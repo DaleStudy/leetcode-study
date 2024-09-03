@@ -21,3 +21,11 @@ var isPalindrome = function (s) {
 
     return str === reverseStr;
 };
+
+// TC : O(n)
+// newStr 함수에서 n번(s의길이) 순회(toLowerCase) + n번 순회(replace)
+// reverseStr 을 만들기 위해서 for문 - 길이 n 
+// = O(3n) 따라서 O(n)
+
+// SC : O(n)
+// 변수 str , reversStr 모두 길이가 n 이므로 O(n)
