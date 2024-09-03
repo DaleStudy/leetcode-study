@@ -6,12 +6,8 @@ function longestConsecutive(nums: number[]): number {
   const consecutives = [...new Set(nums.sort((a, b) => b - a))];
   const n = consecutives.length;
 
-  if (n === 0) {
-    return 0;
-  }
-
-  if (n === 1) {
-    return 1;
+  if (n <= 1) {
+    return n;
   }
 
   const bucket = [...Array(n)].map((): Set<number> => new Set());
