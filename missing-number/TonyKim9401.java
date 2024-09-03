@@ -1,13 +1,15 @@
-// TC: O(n log n)
+// TC: O(n)
+// -> add all nums into set
 // SC: O(n)
+// -> set contains all nums' elements
 class Solution {
     public int missingNumber(int[] nums) {
-        Arrays.sort(nums);
-        int idx = 1;
-        int n = nums.length;
-        for (; idx < n; idx++) {
-            if (nums[idx] - 1 != nums[idx-1]) return nums[idx] - 1;
-        }
-        return nums[idx-1] == n ? 0 : n;
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) set.add(num);
+
+        int output = 0;
+        while (set.contains(output)) output += 1;
+
+        return output;
     }
 }
