@@ -1,3 +1,4 @@
+// Space Complexity O(m * n  + w) approach
 var exist = function (board, word) {
     const rowLen = board.length, colLen = board[0].length;
     let visited = new Set(); // keep track of visited coordinates
@@ -32,3 +33,37 @@ var exist = function (board, word) {
 
 // time - O(m * n * 4^w) traverse through the matrix (m * n) and run dfs on each of the possible paths (4^w) 4 being 4 directions 
 // space - O(m * n  + w)
+
+// Space Complexity O(1) approach
+var exist = function (board, word) {
+    const rowLen = board.length, colLen = board[0].length;
+
+    function dfs(row, col, idx) {
+        if (idx === word.length) return true;
+        if (row < 0 || col < 0 ||
+            row >= rowLen || col >= colLen ||
+            board[row][col] !== word[idx]) return false;
+
+        const letter = board[row][col];
+        board[row][col] = '#'
+        let result = dfs(row + 1, col, idx + 1) ||
+            dfs(row - 1, col, idx + 1) ||
+            dfs(row, col + 1, idx + 1) ||
+            dfs(row, col - 1, idx + 1);
+        board[row][col] = letter
+
+        return result;
+    }
+
+    for (let row = 0; row < rowLen; row++) {
+        for (let col = 0; col < colLen; col++) {
+            if (board[row][col] === word[0] &&
+                dfs(row, col, 0)) return true;
+        }
+    }
+
+    return false;
+};
+
+// time - O(m * n * 4^w) traverse through the matrix (m * n) and run dfs on each of the possible paths (4^w) 4 being 4 directions 
+// space - O(1)
