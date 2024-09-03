@@ -8,10 +8,6 @@ function missingNumber(nums: number[]): number {
   const sum = (n * (n + 1)) / 2;
   const actualSum = nums.reduce((acc, curr) => acc + curr, 0);
 
-  if (sum === actualSum) {
-    return 0;
-  }
-
   return sum - actualSum;
 }
 
