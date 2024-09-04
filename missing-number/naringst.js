@@ -43,3 +43,20 @@ var missingNumber = function (nums) {
     return expectedSum - sumOfNums;
   }
 };
+
+/**
+ * NOTE
+ * or you can subtract while adding
+ */
+
+var missingNumber = function (nums) {
+  let target = 0;
+  for (let i = 0; i <= nums.length; i++) {
+    target += i;
+
+    if (i < nums.length) {
+      target -= nums[i];
+    }
+  }
+  return target;
+};
