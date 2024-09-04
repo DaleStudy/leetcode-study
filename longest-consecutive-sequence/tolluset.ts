@@ -3,44 +3,30 @@
  * SC: O(n)
  * */
 function longestConsecutive(nums: number[]): number {
-  const consecutives = [...new Set(nums.sort((a, b) => b - a))];
-  const n = consecutives.length;
+  const n = nums.length;
 
   if (n <= 1) {
     return n;
   }
 
-  const bucket = [...Array(n)].map((): Set<number> => new Set());
-
-  let cursor = 0;
+  const numsSet = new Set(nums);
+  let longestLen = 0;
 
   for (let i = 0; i < n; i++) {
-    const current = consecutives[i];
-    const left = consecutives[i - 1];
-    const right = consecutives[i + 1];
+    let current = nums[i];
 
-    const isLeft = left !== undefined && left - current === 1;
-    const isRight = right !== undefined && current - right === 1;
+    if (!numsSet.has(current - 1)) {
+      let currentLen = 1;
 
-    const isConsecutive = isLeft || isRight;
-
-    if (isConsecutive) {
-      bucket[cursor].add(current);
-
-      if (isLeft && !isRight) {
-        cursor++;
+      while (numsSet.has(current + 1)) {
+        current++;
+        currentLen++;
       }
-    } else {
-      cursor++;
+
+      longestLen = Math.max(longestLen, currentLen);
     }
   }
-
-  const total = bucket.reduce(
-    (acc, cur) => (acc > cur.size ? acc : cur.size),
-    0,
-  );
-
-  return total === 0 ? 1 : total;
+  return longestLen;
 }
 
 const t1 = longestConsecutive([100, 4, 200, 1, 3, 2]);
