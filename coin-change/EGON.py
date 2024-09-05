@@ -1,14 +1,25 @@
 from typing import List
 from unittest import TestCase, main
-from collections import defaultdict
 
 
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        return self.solve_with_dp(coins, amount)
+        return self.solveWithDP(coins, amount)
 
     # Unbounded Knapsack Problem
-    def solve_with_dp(self, coins: List[int], amount: int) -> int:
+    """
+    Runtime: 801 ms (Beats 48.54%)
+    Time Complexity: O(n)
+        - coins 길이를 c, amount의 크기를 a라고 하면
+        - coins를 정렬하는데 O(log c)
+        - dp 배열 조회에 O((n + 1) * c)
+        > c의 최대 크기는 12라서 무시가능하므로 O((n + 1) * c) ~= O(n * c) ~= O(n) 
+
+    Memory: 16.94 MB (Beats 50.74%)
+    Space Complexity: O(n)
+        > 크기가 n + 1인 dp를 선언하여 사용했으므로 O(n + 1) ~= O(n)
+    """
+    def solveWithDP(self, coins: List[int], amount: int) -> int:
         if amount == 0:
             return 0
 
@@ -16,23 +27,22 @@ class Solution:
 
         if amount < coins[0]:
             return -1
+          
+        dp = [float('inf')] * (amount + 1)
 
-        dp = [[0] * (amount + 1) for _ in range(len(coins) + 1)]
-        for curr_r in range(1, len(coins) + 1):
-            coin_index = curr_r - 1
-            curr_coin = coins[coin_index]
-            if amount < curr_coin:
-                continue
+        for coin in coins:
+            if coin <= amount:
+                dp[coin] = 1
 
-            dp[curr_r][curr_coin] += 1
-            for curr_amount in range(curr_coin + 1, amount + 1):
-                for coin in coins:
-                    if 0 < dp[curr_r][curr_amount - coin]:
-                        dp[curr_r][curr_amount] = max(dp[curr_r - 1][curr_amount], dp[curr_r][curr_amount - coin] + 1)
-                    else:
-                        dp[curr_r][curr_amount] = dp[curr_r - 1][curr_amount]
+        for curr_amount in range(amount + 1):
+            for coin in coins:
+                if 0 <= curr_amount - coin:
+                    dp[curr_amount] = min(
+                        dp[curr_amount],
+                        dp[curr_amount - coin] + 1
+                    )
 
-        return dp[-1][-1] if 0 < dp[-1][-1] else -1
+        return dp[-1] if dp[-1] != float('inf') else -1
 
 
 class _LeetCodeTestCases(TestCase):
@@ -57,7 +67,7 @@ class _LeetCodeTestCases(TestCase):
     def test_4(self):
         coins = [1, 2147483647]
         amount = 2
-        output = -1
+        output = 2
         self.assertEqual(Solution.coinChange(Solution(), coins, amount), output)
 
 
