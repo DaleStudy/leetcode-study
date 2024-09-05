@@ -27,3 +27,10 @@ var isPalindrome = function (s) {
 
   return true;
 };
+
+/*
+  1. 시간복잡도: O(n)
+    - toLowerCase, replace, 포인터 사용에 O(n) 소요됨
+  2. 공간복잡도: O(n)
+    - 변수 str이 O(n) 차지함
+*/
