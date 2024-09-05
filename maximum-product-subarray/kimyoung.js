@@ -9,8 +9,20 @@ var maxProduct = function (nums) { // brute force approach - doesn't pass leetco
     return maxProduct;
 };
 
-// time - O(n^2) double for loop
-// space - O(n^2) total count of subarrays = n*(n+1)/2
+// time - O(n^3) double for loop * reduce()
+// space - O(1) 
 
+var maxProduct = function (nums) { // DP approach
+    let result = nums[0];
+    let [min, max] = [1, 1];
 
-// TODO - different approach
+    for (const num of nums) {
+        [min, max] = [Math.min(num * min, num * max, num), Math.max(num * min, num * max, num)];
+        result = Math.max(max, result);
+    }
+
+    return result;
+};
+
+// time - O(n) looping through nums once
+// space - O(1) extra memory irrelevant to input
