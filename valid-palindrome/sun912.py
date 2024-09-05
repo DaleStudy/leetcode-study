@@ -1,3 +1,7 @@
+"""
+TC: O(n)
+SC: O(n)
+"""
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         str = list(s.lower())
