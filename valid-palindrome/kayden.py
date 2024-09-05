@@ -6,19 +6,19 @@ class Solution:
         string = ""
 
         for letter in s:
-            if letter.isalnum():
+            if letter.isalnum(): # if ('a' <= char <= 'z') or ('A' <= char <= 'Z') or ('0' <= char <= '9'):
                 string += letter.lower()
 
 
         def valid(s):
-            st, en = 0, len(s)-1
+            start, end = 0, len(s)-1
 
-            while st < en:
-                if s[st] != s[en]:
+            while start < end:
+                if s[start] != s[end]:
                     return False
 
-                st += 1
-                en -= 1
+                start += 1
+                end -= 1
 
             return True
 
