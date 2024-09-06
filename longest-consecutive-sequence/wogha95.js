@@ -3,6 +3,8 @@
  * SC: O(N)
  * nums의 숫자에 접근하는 횟수는 2번에서 N만큼, 4번에서 최대 N만큼 입니다.
  * 즉, 2N번 만큼 nums의 숫자에 접근합니다.
+ * N^2이 아닌 이유: N^2이 아닌 2N으로 생각한 이유는 2번에서 N번의 순회를 하지만 각 순회가 서로에게 영향을 미치기 때문에 최대 순회는 2N으로 계산했습니다. (1번의 N 순회 제외)
+ * @see https://github.com/DaleStudy/leetcode-study/pull/408#discussion_r1747071917
  */
 
 /**
