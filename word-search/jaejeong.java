@@ -7,7 +7,7 @@ class SolutionWordSearch {
     // 상하좌우 방문 여부 체크하면서 DFS 탐색
     // index 기준으로 word와 비교하면서 같을 때만 추가 탐색
     // 시간복잡도: O(M * N * 4^L) > M: board 행, N: board 열, 4: 상하좌우 4방향, L: word의 길이
-    // 공간복잡도: O(1) > 별도 메모리 할당하지 않음
+    // 공간복잡도: O(L) > word의 길이
     for (int i = 0; i < board.length; i++) {
       for (int j = 0; j < board[0].length; j++) {
         if (dfs(board, i, j, word, 0)) {
