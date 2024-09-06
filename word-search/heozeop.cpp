@@ -1,4 +1,4 @@
-// time complexity: O(n * m * 3 ^ L), L은 최대 깊이
+// time complexity: O(n * m * 3 ^ L), L은 최대 깊이(문자열 길이)
 // spatial complexity: O((n * m ) ^ 2)
 
 class Solution {
