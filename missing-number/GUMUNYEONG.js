@@ -13,7 +13,7 @@ var missingNumber = function (nums) {
 };
 
 // TC
-// nums 정렬을 하기 위해서 순회 (길이 n)
+// nums 정렬을 하기 위해서 순회 (길이 n) -> 최선의 경우 O(n) 이지만, 평균적으로 O(n log n)
 // 빠진 숫자를 찾기위해서 순회 (최대길이 n)
 // O(2n) 따라서 시간 복잡도는 O(n)
 
