@@ -1,5 +1,5 @@
 # 시간복잡도: O(N*M*4^limit) limit: word의 길이
-# 공간복잡도: O(N)
+# 공간복잡도: O(N*M)
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         m = len(board)
