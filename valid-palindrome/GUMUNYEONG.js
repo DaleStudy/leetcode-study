@@ -4,10 +4,10 @@
  */
 var isPalindrome = function (s) {
 
-    let str = newStr(s);
+    let str = normalize(s);
     let reverseStr = "";
 
-    function newStr(str) {
+    function normalize(str) {
         str = str.toLowerCase().replace(/[^a-z0-9]/g, "");
 
         return str;
@@ -23,7 +23,7 @@ var isPalindrome = function (s) {
 };
 
 // TC : O(n)
-// newStr 함수에서 n번(s의길이) 순회(toLowerCase) + n번 순회(replace)
+// normalize 함수에서 n번(s의길이) 순회(toLowerCase) + n번 순회(replace)
 // reverseStr 을 만들기 위해서 for문 - 길이 n 
 // = O(3n) 따라서 O(n)
 
