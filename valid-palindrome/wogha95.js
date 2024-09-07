@@ -1,6 +1,6 @@
 // 3차
 // TC: O(N)
-// SC: O(N)
+// SC: O(1)
 // N: s.length
 
 /**
