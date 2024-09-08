@@ -2,7 +2,7 @@
 // m은 board의 행 수, n은 board의 열 수, 4(상하좌우), l(word)
 
 // 시간복잡도: O(m * n * 4L)
-// 공간복잡도: O(m * n + L)
+// 공간복잡도: O(m * n)
 
 const d_row = [1, -1, 0, 0]
 const d_col = [0, 0, -1, 1]
