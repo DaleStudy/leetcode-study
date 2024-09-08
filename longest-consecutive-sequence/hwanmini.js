@@ -1,32 +1,29 @@
-// 시간 복잡도 O(n log n)
-// 공간 복잡도 O(n)
-
 /**
  * @param {number[]} nums
  * @return {number}
  */
 var longestConsecutive = function(nums) {
-    if (nums.length === 0) return []
+    if (nums.length === 0) return 0;
 
-    let maxSequenceLength = -Infinity
+    const numSet = new Set(nums);
+    let maxSequenceLength = 0;
 
+    for (const num of numSet) {
+        if (!numSet.has(num - 1)) {
+            let currentNum = num;
+            let currentLength = 1;
 
-    const setNums = [...new Set(nums)].toSorted((a,b) => a - b)
+            while (numSet.has(currentNum + 1)) {
+                currentNum++;
+                currentLength++;
+            }
 
-    let count = 0;
-    for (let i = 0 ; i < setNums.length; i++) {
-        if (setNums[i]+1 === setNums[i+1]) {
-            count += 1
-        } else {
-            count += 1
-            maxSequenceLength = Math.max(maxSequenceLength, count)
-            count = 0;
+            maxSequenceLength = Math.max(maxSequenceLength, currentLength);
         }
     }
 
-    return maxSequenceLength
+    return maxSequenceLength;
 };
 
-
-console.log(longestConsecutive([100,4,200,1,3,2]))
-console.log(longestConsecutive([0,3,7,2,5,8,4,6,0,1]))
+console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));
+console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]));
