@@ -1,4 +1,4 @@
-"""TC: O(n * l * log(l)), SC: O(n * l)
+"""TC: ?, SC: O(w * l + s^2)
 
 쪼개고자 하는 단어의 길이 s, wordDict에 들어가는 단어 개수 w, wordDict에 들어가는 단어 최대 길이 l
 
