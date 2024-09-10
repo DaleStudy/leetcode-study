@@ -1,4 +1,4 @@
-# 시간복잡도: O(N)
+# 시간복잡도: O(N*AlogN) A: 0<= strs[i]의 길이 <= 100
 # 공간복잡도: O(N)
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
