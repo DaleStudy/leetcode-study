@@ -3,7 +3,7 @@ import re
 
 class Solution:
     # Time: O(n)
-    # Space: O(1)
+    # Space: O(n)
     def isPalindrome(self, s: str) -> bool:
         # 1. Convert string
         # Time: O(n)
