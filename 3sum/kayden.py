@@ -19,7 +19,7 @@ class Solution:
                 continue
             for j in range(i + 1, n):
                 target = -(nums[i] + nums[j])
-                if not check.get(target, None):
+                if not check.get(target):
                     continue
                 if j >= check[target]:
                     continue
@@ -47,6 +47,8 @@ class Solution:
                     answer.add((nums[i], nums[l], nums[r]))
                     l += 1
                     r -= 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
 
                 if nums[l] + nums[r] < -nums[i]:
                     l += 1
