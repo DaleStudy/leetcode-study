@@ -1,4 +1,4 @@
-// TC: O(n)
+// TC: O(n * m log m)
 // SC: O(n * m)
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
