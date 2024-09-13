@@ -1,10 +1,10 @@
-# 시간복잡도: ?
+# 시간복잡도: O(S*W)
+#   S: s의 길이 300 W: worDict 각 단어의 총 길이 20*1000
+#       300 * 20*1000 = 6*1e6 (600만)
 # 공간복잡도: O(S)
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         memo = {}
-        wordSet = set(wordDict)
-
         def dfs(idx):
             if idx in memo:
                 return memo[idx]
@@ -12,7 +12,7 @@ class Solution:
             if idx == len(s):
                 return True
 
-            for word in wordSet:
+            for word in wordDict:
                 l = len(word)
                 if s[idx:idx + l] == word:
                     if dfs(idx + l):

@@ -50,6 +50,9 @@ class Solution:
                     while nums[l] == nums[l - 1] and l < r:
                         l += 1
 
+                    while nums[r] == nums[r + 1] and l < r:
+                        r -= 1
+
                 if nums[l] + nums[r] < -nums[i]:
                     l += 1
 
