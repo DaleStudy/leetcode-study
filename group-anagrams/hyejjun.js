@@ -26,4 +26,7 @@ console.log(groupAnagrams(["a"]));
 /*
 시간 복잡도: O(n*k log k)
 공간 복잡도: O(n*k)
+
+n: 문자열의 개수
+k: 문자열의 최대 길이
 */
