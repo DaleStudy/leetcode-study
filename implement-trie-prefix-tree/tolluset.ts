@@ -35,7 +35,7 @@ class Trie {
 
   /**
    * TC: O(n)
-   * SC: O(n)
+   * SC: O(1)
    * */
   search(word: string): boolean {
     let node = this.root;
@@ -53,7 +53,7 @@ class Trie {
 
   /**
    * TC: O(n)
-   * SC: O(n)
+   * SC: O(1)
    * */
   startsWith(prefix: string): boolean {
     let node = this.root;
