@@ -29,7 +29,7 @@ class `3sum` {
 
     /**
      * 2. 입력받은 정수 배열을 정렬하여 순회하면서 원소를 합산하여 0과 비교한 결과를 기준으로 투 포인터의 값을 조작한다.
-     * TC: O(n * log(n) + n^2), SC: O(n)
+     * TC: O(n^2), SC: O(n)
      */
     private fun usingTwoPointer(nums: IntArray): List<List<Int>> {
         val sortedNumbers = nums.sorted()

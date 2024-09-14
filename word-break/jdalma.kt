@@ -11,7 +11,7 @@ class `word-break` {
 
     /**
      * 1. DFS 사용 (시간초과)
-     * TC: O(s^w * wordDict 단어의 길이), SC: O(s)
+     * TC: O(w^s * wordDict 단어의 길이), SC: O(s)
      */
     private fun usingDFS(s: String, wordDict: List<String>): Boolean {
 
@@ -58,7 +58,7 @@ class `word-break` {
 
     /**
      * 3. 문자열의 끝부터 0까지 순회하면서 순회하는 범위의 문자열을 만들 수 있다면 해당 인덱스를 true로 변환하여 이전에 사용한 연산의 결과를 재활용한다.
-     * TC: O(s * w * wordDict 단어의 길이) TC: O(s)
+     * TC: O(s * w * wordDict 단어의 길이) SC: O(s)
      */
     private fun usingDP(s: String, wordDict: List<String>): Boolean {
         val dp = BooleanArray(s.length + 1).apply {
