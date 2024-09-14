@@ -3,21 +3,21 @@
  * SC: O(n * m)
  * */
 function groupAnagramsV2(strs: string[]): string[][] {
-  const map: { [key: string]: string[] } = {};
+  const map = new Map<string, string[]>();
 
   const strSort = (str: string) => str.split("").sort().join("");
 
   for (const str of strs) {
     const sortedStr = strSort(str);
 
-    if (map[sortedStr]) {
-      map[sortedStr].push(str);
+    if (map.has(sortedStr)) {
+      map.get(sortedStr)!.push(str);
     } else {
-      map[sortedStr] = [str];
+      map.set(sortedStr, [str]);
     }
   }
 
-  return Object.values(map);
+  return Array.from(map.values());
 }
 
 const tc1V2 = groupAnagramsV2(["eat", "tea", "tan", "ate", "nat", "bat"]); // [["bat"],["nat","tan"],["ate","eat","tea"]]
