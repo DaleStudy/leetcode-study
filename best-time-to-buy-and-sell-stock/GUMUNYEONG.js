@@ -15,3 +15,5 @@ var maxProfit = function (prices) {
     return max;
 };
 
+// TC : O(n^2);
+// SC : O(1);
