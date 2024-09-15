@@ -1,7 +1,7 @@
 /**
  * TC: O(N * S)
  * SC: O(N)
- * N: strs.length, S: strs[i].length
+ * N: strs.length, S: Max(strs[i].length)
  *
  * 풀이
  * 주어진 배열 strs의 각 원소의 키를 구해서 같은 원소끼리 묶어 정답을 찾는다.
