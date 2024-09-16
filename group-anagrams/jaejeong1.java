@@ -9,7 +9,7 @@ class SolutionGroupAnagram {
     // 분류 후 알파벳 순으로 정렬해 알파벳 + 개수 조합의 str으로 만든다
     // str 과 인덱스를 맵에 넣는다
     // 맵 keyset을 돌면서 value에 해당하는 strs 인덱스로 접근해 정답으로 반환
-    // 시간복잡도: O(N), 공간복잡도: O(N)
+    // 시간복잡도: O(N^2), 공간복잡도: O(N)
     Map<String, List<Integer>> map = new HashMap<>();
 
     for (int i=0; i<strs.length; i++) {
