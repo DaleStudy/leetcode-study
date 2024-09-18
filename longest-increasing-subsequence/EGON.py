@@ -8,7 +8,7 @@ class Solution:
 
     """
     Runtime: 68 ms (Beats 86.42%)
-    Time Complexity: O(n)
+    Time Complexity: O(n * log n)
         - nums 배열 조회에 O(n)
         - 최악의 경우 num의 모든 원소에 대해 bisect_left 실행가능, O(log n) upper bound
         > O(n) * O(log n) ~= O(n * log n)
