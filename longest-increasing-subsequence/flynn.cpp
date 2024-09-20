@@ -61,6 +61,7 @@ public:
  *   - nums의 각 원소마다 memo에 대해 이분탐색을 실행하므로 N이 증가함에 따라 실행 시간은 N * logN 형태로 증가합니다
  * - Space complexity: O(N)
  *   - memo 배열의 크기는 N이 증가함에 따라 선형적으로 증가합니다
+ *  (- predec 배열의 크기 또한 N이 증가함에 따라 선형적으로 증가합니다)
  */
 
 class Solution {
