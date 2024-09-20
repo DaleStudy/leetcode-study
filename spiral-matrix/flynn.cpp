@@ -8,7 +8,7 @@
  * - N:               열의 개수
  * 
  * - Time complexity: O(MN)
- * - Space complexity: O(1)
+ * - Space complexity: O(MN)
  */
 
 class Solution {
