@@ -1,4 +1,4 @@
-# 시간복잡도: O(N)
+# 시간복잡도: O(NlogN)
 # 공간복잡도: O(N)
 from bisect import bisect_left
 
