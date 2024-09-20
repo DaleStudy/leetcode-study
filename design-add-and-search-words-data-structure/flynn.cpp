@@ -56,25 +56,21 @@ private:
     TrieNode* root;
 
     bool _search(string word, int idx, TrieNode* node) {
+        if (node == nullptr) return false;
+
         if (word.size() == idx) return node->word;
 
         char c = word[idx];
 
         if (c != '.') {
-            if (node->links[c - 'a'] == nullptr) return false;
-            
             TrieNode* next_node = node->links[c - 'a'];
             int next_idx = idx + 1;
 
             return _search(word, next_idx, next_node);
         } else {
-            for (TrieNode* link : node->links) {
-                if (link != nullptr) {
-                    TrieNode* next_node = link;
-                    int next_idx = idx + 1;
-
-                    if (_search(word, next_idx, next_node)) return true;
-                }
+            for (TrieNode* next_node : node->links) {
+                int next_idx = idx + 1;
+                if (_search(word, next_idx, next_node)) return true;
             }
             return false;
         }
