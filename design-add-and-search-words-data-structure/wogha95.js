@@ -11,7 +11,7 @@ var WordDictionary = function () {
 
 /**
  * TC: O(N)
- * SC: O(1)
+ * SC: O(N)
  */
 
 /**
