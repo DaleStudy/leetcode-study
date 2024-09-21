@@ -1,5 +1,5 @@
 # 시간복잡도: O(N)
-# 공간복잡도: O(N)
+# 공간복잡도: O(1)
 class Solution:
     def isValid(self, s: str) -> bool:
         if len(s) % 2 != 0:
