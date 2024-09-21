@@ -7,17 +7,14 @@ public class Solution {
             dp[i] = 1;
         }
 
+        int maxLength = 1;
         for (int i = 1; i < nums.Length; i++) {
             for (int j = 0; j < i; j++) {
                 if (nums[j] < nums[i]) {
                     dp[i] = Math.Max(dp[i], dp[j] + 1);
                 }
             }
-        }
-
-        int maxLength = 1;
-        foreach (int length in dp) {
-            maxLength = Math.Max(maxLength, length);
+            maxLength = Math.max(maxLength, dp[i]);
         }
         
         return maxLength;
