@@ -11,6 +11,7 @@
 var lengthOfLIS = function (nums) {
   // 각자 스스로는 최소 1의 lengthOfLIS를 가짐
   const longestLength = new Array(nums.length).fill(1);
+  let result = 1;
 
   // nums배열의 right까지 원소들 중 lengthOfLIS를 저장
   for (let right = 1; right < nums.length; right++) {
@@ -20,9 +21,10 @@ var lengthOfLIS = function (nums) {
           longestLength[right],
           longestLength[left] + 1
         );
+        result = Math.max(result, longestLength[right]);
       }
     }
   }
 
-  return Math.max(...longestLength);
+  return result;
 };
