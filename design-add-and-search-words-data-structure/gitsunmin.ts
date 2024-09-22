@@ -6,7 +6,9 @@
  * time complexity:
  * - addWord: O(m)
  * - search: O(26^m) in the worst case (with multiple wildcards) to O(m) in general cases.
- * space complexity: O(n * m)
+ * space complexity: 
+ * - addWord: O(n * m)
+ * - search: O(n * m)
  */
 class TrieNode {
     children: Map<string, TrieNode>;
