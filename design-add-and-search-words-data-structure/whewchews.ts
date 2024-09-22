@@ -20,7 +20,7 @@ class WordDictionary {
   }
 
   // TC: O(m*n) // m: words length, n: word length
-  // SC: O(1)
+  // SC: O(n)
   search(word: string): boolean {
     const len = word.length;
     const targetWord = word.replace(/\./g, "");
