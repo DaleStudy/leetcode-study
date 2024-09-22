@@ -1,6 +1,6 @@
 /**
  * https://leetcode.com/problems/longest-increasing-subsequence
- * time complexity : O(n)
+ * time complexity : O(n²)
  * space complexity : O(n)
  */
 function lengthOfLIS(nums: number[]): number {
