@@ -1,20 +1,17 @@
 class WordDictionary {
-  wordList: Set<string>;
-  wordCountMap: Map<number, string[]>;
+  wordCountMap: Map<number, Set<string>>;
   constructor() {
-    this.wordList = new Set();
     this.wordCountMap = new Map();
   }
 
   // TC: O(1)
   // SC: O(n)
   addWord(word: string): void {
-    this.wordList.add(word);
     const length = word.length;
     if (this.wordCountMap.has(length)) {
-      this.wordCountMap.get(length).push(word);
+      this.wordCountMap.get(length).add(word);
     } else {
-      this.wordCountMap.set(length, [word]);
+      this.wordCountMap.set(length, new Set([word]));
     }
     return null;
   }
@@ -26,15 +23,18 @@ class WordDictionary {
     const targetWord = word.replace(/\./g, "");
     const hasDot = len - targetWord.length !== 0;
 
-    if (!hasDot) return this.wordList.has(word);
     if (!this.wordCountMap.has(len)) {
       return false;
     }
     const words = this.wordCountMap.get(len);
-    for (let i = 0; i < words.length; i++) {
+    if (!hasDot) {
+      return words.has(word);
+    }
+
+    for (const w of words) {
       let match = true;
-      for (let j = 0; j < words[i].length; j++) {
-        if (word[j] !== "." && word[j] !== words[i][j]) {
+      for (let j = 0; j < w.length; j++) {
+        if (word[j] !== "." && word[j] !== w[j]) {
           match = false;
           break;
         }
