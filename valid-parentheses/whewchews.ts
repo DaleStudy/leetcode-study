@@ -7,7 +7,6 @@
  * 위의 두 경우에 해당되지 않으면 return true
  */
 function isValid(s: string): boolean {
-  const charSet = new Set(["(", "{", "["]);
   const openCharStack = [];
   const CHAR_PAIR = {
     "]": "[",
@@ -17,10 +16,6 @@ function isValid(s: string): boolean {
 
   for (let i = 0; i <= s.length - 1; i++) {
     const char = s[i];
-    if (charSet.has(char)) {
-      openCharStack.push(char);
-      continue;
-    }
 
     if (char in CHAR_PAIR) {
       const pair = CHAR_PAIR[char];
@@ -28,6 +23,8 @@ function isValid(s: string): boolean {
       if (lastOpenChar !== pair) {
         return false;
       }
+    } else {
+      openCharStack.push(char);
     }
   }
 
