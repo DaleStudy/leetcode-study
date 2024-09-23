@@ -3,7 +3,7 @@
  * right의 S만큼 순회 + left의 S만큼 순회
  * (각 순회의 곱이 아닌 합인 이유는 right 순회 동안 left의 최대 순회가 S이기 때문입니다.)
  *
- * SC: O(N)
+ * SC: O(S)
  * usedCharacter에 S만큼 들어갈 수 있습니다.
  *
  * S: s.length
