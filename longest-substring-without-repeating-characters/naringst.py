@@ -20,4 +20,3 @@ class Solution:
 
 
         return maxLength
-    
