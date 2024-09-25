@@ -6,12 +6,12 @@ on:
   push:
 
 jobs:
-  assign-author:
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    steps:
-      - uses: toshimaru/auto-author-assign@v2.1.0
+#  assign-author:
+#    runs-on: ubuntu-latest
+#    permissions:
+#      pull-requests: write
+#    steps:
+#      - uses: toshimaru/auto-author-assign@v2.1.0
 
   label-lang:
     runs-on: ubuntu-latest
