@@ -3,6 +3,9 @@ name: 🤖 Automation
 on:
   pull_request_target:
     types: [opened, reopened]
+  push:
+    branches:
+      - *
 
 jobs:
   assign-author:
