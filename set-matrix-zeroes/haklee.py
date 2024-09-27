@@ -28,6 +28,7 @@ class Solution:
                 if matrix[i][j] == 0:
                     col_to_change.add(i)
                     row_to_change.add(j)
+
         for i in col_to_change:
             for j in range(n):
                 matrix[i][j] = 0

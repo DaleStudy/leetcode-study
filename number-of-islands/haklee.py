@@ -24,21 +24,13 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         minx, miny, maxx, maxy = 0, 0, len(grid[0]) - 1, len(grid) - 1
 
-        def check_inside(i, j):
-            # 그리드 안에 있는 칸인지 체크.
-            return minx <= j <= maxx and miny <= i <= maxy
-
         def remove_ground(i, j):
-            if grid[i][j] == "1":
+            if minx <= j <= maxx and miny <= i <= maxy and grid[i][j] == "1":
                 grid[i][j] = "0"
-                if check_inside(i - 1, j):
-                    remove_ground(i - 1, j)
-                if check_inside(i + 1, j):
-                    remove_ground(i + 1, j)
-                if check_inside(i, j - 1):
-                    remove_ground(i, j - 1)
-                if check_inside(i, j + 1):
-                    remove_ground(i, j + 1)
+                remove_ground(i - 1, j)
+                remove_ground(i + 1, j)
+                remove_ground(i, j - 1)
+                remove_ground(i, j + 1)
 
         sol = 0
         for i in range(maxy + 1):
