@@ -13,14 +13,5 @@ function lengthOfLongestSubstring(s: string): number {
         ans = Math.max(ans, j - i + 1);
         map.set(s[j], j);
     }
-    console.log('map:', map);
     return ans;
 };
-
-const testInput1 = "abcabcbb";
-const testInput2 = "bbbbb";
-const testInput3 = "pwwkew";
-
-console.log('output1:', lengthOfLongestSubstring(testInput1), 'expected:', 3);
-console.log('output2:', lengthOfLongestSubstring(testInput2), 'expected:', 1);
-console.log('output3:', lengthOfLongestSubstring(testInput3), 'expected:', 3);
