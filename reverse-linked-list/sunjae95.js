@@ -10,16 +10,16 @@
 var reverseList = function (head) {
   let answer = null;
 
-  const search = (target) => {
+  const buildReverseList = (target) => {
     if (target === null) return;
 
     const node = new ListNode(target.val, answer);
     answer = node;
 
-    search(target.next);
+    buildReverseList(target.next);
   };
 
-  search(head);
+  buildReverseList(head);
 
   return answer;
 };
