@@ -7,6 +7,11 @@ class ListNode {
   }
 }
 
+/**
+ * https://leetcode.com/problems/merge-two-sorted-lists
+ * T.C. O(m + n)
+ * S.C. O(1)
+ */
 function mergeTwoLists(
   list1: ListNode | null,
   list2: ListNode | null
