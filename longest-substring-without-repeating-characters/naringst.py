@@ -1,6 +1,6 @@
 
 #  Runtime: 51ms, Memory: 16.83MB
-#  Time complexity: O(len(s))
+#  Time complexity: O(len(s)^2)
 #  Space complexity: O(len(s))
 
 class Solution:
