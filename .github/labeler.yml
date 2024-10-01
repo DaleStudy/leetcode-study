@@ -18,10 +18,20 @@ java:
       - any-glob-to-any-file:
           - "**/*.java"
 
+c:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.c"
+
 c++:
   - changed-files:
       - any-glob-to-any-file:
           - "**/*.cpp"
+
+c#:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.cs"
 
 swift:
   - changed-files:

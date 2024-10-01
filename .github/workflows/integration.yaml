@@ -16,7 +16,7 @@ jobs:
           files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
           success=true
           for file in $files; do
-            if [ "$(tail -c 1 $file | wc -l)" -eq 0 ]; then
+            if [ -s "$file" ] && [ "$(tail -c 1 $file | wc -l)" -eq 0 ]; then
               echo "- $file" >> $GITHUB_STEP_SUMMARY
               success=false
             fi
