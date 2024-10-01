@@ -1,9 +1,11 @@
 /**
  * 풀이
+ * - 주어진 s로 만들 수 있는 가장 긴 valid substring의 길이를 찾는 문제입니다
+ *   - valid substring: 최대 k개의 문자를 바꿔서, 모든 문자가 같게 만들 수 있는 substring
+ * 
  * - 두 단계로 나누어 풀이에 대해 생각할 수 있습니다
  * 
  * - 1. 특정 길이의 valid substring을 만들 수 있는지 확인
- *   - valid substring: 최대 k개의 문자를 바꿔서, 모든 문자가 같게 만들 수 있는 substring
  *   - 함수 bool can_make_valid_substring(string const s, int substr_length, int k)
  *   - 특정 길이의 substring에 대해서, 등장 빈도가 가장 높은 문자의 빈도수를 저장합니다 (max_freq)
  *     만약 해당 substring이 valid substring이라면, max_freq + k >= substr_length 이어야 합니다
