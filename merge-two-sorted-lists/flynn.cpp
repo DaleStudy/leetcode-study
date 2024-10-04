@@ -40,17 +40,8 @@ public:
             node = node->next;
         }
 
-        while (p != nullptr) {
-            node->next = p;
-            p = p->next;
-            node = node->next;
-        }
-
-        while (q != nullptr) {
-            node->next = q;
-            q = q->next;
-            node = node->next;
-        }
+        if (p != nullptr) node->next = p;
+        if (q != nullptr) node->next = q;
 
         return head->next;
     }
