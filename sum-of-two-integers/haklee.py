@@ -116,7 +116,7 @@ class Solution:
       b의 범위가 제한되어 있어서 접근 불가능한, 즉, 필요 없는 숫자들이라고 보면 된다.
 
 SC:
-- O(n^2). 정확히는, (2*n+1)^2 개의 정수를 배열에 저장한다.
+- 코드 참조. O(n).
 
 TC:
 - 인덱스를 통해 바로 접근. O(1).
@@ -127,7 +127,7 @@ class Solution:
     def getSum(self, a: int, b: int) -> int:
         x = list(range(0, 2001))
         x.extend(list(range(-2000, 0)))
-        v = x * 2
-        s = list(range(0, 4001))
-        e = list(range(4001, 8002))
+        v = x * 2  # SC: O(n)
+        s = list(range(0, 4001))  # SC: O(n)
+        e = list(range(4001, 8002))  # SC: O(n)
         return v[s[a] : e[a]][b]
