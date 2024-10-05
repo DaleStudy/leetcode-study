@@ -1,3 +1,4 @@
+// m: list1, n: list2
 // 시간복잡도: O(m + n)
 // 공간복잡도: O(m + n)
 
@@ -19,10 +20,10 @@ var mergeTwoLists = function(list1, list2) {
 
     while (list1 && list2) {
         if (list1.val < list2.val) {
-            res.next = new ListNode(list1.val);
+            res.next = list1
             list1 = list1.next;
         } else {
-            res.next = new ListNode(list2.val);
+            res.next = list2
             list2 = list2.next;
         }
 
