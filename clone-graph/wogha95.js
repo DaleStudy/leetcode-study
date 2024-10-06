@@ -60,7 +60,9 @@ var cloneGraph = function (node) {
   // 2. memory에 val에 해당하는 node 반환 (없을 경우 생성)
   function getCloneNode(val) {
     if (!memory.has(val)) {
-      memory.set(val, new _Node(val));
+      const node = new _Node(val);
+      memory.set(val, node);
+      return node;
     }
 
     return memory.get(val);
