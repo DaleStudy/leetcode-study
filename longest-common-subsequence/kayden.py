@@ -1,17 +1,33 @@
-# 시간복잡도: O(N)
-# 공간복잡도: O(N)
 class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
-        nums = set(nums)
-        answer = 0
+    # 시간복잡도: O(A*B)
+    # 공간복잡도: O(A*B)
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        a = len(text1)
+        b = len(text2)
 
-        for num in nums:
-            if num - 1 not in nums:
-                length = 1
+        lcs = [[0]*(b+1) for _ in range(a+1)]
 
-                while num + length in nums:
-                    length += 1
+        for i in range(1, a+1):
+            for j in range(1, b+1):
+                if text1[i-1] == text2[j-1]:
+                    lcs[i][j] = lcs[i-1][j-1] + 1
+                lcs[i][j] = max(lcs[i][j], lcs[i-1][j], lcs[i][j-1])
 
-                answer = max(answer, length)
+        return lcs[a][b]
 
-        return answer
+    # 시간복잡도: O(A*B)
+    # 공간복잡도: O(A)
+    def longestCommonSubsequence2(self, text1: str, text2: str) -> int:
+        n = len(text1)
+        lcs = [0]*n
+        longest = 0
+        for ch in text2:
+            cur = 0
+            for i in range(n):
+                if cur < lcs[i]:
+                    cur = lcs[i]
+                elif ch == text1[i]:
+                    lcs[i] = cur + 1
+                    longest = max(longest, cur+1)
+
+        return longest
