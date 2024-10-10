@@ -25,6 +25,7 @@ func findMin(nums []int) int {
 		return nums[lo]
 	}
 
+	// Go는 while문에 대응하는 표현을 for로 이렇게 표현합니다
 	for lo < hi {
 		mid := lo + (hi-lo)/2
 
