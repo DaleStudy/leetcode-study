@@ -1,5 +1,5 @@
 /*
-풀이
+풀이 1
 - 주어진 배열을 두 부분으로 나눌 수 있기 때문에 이진탐색을 이용하여 풀이할 수 있습니다
   주어진 배열이 A = [4,5,6,7,0,1,2] 라고 할 때, 이 배열은 두 부분으로 나눌 수 있습니다
     A[0:3] : rotate되어 앞으로 배열의 앞으로 옮겨진 부분
@@ -38,4 +38,28 @@ func findMin(nums []int) int {
 	}
 
 	return nums[lo]
+}
+
+/*
+풀이 2
+- 풀이 1에서 덜어낼 수 있는 로직을 덜어낸 좀 더 깔끔한 이진탐색 풀이입니다
+
+Big O
+- 풀이 1과 동일
+*/
+
+func findMin(nums []int) int {
+    lo, hi := 0, len(nums)
+
+    for lo < hi {
+        mid := lo+(hi-lo)/2
+
+        if nums[mid] > nums[len(nums)-1] {
+            lo = mid + 1
+        } else {
+            hi = mid
+        }
+    }
+
+    return nums[lo]
 }
