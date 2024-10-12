@@ -3,64 +3,86 @@ from unittest import TestCase, main
 
 
 class Solution:
-    def maxProduct(self, nums: List[int]) -> int:
-        return self.solveWithDP(nums)
+    def maxSubArray(self, nums: List[int]) -> int:
+        return self.solve_divide_and_conquer(nums)
 
     """
-    Runtime: 71 ms (Beats 61.13%)
+    Runtime: 548 ms (Beats 38.42%)
     Time Complexity: O(n)
-        - dp 배열 초기화를 위한 nums.copy()에 O(n)
-        - range(1, L) 조회하며 조건에 따라 연산에 O(n - 1)
-        - range(L) 조회하며 max 계산에 O(n)
-        > O(n) + O(n - 1) + O(n) ~= O(n)
+        - nums를 조회하는데 O(n)
+            - max_sum을 갱신하는데 2개 항에 대한 max연산에 O(2)
+            - max_subarray_sum을 갱신하는데 2개 항에 대한 max 연산에 O(2)
+        > O(n) * (O(2) + O(2)) = O(4 * n) ~= O(n)
 
-    Memory: 17.75 MB (Beats 11.09%)
-    Space Complexity: O(n)
-        - 크기가 n인 배열 2개 사용했으므로 2 * O(n)
-        > O(2n) ~= O(n)
+    Memory: 30.96 MB (Beats 74.82%)
+    Space Complexity: O(1)
+        > 정수형 변수, 실수형 변수 하나 씩만 사용했으므로 O(1)
     """
-    def solveWithDP(self, nums: List[int]) -> int:
-        L = len(nums)
-        forward_product, backward_product = nums.copy(), nums.copy()
-        for i in range(1, L):
-            if forward_product[i - 1] != 0:
-                forward_product[i] *= forward_product[i - 1]
-
-            if backward_product[L - i] != 0:
-                backward_product[L - i - 1] *= backward_product[L - i]
-
-        result = nums[0]
-        for i in range(L):
-            result = max(result, forward_product[i], backward_product[i])
-
+    def solve_kadane(self, nums: List[int]) -> int:
+        max_subarray_sum, result = 0, float('-inf')
+        for num in nums:
+            max_subarray_sum = max(num, max_subarray_sum + num)
+            result = max(max_subarray_sum, result)
         return result
+
+    """
+    Runtime: 732 ms (Beats 5.04%)
+    Time Complexity: O(n * log n)
+        - max_prefix_sum에서 deepcopy에 O(n), 계산에 O(n)
+        - max_suffix_sum에서 deepcopy에 O(n), 계산에 O(n)
+        - divide_and_sum에서 재귀 호출 depth가 log n, 호출 결과의 최대 갯수는 n이므로, 일반적인 divide and conquer의 시간복잡도와 동일한 O(n * log n)
+        > 2 * O(n) + 2 * O(n) + O(n * log n) ~= O(n * log n)
+
+    Memory: 68.75 MB (Beats 20.29%)
+    Space Complexity: O(n)
+        - max_prefix_sum에서 O(n)
+        - max_suffix_sum에서 O(n)
+        > O(n) + O(n) = 2 * O(n) ~= O(n)
+    """
+    def solve_divide_and_conquer(self, nums: List[int]) -> int:
+        max_prefix_sum = nums[::]
+        for i in range(1, len(nums)):
+            max_prefix_sum[i] = max(max_prefix_sum[i], max_prefix_sum[i - 1] + nums[i])
+
+        max_suffix_sum = nums[::]
+        for i in range(len(nums) - 2, -1, -1):
+            max_suffix_sum[i] = max(max_suffix_sum[i], max_suffix_sum[i + 1] + nums[i])
+
+        def divide_and_sum(nums: List[int], left: int, right: int) -> int:
+            if left == right:
+                return nums[left]
+
+            mid = (left + right) // 2
+
+            return max(
+                divide_and_sum(nums, left, mid),
+                max_prefix_sum[mid] + max_suffix_sum[mid + 1],
+                divide_and_sum(nums, mid + 1, right)
+            )
+
+        return divide_and_sum(nums, 0, len(nums) - 1)
 
 
 class _LeetCodeTestCases(TestCase):
     def test_1(self):
-        nums = [2,3,-2,4]
+        nums = [-2,1,-3,4,-1,2,1,-5,4]
         output = 6
-        self.assertEqual(Solution.maxProduct(Solution(), nums), output)
+        self.assertEqual(Solution.maxSubArray(Solution(), nums), output)
 
     def test_2(self):
-        nums = [-2,0,-1]
-        output = 0
-        self.assertEqual(Solution.maxProduct(Solution(), nums), output)
+        nums = [1]
+        output = 1
+        self.assertEqual(Solution.maxSubArray(Solution(), nums), output)
 
     def test_3(self):
-        nums = [-2]
-        output = -2
-        self.assertEqual(Solution.maxProduct(Solution(), nums), output)
+        nums = [5,4,-1,7,8]
+        output = 23
+        self.assertEqual(Solution.maxSubArray(Solution(), nums), output)
 
     def test_4(self):
-        nums = [0,-3,-2,-3,-2,2,-3,0,1,-1]
-        output = 72
-        self.assertEqual(Solution.maxProduct(Solution(), nums), output)
-
-    def test_5(self):
-        nums = [7, -2, -4]
-        output = 56
-        self.assertEqual(Solution.maxProduct(Solution(), nums), output)
+        nums = [-4, -3, -2, -1]
+        output = -1
+        self.assertEqual(Solution.maxSubArray(Solution(), nums), output)
 
 
 if __name__ == '__main__':
