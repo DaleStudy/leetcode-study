@@ -19,15 +19,15 @@ Big O
  * }
  */
  func invertTree(root *TreeNode) *TreeNode {
-    if root == nil {
-        return root
-    }
+	if root == nil {
+		return root
+	}
 
-    tmp := invertTree(root.Right)
-    root.Right = invertTree(root.Left)
-    root.Left = tmp
+	tmp := invertTree(root.Right)
+	root.Right = invertTree(root.Left)
+	root.Left = tmp
 
-    return root
+	return root
 }
 
 /*
@@ -54,24 +54,24 @@ Big O
  *     Right *TreeNode
  * }
  */
- func invertTree(root *TreeNode) *TreeNode {
-    queue := make([]*TreeNode, 0)
-    queue = append(queue, root)
+func invertTree(root *TreeNode) *TreeNode {
+	queue := make([]*TreeNode, 0)
+	queue = append(queue, root)
 
-    for len(queue) > 0 {
-        node := queue[0]
-        queue = queue[1:]
+	for len(queue) > 0 {
+		node := queue[0]
+		queue = queue[1:]
 
-        if node == nil {
-            continue
-        }
+		if node == nil {
+			continue
+		}
 
-        tmp := node.Left
-        node.Left = node.Right
-        node.Right = tmp
+		tmp := node.Left
+		node.Left = node.Right
+		node.Right = tmp
 
-        queue = append(queue, node.Left, node.Right)
-    }
+		queue = append(queue, node.Left, node.Right)
+	}
 
-    return root
+	return root
 }
