@@ -10,7 +10,7 @@
 /**
  * https://leetcode.com/problems/merge-k-sorted-lists
  * T.C. O(n * k^2) n: average length of list, k: number of lists
- * S.C. O(k)
+ * S.C. O(1)
  */
 function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
   if (lists.length === 0) return null;
