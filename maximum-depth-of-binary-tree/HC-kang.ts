@@ -37,7 +37,7 @@ function maxDepth(root: TreeNode | null): number {
   }
 
   let max = 0;
-  
+
   const stack: [TreeNode | null, number][] = [];
   stack.push([root, 1]);
 
