@@ -17,10 +17,10 @@ class Solution:
 
     Memory: 17.85 MB (Beats 99.94%)
     Space Complexity: O(c)
-        - graph 변수 사용에 O(c)
+        - graph 변수 사용에 O(c + p)
         - rank 변수 사용에 O(c)
         - queue 변수 사용에서 최대 크기는 graph의 크기와 같으므로 O(c)
-        > O(c) + O(c) + O(c) ~= O(c)
+        > O(c + p) + O(c) + O(c) ~= O(c + p)
     """
     def solve_topological_sort(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = {i: [] for i in range(numCourses)}
