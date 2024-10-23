@@ -16,7 +16,7 @@
       이루지 못한다.
 """
 
-"""TC: O(), SC: O()
+"""TC: O(n * α(n)), SC: O(n)
 
 n은 주어진 노드의 개수, e는 주어진 엣지의 개수.
 
@@ -27,12 +27,17 @@ n은 주어진 노드의 개수, e는 주어진 엣지의 개수.
         - find를 통해서 0번째 노드와 모든 노드들이 같은 집합에 속해있는지 확인한다.
     - 더 좋은 구현:
         - union 시행 중 같은 집합에 속한 두 노드를 합치려고 하는 것을 발견하면 False 리턴
+- union-find는 [Disjoint-set data structure - Wikipedia](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
+  를 기반으로 구현했다. 여기에 time complexity 관련 설명이 자세하게 나오는데 궁금하면 참고.
 
 SC:
-- 
+- union-find에서 쓸 parent 정보만 관리한다. 각 노드마다 parent 노드(인덱스), rank를 관리하므로 O(n).
 
 TC:
-- 
+- union 과정에 union by rank 적용시 O(α(n)) 만큼의 시간이 든다. 이때 α(n)은 inverse Ackermann function
+  으로, 매우 느린 속도로 늘어나므로 사실상 상수라고 봐도 무방하다.
+- union 시행을 최대 e번 진행하므로 O(e * α(n)).
+- e = n-1 이므로 O(n * α(n)).
 """
 
 
@@ -48,22 +53,36 @@ class Solution:
 
         # union find
         parent = list(range(n))
+        rank = [0] * n
 
-        def find(x):
+        def find(x: int) -> bool:
             if x == parent[x]:
                 return x
 
-            parent[x] = find(parent[x])
+            parent[x] = find(parent[x])  # path-compression
             return parent[x]
 
-        def union(a, b):
-            pa = find(a)
-            pb = find(b)
-            parent[pb] = pa
-
+        def union(a: int, b: int) -> bool:
             # 원래는 값을 리턴하지 않아도 되지만, 같은 집합에 속한 노드를
             # union하려는 상황을 판별하기 위해 값 리턴.
-            return pa == pb
+
+            pa = find(a)
+            pb = find(b)
+
+            # union by rank
+            if pa == pb:
+                # parent가 같음. rank 작업 안 해도 된다.
+                return True
+
+            if rank[pa] < rank[pb]:
+                pa, pb = pb, pa
+
+            parent[pb] = pa
+
+            if rank[pa] == rank[pb]:
+                rank[pa] += 1
+
+            return False
 
         if len(edges) != n - 1:
             # 트리에는 엣지가 `(노드 개수) - 1`개 만큼 있다.
@@ -84,24 +103,26 @@ class Solution:
         for e in edges:
             if union(*e):
                 return False
-        
+
         return True
 
 
-"""TC: O(), SC: O()
+"""TC: O(n), SC: O(n)
 
 n은 주어진 노드의 개수, e는 주어진 엣지의 개수.
 
 아이디어(이어서):
-- union-find를 쓰면 union을 여러 번 시행해야 하는데 이 과정에서 시간을 많이 잡아먹는것 같다.
 - 트리를 잘 이뤘는지 확인하려면 한 노드에서 시작해서 dfs를 돌려서 모든 노드들에 도달 가능한지
   체크하면 되는데, 이게 시간복잡도에 더 유리하지 않을까?
 
 SC:
-- 
+- adjacency list를 관리한다. O(e).
+- 호출 스택은 탐색을 시작하는 노드로부터 사이클이 나오지 않는 경로의 최대 길이만큼 깊어질 수 있다.
+  최악의 경우 O(n).
+- 이때 e = n-1 이므로 종합하면 O(n).
 
 TC:
-- 
+- 각 노드에 접근하는 과정에 O(1). 이런 노드를 최악의 경우 n개 접근해야 하므로 O(n).
 """
 
 
