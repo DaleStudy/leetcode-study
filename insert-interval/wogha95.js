@@ -30,16 +30,10 @@ var insert = function (intervals, newInterval) {
   let overLappingEndIndex = 0;
   for (let index = 0; index < intervals.length; index++) {
     const interval = intervals[index];
-    if (
-      (interval[0] <= newInterval[0] && newInterval[0] <= interval[1]) ||
-      newInterval[0] < interval[0]
-    ) {
+    if (newInterval[0] <= interval[1]) {
       overLappingStartIndex = Math.min(overLappingStartIndex, index);
     }
-    if (
-      (interval[0] <= newInterval[1] && newInterval[1] <= interval[1]) ||
-      interval[1] < newInterval[1]
-    ) {
+    if (interval[0] <= newInterval[1]) {
       overLappingEndIndex = Math.max(overLappingEndIndex, index);
     }
   }
