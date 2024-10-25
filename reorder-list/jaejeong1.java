@@ -25,7 +25,7 @@ class Solution {
     // 풀이: 역순으로 저장할 스택에 node들을 넣고, 기존 node 1개/스택 node 1개씩 이어 붙인다
     // 스택은 LIFO로 저장되기 때문에, 문제에서 요구하는 순서대로 reorderList를 만들 수 있다
     // TC: O(N)
-    // SC: O(2N)
+    // SC: O(N)
     Stack<ListNode> stack = new Stack<>();
 
     var curNode = head;
