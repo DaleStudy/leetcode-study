@@ -21,13 +21,9 @@
 		curr = tmp
 	}
 	// merge two parts of the list
-	curr1, curr2 := head, prev
-	for curr2.Next != nil {
-		tmp := curr1.Next
-		curr1.Next = curr2
-		curr1 = tmp
-		tmp = curr2.Next
-		curr2.Next = curr1
-		curr2 = tmp
+	for curr1, curr2 := head, prev; curr2.Next != nil; {
+		tmp1, tmp2 := curr1.Next, curr2.Next
+		curr1.Next, curr2.Next = curr2, curr1.Next
+		curr1, curr2 = tmp1, tmp2
 	}
 }
