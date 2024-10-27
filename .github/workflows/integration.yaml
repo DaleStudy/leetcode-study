@@ -1,25 +1,16 @@
-name: 🔄 Integration
-
-on:
-  pull_request:
-
-jobs:
-  linelint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Check for 1. missing end line breaks and 2. control characters in filenames
+- name: Find files with issues
         run: |
           files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
-          success=true
+          echo "변경된 파일 목록:"
+          echo "$files"
           
+          success=true
+
           # 줄바꿈 체크
           echo "## 줄바꿈 누락 파일" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
             if [ -s "$file" ] && [ "$(tail -c 1 $file | wc -l)" -eq 0 ]; then
+              echo "발견된 줄바꿈 누락: $file"  # 디버깅 로그
               echo "- $file" >> $GITHUB_STEP_SUMMARY
               success=false
             fi
@@ -28,18 +19,18 @@ jobs:
           # 제어문자 체크
           echo -e "\n## 제어문자가 포함된 파일명" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
-            # ls -b를 통해 제어문자를 백슬래시 이스케이프 형태로 표시
-            filename=$(ls -b "$file" 2>/dev/null)
-            # 원본 파일명과 이스케이프된 파일명이 다르다면 제어문자가 포함된 것
-            if [ "$file" != "$filename" ]; then
-              echo "- $filename" >> $GITHUB_STEP_SUMMARY
-              success=false
+            if [ -e "$file" ]; then
+              clean_name=$(printf '%q' "$file")
+              if [ "$file" != "$clean_name" ]; then
+                echo "발견된 제어문자: $file -> $clean_name"  # 디버깅 로그
+                echo "- $file" >> $GITHUB_STEP_SUMMARY
+                success=false
+              fi
             fi
           done
 
           if [ "$success" = false ]; then
-            echo -e "\n:warning: 위 문제들을 해결해주세요:" >> $GITHUB_STEP_SUMMARY
-            echo "1. 파일 끝에 누락된 줄 바꿈을 추가해 주세요." >> $GITHUB_STEP_SUMMARY
-            echo "2. 파일명에서 제어문자를 제거해 주세요." >> $GITHUB_STEP_SUMMARY
+            echo -e "\n:warning: 위 문제들을 해결해 주세요:" >> $GITHUB_STEP_SUMMARY
+            echo "현재 상태: success=$success"  # 디버깅 로그
             exit 1
           fi
