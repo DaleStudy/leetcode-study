@@ -64,13 +64,6 @@ jobs:
           if [ "$success" = false ]; then
             echo -e "\n:warning: 위 문제들을 해결해 주세요:" >> $GITHUB_STEP_SUMMARY
             echo "1. 파일 끝의 누락된 줄바꿈을 추가해 주세요." >> $GITHUB_STEP_SUMMARY
-            echo "2. 파일명에서 제어문자를 제거해 주세요. 문제가 되는 제어문자들:" >> $GITHUB_STEP_SUMMARY
-            echo "   - \\b (백스페이스)" >> $GITHUB_STEP_SUMMARY
-            echo "   - \\n (줄바꿈)" >> $GITHUB_STEP_SUMMARY
-            echo "   - \\r (캐리지 리턴)" >> $GITHUB_STEP_SUMMARY
-            echo "   - \\t (탭)" >> $GITHUB_STEP_SUMMARY
-            echo "   - \\v (수직 탭)" >> $GITHUB_STEP_SUMMARY
-            echo "   - \\f (폼 피드)" >> $GITHUB_STEP_SUMMARY
-            echo "   - 기타 제어문자" >> $GITHUB_STEP_SUMMARY
+            echo "2. 파일명에서 제어문자를 제거해 주세요." >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
