@@ -32,14 +32,23 @@ jobs:
           # 제어문자 체크
           echo -e "\n## 제어문자가 포함된 파일명" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
-            # basename으로 파일명만 추출
+            # basename으로 파일명만 추출하고 각 단계 출력
             filename=$(basename "$file")
+            echo "검사 중인 파일: $file"
+            echo "추출된 파일명: $filename"
             
-            if echo -n "$filename" | LC_ALL=C grep -q '[^[:print:][:space:]]' || \
-               [[ "$filename" =~ $'\b' ]]; then
+            # 문자별로 분석
+            echo "문자 분석:"
+            echo -n "$filename" | od -c
+            
+            # ASCII 코드로 분석
+            echo "ASCII 분석:"
+            echo -n "$filename" | xxd -p
+            
+            if printf '%q' "$filename" | grep -q '\\b' || \
+               echo -n "$filename" | grep -q $'\b'; then
               echo "발견된 제어문자: $file"
-              echo "- $file" >> $GITHUB_STEP_SUMMARY
-              echo "  파일명: $filename" >> $GITHUB_STEP_SUMMARY
+              echo "- $file (백스페이스 문자 포함)" >> $GITHUB_STEP_SUMMARY
               success=false
             fi
           done
