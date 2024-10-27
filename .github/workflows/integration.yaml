@@ -13,7 +13,8 @@ jobs:
 
       - name: Check for 1. missing end line breaks and 2. control characters in filenames
         run: |
-          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+          # 따옴표를 제거하고 파일 목록 가져오기
+          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | tr -d '"')
           echo "변경된 파일 목록:"
           echo "$files"
           
@@ -32,18 +33,8 @@ jobs:
           # 제어문자 체크
           echo -e "\n## 제어문자가 포함된 파일명" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
-            # basename으로 파일명만 추출하고 각 단계 출력
-            filename=$(basename "$file")
-            echo "검사 중인 파일: $file"
-            echo "추출된 파일명: $filename"
-            
-            # 문자별로 분석
-            echo "문자 분석:"
-            echo -n "$filename" | od -c
-            
-            # ASCII 코드로 분석
-            echo "ASCII 분석:"
-            echo -n "$filename" | xxd -p
+            # basename으로 파일명만 추출하고 따옴표 제거
+            filename=$(basename "$file" | tr -d '"')
             
             if printf '%q' "$filename" | grep -q '\\b' || \
                echo -n "$filename" | grep -q $'\b'; then
