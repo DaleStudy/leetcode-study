@@ -1,4 +1,17 @@
-- name: Find files with issues
+name: 🔄 Integration
+
+on:
+  pull_request:
+
+jobs:
+  linelint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for 1. missing end line breaks and 2. control characters in filenames
         run: |
           files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
           echo "변경된 파일 목록:"
