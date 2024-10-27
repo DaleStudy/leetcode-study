@@ -32,18 +32,23 @@ jobs:
           # 제어문자 체크
           echo -e "\n## 제어문자가 포함된 파일명" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
+            # 1. ls -b 사용
             if [ -e "$file" ]; then
-              clean_name=$(printf '%q' "$file")
-              if [ "$file" != "$clean_name" ]; then
-                echo "발견된 제어문자: $file -> $clean_name"  # 디버깅 로그
-                echo "- $file" >> $GITHUB_STEP_SUMMARY
+              filename=$(ls -b "$file" 2>/dev/null)
+              if [ "$file" != "$filename" ]; then
+                echo "- $file -> $filename" >> $GITHUB_STEP_SUMMARY
                 success=false
               fi
+            fi
+
+            # 2. 제어문자 패턴 직접 체크
+            if echo "$file" | grep -q '[[:cntrl:]]'; then
+              echo "- $file (제어문자 포함)" >> $GITHUB_STEP_SUMMARY
+              success=false
             fi
           done
 
           if [ "$success" = false ]; then
             echo -e "\n:warning: 위 문제들을 해결해 주세요:" >> $GITHUB_STEP_SUMMARY
-            echo "현재 상태: success=$success"  # 디버깅 로그
             exit 1
           fi
