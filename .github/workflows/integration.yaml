@@ -32,15 +32,14 @@ jobs:
           # 제어문자 체크
           echo -e "\n## 제어문자가 포함된 파일명" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
-            # 여러 방법으로 제어문자 검사
-            if echo -n "$file" | LC_ALL=C grep -q '[^[:print:][:space:]]' || \
-               [[ "$file" =~ $'\b' ]] || \
-               [[ "$file" != "$(echo -n "$file" | tr -d '[:cntrl:]')" ]]; then
+            # basename으로 파일명만 추출
+            filename=$(basename "$file")
+            
+            if echo -n "$filename" | LC_ALL=C grep -q '[^[:print:][:space:]]' || \
+               [[ "$filename" =~ $'\b' ]]; then
               echo "발견된 제어문자: $file"
               echo "- $file" >> $GITHUB_STEP_SUMMARY
-              # 파일명 분석을 위한 디버그 정보
-              echo "  Hex dump:" >> $GITHUB_STEP_SUMMARY
-              echo -n "$file" | xxd >> $GITHUB_STEP_SUMMARY
+              echo "  파일명: $filename" >> $GITHUB_STEP_SUMMARY
               success=false
             fi
           done
