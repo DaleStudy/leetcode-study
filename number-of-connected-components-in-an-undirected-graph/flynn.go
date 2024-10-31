@@ -5,11 +5,12 @@
 Big O
 - N: 노드 개수
 - E: 간선의 개수
-- Time complexity: O(N)
-  - 전체 노드를 최대 1번씩 조회합니다
+- Time complexity: O(N + E)
+  - adj를 생성하는 반복문의 시간복잡도는 E에 비례하여 증가합니다
+  - 전체 노드를 최대 1번씩 조회하므로 두번째 반복문의 시간복잡도는 N에 비례하여 증가합니다
 - Space complexity: O(N + E)
   - adjacency list의 크기는 E에 비례하여 증가합니다
-  - 두 set의 크기는 N에 비례하여 증가합니다
+  - checked의 크기는 N에 비례하여 증가합니다
   - check 함수의 재귀 호출 스택 깊이 또한 최악의 경우, N에 비례하여 증가합니다
 */
 
@@ -20,24 +21,17 @@ func countComponents(n int, edges [][]int) int {
 		adj[edge[1]] = append(adj[edge[1]], edge[0])
 	}
 	// Go는 {int: bool} hashmap을 set처럼 사용함
-	checking := make(map[int]bool) // 현재 진행중인 DFS 탐색에서 방문한 노드를 기록함
 	checked := make(map[int]bool) // 모든 탐색이 끝난 노드를 기록함
 	// 각 node를 조회하는 함수
 	var check func(int)
 	check = func(i int) {
-		// 이미 방문한 적이 있는 node라면 탐색할 필요가 없음
-		if _, ok := checked[i]; ok {
-			return
-		}
-		checking[i] = true
+		checked[i] = true
 		for _, nxt := range adj[i] {
-			if _, ok := checking[nxt]; ok {
+			if _, ok := checked[nxt]; ok {
 				continue
 			}
 			check(nxt)
 		}
-		delete(checking, i)
-		checked[i] = true
 	}
 
 	res := 0
