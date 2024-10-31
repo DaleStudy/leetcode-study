@@ -13,7 +13,7 @@ class Solution:
         return self.solve_union_find(n, edges)
 
     """
-    LintCode 로그인이 안되어서 https://neetcode.io/problems/valid-tree에서 실행시키고 통과만 확인했습니다.
+    LintCode 로그인이 안되어서 https://neetcode.io/problems/count-connected-components에서 실행시키고 통과만 확인했습니다.
 
     Runtime: ? ms (Beats ?%)
     Time Complexity: O(max(m, n))
