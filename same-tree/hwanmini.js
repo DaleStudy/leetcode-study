@@ -1,3 +1,6 @@
+// 시간복잡도: O(n)
+// 공간복잡도: O(n)
+
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
