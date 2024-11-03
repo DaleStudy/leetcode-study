@@ -31,14 +31,6 @@ class Solution {
       return false;
     }
 
-    if (p.left != null && !dfs(p.left, q.left)) { // 둘 중 하나만 null인 케이스는 위에서 걸러져, p.left 하나만 null 여부를 체크하면 npe 방지할 수 있다
-      return false; // 둘다 null이 아닐때만 dfs 값비교를 하고, 결과가 false 라면 false 반환하고 중단
-    }
-
-    if (p.right != null && !dfs(p.right, q.right)) {
-      return false;
-    }
-
-    return true; // 값이 다른 케이스가 없으면 true 반환
+    return dfs(p.left, q.left) && dfs(p.right, q.right);
   }
 }
