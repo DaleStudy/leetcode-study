@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class MeetingRooms {
+public class jdalma {
 
     public class Interval {
         public int start, end;
+
         public Interval(int start, int end) {
             this.start = start;
             this.end = end;
@@ -60,17 +61,19 @@ public class MeetingRooms {
     @Test
     @DisplayName("입력받은 간격들의 충돌 여부를 반환한다.")
     void name() {
-        Assertions.assertThat(canAttendMeetings(new ArrayList<>() {{
-            add(new Interval(0,30));
-            add(new Interval(5,10));
-            add(new Interval(15,20));
-        }}
-        )).isFalse();
+        Assertions.assertThat(canAttendMeetings(new ArrayList<>() {
+            {
+                add(new Interval(0, 30));
+                add(new Interval(5, 10));
+                add(new Interval(15, 20));
+            }
+        })).isFalse();
 
-        Assertions.assertThat(canAttendMeetings(new ArrayList<>() {{
-                                                    add(new Interval(5, 8));
-                                                    add(new Interval(9, 10));
-                                                }}
-        )).isTrue();
+        Assertions.assertThat(canAttendMeetings(new ArrayList<>() {
+            {
+                add(new Interval(5, 8));
+                add(new Interval(9, 10));
+            }
+        })).isTrue();
     }
 }
