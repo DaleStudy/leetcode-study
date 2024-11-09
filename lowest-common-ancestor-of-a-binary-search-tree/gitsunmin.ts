@@ -15,7 +15,7 @@ class TreeNode {
     }
 }
 
-function lowestCommonAncestor(root: TreeNode | null, p: TreeNode, q: TreeNode): TreeNode | null {
+export function lowestCommonAncestor(root: TreeNode | null, p: TreeNode, q: TreeNode): TreeNode | null {
     while (root) {
         if (p.val < root.val && q.val < root.val) root = root.left;
         else if (p.val > root.val && q.val > root.val) root = root.right;
