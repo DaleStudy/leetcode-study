@@ -35,7 +35,7 @@ jobs:
           current_repo=${{ github.repository }}
           current_pr_num=${{ github.event.number }}
 
-          # 직전 PR 중에서 현재 PR 작성자와 다른 작성자 찾기
+          # 이전 PR 중에서 현재 PR 작성자와 다른 작성자 찾기
           previous_pr_author=$(gh pr list --repo $current_repo \
             --state all \
             --search "created:<${{ github.event.pull_request.created_at }} sort:created-desc -author:${{ github.actor }}" \
