@@ -5,11 +5,11 @@
 class Solution {
     private List<List<Integer>> output = new ArrayList<>();
     public List<List<Integer>> levelOrder(TreeNode root) {
-        dsf(0, root);
+        dfs(0, root);
         return output;
     }
 
-    private void dsf(int level, TreeNode node) {
+    private void dfs(int level, TreeNode node) {
         if (node == null) return;
 
         if (output.size() == level) {
@@ -20,7 +20,7 @@ class Solution {
             output.get(level).add(node.val);
         }
         level += 1;
-        dsf(level, node.left);
-        dsf(level, node.right);
+        dfs(level, node.left);
+        dfs(level, node.right);
     }
 }
