@@ -10,20 +10,20 @@ Big O
 */
 
 func reverseBits(num uint32) uint32 {
-    var res uint32 = 0
-    for i := 0; i < 32; i++ {
+	var res uint32 = 0
+	for i := 0; i < 32; i++ {
 		// using numerical operators
 		// if num % 2 == 1 {
-        //     res = res * 2 + 1
-        // } else {
-        //     res *= 2
-        // }
-        // num /= 2
+		//     res = res * 2 + 1
+		// } else {
+		//     res *= 2
+		// }
+		// num /= 2
 
 		// using bitwise operators
 		res = (res << 1) | (num & 1)
 		num >>= 1
-    }
+	}
 
-    return res
+	return res
 }
