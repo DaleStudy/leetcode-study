@@ -1,7 +1,7 @@
-// TC: O(n)
-// need to check all nodes in the worst case
-// SC: O(n)
-// recursion requires O(n) SC in the worst case
+// TC: O(n * m)
+// need to check all nodes and subRoot nodes in the worst case
+// SC: O(h1 + h2)
+// the high of root = h1 + the high of subRoot h2 => O(h1 + h2)
 class Solution {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
         if (root == null) return false;
