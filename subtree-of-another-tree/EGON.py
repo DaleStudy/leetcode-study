@@ -22,10 +22,10 @@ class Solution:
         > O(n) * O(m) ~= O(n * m)
 
     Memory: 17.09 (Beats 9.93%)
-    Space Complexity: O(max(n, m))
+    Space Complexity: O(n + m)
         - stack의 최대 크기는 root 트리가 편향된 경우이며, 이는 root 트리의 노드의 총 갯수와 같으므로 O(n), upper bound
         - is_same_tree 함수의 재귀 스택의 최대 깊이는 subRoot 트리가 편향된 경우이며, 이는 subRoot 트리의 노드의 총 갯수와 같으므로 O(m), upper bound
-        > O(n) + O(m) ~= O(max(n, m))
+        > O(n) + O(m) ~= O(n + m)
     """
     def solve_dfs(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
 
