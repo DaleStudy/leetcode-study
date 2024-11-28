@@ -1,16 +1,18 @@
 # 리트코드 스터디
 
-🛫 해외 취업을 위한 LeetCode 문제 풀이 + 인터뷰 준비 스터디 그룹
+[![🤖 Automation](https://github.com/DaleStudy/leetcode-study/actions/workflows/automation.yaml/badge.svg)](https://github.com/DaleStudy/leetcode-study/actions/workflows/automation.yaml)
+[![🔄 Integration](https://github.com/DaleStudy/leetcode-study/actions/workflows/integration.yaml/badge.svg)](https://github.com/DaleStudy/leetcode-study/actions/workflows/integration.yaml)
 
-## 디스코드 커뮤니티
 
-스터디에 참여하고 싶으신 분은 아래 링크를 통해 [디스코드 서버](https://discord.gg/6TwzdnW6ze)에 들어와주세요! 😃
 
-## 스터디 멤버
+🛫 해외취업을 위한 오픈소스 기반 알고리즘 스터디
 
-[스터디 참여 희망자 리스트](https://github.com/DaleStudy/leetcode-study/discussions/52)
+- [웹사이트](https://www.dalestudy.com/)
+- [리더보드 (개발 중)](https://leaderboard.dalestudy.com/)
+- [위키](https://github.com/DaleStudy/leetcode-study/wiki)
+- [게시판](https://github.com/DaleStudy/leetcode-study/discussions)
+- [채팅방](https://discord.com/channels/775115965964222492/1229860988170403901)
 
-## 기여 방법
-
-스터디 멤버들은 자신이 해결한 LeetCode 문제에 대한 답안 코드를 제출함으로써 자연스럽게 본 프로젝트에 기여하시게 됩니다.
-프로젝트에 기여하는 자세한 방법은 별도의 [가이드 문서](./CONTRIBUTING.md)를 참고 바랍니다.
+## 프로젝트
+- [1기](https://github.com/orgs/DaleStudy/projects/1/views/1): Apr 21, 2024 - Aug 10, 2024
+- [2기](https://github.com/orgs/DaleStudy/projects/3/views/3): Aug 11, 2024 - Nov 23, 2024
