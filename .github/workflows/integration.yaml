@@ -15,13 +15,27 @@ jobs:
       - name: Get PR labels
         id: pr-labels
         run: |
-          labels=$(gh pr view ${{ github.event.pull_request.number }} --json labels -q '.labels[].name' || echo "")
-          echo "labels=$labels" >> $GITHUB_OUTPUT
+          pr_number="${{ github.event.pull_request.number }}"
+          labels_json=$(gh pr view $pr_number --json labels -q '.labels[].name')
+          if [ -n "$labels_json" ]; then
+            echo "has_maintenance=$(echo $labels_json | grep -q 'maintenance' && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
+          else
+            echo "has_maintenance=false" >> $GITHUB_OUTPUT
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Check for 1. missing end line breaks and 2. control characters in filenames and 3. filename rules
         run: |
+          # 필요한 값들 미리 설정
+          pr_author="${{ github.event.pull_request.user.login }}"
+          pr_number="${{ github.event.pull_request.number }}"
+          labels_json=$(gh pr view $pr_number --json labels -q '.labels[].name')
+          has_maintenance=false
+          if echo "$labels_json" | grep -q "maintenance"; then
+            has_maintenance=true
+          fi
+
           # 따옴표를 제거하고 파일 목록 가져오기
           files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | tr -d '"')
           echo "변경된 파일 목록:"
@@ -71,16 +85,16 @@ jobs:
           done
 
           # maintenance 라벨이 없는 경우에만 파일명 규칙 체크
-          if [[ ! "${{ steps.pr-labels.outputs.labels }}" =~ "maintenance" ]]; then
+          if [ "$has_maintenance" != "true" ]; then
             echo -e "\n## 파일명 규칙 위반" >> $GITHUB_STEP_SUMMARY
             for file in $files; do
               if [ -f "$file" ]; then
-                filename=$(basename "$file" | tr -d '"')
-                github_username="${{ github.event.pull_request.user.login }}"
-
+                # 파일명만 추출 (경로 제외)
+                filename=$(basename "$file")
                 # 파일명이 GitHub계정명인지 확인
-                if [[ ! "$filename" =~ ^"$github_username" ]]; then
-                  echo "- $file (파일명은 '$github_username'로 해주셔야 합니다)" >> $GITHUB_STEP_SUMMARY
+                shopt -s nocasematch
+                if [[ ! "$filename" = "$pr_author"* ]]; then
+                  echo "- $file (파일명은 '$pr_author'형식으로 해주셔야 합니다)" >> $GITHUB_STEP_SUMMARY
                   success=false
                 fi
               fi
@@ -91,8 +105,10 @@ jobs:
             echo -e "\n:warning: 위 문제들을 해결해 주세요:" >> $GITHUB_STEP_SUMMARY
             echo "1. 파일 끝의 누락된 줄바꿈을 추가해 주세요." >> $GITHUB_STEP_SUMMARY
             echo "2. 파일명에서 제어문자를 제거해 주세요." >> $GITHUB_STEP_SUMMARY
-            if [[ ! "${{ steps.pr-labels.outputs.labels }}" =~ "maintenance" ]]; then
-              echo "3. 파일명은 반드시 'GitHub계정명'으로 해주셔야 합니다. (예: ${{ github.event.pull_request.user.login }}.ts)" >> $GITHUB_STEP_SUMMARY
+            if [[ ! "$pr_labels" =~ "maintenance" ]]; then
+              echo "3. 파일명은 반드시 'GitHub계정명'형식으로 해주셔야 합니다. (예: ${pr_author}.ts)" >> $GITHUB_STEP_SUMMARY
             fi
             exit 1
           fi
+        env:
+          GH_TOKEN: ${{ github.token }}
