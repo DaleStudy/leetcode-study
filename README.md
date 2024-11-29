@@ -1,7 +1,7 @@
 # 리트코드 스터디
 
-[![🤖 Automation](https://github.com/DaleStudy/leetcode-study/actions/workflows/automation.yaml/badge.svg)](https://github.com/DaleStudy/leetcode-study/actions/workflows/automation.yaml)
-[![🔄 Integration](https://github.com/DaleStudy/leetcode-study/actions/workflows/integration.yaml/badge.svg)](https://github.com/DaleStudy/leetcode-study/actions/workflows/integration.yaml)
+[![Automation 🤖](https://github.com/DaleStudy/leetcode-study/actions/workflows/automation.yaml/badge.svg)](https://github.com/DaleStudy/leetcode-study/actions/workflows/automation.yaml)
+[![Integration 🔄](https://github.com/DaleStudy/leetcode-study/actions/workflows/integration.yaml/badge.svg)](https://github.com/DaleStudy/leetcode-study/actions/workflows/integration.yaml)
 
 
 
