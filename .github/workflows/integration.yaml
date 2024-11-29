@@ -89,8 +89,10 @@ jobs:
             echo -e "\n## 파일명 규칙 위반" >> $GITHUB_STEP_SUMMARY
             for file in $files; do
               if [ -f "$file" ]; then
+
                 # 파일명만 추출 (경로 제외)
                 filename=$(basename "$file")
+
                 # 파일명이 GitHub계정명인지 확인
                 shopt -s nocasematch
                 if [[ ! "$filename" = "$pr_author"* ]]; then
