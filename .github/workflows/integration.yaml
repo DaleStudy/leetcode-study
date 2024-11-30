@@ -99,7 +99,7 @@ jobs:
               # 파일명이 GitHub계정명인지 확인
               shopt -s nocasematch
               if [[ ! "$filename" = "$pr_author"* ]]; then
-                echo "- $file (파일명은 '$pr_author'형식으로 해주셔야 합니다)" >> $GITHUB_STEP_SUMMARY
+                echo "- $file" >> $GITHUB_STEP_SUMMARY
                 success=false
               fi
             fi
