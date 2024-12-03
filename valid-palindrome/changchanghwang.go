@@ -25,14 +25,14 @@ func isPalindrome(s string) bool {
 func isPalindrome2(s string) bool {
 	lowerCaseString := strings.ToLower(s)
 	reverseAndFilteredString := ""
-	filteredString := ""
+	var filteredString strings.Builder
 
 	for _, char := range lowerCaseString {
 		if unicode.IsLetter(char) || unicode.IsDigit(char) {
-			reverseAndFilteredString = c + reverseAndFilteredString
-			filteredString += c
+			reverseAndFilteredString = string(char) + reverseAndFilteredString
+			filteredString.WriteRune(char)
 		}
 	}
 
-	return reverseAndFilteredString == filteredString
+	return reverseAndFilteredString == filteredString.String()
 }
