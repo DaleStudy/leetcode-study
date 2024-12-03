@@ -20,10 +20,10 @@ func topKFrequent(nums []int, k int) []int {
 		return result[i][1] > result[j][1]
 	})
 
-	resultNums := []int{}
+	resultNums := make([]int, 0, k)
 	for i := 0; i < k; i++ {
-		resultNums = append(resultNums, result[i][0]) // 정렬을 했기 때문에 앞에서부터 k개만 뽑아내면 된다.
+		resultNums = append(resultNums, result[i][0])
 	}
 
-	return resultNums[:k]
+	return resultNums
 }
