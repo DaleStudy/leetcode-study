@@ -5,12 +5,13 @@
 // O(n) space complexity
 func isPalindrome(s string) bool {
 	regex, _ := regexp.Compile("[a-zA-Z0-9]")
+
+	lowerCaseString := strings.ToLower(s)
 	reverseAndFilteredString := ""
 	filteredString := ""
 
-	for _, char := range s {
+	for _, char := range lowerCaseString {
 		if regex.MatchString(string(char)) {
-			c := strings.ToLower(string(char))
 			reverseAndFilteredString = c + reverseAndFilteredString
 			filteredString += c
 		}
@@ -22,12 +23,12 @@ func isPalindrome(s string) bool {
 // O(n) time complexity
 // O(n) space complexity
 func isPalindrome2(s string) bool {
+	lowerCaseString := strings.ToLower(s)
 	reverseAndFilteredString := ""
 	filteredString := ""
 
-	for _, char := range s {
+	for _, char := range lowerCaseString {
 		if unicode.IsLetter(char) || unicode.IsDigit(char) {
-			c := strings.ToLower(string(char))
 			reverseAndFilteredString = c + reverseAndFilteredString
 			filteredString += c
 		}
