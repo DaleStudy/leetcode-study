@@ -8,8 +8,8 @@ func topKFrequent(nums []int, k int) []int {
 
 	result := [][]int{}
 
-	for key, value := range hashMap {
-		result = append(result, []int{key, value})
+	for num, count := range hashMap {
+		result = append(result, []int{num, count})
 	}
 
 	sort.Slice(result, func(i, j int) bool { // go의 sort는 quicksort를 기본적으로 사용한다. O(nlogn)
@@ -18,7 +18,7 @@ func topKFrequent(nums []int, k int) []int {
 
 	resultNums := []int{}
 	for i := 0; i < k; i++ {
-		resultNums = append(resultNums, result[i][0])
+		resultNums = append(resultNums, result[i][0]) // 정렬을 했기 때문에 앞에서부터 k개만 뽑아내면 된다.
 	}
 
 	return resultNums[:k]
