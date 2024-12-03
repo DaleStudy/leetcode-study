@@ -1,5 +1,9 @@
 // Time: O(nlogn)
 // Space: O(n)
+// 풀이
+// hashMap에 num을 key로, count를 value로 저장한다.
+// hashMap을 배열로 만들어 count순으로 정렬한다.
+// 정렬된 배열에서 앞에서부터 k개만 뽑아내서 반환한다.
 func topKFrequent(nums []int, k int) []int {
 	hashMap := map[int]int{}
 	for _, num := range nums {
