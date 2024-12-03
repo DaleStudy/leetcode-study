@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
+
 class SolutionGotprgmer {
     // 해당 문제는 어느 한 숫자가 2개이상 존재할 경우 true를 그렇지 않을 경우, false를 반환하는 문제이다.
     // set을 사용해서 set에 이미 값이 존재한다면 개수가 2 이상이므로 true 그렇지 않으면 false를 출력한다.
@@ -14,19 +16,14 @@ class SolutionGotprgmer {
     public boolean containsDuplicate(int[] nums) {
         distinctNums = new HashSet<>();
         boolean ans = false;
-        for(int checkNum:nums){
-            if(distinctNums.contains(checkNum)){
+        for (int checkNum : nums) {
+            if (distinctNums.contains(checkNum)) {
                 ans = true;
                 break;
             };
             distinctNums.add(checkNum);
         }
         return ans;
-    }
-    public static void main(String[] args){
-        Solution s = new Solution();
-        System.out.println(s);
-
     }
 
 
