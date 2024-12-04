@@ -8,9 +8,8 @@
 // 공간복잡도 : O(n)
 
 class Solution_Gotprgmer {
-    static StringBuilder sb;
-    public boolean isPalindrome(String s) {
-        sb = new StringBuilder();
+    public boolean validPalindrome(String s) {
+        StringBuilder sb = new StringBuilder();
         for(char charToCheck : s.toCharArray()){
             if(!Character.isLetterOrDigit(charToCheck)){
                 continue;
@@ -20,12 +19,6 @@ class Solution_Gotprgmer {
         String originalDirection = sb.toString();
         String reDirection = sb.reverse().toString();
 
-        if(originalDirection.equals(reDirection)){
-
-            return true;
-        }
-        else{
-            return false;
-        }
+        return originalDirection.equals(reDirection);
     }
 }
