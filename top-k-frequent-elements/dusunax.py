@@ -31,3 +31,4 @@ class Solution:
             result.append(e[0])
 
         return result[0:k]
+        
