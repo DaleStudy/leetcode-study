@@ -19,10 +19,11 @@ SC: O(n)
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        if s is " ":
+        if s == " ":
             return True
 
-        reg = "[^a-z0-9]"
-        converted_s = re.sub(reg, "", s.lower())
+        s = s.lower()
+        converted_s = ''.join(c for c in s if c.isalnum())
 
         return converted_s == converted_s[::-1]
+
