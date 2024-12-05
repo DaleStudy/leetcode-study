@@ -26,7 +26,7 @@ func topKFrequent(nums []int, k int) []int {
 		freq_by_counts[count] = append(freq_by_counts[count], num)
 	}
 
-	result := []int{}
+	result := make([]int, 0, k)
 
 	for count := len(nums); count > 0; count-- {
 		if nums, ok := freq_by_counts[count]; ok {
