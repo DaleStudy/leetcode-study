@@ -14,3 +14,4 @@ class Solution {
 		return lowerCase.contentEquals(new StringBuffer(lowerCase).reverse());
 	}
 }
+
