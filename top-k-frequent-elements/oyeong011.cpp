@@ -1,21 +1,16 @@
 class Solution {
 public:
-    int longestConsecutive(vector<int>& nums) {
-        const int INF = 987654321;
-        int temp = INF, ret = 0, cur = 0;
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        map<int, int> mp;
+        priority_queue<pair<int, int>> pq;
+        vector<int> ans;
 
-        sort(nums.begin(), nums.end());
-        for(int a : nums){
-            if(a == temp)continue;
-            if(temp == INF || temp + 1 == a){
-                cur++; temp = a;
-            } else {
-                ret = max(ret, cur);
-                cur = 1;
-                temp = a;
-            }
-        }
-        ret = max(ret, cur);
-        return ret;
+        for(auto b : nums) mp[b]++;
+
+        for(auto p : mp) pq.push({p.second, p.first});
+
+        while(k--)ans.push_back(pq.top().second), pq.pop();
+
+        return ans;
     }
 };
