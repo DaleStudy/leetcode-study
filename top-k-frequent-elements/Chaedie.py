@@ -13,7 +13,8 @@ Time Complexity:
 
 Space Complexity: 
     1. dictionary for counting frequency of nums -> O(n)
-    2. sorted List -> O(n)
+    2. Timsort's space overhead -> O(n) 
+    3. sorted List -> O(n)
 
     Space complexity of this solution is O(n)
 """
