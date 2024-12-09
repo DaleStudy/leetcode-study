@@ -39,7 +39,7 @@ class Solution {
         }
 
         for(int key : hm.keySet()){
-            if(hm.containsKey(key - 1)== false){
+            if(hm.containsKey(key - 1)){
                 hm.put(key, true);
             }
         }
@@ -47,8 +47,8 @@ class Solution {
         int max = 0;
         for(int key : hm.keySet()){
             int k =1;
-            if(hm.get(key) == true){
-                while(hm.containsKey(key + k) == true){
+            if(hm.get(key)){
+                while(hm.containsKey(key + k)){
                     k++;
                 }
             }
