@@ -9,7 +9,7 @@ fun isPalindrome(s: String): Boolean {
 
     // 주어진 문자열에서 모든 non-alphanumeric characters를 필터한 문자 배열 할당
     val splitGivenString = s.toCharArray()
-        .filter { it.isLetter() || it.isDigit() }
+        .filter { it.isLetterOrDigit() }
         .map { it.lowercaseChar() }
         .toCharArray()
 
