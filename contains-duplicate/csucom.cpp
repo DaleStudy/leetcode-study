@@ -1,4 +1,4 @@
-#include <stdio.h>
+//#include <stdio.h>
 #include <malloc.h>
 #include <string.h>
 
@@ -30,7 +30,7 @@ bool containsDuplicate(int* nums, int numsSize) {
     return false;
 }
 
-void main(void) {
-    int test[100001] = {0};
-    printf("%d\n", containsDuplicate(test, 1));
-}
+// void main(void) {
+//     int test[100001] = {0};
+//     printf("%d\n", containsDuplicate(test, 1));
+// }
