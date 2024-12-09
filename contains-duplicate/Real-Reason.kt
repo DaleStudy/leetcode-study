@@ -1,6 +1,6 @@
 package leetcode_study
 
-class Solution {
+class SolutionContainsDuplicate {
     fun containsDuplicate(nums: IntArray): Boolean {
         val size = nums.size
         val numsToSet = nums.toSet()
