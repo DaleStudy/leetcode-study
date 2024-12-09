@@ -13,7 +13,7 @@ impl Solution {
             
         let mut i = 0;
         let mut j = s.len().saturating_sub(1);
-        
+
         // T.C. O(n)
         while i < j {
             if s[i] != s[j] {
@@ -27,7 +27,7 @@ impl Solution {
 }
 
 /**
- * 최적화
+ * 최적화 - 문자열을 복사하지 않음
  * T.C. O(n)
  * S.C. O(1)
  */
