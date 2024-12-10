@@ -8,9 +8,8 @@ func containsDuplicate(nums []int) bool {
 	for _, num := range nums {
 		if hashMap[num] {
 			return true
-		} else {
-			hashMap[num] = true
-		}
+		} 
+		hashMap[num] = true
 	}
 	return false
 }
