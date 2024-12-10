@@ -85,7 +85,7 @@ jobs:
       - name: Check filename rules
         if: ${{ steps.pr-labels.outputs.has_maintenance != 'true' }}
         run: |
-          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | tr -d '"')
+          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | tr -d '"')
           pr_author="${{ github.event.pull_request.user.login }}"
           success=true
 
