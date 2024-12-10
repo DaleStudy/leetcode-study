@@ -1,3 +1,4 @@
+# Big-O 예상 : O(nlog(n))
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         nums = sorted(list(set(nums)))

@@ -1,3 +1,4 @@
+# Big-O 예상 : O(n)
 class Solution:
     def rob(self, nums: List[int]) -> int:
         a = [0] * len(nums)

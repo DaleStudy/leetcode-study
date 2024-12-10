@@ -1,3 +1,4 @@
+# Big-O 예상 : O(n)
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         s = "".join(s.lower().split(" "))
