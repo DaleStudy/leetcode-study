@@ -52,3 +52,8 @@ elixir:
   - changed-files:
       - any-glob-to-any-file:
           - "**/*.exs"
+
+rust:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.rs"
