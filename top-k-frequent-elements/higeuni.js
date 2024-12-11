@@ -8,7 +8,7 @@
 
 var topKFrequent = function(nums, k) {
   const countObject = {}
-  nums.map((num) => {
+  nums.forEach((num) => {
       if(countObject[num]) {
           countObject[num] += 1
       }else {
