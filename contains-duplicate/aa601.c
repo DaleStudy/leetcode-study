@@ -44,14 +44,6 @@ void	mergeSort(int *nums, int left, int right) {
 	}
 }
 
-// void	printArr(int *arr, int size) {
-// 	int	i;
-
-// 	i = -1;
-// 	while (++i < size)
-// 		printf("%d ", arr[i]);
-// }
-
 bool containsDuplicate(int* nums, int numsSize) {
 	int	i;
 
@@ -64,11 +56,5 @@ bool containsDuplicate(int* nums, int numsSize) {
 	return (false);
 }
 
-int main()
-{
-	int arr[] = {0, 3, 0};
-	int size;
 
-	size = sizeof(arr) / sizeof(arr[0]);
-	printf("%d\n", containsDuplicate(arr, size));
-}
+
