@@ -47,3 +47,4 @@ var longestConsecutive = function (nums) {
   
   return maxLength;
 };
+
