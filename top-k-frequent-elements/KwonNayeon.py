@@ -31,3 +31,4 @@ class Solution:
         for i in range(k):
             result.append(sorted_frequency[i][0])
         return result
+    
