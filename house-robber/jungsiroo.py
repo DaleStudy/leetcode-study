@@ -36,3 +36,4 @@ class Solution:
             record[0][i] = max(record[1][i-1], record[0][i-1])
 
         return max(record[1][-1], record[0][-1])
+
