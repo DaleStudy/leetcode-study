@@ -1,17 +1,28 @@
+/*
+    Problem: https://leetcode.com/problems/top-k-frequent-elements/
+    Description: return the k most frequent elements
+    Concept: Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect
+    Time Complexity: O(n log k), Runtime: 15ms
+    Space Complexity: O(n), Memory: 48.64MB
+*/
+import java.util.*;
+
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> count = new HashMap<>();
         for(int num : nums){
             count.put(num, count.getOrDefault(num, 0)+1);
         }
-        List<Integer> tops = count.keySet().stream()
-                .sorted((i1, i2) -> count.get(i2)-count.get(i1))
-                .limit(k)
-                .toList();
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.comparingInt(count::get));
+        for (int num : count.keySet()) {
+            pq.offer(num);
+            if (pq.size() > k) pq.poll();
+        }
 
         int[] answer = new int[k];
         for(int i=0; i<k; i++) {
-            answer[i] = tops.get(i);
+            answer[i] = pq.poll();
         }
         return answer;
     }
