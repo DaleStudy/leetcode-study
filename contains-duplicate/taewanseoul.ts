@@ -4,9 +4,16 @@
  * https://leetcode.com/problems/contains-duplicate/description/
  */
 function containsDuplicate(nums: number[]): boolean {
-  const isDuped = new Set(nums).size !== nums.length;
+  const set = new Set<number>();
 
-  return isDuped ? true : false;
+  for (let i = 0; i < nums.length; i++) {
+    if (set.has(nums[i])) {
+      return true;
+    }
+    set.add(nums[i]);
+  }
+
+  return false;
 }
 
 // TC: O(n)
