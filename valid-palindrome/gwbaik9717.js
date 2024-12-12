@@ -6,11 +6,7 @@
  * @return {boolean}
  */
 var isPalindrome = function (s) {
-  const normalize = (s) => {
-    return s.toLowerCase().replace(/[^a-z0-9]/g, "");
-  };
-
-  const normalized = normalize(s);
+  const normalized = s.toLowerCase().replace(/[^a-z0-9]/g, "");
   const reversed = normalized.split("").reverse().join("");
 
   return normalized === reversed;
