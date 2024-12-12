@@ -1,4 +1,4 @@
-# Big-O 예상 : O(n*k)
+# Big-O 예상 : O(n)
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         num_dict = {}
