@@ -14,10 +14,10 @@ Conditions:
 
 Time Complexity:
     - O(n)
+Space Complexity:
+    - O(n)
 """
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s = re.sub(r'[^a-zA-z]', '', s).lower()
-        if s == s[::-1]:
-            return True
-        return False
+        s = re.sub(r'[^a-zA-z0-9]', '', s).lower()
+        if s == s[::-1]
