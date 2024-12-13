@@ -3,15 +3,19 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-    let dup_set = new Set(); // Initialize Set
-    for (let num of nums) {
-        dup_set.add(num) // Add value into the set (duplicated value will be ignored)
-    }
+    let dup_set = new Set(nums); // Initialize Set
+    return dup_set.size !== nums.length
 
-    if(dup_set.size !== nums.length) {
-        return true
-    }
-    return false
+
+    /* Previous Code before the review */
+    // for (let num of nums) {
+    //     dup_set.add(num) // Add value into the set (duplicated value will be ignored)
+    // }
+
+    // if(dup_set.size !== nums.length) {
+    //     return true
+    // }
+    // return false
 };
 
 /* 
