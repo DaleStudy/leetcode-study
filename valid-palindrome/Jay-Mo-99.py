@@ -25,10 +25,9 @@ class Solution(object):
         temp = " ".join(re.split("[^a-zA-Z0-9]*",temp)).replace(" ","")
         #Compare with temp and reverse temp 
         #If they are same, it is palindrome
-        if temp == temp[::-1]:
-            return True
-        else:
-            return False
+        return temp == temp[::-1]
+    
+
         
 
 
