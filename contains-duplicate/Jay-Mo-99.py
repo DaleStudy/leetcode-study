@@ -18,9 +18,6 @@
         
         #Space Complexity: O(N)
         #-set은 nums의 길이에 의해 생성되므로 n에 영향받음(The set requires extra space depends on the size of nums) : O(N) 
-        if len(list(set(nums))) == len(nums): 
-            return False
-        else:
-            return True
+        return len(list(set(nums))) != len(nums) #set된 list와 기존 nums의 len이 일치하지 않는다면 true(duplicate), 아니면 false
         
 
