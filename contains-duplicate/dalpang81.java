@@ -1,3 +1,4 @@
+//시간복잡도 : O(nlogn)
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         Arrays.sort(nums);

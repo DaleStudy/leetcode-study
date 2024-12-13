@@ -1,3 +1,4 @@
+//시간복잡도: O(n)
 import java.util.*;
 
 class Solution {

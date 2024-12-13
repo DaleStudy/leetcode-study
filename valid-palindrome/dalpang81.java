@@ -1,3 +1,4 @@
+//시간복잡도: O(n)
 class Solution {
     public boolean isPalindrome(String s) {
         s = s.toLowerCase().trim();

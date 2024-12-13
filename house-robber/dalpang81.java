@@ -1,3 +1,4 @@
+//시간복잡도 O(n)
 class Solution {
     public int rob(int[] nums) {
         if (nums.length == 1) {
