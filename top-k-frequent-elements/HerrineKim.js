@@ -28,3 +28,4 @@ var topKFrequent = function (nums, k) {
 
   return result.slice(0, k); // 상위 k개의 요소 반환
 };
+

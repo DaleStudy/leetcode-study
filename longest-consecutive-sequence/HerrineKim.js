@@ -29,3 +29,4 @@ var longestConsecutive = function (nums) {
 
   return longestStreak;
 };
+

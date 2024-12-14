@@ -21,3 +21,4 @@ var isPalindrome = function (s) {
 
   return true; // 대칭이 유지되면 true
 };
+
