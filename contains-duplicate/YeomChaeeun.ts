@@ -26,7 +26,6 @@ function containsDuplicate(nums: number[]): boolean {
     let obj={}
 
     for(let i = 0; i < nums.length; i++) {
-        console.log('nums >>', nums[i], 'obj >>', obj)
         if(obj[nums[i]]) {
             return true;
         }

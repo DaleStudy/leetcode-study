@@ -4,14 +4,12 @@
  */
 function isPalindrome(s: string): boolean {
     let word = s.toLowerCase();
-    const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\" ]/g;
-
+    const reg = /[^a-z0-9]/g; // removing all non-alphanumeric characters
     word = word.replace(reg, '');
+
     for(let i = 0; i < word.length; i++) {
-        for(let j = word.length-i-1; j >= word.length-i-1; j--) {
-            // console.log(word[i], '===', word[j])
-            if(word[i] !== word[j]) return false;
-        }
+        if(word[i] !== word[word.length-i-1])
+            return false;
     }
     return true;
 };

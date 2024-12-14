@@ -28,23 +28,17 @@ function longestConsecutive(nums: number[]): number {
     // =========
 
     let longest = 0;
-    let temp = 1;
-
+    let current = 1;
     for(let i = 0; i < nums.length-1; i++) {
-        if(nums[i] === nums[i + 1]) {
-            // console.log(nums[i], '===', nums[i+1])
+        if(nums[i] === nums[i - 1]) {
             continue;
         } else if(nums[i] + 1 === nums[i + 1] ) {
-            // console.log(nums[i], '+ 1 =', nums[i+1])
-            temp += 1;
+            current += 1;
         } else {
-            // console.log(longest, ' - ', temp)
-            longest = Math.max(temp, longest);
-            temp = 1;
+            longest = Math.max(current, longest);
+            current = 1;
         }
     }
 
-    // i가 마지막인 경우 for문의 else문을 타지 않으므로 다시 한번 체크함
-    longest = Math.max(temp, longest);
     return longest;
 };
