@@ -46,6 +46,3 @@ if __name__ == "__main__":
         print(f"start {index} test")
         print(f"input : {test}")
         print(f"Is valid palindrome ? {solution.isPalindrome(test)}\n")
-
-
-

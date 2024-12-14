@@ -38,4 +38,3 @@ if __name__ == "__main__":
         print(f"start{i}")
         print(f"input : {nums}, {k}")
         print(f"result : {result}")
-
