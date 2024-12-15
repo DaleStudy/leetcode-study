@@ -11,6 +11,6 @@ class Solution {
         if (index >= nums.size) {
             return 0
         }
-        return nums[index] + rob_recursion(nums, index + 2)
+        return nums[index] + Integer.max(rob_recursion(nums, index + 2), rob_recursion(nums, index + 3))
     }
 }
