@@ -28,3 +28,4 @@ function rob(nums: number[]): number {
 
     return prev1; // 마지막 집까지의 최대 금액 반환
 }
+

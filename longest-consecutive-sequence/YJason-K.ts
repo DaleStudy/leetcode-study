@@ -38,3 +38,4 @@ function longestConsecutive(nums: number[]): number {
 
     return longestSeq; // 가장 긴 연속 시퀀스의 길이 반환
 }
+
