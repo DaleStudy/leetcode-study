@@ -8,7 +8,14 @@ function top_k_frequent_element(numArr, k) {
     element_qty.push({ [num]: count });
   }
   Object.keys(element_qty).forEach((key) => element_qty[key]);
-}
 
-const Arr = [1, 2, 3, 4, 5, 5, 5, 5, 3, 3, 32, 2, 2, 1];
-top_k_frequent_element(Arr);
+  const sortedArray = element_qty.sort((a, b) => {
+    const valueA = Object.values(a)[0];
+    const valueB = Object.values(b)[0];
+    return valueB - valueA;
+  });
+
+  const topKeys = sortedArray.slice(0, k).map((obj) => Object.keys(obj)[0]);
+  console.log(topKeys);
+  return topKeys;
+}
