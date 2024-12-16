@@ -14,4 +14,4 @@ function isAnagram(s: string, t: string): boolean {
     }
 
     return Object.values(counter).findIndex(value => value !== 0) < 0;
-};
+}
