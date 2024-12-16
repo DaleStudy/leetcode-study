@@ -16,6 +16,5 @@ function top_k_frequent_element(numArr, k) {
   });
 
   const topKeys = sortedArray.slice(0, k).map((obj) => Object.keys(obj)[0]);
-  console.log(topKeys);
   return topKeys;
 }
