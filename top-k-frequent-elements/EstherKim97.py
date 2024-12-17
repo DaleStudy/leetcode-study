@@ -13,6 +13,4 @@ class Solution(object):
         data = sorted(data, reverse=True, key=lambda x:[1])
 
         return [x[1] for x in data[:k]]
-        
-        #nums.count(i)
-
+    
