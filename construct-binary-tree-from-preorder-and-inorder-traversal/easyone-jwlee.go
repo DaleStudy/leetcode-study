@@ -10,15 +10,6 @@
 // SC
 // map O(n) + 재귀함수 최악의 경우 한쪽으로만 노드가 이어지는 경우 O(n) = O(n)
 
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-
 func buildTree(preorder []int, inorder []int) *TreeNode {
 	inorderMap := make(map[int]int)
 	for i, n := range inorder {
@@ -47,4 +38,3 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 
 	return recursive(0, 0, len(inorder)-1)
 }
- 
