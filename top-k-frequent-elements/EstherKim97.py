@@ -15,3 +15,4 @@ class Solution(object):
         return [x[1] for x in data[:k]]
         
         #nums.count(i)
+
