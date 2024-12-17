@@ -9,3 +9,4 @@ class Solution(object):
             if s[i] != s[-(i+1)]:
                 return False
         return True
+
