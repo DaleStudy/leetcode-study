@@ -35,3 +35,4 @@ class Solution(object):
     #     total_permu += 1
 
     #     return total_permu
+    
