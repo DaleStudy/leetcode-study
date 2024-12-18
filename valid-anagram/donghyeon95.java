@@ -2,6 +2,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+/*
+	map에 넣고 빼는 시간이 O(n)이라고는 하나, 시간이 걸린다.
+	반복문으로 처리할 수 있는 방법이 없을까?
+*/
+
 class Solution {
 	public boolean isAnagram(String s, String t) {
 		boolean result = false;
