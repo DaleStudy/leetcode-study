@@ -3,15 +3,13 @@ package contains_duplicate
 import "sort"
 
 /*
-1. 문제
+ 1. 문제
+    주어진 int 배열 nums에 숫자가 중복되는 경우가 한 번이라도 있으면 true, 그렇지 않으면 false 를 리턴
 
-	주어진 int 배열 nums에 숫자가 중복되는 경우가 한 번이라도 있으면 true, 그렇지 않으면 false 를 리턴
-
-2. 풀이
-
-	고유값만 저장하는 set(go 에서는 map)의 성질을 활용하여
-	nums를 순회하며 set에 값이 있는지 없는지 체크하여
-	숫자가 중복되는 경우를 체크
+ 2. 풀이
+    고유값만 저장하는 set(go 에서는 map)의 성질을 활용하여
+    nums를 순회하며 set에 값이 있는지 없는지 체크하여
+    숫자가 중복되는 경우를 체크
 
 3. 분석
   - 시간 복잡도: O(N)
@@ -37,6 +35,12 @@ func containsDuplicate(nums []int) bool {
 	return false
 }
 
+/*
+* 처음부터 오름차순으로 정렬하여 랜덤 접근의 필요성을 없앰.
+* 복잡도 측면에서의 개선점은 없어보임.
+  - 시간 복잡도: O(N)
+  - 공간 복잡도: O(N)
+*/
 func containsDuplicate_SortedApproach(nums []int) bool {
 	// early exit for small slices
 	if len(nums) < 2 {
