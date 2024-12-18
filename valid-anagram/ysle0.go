@@ -1,10 +1,4 @@
-package main
-
-// package valid_anagram
-
-import (
-	"fmt"
-)
+package valid_anagram
 
 func isAnagram(s string, t string) bool {
 	ht := make(map[rune]int, len(s))
@@ -31,16 +25,4 @@ func isAnagram(s string, t string) bool {
 	}
 
 	return true
-}
-
-func main() {
-	r1 := isAnagram("anagram", "nagaram")
-	fmt.Println(r1)
-	fmt.Println()
-
-	r2 := isAnagram("rat", "car")
-	fmt.Println(r2)
-
-	r3 := isAnagram("ab", "a")
-	fmt.Println(r3)
 }
