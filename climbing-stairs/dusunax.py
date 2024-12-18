@@ -45,7 +45,7 @@ class Solution:
         
         # SC: O(1)
         prev2 = 1 # ways to step 0
-        prev1 = 1 # ways to step 1 
+        prev1 = 2 # ways to step 1 
 
         for i in range(3, n + 1): # TC: O(n)
             current = prev1 + prev2 # ways to (n-1) + (n-2)
