@@ -26,6 +26,7 @@ function isAnagram(s: string, t: string): boolean {
     // t 문자열에 대한 알파벳 사전 생성
     for (const char in t) {
         vocabT = vocabT[char] ? vocabT[char] + 1 : 1;
+    }
 
 
     // 두 문자열 사전을 비교하며 count 가 일치 하지 않은 경우 false 반환
