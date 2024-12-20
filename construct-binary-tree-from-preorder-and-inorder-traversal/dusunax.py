@@ -1,9 +1,33 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+
+'''
+# Leetcode 105. Construct Binary Tree from Preorder and Inorder Traversal
+
+use **recursive** to solve this problem.
+
+## Time and Space Complexity
+
+### A. recursive & change range of preorder and inorder
+
+```
+TC: O(n)
+SC: O(n)
+```
+
+### B. recursive & search index (of inorder)
+
+```
+TC: O(n^2)
+SC: O(n)
+```
+
+### C. recursive & hash table
+
+```
+TC: O(n)
+SC: O(n)
+```
+
+'''
 class Solution:
     '''
     A. 재귀 풀이
@@ -33,10 +57,10 @@ class Solution:
 
             return mid # 현재 노드 반환
 
-        # inorder를 값 -> 인덱스 맵핑한 딕셔너리 생성 (O(n))
+        # inorder를 값 -> 인덱스 맵핑한 딕셔너리 생성 - TC: O(n), SC: O(n)
         inorder_idx_map = {value: idx for idx, value in enumerate(inorder)}
 
-        # 트리 생성 시작 (preorder와 inorder 전체 범위 사용)
+        # 트리 생성 시작 (preorder와 inorder 전체 범위 사용) - TC: O(n), SC: O(n)
         return setTree(0, len(preorder) - 1, 0, len(inorder) - 1)
         
 
@@ -54,7 +78,7 @@ class Solution:
                 return None
             
             val = preorder[pre] # 현재 노드의 값
-            root = inorder.index(val) # 트리/서브트리의 루트 노드 인덱스 찾기 - SC: O(n)
+            root = inorder.index(val) # 트리/서브트리의 루트 노드 인덱스 찾기 - TC: O(n)
             
             left = setTree(pre + 1, start, root - 1) 
             # inorder에서 root노드의 왼쪽은 왼쪽 서브트리
@@ -67,7 +91,7 @@ class Solution:
             return TreeNode(preorder[pre], left, right) # 트리 노드 생성
         
         # preorder 최초 인덱스 = 루트 노드(0), inorder의 처음(0)과 끝(len(inorder) - 1) 인덱스
-        return setTree(0, 0, len(inorder) - 1) 
+        return setTree(0, 0, len(inorder) - 1) # TC: O(n^2), SC: O(n)
 
     '''
     C. 재귀 풀이 + 시간 최적화
