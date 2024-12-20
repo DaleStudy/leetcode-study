@@ -1,4 +1,5 @@
-// 투포인터 방식으로 구현 기본 시간복잡도가 O(2^n)이므로 오름차순으로 정렬하는 O(NlogN)은 마음껏 사용해도 된다.
+// 투포인터 방식으로 구현 
+// 투포인터의 기본 시간복잡도가 O(2^n)이므로 오름차순으로 정렬하는 O(NlogN)은 마음껏 사용해도 된다.
 public List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
     Arrays.sort(nums);
