@@ -24,6 +24,7 @@ var threeSum = function(nums) {
               left += 1
           } else {
               answer.push([sortedNums[i], sortedNums[left], sortedNums[right]]);
+              // 중복되는 부분을 처리하는 과정에서 계속 fail되어 찾아보니 이렇게 해야 통과되었다.
               while(left < right && sortedNums[left] === sortedNums[left + 1]) left ++;
               while(left < right && sortedNums[right] === sortedNums[right - 1]) right --;
               
@@ -34,3 +35,4 @@ var threeSum = function(nums) {
   }
   return answer
 };
+
