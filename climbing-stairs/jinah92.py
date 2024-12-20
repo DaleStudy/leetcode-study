@@ -9,4 +9,3 @@ class Solution:
             prev, curr = curr, prev + curr
         
         return curr
-    
