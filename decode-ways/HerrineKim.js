@@ -24,3 +24,4 @@ var numDecodings = function (s) {
 
   return helper(0);
 };
+
