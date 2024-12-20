@@ -15,11 +15,19 @@ jobs:
       - name: Get PR labels
         id: pr-labels
         run: |
+          echo "🔍 PR 번호: ${{ github.event.pull_request.number }}"
           pr_number="${{ github.event.pull_request.number }}"
+          
+          echo "📋 PR 라벨 조회 중..."
           labels_json=$(gh pr view $pr_number --json labels -q '.labels[].name')
+          echo "확인된 라벨: $labels_json"
+          
           if [ -n "$labels_json" ]; then
-            echo "has_maintenance=$(echo $labels_json | grep -q 'maintenance' && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
+            has_maintenance=$(echo $labels_json | grep -q 'maintenance' && echo 'true' || echo 'false')
+            echo "maintenance 라벨 포함 여부: $has_maintenance"
+            echo "has_maintenance=$has_maintenance" >> $GITHUB_OUTPUT
           else
+            echo "maintenance 라벨이 없는 PR입니다. 파일명 규칙 검사를 진행합니다."
             echo "has_maintenance=false" >> $GITHUB_OUTPUT
           fi
         env:
@@ -28,35 +36,46 @@ jobs:
       # 줄바꿈 체크
       - name: Check for missing end line breaks
         run: |
-          # 따옴표를 제거하고 파일 목록 가져오기
+          echo "🔍 줄바꿈 검사 시작"
+          echo "기준 커밋: ${{ github.event.pull_request.base.sha }}"
+          echo "현재 커밋: ${{ github.sha }}"
+
           files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | tr -d '"')
           success=true
 
-          echo "변경된 파일 목록:"
+          echo "📝 변경된 파일 목록:"
           echo "$files"
 
           echo "## 줄바꿈 누락 파일" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
+            echo "검사 중: $file"
             if [ -s "$file" ] && [ "$(tail -c 1 $file | wc -l)" -eq 0 ]; then
-              echo "발견된 줄바꿈 누락: $file"
+              echo "❌ 줄바꿈 누락: $file"
               echo "- $file" >> $GITHUB_STEP_SUMMARY
               success=false
+            else
+              echo "✅ 정상: $file"
             fi
           done
 
           if [ "$success" = false ]; then
+            echo "⚠️ 줄바꿈 검사 실패"
             echo -e "\n:warning: 파일 끝의 누락된 줄바꿈을 추가해 주세요." >> $GITHUB_STEP_SUMMARY
             exit 1
+          else
+            echo "✅ 모든 파일의 줄바꿈 정상"
           fi
 
       # 제어문자 체크
       - name: Check for control characters in filenames
         run: |
+          echo "🔍 파일명 제어문자 검사 시작"
           files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | tr -d '"')
           success=true
 
           echo "## 제어문자가 포함된 파일명" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
+            echo "검사 중: $file"
             # basename으로 파일명만 추출하고 따옴표 제거
             filename=$(basename "$file" | tr -d '"')
 
@@ -71,43 +90,66 @@ jobs:
 
                # 이스케이프 시퀀스 체크
                [[ "$filename" =~ (\\[0-7]{1,3}|\\x[0-9a-fA-F]{1,2}) ]]; then
+              echo "❌ 제어문자 발견: $file"
               echo "- $file (제어문자 포함)" >> $GITHUB_STEP_SUMMARY
               success=false
+            else
+              echo "✅ 정상: $file"
             fi
           done
 
           if [ "$success" = false ]; then
+            echo "⚠️ 제어문자 검사 실패"
             echo -e "\n:warning: 파일명에서 제어문자를 제거해 주세요." >> $GITHUB_STEP_SUMMARY
             exit 1
+          else
+            echo "✅ 모든 파일명이 제어문자 없이 정상"
           fi
 
       # 파일명 규칙 체크 - maintenance 라벨이 없는 경우에만 실행
       - name: Check filename rules
         if: ${{ steps.pr-labels.outputs.has_maintenance != 'true' }}
         run: |
-          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | tr -d '"')
+          echo "🔍 파일명 규칙 검사 시작"
+          echo "PR 작성자: ${{ github.event.pull_request.user.login }}"
+
+          # PR의 공통 조상 커밋을 찾아서 merge base로 설정
+          merge_base=$(git merge-base ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
+          echo "Merge base 커밋: $merge_base"
+
+          files=$(git diff --name-only $merge_base ${{ github.event.pull_request.head.sha }} | tr -d '"')
           pr_author="${{ github.event.pull_request.user.login }}"
           success=true
+
+          echo "📝 검사할 파일 목록:"
+          echo "$files"
 
           echo "## 파일명 규칙 위반" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
             if [ -f "$file" ]; then
 
+              echo "검사 중: $file"
               # 파일명만 추출 (경로 제외)
               filename=$(basename "$file")
 
               # 파일명이 GitHub계정명인지 확인
               shopt -s nocasematch
               if [[ ! "$filename" = "$pr_author"* ]]; then
+                echo "❌ 규칙 위반: $file"
                 echo "- $file" >> $GITHUB_STEP_SUMMARY
                 success=false
+              else
+                echo "✅ 정상: $file"
               fi
             fi
           done
 
           if [ "$success" = false ]; then
+            echo "⚠️ 파일명 규칙 검사 실패"
             echo -e "\n:warning: 파일명은 반드시 'GitHub계정명' 또는 'GitHub계정명-xxx' 형식으로 해주셔야 합니다. (예: ${pr_author}.ts, ${pr_author}-1.ts, ${pr_author}-2.ts)" >> $GITHUB_STEP_SUMMARY
             exit 1
+          else
+            echo "✅ 모든 파일명이 규칙에 맞게 정상"
           fi
         env:
           GH_TOKEN: ${{ github.token }}
