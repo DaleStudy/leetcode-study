@@ -1,3 +1,7 @@
+// 시간 복잡도:  트리의 모든 노드를 한 번씩만 방문 -> O(n)
+// 공간 복잡도: 재귀적으로 트리를 구성 ->
+// 트리가 균형 잡힌 경우(즉, 트리의 높이가 log(n)인 경우), 재귀 호출 스택의 깊이는 O(log n)
+// 트리가 편향된 형태(예: 모두 왼쪽 자식만 존재하는 경우)라면, 재귀 깊이는 O(n)
 
 class TreeNode {
     int val;
@@ -29,7 +33,7 @@ class Solution {
         return build(preorder, inorder, 0, inorder.length - 1);
     }
 
-    // O(n)
+
     private TreeNode build(int[] preorder, int[] inorder, int inStart, int inEnd) {
         // 재귀 종료 조건
         // 포인터(인덱스)가 배열 길이를 넘었을

@@ -1,6 +1,11 @@
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 시간/공간 복잡도
+ */
+// 시간 복잡도: 문자열을 한 번씩만 방문 -> O(n)
+// 공간 복잡도: 문자열 길이만큼 공간 필요(hashmap 크기) -> O(n)
 class Solution {
     public boolean isAnagram(String s, String t) {
 
