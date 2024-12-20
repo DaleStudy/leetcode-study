@@ -3,5 +3,8 @@ function containsDuplicate(nums) {
   const numLength = nums.length;
   return numLength === setLength ? false : true;
 }
-console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]));
-//
+//New function after feedback
+
+function containDuplicate2(nums) {
+  return nums.length !== new Set(nums).size;
+}
