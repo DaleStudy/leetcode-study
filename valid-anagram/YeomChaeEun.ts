@@ -1,3 +1,10 @@
+/**
+ * 알고리즘 복잡도:
+ * - 시간복잡도: O(n)
+ * - 공간복잡도: O(k)
+ * @param s
+ * @param t
+ */
 function isAnagram(s: string, t: string): boolean {
     if(s.length !== t.length) return false
 
