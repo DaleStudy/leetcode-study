@@ -1,6 +1,8 @@
 // complexity
 // time: O(n)
+// - for loop: O(n)
 // space: O(1)
+// - n에 관계없이 상수개의 변수만 사용되므로 O(1)
 
 var climbStairs = function(n) {
   let num1 = 1;

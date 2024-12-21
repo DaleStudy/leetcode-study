@@ -1,6 +1,11 @@
 // complexity
 // time: O(n^2)
+// - sort: O(n log n)
+// - for loop: O(n)
+// - while loop: O(n)
 // space: O(n)
+// - sortedNums: O(n)
+// - else : O(1)
 
 var threeSum = function(nums) {
   const sortedNums = nums.sort((a, b) => a - b)
