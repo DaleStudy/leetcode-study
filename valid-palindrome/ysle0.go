@@ -24,7 +24,7 @@ import (
     모든 문자열을 돌며 소문자로 변환
     palindrome 문자열 체크 loop
     앞 커서 < 뒤 커서 의 조건으로 O(n/2) ---> O(n)
-  - 공간 복잡도: O(1)
+  - 공간 복잡도: O(n)
     새로운 저장공간은 없으며 주어진 문자열 s 하나뿐
 */
 var nonAlphanumericRegex = regexp.MustCompile(`[^a-zA-Z0-9]+`)
@@ -54,6 +54,7 @@ func isPalindrome(s string) bool {
 /*
 1. 개선점
   - regex 오버헤드 제거
+    공간 복잡도를 개선: O(N) -> O(1)
 */
 func isPalindrome_Optimized(s string) bool {
 	front, rear := 0, len(s)-1
