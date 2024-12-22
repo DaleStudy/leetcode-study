@@ -13,7 +13,7 @@
  * @return {number}
  */
 var climbStairs = function(n) {
-  const memo = { 1:1, 2:2 };
+  const memo = [0, 1, 2];
   const recurse = (n) => {
       if(memo[n]) {
           return memo[n];
