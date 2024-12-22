@@ -27,3 +27,31 @@ class Solution:
         newNode.right = self.buildTree(preorder[mid + 1 :], inorder[mid + 1 :])
 
         return newNode
+
+'''
+알고달레 참고해서 최적화 진행했습니다.
+1) 시간복잡도 최적화: dictionary 를 활용해 mid 를 찾는 index 메서드 제거
+2) 공간복잡도 최적화: preorder, inorder 배열을 넘기는것이 아닌 index 만 넘김
+
+Time: O(n)
+Space: O(n)
+
+'''
+
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        indices = { val: idx for idx, val in enumerate(inorder) }
+        pre_iter = iter(preorder)
+
+        def dfs(start, end):
+            if start > end:
+                return None
+            
+            val = next(pre_iter)
+            mid = indices[val]
+
+            left = dfs(start, mid - 1)
+            right = dfs(mid + 1, end)
+            return TreeNode(val, left, right)
+
+        return dfs(0, len(inorder) - 1)
