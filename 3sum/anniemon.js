@@ -12,12 +12,13 @@
  */
 var threeSum = function (nums) {
   nums.sort((a, b) => a - b);
-  const res = [];
 
+  const res = [];
   for (let i = 0; i < nums.length; i++) {
       if (i > 0 && nums[i] === nums[i - 1]) {
           continue;
       }
+
       let l = i + 1;
       let r = nums.length - 1;
       while (l < r) {
