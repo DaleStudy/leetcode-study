@@ -7,7 +7,7 @@
 1) sort와 two pointer를 활용한 풀이
 2) while loop 를 활용한 중복 제거
 
-Time: O(n) = O(n) + O(n)
+Time: O(n^2) = O(n) * O(n)
 Space: O(n)
 """
 
