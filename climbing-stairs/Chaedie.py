@@ -21,3 +21,19 @@ class Solution:
         for i in range(3, n+1):
             dp.append(dp[i-1] + dp[i-2])
         return dp[n]
+
+'''
+solution2:
+    위 솔루션에서 공간 복잡도 최적화
+
+time O(n)
+space O(1)
+'''
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        pt1, pt2 = 1,1
+        for i in range(2, n+1):
+            temp = pt2
+            pt2 = pt1 + pt2
+            pt1 = temp
+        return pt2
