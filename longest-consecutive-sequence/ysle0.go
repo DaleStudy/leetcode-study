@@ -57,7 +57,7 @@ func longestConsecutive(nums []int) int {
 		cursor++
 	}
 
-	//tmp := make([]int, 0, len(cons))
+	// map->array
 	tmp := make([]int, 0, len(cons))
 	for _, v := range cons {
 		tmp = append(tmp, v)
@@ -68,5 +68,6 @@ func longestConsecutive(nums []int) int {
 		func(a, b int) int {
 			return b - a
 		})
+
 	return tmp[0]
 }

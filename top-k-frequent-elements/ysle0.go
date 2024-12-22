@@ -114,14 +114,5 @@ func topKFrequentElements_BucketSort(nums []int, k int) []int {
 		res = append(res, buc[i]...)
 	}
 
-	return res[:k]
+	return res
 }
-
-//
-//func main() {
-//	r1 := topKFrequent([]int{1, 1, 1, 2, 2, 3}, 2)
-//	fmt.Println(r1)
-//
-//	r2 := topKFrequent([]int{1}, 1)
-//	fmt.Println(r2)
-//}
