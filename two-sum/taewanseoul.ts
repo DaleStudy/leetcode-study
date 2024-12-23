@@ -6,6 +6,9 @@
  *
  * https://leetcode.com/problems/two-sum/description/
  */
+
+// O(n) time
+// O(n) space
 function twoSum(nums: number[], target: number): number[] {
   const map = new Map<number, number>();
 
@@ -16,6 +19,3 @@ function twoSum(nums: number[], target: number): number[] {
     map.set(nums[i], i);
   }
 }
-
-// O(n) time
-// O(n) space
