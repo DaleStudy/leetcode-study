@@ -1,5 +1,5 @@
 class Solution {
-    // 시간 : O(logN), 공간(2N)
+    // 시간 : O(NlogN)-정렬하는데 드는 시간복잡도., 공간(2N)
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val sortNums = List(nums.size) { listOf(nums[it], it) }.sortedBy { it[0] }
         // 1. list( list('값', 'index')) 형태의 list를 만들고 값을 기준으로 정렬한다.
