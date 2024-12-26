@@ -23,7 +23,7 @@
 
 // 시간복잡도 : O(N^2) -> 한쪽으로 치우친 트리일 경우 O(N)(index of) + T(N-1)이 될 수 있다.
 // 위 식을 전개해보면 N + N-1 + N-2 + ... + 1 = N(N+1)/2 = O(N^2)
-// 공간복잡도 : O(N) -> N길이의 리스트 크기
+// 공간복잡도 : O(N) ->리트코드 but N길이의 리스트 크기*N번의 재귀호출이 일어날 수 있다. 따라서 O(N^2)가 아닌가...?
 class SolutionGotprgmer {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
 
