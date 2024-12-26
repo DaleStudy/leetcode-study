@@ -24,7 +24,7 @@
 // 시간복잡도 : O(N^2) -> 한쪽으로 치우친 트리일 경우 O(N)(index of) + T(N-1)이 될 수 있다.
 // 위 식을 전개해보면 N + N-1 + N-2 + ... + 1 = N(N+1)/2 = O(N^2)
 // 공간복잡도 : O(N) -> N길이의 리스트 크기
-class Solution {
+class SolutionGotprgmer {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
 
         if(preorder.length == 0 || indexOf(inorder,preorder[0]) == -1){
