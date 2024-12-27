@@ -1,4 +1,4 @@
-// Time complexity: O(nlogn)
+// Time complexity: O(n)
 // Space complexity: O(n)
 
 /**
@@ -7,27 +7,16 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-  const n = nums.length;
+  const map = new Map();
 
-  const mappedNums = nums.map((num, i) => [num, i]);
-  mappedNums.sort((a, b) => a[0] - b[0]);
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    const diff = target - num;
 
-  let left = 0;
-  let right = n - 1;
-
-  while (left < right) {
-    const sum = mappedNums[left][0] + mappedNums[right][0];
-
-    if (sum > target) {
-      right--;
-      continue;
+    if (map.has(diff)) {
+      return [i, map.get(diff)];
+    } else {
+      map.set(num, i);
     }
-
-    if (sum < target) {
-      left++;
-      continue;
-    }
-
-    return [mappedNums[left][1], mappedNums[right][1]];
   }
 };
