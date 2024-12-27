@@ -5,13 +5,13 @@ Constraints:
     - -10^9 <= target <= 10^9
     - Only one valid answer exists.
     
-    Time Complexity: O(n²)
+Time Complexity: O(n²)
     - 중첩 반복문을 사용하기 때문
     - 첫 번째 반복문: n번
     - 각각에 대해 두 번째 반복문: n-1, n-2, ... 1번
     - 따라서 총 연산 횟수는 n * (n-1)/2로 O(n²)
     
-    Space Complexity: O(1)
+Space Complexity: O(1)
     - 추가 공간을 사용하지 않음
     - result 리스트는 항상 크기가 2로 고정
 """
@@ -23,5 +23,3 @@ class Solution:
             for j in range(i+1, len(nums)):
                 if nums[j] == target - nums[i]:
                     return [i, j]
-
-
