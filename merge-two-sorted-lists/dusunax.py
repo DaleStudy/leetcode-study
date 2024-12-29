@@ -1,7 +1,7 @@
 '''
 # 21. Merge Two Sorted Lists
 
-A. iterative approach: use a temp node to store the result.
+A. iterative approach: use a two pointers to merge the two lists.
 B. recursive approach: use recursion to merge the two lists.
 
 
