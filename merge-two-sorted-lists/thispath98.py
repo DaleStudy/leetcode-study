@@ -4,7 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoListsList(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         """
         Intuition:
             두 리스트의 원소를 각각 비교하면서 한번씩 스캔한다.
@@ -42,3 +42,45 @@ class Solution:
             sorted_node = ListNode(val, sorted_node)
 
         return sorted_node
+
+    def mergeTwoListsNode(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        """
+        Intuition:
+            파이썬 리스트를 사용하지 않고
+            주어진 ListNode로부터 바로 시작한다.
+
+        Time Complexity:
+            O(N):
+                두개의 리스트를 1번 순회하며 답을 찾으므로,
+                O(N)의 시간복잡도가 소요된다.
+
+        Space Complexity:
+            O(1):
+                ListNode를 바로 사용하므로
+                상수 만큼의 O(1)의 공간복잡도가 소요된다.
+
+        Key takeaway:
+            링크드 리스트를 오랜만에 접하니 잘 풀지 못했던 것 같다.
+            전통적인 자료구조를 OOP 관점으로 고민해보자.
+        """
+        sorted_node = ListNode()
+        current_node = sorted_node
+
+        while True:
+            if list1 is None:
+                current_node.next = list2
+                break
+            elif list2 is None:
+                current_node.next = list1
+                break
+
+            if list1.val < list2.val:
+                current_node.next = ListNode(list1.val)
+                current_node = current_node.next
+                list1 = list1.next
+            else:
+                current_node.next = ListNode(list2.val)
+                current_node = current_node.next
+                list2 = list2.next
+
+        return sorted_node.next
