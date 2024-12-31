@@ -2,7 +2,7 @@
     Problem: https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
     Description: Given two integer arrays preorder and inorder, construct and return the binary tree.
     Concept: Array, Hash Table, Divide and Conquer, Tree, Binary Tree
-    Time Complexity: O(NM), Runtime 2ms
+    Time Complexity: O(N²), Runtime 2ms
     Space Complexity: O(N), Memory 45.02MB
 */
 import java.util.HashMap;
