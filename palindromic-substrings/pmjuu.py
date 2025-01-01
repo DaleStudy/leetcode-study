@@ -1,3 +1,4 @@
+# Dynamic programming
 class Solution:
     def countSubstrings(self, s: str) -> int:
         n = len(s)
@@ -28,3 +29,32 @@ class Solution:
 # 공간 복잡도:
 # - DP 테이블(dp)은 O(n^2)의 공간을 사용
 # - 추가 변수는 O(1)이므로 전체 공간 복잡도는 O(n^2)
+
+
+# 투 포인터 방식
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        def expand_around_center(left: int, right: int) -> int:
+            count = 0
+            # 좌우로 확장하며 팰린드롬인지 확인
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                count += 1
+                left -= 1
+                right += 1
+            return count
+
+        total_count = 0
+        for i in range(len(s)):
+            # 홀수 길이 팰린드롬 (중심이 문자 하나)
+            total_count += expand_around_center(i, i)
+            # 짝수 길이 팰린드롬 (중심이 문자 두 개)
+            total_count += expand_around_center(i, i + 1)
+
+        return total_count
+
+# 시간 복잡도:
+# - 각 문자에서 중심을 기준으로 확장하므로 최대 O(n) 확장
+# - 모든 문자에 대해 확장을 시도하므로 O(n^2)
+
+# 공간 복잡도:
+# - 추가 공간 사용 없이 O(1)
