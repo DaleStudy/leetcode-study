@@ -1,6 +1,6 @@
 // h: height of the board, w: width of the board, n: length of the word
 // Time complexity: O(h * w * 4**n)
-// Space complexity: O(h * w + n)
+// Space complexity: O(n)
 
 /**
  * @param {character[][]} board
@@ -15,10 +15,6 @@ var exist = function (board, word) {
   const dy = [1, 0, -1, 0];
   const dx = [0, 1, 0, -1];
 
-  const checked = Array.from({ length: h }, () =>
-    Array.from({ length: w }, () => 0)
-  );
-
   let answer = false;
 
   const dfs = (current, index) => {
@@ -28,7 +24,8 @@ var exist = function (board, word) {
     }
 
     const [cy, cx] = current;
-    checked[cy][cx] = 1;
+    const value = board[cy][cx];
+    board[cy][cx] = "";
 
     for (let i = 0; i < dy.length; i++) {
       const ny = cy + dy[i];
@@ -40,14 +37,14 @@ var exist = function (board, word) {
         ny < h &&
         nx >= 0 &&
         nx < w &&
-        checked[ny][nx] === 0 &&
+        board[ny][nx] &&
         word[ni] === board[ny][nx]
       ) {
         dfs([ny, nx], ni);
       }
     }
 
-    checked[cy][cx] = 0;
+    board[cy][cx] = value;
   };
 
   for (let i = 0; i < h; i++) {
