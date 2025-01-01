@@ -1,4 +1,7 @@
-# O((LogN)^N) times, O(1) spaces
+# O(N^3) times, O(1) spaces
+# 내부 while문의 관계가 외부 while문의 sub_str_len에 따라 반복횟수가 줄어드므로, 1+2+...N = N(N-1)/2 = O(N2) 시간 소요
+# 추라고 내부 while에서 sub_str_len에 따라 s가 인덱싱되므로 최대 O(N) 시간이 소요
+# 최종적으로 O(N^2 * N) = O(N^3)이 소요됨
 class Solution:
     def countSubstrings(self, s: str) -> int:
         sub_str_len = 1
