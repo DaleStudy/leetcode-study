@@ -12,15 +12,7 @@ class Solution {
         ListNode head = new ListNode();
         ListNode curr = head;
 
-        while (true) {
-            if (list1 == null) {
-                curr.next = list2;
-                break;
-            } else if (list2 == null) {
-                curr.next = list1;
-                break;
-            }
-
+        while (list1 != null && list2 != null) {
             if (list1.val <= list2.val) {
                 curr.next = new ListNode(list1.val);
                 curr = curr.next;
@@ -30,6 +22,12 @@ class Solution {
                 curr = curr.next;
                 list2 = list2.next;
             }
+        }
+
+        if (list1 == null) {
+            curr.next = list2;
+        } else if (list2 == null) {
+            curr.next = list1;
         }
 
         return head.next;
