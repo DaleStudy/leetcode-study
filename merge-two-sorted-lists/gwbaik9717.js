@@ -20,10 +20,10 @@ var mergeTwoLists = function (list1, list2) {
 
   while (list1 && list2) {
     if (list1.val < list2.val) {
-      current.next = new ListNode(list1.val);
+      current.next = list1;
       list1 = list1.next;
     } else {
-      current.next = new ListNode(list2.val);
+      current.next = list2;
       list2 = list2.next;
     }
 
