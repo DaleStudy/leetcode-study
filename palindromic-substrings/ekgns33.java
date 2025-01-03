@@ -21,4 +21,3 @@ class Solution {
     return cnt;
   }
 }
-// Compare this snippet from valid-palindrome-ii/ekgns33.java:
