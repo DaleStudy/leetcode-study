@@ -19,3 +19,21 @@ class Solution:
         
 
         return result
+
+# DP 풀이
+# O(N^2) times, O(N^2) spaces
+# start, end 지점을 순회하면서 이전 계산값을 재사용하여 회문을 파악
+class Solution2:
+    def countSubstrings(self, s: str) -> int:
+        dp = {}
+
+        for end in range(len(s)):
+            for start in range(end, -1, -1):
+                if start == end:
+                    dp[(start, end)] = True
+                elif start + 1 == end:
+                    dp[(start, end)] = s[start] == s[end]
+                else:
+                    dp[(start, end)] = s[start] == s[end] and dp[(start+1, end-1)]
+
+        return list(dp.values()).count(True)
