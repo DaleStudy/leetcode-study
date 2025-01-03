@@ -20,7 +20,7 @@
  */
 
 // O(n + m) time
-// O(1) space
+// O(n + m) space
 function mergeTwoLists(
   list1: ListNode | null,
   list2: ListNode | null
