@@ -3,7 +3,7 @@
     Description: return the head of the merged linked list of two sorted linked lists
     Concept: Linked List, Recursion
     Time Complexity: O(N+M), Runtime 0ms
-    Space Complexity: O(1), Memory 42.74MB
+    Space Complexity: O(N+M), Memory 42.74MB
 */
 
 /**
