@@ -13,11 +13,10 @@
  */
 
 function missingNumber(nums: number[]): number {
-  const map = new Map();
-  nums.forEach((num) => map.set(num, 1));
+  const set = new Set(nums);
 
   for (let i = 0; i < nums.length; i++) {
-    if (!map.has(i)) return i;
+    if (!set.has(i)) return i;
   }
 
   return nums.length;
@@ -30,10 +29,7 @@ function missingNumber(nums: number[]): number {
 
   for (let i = 0; i <= nums.length; i++) {
     sum += i;
-  }
-
-  for (let i = 0; i < nums.length; i++) {
-    sum -= nums[i];
+    if (i < nums.length) sum -= nums[i];
   }
 
   return sum;
