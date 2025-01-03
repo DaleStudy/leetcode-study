@@ -2,8 +2,8 @@
     Problem: https://leetcode.com/problems/coin-change/
     Description: return the fewest number of coins that you need to make up that amount
     Concept: Array, Dynamic Programming, Breadth-First Search
-    Time Complexity: O(N²), Runtime 15ms   - N is the amount
-    Space Complexity: O(N), Memory 44.28MB
+    Time Complexity: O(NM), Runtime 15ms   - M is the amount
+    Space Complexity: O(M), Memory 44.28MB
 */
 class Solution {
     public int coinChange(int[] coins, int amount) {
