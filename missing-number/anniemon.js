@@ -7,10 +7,8 @@
  * @return {number}
  */
 var missingNumber = function(nums) {
-  let totalSum = 0;
-  for(let i = 0; i <= nums.length; i++) {
-      totalSum += i;
-  }
+  const n = nums.length;
+  const totalSum = n * (n + 1) / 2;
   let numsSum = 0;
   for(const n of nums) {
       numsSum += n;
