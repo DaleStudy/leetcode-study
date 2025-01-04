@@ -1,5 +1,5 @@
 class Solution:
-    # O(n*m), n=len(coins), m=amount
+    # O(n*m), n = len(coins), m = amount
     def coinChange(self, coins: list[int], amount: int) -> int:
         dp = [amount+1] * (amount+1)
         dp[0] = 0
