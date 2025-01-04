@@ -1,8 +1,15 @@
 class Solution {
     public int countSubstrings(String s) {
         /** 
-            각 문자를 중간으로 갖는 palindrome 여부 체크
-            + 두개의 문자를 중간으로 갖는 palindrome 여부 체크
+        1. understanding
+        - find the number of palindromic substrings
+        2. strategy
+        - iterate over each character, count below substrings
+        - First, start with same position, move left and right directions each, until two charactes are not same.
+        - Second, start with i and i + 1 position, move left and right directions until two chracters are not same.
+        3. complexity
+        - time: O(N^2)
+        - space: O(1)
         */
         int count = 0;
         int length = s.length();
@@ -27,3 +34,4 @@ class Solution {
         return count; // O(N^2)
     }
 }
+
