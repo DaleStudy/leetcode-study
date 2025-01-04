@@ -13,7 +13,6 @@ class Solution {
         - time: O(CA), where C is the length of coins, A is amount value
         - space: O(A), where A is amount value
         */
-        Arrays.sort(coins);
 
         int[] dp = new int[amount + 1];
         for (int i = 1; i <= amount; i++) {
