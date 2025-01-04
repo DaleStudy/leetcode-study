@@ -1,5 +1,5 @@
 class Solution:
-    # (O(m*n))
+    # O(m*n), m*n = board's width,heigh
     def exist(self, board: List[List[str]], word: str) -> bool:
         dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         result = False
