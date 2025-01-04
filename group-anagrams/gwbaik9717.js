@@ -1,5 +1,5 @@
 // n: length of strs, m: length of strs[i]
-// Time complexity: O(nmlogm)
+// Time complexity: O(nm)
 // Space complexity: O(n)
 
 /**
@@ -10,21 +10,29 @@ var groupAnagrams = function (strs) {
   const answer = [];
   const anagramDict = new Map();
 
-  const sortedStrs = strs.map((str) => {
-    const splitted = str.split("");
-    splitted.sort();
-    return splitted.join("");
-  });
+  const getKey = (str) => {
+    const counter = Array.from(
+      { length: "z".charCodeAt() - "a".charCodeAt() + 1 },
+      () => 0
+    );
 
-  for (let i = 0; i < sortedStrs.length; i++) {
-    const sortedStr = sortedStrs[i];
-    const originalStr = strs[i];
-
-    if (!anagramDict.has(sortedStr)) {
-      anagramDict.set(sortedStr, []);
+    for (const chr of str) {
+      const index = chr.charCodeAt() - "a".charCodeAt();
+      counter[index]++;
     }
 
-    anagramDict.get(sortedStr).push(originalStr);
+    return counter.join("#");
+  };
+
+  for (let i = 0; i < strs.length; i++) {
+    const str = strs[i];
+    const key = getKey(str);
+
+    if (!anagramDict.has(key)) {
+      anagramDict.set(key, []);
+    }
+
+    anagramDict.get(key).push(str);
   }
 
   for (const [_, value] of anagramDict) {
