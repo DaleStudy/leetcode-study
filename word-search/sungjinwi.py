@@ -31,9 +31,9 @@ class Solution:
                 return True
             
             visit.add((m, n))
-            if any (dfs(m + r, n + c, idx + 1) \
-            for (r, c) in [(1, 0), (-1, 0), (0, 1), (0, -1)]):
-                return True
+            for (r, c) in [(1, 0), (-1, 0), (0, 1), (0, -1)] :
+                if(dfs(m + r, n + c, idx + 1)) :
+                    return True
             visit.remove((m, n))
             return False
         
