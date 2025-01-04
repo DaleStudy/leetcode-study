@@ -53,7 +53,7 @@ fun lengthDivider(s: String): List<List<Int>> {
 * 메모이제이션을 사용한 문제 해결
 * 시간 복잡도: O(n)
 * -> 주어진 문자열의 길이 만큼 순회
-* 공간 복잡도: O(1)
+* 공간 복잡도: O(n)
 * -> 주어진 길이 만큼 기존 정보를 '메모'할 수 있는 공간
 * */
 fun numDecodings(s: String): Int {
