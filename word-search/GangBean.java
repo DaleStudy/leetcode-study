@@ -16,23 +16,19 @@ class Solution {
         - space: O(M * N) which marks if block of the indices is visited or not
         */
         boolean[][] isVisited = new boolean[board.length][board[0].length];
-        boolean ret = false;
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[0].length; x++) {
-                if (board[y][x] == word.charAt(0)) {
-                    isVisited[y][x] = true;
-                    ret = ret || isWordExists(board, isVisited, word, y, x, 0);
-                    isVisited[y][x] = false;
-                }
+                if (isWordExists(board, isVisited, word, y, x, 0)) return true;
             }
         }
-        return ret;
+        return false;
     }
 
     private boolean isWordExists(char[][] board, boolean[][] isVisited, String word, int y, int x, int idx) {
+        if (board[y][x] != word.charAt(idx)) return false;
         if (idx == word.length() - 1) return true;
-        // System.out.println(String.format("(%d, %d): %s", y, x, word.charAt(idx)));
-        boolean isExists = false;
+        // boolean isExists = false;
+        isVisited[y][x] = true;
         for (int dir = 0; dir < 4; dir++) {
             int ny = y + dy[dir];
             int nx = x + dx[dir];
@@ -41,11 +37,12 @@ class Solution {
             && !isVisited[ny][nx] 
             && word.charAt(idx + 1) == board[ny][nx]) {
                 isVisited[ny][nx] = true;
-                isExists = isExists || isWordExists(board, isVisited, word, ny, nx, idx + 1);
+                if (isWordExists(board, isVisited, word, ny, nx, idx + 1)) return true;
                 isVisited[ny][nx] = false;
             }
         }
-        return isExists;
+        isVisited[y][x] = false;
+        return false;
     }
 }
 
