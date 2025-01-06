@@ -1,4 +1,6 @@
 /**
+ * 
+ * @problem
  * 주어진 주식 가격 배열에서 한 번의 매수와 한 번의 매도를 통해 얻을 수 있는 최대 이익을 계산합니다.
  * 매수는 매도보다 반드시 먼저 이루어져야 합니다.
  *
@@ -32,3 +34,6 @@ function maxProfit(prices) {
 
     return max_profit; // 최대 이익 반환
 }
+
+console.log(maxProfit([7, 1, 5, 3, 6, 4])); // 5
+console.log(maxProfit([7, 6, 4, 3, 1])); // 0
