@@ -16,6 +16,11 @@
  * groupAnagrams(["a"]); // [["a"]]
  *
  * @description
+ * - 각 문자열을 정렬하여 동일한 문자를 가진 문자열들을 그룹화합니다.
+ * - 정렬된 문자열을 키로 사용하여 해시맵(Map)에 저장합니다.
+ * - 최종적으로 해시맵의 값들만 추출하여 반환합니다.
+ *
+ * @complexity
  * - 시간 복잡도: O(N * K log K)
  *   ㄴ N: 입력 문자열 배열의 길이
  *   ㄴ K: 각 문자열의 평균 길이
@@ -24,25 +29,17 @@
  *   해시맵에 저장되는 키와 값의 총 길이에 비례합니다.
  */
 function groupAnagrams(strs: string[]): string[][] {
-    // 애너그램 그룹을 저장할 해시맵
-    const anagrams: Record<string, string[]> = {};
+    const anagrams = new Map<string, string[]>();
 
-    // 입력 문자열 배열을 순회
     for (const str of strs) {
-        // 문자열을 정렬하여 애너그램 그룹의 키 생성
         const key = str.split('').sort().join('');
-        
-        // 키가 해시맵에 없으면 초기화
-        if (!anagrams[key]) {
-            anagrams[key] = [];
+        if (!anagrams.has(key)) {
+            anagrams.set(key, []);
         }
-
-        // 해당 키에 문자열 추가
-        anagrams[key].push(str);
+        anagrams.get(key)!.push(str);
     }
 
-    // 해시맵의 값들만 반환 (애너그램 그룹)
-    return Object.values(anagrams);
+    return Array.from(anagrams.values());
 }
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])); // [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]
