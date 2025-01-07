@@ -16,11 +16,12 @@ SC: O(N * K)
 - using a hash map to store the sorted strings. = O(N * K)
 '''
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        result = defaultdict(list)
-        
-        for str in strs: # TC: O(N)
-            sorted_key = ''.join(sorted(str)) # sorting 👉 TC: O(K * Log(K))
-            result[sorted_key].append(str) # TC: O(1) on average
-        
-        return list(result.values())
+  def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+      result = defaultdict(list)
+      
+      for str in strs: # TC: O(N)
+          sorted_key = ''.join(sorted(str)) # sorting 👉 TC: O(K * Log(K))
+          result[sorted_key].append(str) # TC: O(1) on average
+      
+      return list(result.values())
+
