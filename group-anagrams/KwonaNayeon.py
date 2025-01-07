@@ -29,3 +29,4 @@ class Solution:
                 anagram_dict[sorted_str] = [s]
         
         return list(anagram_dict.values())
+
