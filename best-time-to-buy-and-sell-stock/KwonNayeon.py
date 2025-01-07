@@ -16,6 +16,7 @@ Space Complexity: O(1)
 To Do:
 - 다른 접근 방법 찾아보기 (Two Pointers, Dynamic Programming)
 """
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         min_price = prices[0]
