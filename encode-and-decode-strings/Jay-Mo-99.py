@@ -17,7 +17,7 @@
 
 
 
-        #Space Complexity: O(1)
+        #Space Complexity:
         #-encode: O(N*L)
         #-- answer: join 메서드로 생성되는 문자열은 strs 리스트의 모든 문자열을 합친 값이므로 -> O(N * L)
         #-decode: O(M)
