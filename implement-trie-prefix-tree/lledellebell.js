@@ -3,6 +3,11 @@
  * Trie를 구현합니다.
  * - 메모리 사용량을 최적화하면서 정확한 검색 결과를 보장해야 합니다.
  * 
+ * @constraints
+ * - word와 prefix의 길이는 최소 1, 최대 2000입니다.
+ * - word와 prefix는 소문자 영어 알파벳(a-z)만으로 구성됩니다.
+ * - insert, search, startsWith 함수 호출은 총 30,000번을 넘지 않습니다.
+ * 
  * @example
  * const trie = new Trie();
  * trie.insert("apple");   // undefined
@@ -12,7 +17,7 @@
  * trie.insert("app");     // undefined
  * trie.search("app");     // true
  * 
- * @description
+ * @complexity
  * - 시간복잡도:
  *   ㄴ insert: O(m) (m은 단어 길이)
  *   ㄴ search: O(m) (m은 단어 길이)

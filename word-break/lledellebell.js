@@ -27,7 +27,7 @@
  *   ㄴ Output: false
  *   ㄴ Explanation: "catsandog"는 wordDict의 단어들로 나눌 수 없습니다.
  * 
- * @description
+ * @complexity
  * - 시간 복잡도: O(n^2)
  *   ㄴ 외부 반복문: 문자열 s의 길이 n에 대해 1부터 n까지 반복 (O(n))
  *   ㄴ 내부 반복문: 각 i에 대해 최대 i번 반복 (O(n))

@@ -10,7 +10,7 @@
  * const decoded = decode(encoded);
  * console.log(decoded); // ["hello", "world"]
  * 
- * @description
+ * @complexity
  * - 시간 복잡도:
  *   ㄴ encode: O(n) (n은 문자열 배열의 총 길이)
  *   ㄴ decode: O(n) (n은 인코딩된 문자열의 길이)
