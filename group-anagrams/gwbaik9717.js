@@ -11,13 +11,16 @@ var groupAnagrams = function (strs) {
   const anagramDict = new Map();
 
   const getKey = (str) => {
+    const minCharCode = "a".charCodeAt();
+    const maxCharCode = "z".charCodeAt();
+
     const counter = Array.from(
-      { length: "z".charCodeAt() - "a".charCodeAt() + 1 },
+      { length: maxCharCode - minCharCode + 1 },
       () => 0
     );
 
     for (const chr of str) {
-      const index = chr.charCodeAt() - "a".charCodeAt();
+      const index = chr.charCodeAt() - minCharCode;
       counter[index]++;
     }
 
