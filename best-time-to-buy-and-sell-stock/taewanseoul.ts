@@ -8,7 +8,7 @@
  */
 
 // O(n) time
-// O(n) space
+// O(1) space
 function maxProfit(prices: number[]): number {
   let highestProfit = 0;
   let left = 0;
