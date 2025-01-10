@@ -8,6 +8,23 @@ var Trie = function () {
 };
 
 /**
+ * @param {string} str
+ * @return {TrieNode | null}
+ */
+Trie.prototype._traverse = function (str) {
+  let current = this.head;
+
+  for (const chr of str) {
+    if (!current.children.has(chr)) {
+      return null;
+    }
+    current = current.children.get(chr);
+  }
+
+  return current;
+};
+
+/**
  * @param {string} word
  * @return {void}
  */
@@ -30,17 +47,13 @@ Trie.prototype.insert = function (word) {
  * @return {boolean}
  */
 Trie.prototype.search = function (word) {
-  let current = this.head;
+  const node = this._traverse(word);
 
-  for (const chr of word) {
-    if (!current.children.has(chr)) {
-      return false;
-    }
-
-    current = current.children.get(chr);
+  if (!node) {
+    return false;
   }
 
-  return current.isEnd;
+  return node.isEnd;
 };
 
 /**
@@ -48,14 +61,10 @@ Trie.prototype.search = function (word) {
  * @return {boolean}
  */
 Trie.prototype.startsWith = function (prefix) {
-  let current = this.head;
+  const node = this._traverse(prefix);
 
-  for (const chr of prefix) {
-    if (!current.children.has(chr)) {
-      return false;
-    }
-
-    current = current.children.get(chr);
+  if (!node) {
+    return false;
   }
 
   return true;
