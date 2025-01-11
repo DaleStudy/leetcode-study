@@ -18,7 +18,7 @@ function groupAnagrams(strs: string[]): string[][] {
         }
         group[key].push(s)
     }
-    console.log(group)
+    // console.log(group)
 
     return Object.values(group)
 }
