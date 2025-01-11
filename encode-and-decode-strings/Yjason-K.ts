@@ -26,4 +26,3 @@ function encode(strs: string[]): string {
     return s.split(':');
   }
 
-  
