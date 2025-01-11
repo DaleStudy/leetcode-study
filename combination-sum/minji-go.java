@@ -2,10 +2,8 @@
     Problem: https://leetcode.com/problems/combination-sum/
     Description: return a list of all unique combinations of candidates where the chosen numbers sum to target
     Concept: Array, Backtracking
-    Time Complexity: O(Nⁿ), Runtime 2ms
-    Space Complexity: O(N), Memory 44.88MB
-
-    - Time Complexity, Space Complexity를 어떻게 계산해야할지 어렵네요 :(
+    Time Complexity: O(Nᵀ), Runtime 2ms 
+    Space Complexity: O(T), Memory 44.88MB
 */
 class Solution {
     public List<List<Integer>> answer = new ArrayList<>();
