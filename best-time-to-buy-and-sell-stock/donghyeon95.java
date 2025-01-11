@@ -21,3 +21,4 @@ class Solution {
 		return Math.max(result, maxProfit);
 	}
 }
+
