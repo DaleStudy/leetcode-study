@@ -22,3 +22,4 @@ var groupAnagrams = function (strs) {
 
   return Object.values(map);
 };
+
