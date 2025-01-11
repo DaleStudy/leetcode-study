@@ -11,7 +11,7 @@
  *  - m: 단어 사전 길이
  *  - k: 단어 사전 내 단어 길이
  * 
- * 공간 복잠성 O(n)
+ * 공간 복잡성 O(n)
  *  - 메모이제이션(memo) 및 재귀 호출 스택 크기가 문자열 길이 n에 비례.
  */
 function wordBreak(s: string, wordDict: string[]): boolean {
