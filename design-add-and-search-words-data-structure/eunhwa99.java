@@ -47,7 +47,7 @@ class WordDictionary {
 
 // 풀이2: trie
 // 시간 복잡도: N(단어 길이) -> O(26^N * N)
-// 공간 복잡도: O(M)
+// 공간 복잡도: O(N * M) - M(단어 개수)
 class TrieNode {
     TrieNode[] child;
     boolean isEnd; // flag if the node is end.
