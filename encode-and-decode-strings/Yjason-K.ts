@@ -25,4 +25,5 @@ function encode(strs: string[]): string {
   function decode(s: string): string[] {
     return s.split(':');
   }
+
   

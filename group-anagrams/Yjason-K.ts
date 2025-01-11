@@ -31,3 +31,4 @@ function groupAnagrams(strs: string[]): string[][] {
     // anagramMap에서 values만 배열로해서 출력
     return Array.from(anagramMap.values())
 }
+
