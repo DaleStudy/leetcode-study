@@ -27,6 +27,3 @@ function encode(strs: string[]): string {
   }
 
   
-
-
-  
