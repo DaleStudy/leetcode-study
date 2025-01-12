@@ -51,13 +51,14 @@ class Solution:
 #   => 총 공간 복잡도: O(k)
 
 
+from collections import Counter
+
 class Solution:
     def exist(self, board: list[list[str]], word: str) -> bool:
         n, m = len(board), len(board[0])
         word_length = len(word)
         
         # 조기 종료: board에 word를 구성할 충분한 문자가 있는지 확인
-        from collections import Counter
         board_counter = Counter(char for row in board for char in row)
         word_counter = Counter(word)
         if any(word_counter[char] > board_counter[char] for char in word_counter):
