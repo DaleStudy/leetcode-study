@@ -25,7 +25,9 @@
  * 
  */
 function maxArea(height: number[]): number {
-    let left = 0, right = height.length - 1, maxArea = 0;
+    let left = 0, 
+        right = height.length - 1, 
+        maxArea = 0;
 
     while (left < right) {
         // 현재 넓이 계산 및 최대값 갱신
