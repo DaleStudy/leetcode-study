@@ -1,6 +1,7 @@
 package leetcode_study
 
 class Solution {
+    /** 시간 : O(n), 공간 : O(n) */
     fun isValid(s: String): Boolean {
         val stack = Stack<Char>()
         val openParentheses = "([{"
