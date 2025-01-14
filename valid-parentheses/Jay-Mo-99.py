@@ -2,6 +2,7 @@
         #매개변수 string s의 각 character인 c 가 open bracket이면 temp 리스트에 추가한다. 
         #c가 close bracket이면 temp의 마지막 element와 짝이 맞는지 검사한다. 짝이 아니거나 temp에 아무 요소도 없으면 return false
         #검사 이후 temp에 잔여 요소가 남아있으면 짝이 맞지 않았다는 뜻이니 return false, 아닐 경우 return true
+        #   
 
         #Big O
         #- N: 문자열 s의 길이
