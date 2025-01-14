@@ -38,12 +38,10 @@ class WordDictionary {
                 curr.children.put(ch, new Node(ch));
             }
 
-            if (i == word.length() - 1) {
-                curr.children.get(ch).ends = true;
-            } else {
-                curr = curr.children.get(ch);
-            }
+            curr = curr.children.get(ch);
         }
+
+        curr.ends = true;
     }
 
     public boolean search(String word) {
