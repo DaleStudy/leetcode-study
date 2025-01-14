@@ -1,6 +1,6 @@
 // two pointer
 
-// 시간 복잡도: O(nlogn) - 투 포인터 
+// 시간 복잡도: O(n) - 투 포인터
 // 공간 복잡도: O(n) - height 배열 크기
 
 class Solution {
