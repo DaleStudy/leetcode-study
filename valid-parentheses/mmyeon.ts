@@ -9,7 +9,7 @@
  *
  * 공간복잡도 : O(k)
  *  - pairs 객체 고정된 크기로 저장 O(1)
- *  - stack에 열린 괄호 개수만큼 담기니까 O(k)
+ *  - k는 열린 괄호 개수, stack에 전체 문자열 중 k만큼만 담기니까 O(k)
  */
 
 function isValid(s: string): boolean {

@@ -4,11 +4,11 @@
  * 접근 방법 :
  *  - right -> bottom -> left -> top 순서로 진행하면서 경계 업데이트 처리
  *
- * 시간복잡도 : O(m x n)
- *  - m x n 행렬의 모든 숫자 방문하니까 O(m x n)
+ * 시간복잡도 : O(n)
+ *  - n은 행렬의 모든 숫자로, 모든 숫자를 한 번씩 방문하므로 O(n)
  *
  * 공간복잡도 : O(n)
- *  - 숫자 길이만큼 배열에 담음 *
+ *  - 모든 숫자를 저장하기 위해서 배열 사용하므로 O(n)
  */
 
 function spiralOrder(matrix: number[][]): number[] {
