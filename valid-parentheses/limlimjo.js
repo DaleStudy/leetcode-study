@@ -15,11 +15,11 @@ var isValid = function (s) {
     if (brackets[i]) {
       stack.push(brackets[i]);
       // 닫는 괄호일 경우
-    } else if (i !== stack.pop()) {
+    } else if (stack.length === 0 || i !== stack.pop()) {
       return false;
     }
   }
-  return true;
+  return stack.length === 0;
 };
 
 // 시간복잡도: O(n)
