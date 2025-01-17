@@ -7,11 +7,11 @@ class Solution {
         val count = IntArray(nums.size)
         count[0] = 1
         var prev = nums[0]
-        for (i in 1 until nums.size){
-            if(prev < nums[i]){
-                count[i] += count[i-1] +1
-            }else {
-                count[i] = count[i-1]
+        for (i in 1 until nums.size) {
+            if (prev < nums[i]) {
+                count[i] += count[i - 1] + 1
+            } else {
+                count[i] = count[i - 1]
             }
             prev = nums[i]
         }
