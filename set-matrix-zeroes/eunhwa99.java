@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 // 시간 복잡도: O(row x col)
-// 공간 복잡도: O(row x col)
+// 공간 복잡도: O(row + col)
 class Solution {
 
   public void setZeroes(int[][] matrix) {
@@ -37,4 +37,5 @@ class Solution {
     }
   }
 }
+
 
