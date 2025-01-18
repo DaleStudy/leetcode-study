@@ -12,16 +12,16 @@
  */
 function lengthOfLIS(nums: number[]): number {
     // 수열을 저장할 배열
-    const sequnces: number[] = [];
+    const sequences: number[] = [];
 
     for (let num of nums) {
         // 이분 탐색을 사용하여 num이 들어갈 위치름 찾음
         let left = 0;
-        let right = sequnces.length;
+        let right = sequences.length;
 
         while (left < right) {
             const mid = Math.floor((left + right) / 2);
-            if (sequnces[mid] < num) {
+            if (sequences[mid] < num) {
                 left = mid + 1;
             } else {
                 right = mid;
@@ -29,13 +29,13 @@ function lengthOfLIS(nums: number[]): number {
         }
 
         // 새로운 요소를 추가하거나 기존 요소를 대체
-        if (left < sequnces.length) {
-            sequnces[left] = num;
+        if (left < sequences.length) {
+            sequences[left] = num;
         } else {
-            sequnces.push(num)
+            sequences.push(num)
         }
     }
 
-    return sequnces.length;
+    return sequences.length;
 }
 
