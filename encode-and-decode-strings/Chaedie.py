@@ -3,8 +3,13 @@ Solution:
     1) encode: 각 글자의 앞에 글자수와 # 라는 delimiter 를 붙여 stringify 한다.
     2) decode: length 를 참고삼아 word를 따내어 result 배열을 만든다.
 
-Time: O(n)
-Space: O(n)
+encode:
+    Time: O(n) (n: strs 배열의 길이만큼 연산)
+    Space: O(1)
+
+decode:    
+    Time: O(n) (n: s 의 길이만큼 연산)
+    Space: O(m) (m: decode 이후 배열의 길이)
 """
 
 
