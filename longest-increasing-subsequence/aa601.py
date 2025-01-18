@@ -20,4 +20,3 @@ class Solution:
                 # LIS길이가 더 적거나 같은 상황. => LIS배열이 업데이트X
         """
         return max(dp)
-    
