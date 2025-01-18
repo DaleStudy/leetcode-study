@@ -13,24 +13,23 @@ function isValid(s: string): boolean {
     if (s.length % 2 !== 0) return false;
     if (s === '') return true;
 
-    const openingBrackets = ['(', '{', '['];
     const bracketSets: Record<string, string> = { '(': ')', '{': '}', '[': ']' };
     const bracketStack: string[] = [];
 
     for (const char of s) {
-        // 여는 경우, 스택에 추가
-        if (openingBrackets.includes(char)) {
+        if (char in bracketSets) {
+            // 여는 괄호인 경우 스택에 추가
             bracketStack.push(char);
         } else {
-            // 닫는 괄호 경우, 스택에서 가장 마지막에 추가한 여는 괄호를 꺼냄
+            // 닫는 괄호인 경우 스택에서 마지막 여는 괄호를 꺼냄
             const lastOpeningBracket = bracketStack.pop();
-            // bracketSets 과 유효하지 않은 괄호인 경우
+            // 유효하지 않은 괄호 조합인 경우
             if (bracketSets[lastOpeningBracket!] !== char) {
                 return false;
             }
         }
     }
 
-    // 스택이 비어있으면 모든 괄호가 유효한 경우
+    // 스택이 비어있으면 모든 괄호가 유효
     return bracketStack.length === 0;
 }
