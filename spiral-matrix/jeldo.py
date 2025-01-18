@@ -1,4 +1,5 @@
 class Solution:
+    # O(m*n), m = len(row), n = len(column)
     def spiralOrder(self, m: list[list[int]]) -> list[int]:
         dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         result = []
@@ -15,12 +16,3 @@ class Solution:
                 next_r, next_c = r + dirs[heading][0], c + dirs[heading][1]
             r, c = next_r, next_c
         return result
-
-
-cases = [
-    [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
-    [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]],
-]
-
-for c in cases:
-    print(Solution().spiralOrder(c))
