@@ -1,6 +1,6 @@
 # 복잡도
 # 시간 복잡도: 링크드 리스트의 길이 N만큼 순회하는데 O(N)을, 다음 링크드 리스트를 검색하는 데 O(1)을 소요하므로 O(N)*O(1) = O(N)
-# 공간 복잡도: 리턴할 dummy의 길이 N만큼을 사용하므로 O(N)
+# 공간 복잡도: 리턴할 dummy에 대해서만 메모리를 사용하므로 O(1)
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = None # reversed linked list를 저장할 변수
