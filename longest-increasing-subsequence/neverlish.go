@@ -1,3 +1,6 @@
+// 시간복잡도: O(n^2)
+// 공간복잡도: O(n)
+
 package main
 
 import "testing"
