@@ -11,7 +11,6 @@ class Solution {
             subStr.append(it)
         }
         max = max(max, subStr.length)
-        println(subStr)
         return max
     }
 }
