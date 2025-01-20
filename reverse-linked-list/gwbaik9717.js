@@ -1,5 +1,5 @@
 // Time complexity: O(n)
-// Space complexity: O(n)
+// Space complexity: O(1)
 
 /**
  * Definition for singly-linked list.
@@ -13,28 +13,15 @@
  * @return {ListNode}
  */
 var reverseList = function (head) {
-  const stack = [];
+  let current = head;
+  let prev = null;
 
-  let temp = head;
-  while (temp) {
-    stack.push(temp.val);
-    temp = temp.next;
+  while (current) {
+    const node = new ListNode(current.val);
+    node.next = prev;
+    prev = node;
+    current = current.next;
   }
 
-  if (!stack.length) {
-    return null;
-  }
-
-  const popped = stack.pop();
-  const answer = new ListNode(popped);
-
-  temp = answer;
-  while (stack.length > 0) {
-    const popped = stack.pop();
-
-    temp.next = new ListNode(popped);
-    temp = temp.next;
-  }
-
-  return answer;
+  return prev;
 };
