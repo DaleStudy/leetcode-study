@@ -27,7 +27,6 @@ function uniquePaths(m: number, n: number): number {
 
 // 공간 복잡도를 O(n)으로 최적화하기 위해서 1차원 dp 배열 사용
 function uniquePaths(m: number, n: number): number {
-  // m x n 배열 선언
   const rows = Array(n).fill(1);
 
   for (let i = 1; i < m; i++) {
