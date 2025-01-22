@@ -1,4 +1,5 @@
-﻿# 해석
+# 해석
+
 # 0. TrieNode 클래스 정의:
 #    - 각 TrieNode 인스턴스는 다음의 두 가지 속성을 가진다:
 #        1) children: 현재 노드의 자식 노드들을 저장하는 딕셔너리 (문자 -> TrieNode 인스턴스).
@@ -116,5 +117,13 @@ class WordDictionary:
                 return dfs(0, self.root) 
                 #1. def dfs를 self.root 위치에서 첫 호출. 
    
+
+
+
+
+
+
+
+
 
 
