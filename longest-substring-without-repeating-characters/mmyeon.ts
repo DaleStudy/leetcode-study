@@ -34,3 +34,22 @@ function lengthOfLongestSubstring(s: string): number {
 
   return maxLength;
 }
+
+// Map 사용해서 중복 발생시 start 인덱스가 점프하도록 개선
+function lengthOfLongestSubstring(s: string): number {
+  let start = 0,
+    maxLength = 0;
+  const map = new Map<string, number>();
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    // 중복 있는 경우, 중복문자의 다음 위치로 점프
+    if (map.has(char)) start = Math.max(start, map.get(char)! + 1);
+    // 인덱스 갱신
+    map.set(char, i);
+
+    maxLength = Math.max(maxLength, i - start + 1);
+  }
+
+  return maxLength;
+}
