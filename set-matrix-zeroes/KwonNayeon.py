@@ -73,3 +73,44 @@ class Solution:
        for c in zero_cols:
            for i in range(len(matrix)):
                matrix[i][c] = 0
+
+"""
+Time Complexity: O(m*n)
+
+Space Complexity: O(1)
+- 추가적인 메모리를 사용하지 않고 첫 행과 열을 마커로 활용하여 해결
+- first_row_zero, first_col_zero 두 변수만 사용
+
+풀이 방법:
+1. 첫 행과 첫 열의 0 여부를 변수에 저장 (나중에 처리하기 위함)
+2. 첫 행과 첫 열을 마커로 사용: 행렬의 0 위치를 첫 행/열에 표시
+3. 표시된 0을 기준으로 나머지 행렬을 변경 (행/열 전체를 0으로 변경)
+4. 저장해둔 변수로 첫 행/열 처리 (원래 0이었던 행/열 처리)
+"""
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        # 첫 행/열의 0 여부 저장
+        first_row_zero = any(matrix[0][c] == 0 for c in range(len(matrix[0])))
+        first_col_zero = any(matrix[r][0] == 0 for r in range(len(matrix)))
+
+        # 0이 있는 위치의 첫 행/열에 표시
+        for r in range(1, len(matrix)):
+            for c in range(1, len(matrix[0])):
+                if matrix[r][c] == 0:
+                    matrix[r][0] = 0   # 첫 열에 표시
+                    matrix[0][c] = 0   # 첫 행에 표시
+
+        # 표시된 0을 기준으로 나머지 위치 변경
+        for r in range(1, len(matrix)):
+            for c in range(1, len(matrix[0])):
+                if matrix[r][0] == 0 or matrix[0][c] == 0:
+                    matrix[r][c] = 0
+
+        # 첫 행/열 처리
+        if first_row_zero:
+            for i in range(len(matrix[0])):
+                matrix[0][i] = 0
+                
+        if first_col_zero:
+            for i in range(len(matrix)):
+                matrix[i][0] = 0
