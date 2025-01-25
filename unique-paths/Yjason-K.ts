@@ -6,27 +6,24 @@
  * @returns {number} 우측 하단까지 갈 수 있는 경우의 수
  * 
  * - 시간 복잡도: O(m * n)
- *   - m x n 크기의 배열을 초기화하고 순회
+ *   - 전체 셀을 한 번씩 순회
  * 
- * - 공간 복잡도: O(m * n)
- *   - m x n 크기의 배열을 사용
+ * - 공간 복잡도: O(n)
+ *   - 1차원 배열 사용 (열 크기만큼의 배열)
  */
 function uniquePaths(m: number, n: number): number {
-    // m x n 크기의 배열을 초기화
-    const dp = Array.from({ length: m }, () => Array(n).fill(0));
+    // n(열) 크기의 배열을 생성
+    const dp = Array(n).fill(1);
 
-    // 첫 번째 셀 (0, 0)은 1로 초기화 (경로 시작점)
-    dp[0][0] = 1;
 
-    for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            if (i === 0 && j === 0) continue; // 시작점은 이미 초기화됨
-
-            // 위쪽과 왼쪽 값을 더해 현재 셀의 경로 수 계산
-            dp[i][j] = (dp[i - 1]?.[j] || 0) + (dp[i]?.[j - 1] || 0);
+    for (let i = 1; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+            // 현재 값 = 위쪽(dp[j]) + 왼쪽(dp[j-1])
+            dp[j] = dp[j] + dp[j - 1];
         }
     }
 
-    return dp[m - 1][n - 1];
+     // dp[n-1]에 우측 하단까지의 경로 수가 저장
+    return dp[n - 1];
 }
 
