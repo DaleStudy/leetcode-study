@@ -29,8 +29,5 @@ var lengthOfLongestSubstring = function(s) {
     return max;
 };
 
-//
-//
-
-
-
+// 시간복잡도 O(2n) -> 최대 2n번 반복
+// 공간복잡도 O(n) -> 최대 s의 길이만큼 공간을 사용
