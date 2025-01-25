@@ -1,3 +1,6 @@
+// 시간 복잡도: O(m * n)
+// 공간 복잡도: O(m * n)
+
 /**
  * @param {character[][]} grid
  * @return {number}
