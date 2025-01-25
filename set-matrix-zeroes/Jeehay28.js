@@ -77,30 +77,30 @@ var setZeroes = function (matrix) {
 // 💪 My initial approach with Set...
 // Time Complexity: O(m * n)
 // Space Complexity: O(m + n)
-var setZeroes = function (matrix) {
-  let rows = new Set();
-  let cols = new Set();
+// var setZeroes = function (matrix) {
+//   let rows = new Set();
+//   let cols = new Set();
 
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[0].length; j++) {
-      if (matrix[i][j] === 0) {
-        rows.add(i);
-        cols.add(j);
-      }
-    }
-  }
+//   for (let i = 0; i < matrix.length; i++) {
+//     for (let j = 0; j < matrix[0].length; j++) {
+//       if (matrix[i][j] === 0) {
+//         rows.add(i);
+//         cols.add(j);
+//       }
+//     }
+//   }
 
-  for (row of rows) {
-    matrix[row] = new Array(matrix[0].length).fill(0);
-  }
+//   for (row of rows) {
+//     matrix[row] = new Array(matrix[0].length).fill(0);
+//   }
 
-  for (col of cols) {
-    for (let row = 0; row < matrix.length; row++) {
-      matrix[row][col] = 0;
-    }
-  }
+//   for (col of cols) {
+//     for (let row = 0; row < matrix.length; row++) {
+//       matrix[row][col] = 0;
+//     }
+//   }
 
-  return matrix;
-};
+//   return matrix;
+// };
 
 
