@@ -10,11 +10,9 @@ Space Complexity: O(1)
 - count 변수만 사용하므로 상수 공간 복잡도
 """
 class Solution:
-    def hammingWeight(self, n: int) -> int:
-        count = 0
-        while n:
-            count += n & 1
-            n >>= 1
-        return count
-
-
+   def hammingWeight(self, n: int) -> int:
+       count = 0
+       while n:
+           count += n & 1  # 현재 마지막 비트가 1인지 확인
+           n >>= 1        # 다음 비트 검사를 위해 오른쪽 시프트
+       return count
