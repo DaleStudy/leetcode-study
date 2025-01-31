@@ -55,8 +55,6 @@ class Solution {
     }
 
     public void dfs(Node oldNode, Node newNode) {
-        List<Node> dfsList = new ArrayList<>();
-
         for (Node oldNeighbor : oldNode.neighbors) {
             boolean hasIt = false;
             for (Node newNeighbor : newNode.neighbors) {
