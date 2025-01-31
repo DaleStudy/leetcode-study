@@ -9,34 +9,17 @@
  * }
  */
 class Solution {
-    /**
-    1. strategy
-    - iterate over all Node, save value to list
-    - iterate list in reverse order, create Node and link
-    2. complexity
-    - time: O(N)
-    - space: O(N)
-     */
     public ListNode reverseList(ListNode head) {
-        List<Integer> list = new ArrayList<>();
-
-        while (head != null) {
-            list.add(head.val);
-            head = head.next;
+        ListNode curr = head;
+        ListNode prev = null;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
 
-        ListNode prev = new ListNode();
-        ListNode ret = null;
-
-        for (int i=list.size()-1; i>=0; i--) {
-            ListNode node = new ListNode(list.get(i));
-            prev.next = node;
-            prev = prev.next;
-            if (ret == null) {
-                ret = prev;
-            }
-        }
-        return ret;
+        return prev;
     }
 }
 
