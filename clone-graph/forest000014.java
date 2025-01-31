@@ -42,7 +42,7 @@ class Solution {
         }
 
         Node newNode = createNode(node.val);
-        dfs(node, newNode);
+        dfs(node);
 
         return newNode;
     }
@@ -54,7 +54,9 @@ class Solution {
         return map.get(val);
     }
 
-    public void dfs(Node oldNode, Node newNode) {
+    public void dfs(Node oldNode) {
+        Node newNode = map.get(oldNode.val);
+
         for (Node oldNeighbor : oldNode.neighbors) {
             boolean hasIt = false;
             for (Node newNeighbor : newNode.neighbors) {
