@@ -26,21 +26,19 @@ func Test_longestCommonSubsequence(t *testing.T) {
 }
 
 func longestCommonSubsequence(text1 string, text2 string) int {
-	commonSubsequence := make([][]int, len(text1)+1)
+	prev := make([]int, len(text2)+1)
+	curr := make([]int, len(text2)+1)
 
-	for i := 0; i < len(text1)+1; i++ {
-		commonSubsequence[i] = make([]int, len(text2)+1)
-	}
-
-	for i := 1; i < len(text1)+1; i++ {
-		for j := 1; j < len(text2)+1; j++ {
+	for i := 1; i <= len(text1); i++ {
+		for j := 1; j <= len(text2); j++ {
 			if text1[i-1] == text2[j-1] {
-				commonSubsequence[i][j] = commonSubsequence[i-1][j-1] + 1
+				curr[j] = prev[j-1] + 1
 			} else {
-				commonSubsequence[i][j] = max(commonSubsequence[i-1][j], commonSubsequence[i][j-1])
+				curr[j] = max(prev[j], curr[j-1])
 			}
 		}
+		prev, curr = curr, prev
 	}
 
-	return commonSubsequence[len(text1)][len(text2)]
+	return prev[len(text2)]
 }

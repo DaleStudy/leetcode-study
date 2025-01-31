@@ -1,3 +1,7 @@
+// A: node 의 갯수, B: neighbors의 길이
+// 시간복잡도: O(A + B)
+// 공간복잡도: O(A + B)
+
 package main
 
 import "testing"
