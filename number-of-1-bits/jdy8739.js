@@ -28,3 +28,7 @@ var hammingWeight = function (n) {
 };
 
 // 시간복잡도 O(logn) -> 이진탐색처럼 2씩 곱해가며 n을 넘어가는 가장 큰 수를 찾으므로
+
+// 수정된 시간복잡도 -> 위의 while 문에서 O(logn)의 시간복잡도를 수행하면서 O(n)의 시간복잡도를 갖는 unshift 메소드를 사용하며
+// for문에서 다시 O(logn)의 시간복잡도의 루프를 돌기 때문에
+// 총 복잡도는 O(logn) * binary 배열의 길이 + O(logn)
