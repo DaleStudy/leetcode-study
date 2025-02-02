@@ -17,7 +17,6 @@ class Solution:
         dp = []
         for i in range(m):
             dp.append([0] * n)
-        print(dp)
 
         for i in range(m):
             for j in range(n):
@@ -29,5 +28,26 @@ class Solution:
                 left_value = 0 if j - 1 < 0 or j - 1 >= n else dp[i][j - 1]
 
                 dp[i][j] = up_value + left_value
+
+        return dp[m - 1][n - 1]
+
+
+"""
+* 7주차에 받은 리뷰사항 뒤늦게 반영합니다.
+Solution: 
+    1) dp를 1로 m*n 배열로 초기화
+    2) 순회를 1부터 m, 1부터 n까지로 변경
+    3) up_value, left_value 를 Out of bounds 처리 없이 dp 배열로 계산
+
+"""
+
+
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [[1] * n] * m
+
+        for i in range(1, m):
+            for j in range(1, n):
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
 
         return dp[m - 1][n - 1]
