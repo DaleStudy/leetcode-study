@@ -1,4 +1,4 @@
-// Time complexity: O(n^2)
+// Time complexity: O(n)
 // Space complexity: O(n)
 
 /**
@@ -7,32 +7,24 @@
  */
 var maxProduct = function (nums) {
   let answer = nums[0];
+  const products = Array.from({ length: nums.length + 1 }, () => null);
+  products[0] = [1, 1]; // [min, max]
 
-  const productGroups = [[]];
+  for (let i = 1; i < products.length; i++) {
+    const cases = [];
 
-  for (let i = 0; i < nums.length; i++) {
-    const productGroup = productGroups.at(-1);
+    // case 1
+    cases.push(nums[i - 1]);
 
-    if (nums[i] === 0) {
-      productGroups.push([]);
-    }
+    // case 2
+    cases.push(nums[i - 1] * products[i - 1][0]);
 
-    if (productGroup.length === 0) {
-      productGroup.push(nums[i]);
-      continue;
-    }
+    // case 3
+    cases.push(nums[i - 1] * products[i - 1][1]);
 
-    productGroup.push(nums[i] * productGroup.at(-1));
-  }
-
-  for (const group of productGroups) {
-    for (let i = 0; i < group.length; i++) {
-      answer = Math.max(answer, group[i]);
-
-      for (let j = 0; j < i; j++) {
-        answer = Math.max(answer, group[i] / group[j]);
-      }
-    }
+    const product = [Math.min(...cases), Math.max(...cases)];
+    products[i] = product;
+    answer = Math.max(answer, product[1]);
   }
 
   return answer;
