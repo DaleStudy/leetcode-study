@@ -29,3 +29,4 @@ function maxProduct(nums: number[]): number {
     
     return result;
 }
+
