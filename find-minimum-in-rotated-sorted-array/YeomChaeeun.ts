@@ -22,18 +22,16 @@ function findMin(nums: number[]): number {
 
     // 이분 탐색법 활용
     // 절반씩 잘라서 nums[n-1] > nums[n] 의 지점을 찾는다
-    let low = 1;
+    let low = 0;
     let high = nums.length - 1;
-    while(low <= high) {
-        let mid = Math.floor((low + high) / 2);
-        if(nums[mid - 1] > nums[mid]) {
-            return nums[mid];
-        }
-        if(nums[0] < nums[mid]) {
+    while(low < high) {
+        let mid = low + Math.floor((high - low) / 2);
+
+        if(nums[mid] > nums[high]) {
             low = mid + 1;
         } else {
-            high = mid -1;
+            high = mid;
         }
     }
-    return nums[0]
+    return nums[low]
 }
