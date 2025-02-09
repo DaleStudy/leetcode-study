@@ -3,7 +3,7 @@ Solution:
     1) for iteration 을 도는 동안 hash set 을 이용해 처음 발견한 원소들을 window set에 넣는다.
     2) 중복되는 원소를 발견할 경우 해당 원소의 중복이 사라질때까지 left side 의 원소들을 하나씩 제거한다.
 
-Time: O(n^2) = O(n) (for iteration) * O(n) 최악의 경우 n만큼의 중복제거 
+Time: O(2n) = O(n) (최악의 경우 n만큼의 중복제거) * O(2) (원소당 최대 2번의 연산)
 Space: O(n) (모든 원소가 set에 들어갈 경우)
 """
 
