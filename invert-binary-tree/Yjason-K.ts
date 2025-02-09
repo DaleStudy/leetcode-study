@@ -23,3 +23,5 @@ function invertTree(root: TreeNode | null): TreeNode | null {
     // 반전된 루트 노드를 반환
     return root;
   }
+
+  
