@@ -1,5 +1,7 @@
 class Solution {
 
+  // TC : O(N)
+  // SC : O(1)
   public TreeNode invertTree(TreeNode root) {
     if (root == null) {
       return null;
@@ -16,3 +18,4 @@ class Solution {
   }
 
 }
+
