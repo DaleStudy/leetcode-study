@@ -1,14 +1,47 @@
 """
 Constraints:
-- 
+- The number of nodes in the tree is in the range [0, 100].
+- -100 <= Node.val <= 100
 
-Time Complexity: 
-- 
+Time Complexity:
+- O(n): 각 노드를 한 번씩 방문함
 
-Space Complexity: 
-- 
+Space Complexity:
+- O(w): w는 트리의 최대 너비(width)
 
 풀이방법:
-1. 
+1. 큐를 사용한 BFS(너비 우선 탐색)
+2. FIFO(First In First Out)로 노드를 처리함
+3. 각 노드를 방문할 때마다:
+   - 왼쪽과 오른쪽 자식 노드의 위치를 교환
+   - 교환된 자식 노드들을 큐에 추가하여 다음 노드를 처리함
 """
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+from collections import deque
+
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+
+        queue = deque([root])
+
+        while queue:
+            node = queue.popleft()
+
+            node.left, node.right = node.right, node.left
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+        return root
+
 
