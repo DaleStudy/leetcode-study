@@ -25,6 +25,7 @@ Space Complexity:
 #         self.right = right
 from collections import deque
 
+# Solution 1 (BFS 활용)
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
@@ -44,4 +45,15 @@ class Solution:
 
         return root
 
+# Solution 2 (DFS와 재귀 활용)
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
 
+        root.left, root.right = root.right, root.left
+
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+
+        return root
