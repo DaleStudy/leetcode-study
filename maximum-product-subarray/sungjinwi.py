@@ -1,23 +1,35 @@
 """
-	/풀이 봐도 잘 이해 못해서 추가 코멘트/
-	nums[i]가 그 전까지 subarray의 합 total보다 작은 음수인 케이스는 어떻게 되는거지 고민했는데
-	ex) total : -1, nums[i] = -2
-	어차피 -1인 시점에 maxTotal이 업데이트 됐으므로 total은 nums[i]부터 더하기 시작한다는 의미로 -2로 설정한다는 것을 깨달음
-	따라서 이전까지 subarray의 합만 음수 양수 체크
-	
-	TC : for문 한번
-		=> O(N)
-	SC : 추가적인 배열 등 메모리 쓰지 않으므로
-		=> O(1)
+    ** 실수로 예전 과제 수행 때 다른 과제폴더에 파일을 만들어서 파일 수정합니다!!
+
+    풀이 : 
+        nums의 구성요소 num에 따라 각각 후보1, 후보2, 후보3 중에 
+            가장 큰 값은 새로운 max_res, 가장 작은 값은 새로운 min_res
+
+        후보1: 이전 max_res * 현재 num (num이 양수일 경우 가장 클 가능성)
+        후보2: 이전 min_res * 현재 num (num이 음수일 경우 가장 클 가능성)
+        후보3: 현재 num (num이 양수일 경우 가장 클 가능성)
+
+        새로운 max_res와 max_total을 비교해서 업데이트
+
+        
+        메모 :
+        - 현재 num이 0일 경우 후보 셋 모두 0
+        - 음수 양수 0 등으로 조건을 나누지 않고 min과 max로만 구분해도 충분하다
+        - max_res와 min_res는 곱해지므로 초기화를 1로 한다 (또는 반복문을 인덱스로 반복하고 1부터 시작)
+    
+        
+    nums의 길이 : n
+
+    TC : O(N)
+
+    SC : O(1)
 """
+
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        total = nums[0]
-        maxTotal = nums[0]
-        for i in range(1, len(nums)) :
-            if (total < 0) :
-                total = nums[i]
-            else :
-                total += nums[i]
-            maxTotal = max(total, maxTotal)
-        return (maxTotal)
+    def maxProduct(self, nums: List[int]) -> int:
+        max_total, max_res, min_res = nums[0], 1, 1
+        for num in nums :
+            min_res, max_res = min(num, max_res * num, min_res * num), \
+                max(num, max_res * num, min_res * num)
+            max_total = max(max_total, max_res)
+        return max_total
