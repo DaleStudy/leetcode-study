@@ -27,3 +27,4 @@ function canJump(nums: number[]): boolean {
 
     return dfs(0); // 0번 인덱스에서 시작
 }
+
