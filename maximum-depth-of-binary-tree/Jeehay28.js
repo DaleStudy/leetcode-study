@@ -35,3 +35,4 @@ var maxDepth = function (root) {
     // Return the maximum of the two depths plus 1 for the current node
     return Math.max(leftDepth, rightDepth) + 1;
 };
+
