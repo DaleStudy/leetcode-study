@@ -5,21 +5,24 @@
 var merge = function (intervals) {
     const sort = intervals.sort((a, b) => a[0] - b[0]);
 
-    const arr = [sort[0]];
+    const mergedIntervals = [sort[0]];
 
     for (let i = 1; i < sort.length; i++) {
-        const endOfArr = arr[arr.length - 1][1];
+        /** 현재 합쳐진 인터벌의 마지막 요소 */
+        const lastMergedInterval = mergedIntervals[mergedIntervals.length - 1];
+
+        const endOfMergedInterval = lastMergedInterval[1];
 
         const next = sort[i][0];
 
-        if (endOfArr < next) {
-            arr.push(sort[i]);
+        if (endOfMergedInterval < next) {
+            mergedIntervals.push(sort[i]);
         } else {
-            arr[arr.length - 1][1] = Math.max(arr[arr.length - 1][1], sort[i][1]);
+            lastMergedInterval[1] = Math.max(lastMergedInterval[1], sort[i][1]);
         }
     }
 
-    return arr;
+    return mergedIntervals;
 };
 
 // 시간복잡도 O(nlogn) -> sort 함수의 시간복잡도가 O(nlogn)이기 때문에
