@@ -22,6 +22,8 @@ Space Complexity: O(H)
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# Solution 1: 재귀
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if root is None:
@@ -31,3 +33,24 @@ class Solution:
         right_depth = self.maxDepth(root.right)
 
         return max(left_depth, right_depth) + 1
+    
+# Solution 2: 반복문
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        
+        stack = [(root, 1)]
+        max_depth = 0
+
+        while stack:
+            current, depth = stack.pop()
+            
+            max_depth = max(max_depth, depth)
+
+            if current.left:
+                stack.append((current.left, depth + 1))
+            if current.right:
+                stack.append((current.right, depth + 1))
+
+        return max_depth
