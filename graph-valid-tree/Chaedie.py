@@ -2,6 +2,9 @@
 Conditions of Valid Tree
 1) no Loop
 2) all nodes has to be connected
+
+Time: O(node + edge)
+Space: O(node + edge)
 """
 
 
