@@ -9,6 +9,8 @@ class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         if not n:
             return True
+        if len(edges) != n - 1:
+            return False
 
         # Make Graph
         graph = {i: [] for i in range(n)}
