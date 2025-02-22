@@ -10,9 +10,11 @@ class Solution:
                 모든 노드에 대해 재귀적으로 호출하므로 O(N)이다.
 
         Space Complexity:
-            O(1):
-                answer 변수만 사용하므로 O(1)이다.
+            O(h):
+                트리의 높이 h만큼 재귀 함수를 호출하므로,
+                공간 복잡도는 O(h)이다.
         """
+
         def get_depth(node, depth):
             if not node:
                 return depth
@@ -20,6 +22,6 @@ class Solution:
             left = get_depth(node.left, depth + 1)
             right = get_depth(node.right, depth + 1)
             return max(left, right)
-        
+
         answer = get_depth(root, 0)
         return answer
