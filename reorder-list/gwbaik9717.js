@@ -1,5 +1,5 @@
 // Time complexity: O(n)
-// Space complexity: O(n)
+// Space complexity: O(1)
 
 /**
  * Definition for singly-linked list.
@@ -13,34 +13,44 @@
  * @return {void} Do not return anything, modify head in-place instead.
  */
 var reorderList = function (head) {
-  const nodes = [];
-  let n = 0;
+  // middle 찾기
+  let slow = head;
+  let fast = slow;
 
-  {
-    let current = head;
-    while (current) {
-      n++;
-      nodes.push(current);
-      current = current.next;
-    }
+  while (fast && fast.next) {
+    fast = fast.next.next;
+    slow = slow.next;
   }
 
-  const answer = head;
+  const middle = slow;
 
-  {
-    let current = answer;
-    for (let i = 1; i < n; i++) {
-      if (i % 2 !== 0) {
-        current.next = nodes.at(n - Math.ceil(i / 2));
-      } else {
-        current.next = nodes.at(i / 2);
-      }
+  // 후반부 뒤집기 (middle 부터)
+  let next = null;
+  let current = middle;
 
-      current = current.next;
-    }
-
-    current.next = null;
+  while (current) {
+    const temp = current.next;
+    current.next = next;
+    next = current;
+    current = temp;
   }
 
-  return answer;
+  // 합치기
+  let back = next;
+  let reordered = head;
+
+  while (reordered && back) {
+    const temp = reordered.next;
+
+    reordered.next = back;
+    back = back.next;
+    reordered = reordered.next;
+
+    reordered.next = temp;
+    reordered = reordered.next;
+  }
+
+  if (reordered) {
+    reordered.next = null;
+  }
 };
