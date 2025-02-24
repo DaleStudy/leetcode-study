@@ -17,46 +17,22 @@
  */
 var isSameTree = function (p, q) {
   const dfs = (currentP, currentQ) => {
+    if (!currentP && !currentQ) {
+      return true;
+    }
+
+    if ((!currentP && currentQ) || (currentP && !currentQ)) {
+      return false;
+    }
+
     if (currentP.val !== currentQ.val) {
       return false;
     }
 
-    if (
-      (currentP.left && !currentQ.left) ||
-      (!currentP.left && currentQ.left)
-    ) {
-      return false;
-    }
-
-    if (
-      (currentP.right && !currentQ.right) ||
-      (!currentP.right && currentQ.right)
-    ) {
-      return false;
-    }
-
-    if (currentP.left && currentQ.left) {
-      if (!dfs(currentP.left, currentQ.left)) {
-        return false;
-      }
-    }
-
-    if (currentP.right && currentQ.right) {
-      if (!dfs(currentP.right, currentQ.right)) {
-        return false;
-      }
-    }
-
-    return true;
+    return (
+      dfs(currentP.left, currentQ.left) && dfs(currentP.right, currentQ.right)
+    );
   };
 
-  if ((p && !q) || (!p && q)) {
-    return false;
-  }
-
-  if (p && q) {
-    return dfs(p, q);
-  }
-
-  return true;
+  return dfs(p, q);
 };
