@@ -25,3 +25,31 @@ class Solution:
 
         dfs(head, dummy)
         return dummy.next
+
+
+"""
+Solution: 
+    1) 2 Pointer 로 size - n 까지 이동
+    2) prev 와 curr.next 를 연결
+Time: O(n)
+Space: O(1)
+"""
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        
+        dummy = ListNode(0, head)
+        prev = dummy
+        curr = tail = head
+
+        while n > 0:
+            tail = tail.next
+            n -= 1
+
+        while tail:
+            prev = prev.next
+            curr = curr.next
+            tail = tail.next
+        
+        prev.next = curr.next
+        
+        return dummy.next
