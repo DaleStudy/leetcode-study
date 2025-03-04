@@ -2,7 +2,7 @@
 # 235. Lowest Common Ancestor of a Binary Search Tree
 
 ## 기본적인 LCA 찾기 문제이다.
-- LCA는 BST에서 주어진 두 노드의 최저 공통 조상이다.
+- LCA는 두 노드의 최저 공통 조상이다.
 - 두 노드를 descendants로 가진 노드이며, 두 노드도 포함된다.
 
 ### LCA와 이진 탐색 트리 BST, 일반 이진트리 BT
