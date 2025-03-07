@@ -20,3 +20,4 @@ function canAttendMeetings(intervals: number[][]): boolean {
 
     return true;
 }
+
