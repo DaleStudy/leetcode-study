@@ -26,7 +26,7 @@ class TestCanAttendMeetings(unittest.TestCase):
 
     def test_case_1(self):
         intervals = [Interval(0, 30), Interval(5, 10), Interval(15, 20)]
-        # self.assertFalse(self.solution.can_attend_meetings(intervals))
+        self.assertFalse(self.solution.can_attend_meetings(intervals))
     
     def test_case_2(self):
         intervals = [Interval(5, 8), Interval(9, 15)]
@@ -34,11 +34,11 @@ class TestCanAttendMeetings(unittest.TestCase):
     
     def test_case_3(self):
         intervals = []
-        # self.assertTrue(self.solution.can_attend_meetings(intervals))
+        self.assertTrue(self.solution.can_attend_meetings(intervals))
     
     def test_case_4(self):
         intervals = [Interval(1, 5)]
-        # self.assertTrue(self.solution.can_attend_meetings(intervals))
+        self.assertTrue(self.solution.can_attend_meetings(intervals))
     
     def test_case_5(self):
         intervals = [Interval(0, 5), Interval(5, 10), Interval(10, 15)]
@@ -46,7 +46,7 @@ class TestCanAttendMeetings(unittest.TestCase):
     
     def test_case_6(self):
         intervals = [Interval(1, 3), Interval(2, 6), Interval(8, 10)]
-        # self.assertFalse(self.solution.can_attend_meetings(intervals))
+        self.assertFalse(self.solution.can_attend_meetings(intervals))
 
 if __name__ == "__main__":
     unittest.main()
