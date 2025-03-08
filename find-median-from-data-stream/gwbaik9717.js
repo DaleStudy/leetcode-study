@@ -1,8 +1,85 @@
-// Time complexity: O(n)
+// last test case failed
+// Time complexity: O(logn)
 // Space complexity: O(n)
 
+class MinHeap {
+  constructor() {
+    this.heap = [null];
+  }
+
+  get root() {
+    if (this.length === 1) {
+      return null;
+    }
+
+    return this.heap[1];
+  }
+
+  get length() {
+    return this.heap.length;
+  }
+
+  push(value) {
+    this.heap.push(value);
+
+    let current = this.heap.length - 1;
+    let parent = Math.floor(current / 2);
+
+    while (parent && this.heap[current] < this.heap[parent]) {
+      [this.heap[current], this.heap[parent]] = [
+        this.heap[parent],
+        this.heap[current],
+      ];
+      current = parent;
+      parent = Math.floor(current / 2);
+    }
+  }
+
+  pop() {
+    if (this.heap.length === 1) {
+      return null;
+    }
+
+    if (this.heap.length === 2) {
+      return this.heap.pop();
+    }
+
+    const rv = this.heap[1];
+    this.heap[1] = this.heap.pop();
+
+    let current = 1;
+    let left = current * 2;
+    let right = left + 1;
+
+    while (
+      (this.heap[left] && this.heap[current] > this.heap[left]) ||
+      (this.heap[right] && this.heap[current] > this.heap[right])
+    ) {
+      if (this.heap[right] && this.heap[right] < this.heap[left]) {
+        [this.heap[right], this.heap[current]] = [
+          this.heap[current],
+          this.heap[right],
+        ];
+        current = right;
+      } else {
+        [this.heap[left], this.heap[current]] = [
+          this.heap[current],
+          this.heap[left],
+        ];
+        current = left;
+      }
+
+      left = current * 2;
+      right = left + 1;
+    }
+
+    return rv;
+  }
+}
+
 var MedianFinder = function () {
-  this.arr = [];
+  this.leftMinHeap = new MinHeap();
+  this.rightMinHeap = new MinHeap();
 };
 
 /**
@@ -10,41 +87,40 @@ var MedianFinder = function () {
  * @return {void}
  */
 MedianFinder.prototype.addNum = function (num) {
-  if (this.arr.length === 0) {
-    this.arr.push(num);
-    return;
+  const rightMinValue = this.rightMinHeap.root;
+
+  if (num >= rightMinValue) {
+    this.rightMinHeap.push(num);
+  } else {
+    this.leftMinHeap.push(num * -1);
   }
 
-  let left = 0;
-  let right = this.arr.length - 1;
-
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-
-    if (this.arr[mid] > num) {
-      right = mid - 1;
-      continue;
-    }
-
-    left = mid + 1;
+  if (this.rightMinHeap.length - this.leftMinHeap.length > 1) {
+    const popped = this.rightMinHeap.pop();
+    this.leftMinHeap.push(popped * -1);
   }
 
-  // insert in left
-  const sliced = this.arr.slice(left);
-  this.arr = [...this.arr.slice(0, left), num, ...sliced];
+  if (this.leftMinHeap.length - this.rightMinHeap.length > 1) {
+    const popped = this.leftMinHeap.pop();
+    this.rightMinHeap.push(popped * -1);
+  }
 };
 
 /**
  * @return {number}
  */
 MedianFinder.prototype.findMedian = function () {
-  if (this.arr.length % 2 === 0) {
-    return (
-      (this.arr[this.arr.length / 2] + this.arr[this.arr.length / 2 - 1]) / 2
-    );
+  const len = this.leftMinHeap.length + this.rightMinHeap.length;
+
+  if (len % 2 === 0) {
+    return (this.leftMinHeap.root * -1 + this.rightMinHeap.root) / 2;
   }
 
-  return this.arr[(this.arr.length - 1) / 2];
+  if (this.leftMinHeap.length > this.rightMinHeap.length) {
+    return this.leftMinHeap.root * -1;
+  }
+
+  return this.rightMinHeap.root;
 };
 
 /**
