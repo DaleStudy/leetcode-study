@@ -13,7 +13,7 @@ Space Complexity: O(n)
 풀이방법:
 1. 길이가 n+1인 ans 배열을 생성
 2. 0부터 n까지의 각 숫자에 대해:
-   - hammingWeight 함수를 사용하여 이진 표현에서 1의 개수를 계산
+   - hammingWeight 함수를 사용하여 숫자 i를 이진수로 변환했을 때 1의 개수 계산
    - 결과를 ans[i]에 저장
 3. ans 배열 반환
 """
