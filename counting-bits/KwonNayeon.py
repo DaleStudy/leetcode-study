@@ -24,8 +24,7 @@ class Solution:
         for i in range(n+1):
             ans[i] = self.hammingWeight(i)
         return ans
-    
-    
+
     def hammingWeight(self, n: int) -> int:
         count = 0
         while n:
