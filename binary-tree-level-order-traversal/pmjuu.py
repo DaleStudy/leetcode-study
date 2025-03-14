@@ -32,5 +32,3 @@ class Solution:
             result.append(same_level_nodes)
 
         return result
-
-            
