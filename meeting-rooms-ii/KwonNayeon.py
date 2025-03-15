@@ -31,3 +31,4 @@ def min_meeting_rooms(intervals):
             heapq.heappop(rooms)
         heapq.heappush(rooms, intervals[i][1])
     return len(rooms)
+
