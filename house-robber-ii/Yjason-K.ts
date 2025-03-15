@@ -39,4 +39,5 @@ function rob(nums: number[]): number {
 
     return Math.max(max1, max2);
 
-}; 
+};
+
