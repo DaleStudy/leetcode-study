@@ -6,12 +6,11 @@
 - 회의 시간이 겹치지 않는 경우 회의를 진행할 수 있다.
 
 ## 풀이
-
 - intervals를 시작 시간으로 정렬한다.
 - 시간 겹침 여부를 확인한다.
 - 겹치는 경우 False, 겹치지 않는 경우 True를 반환한다.
 
-## 시간 복잡도
+## 시간 & 공간 복잡도
 
 ### TC is O(n log n)
 - 정렬 시간: O(n log n)
@@ -19,7 +18,6 @@
 
 ### SC is O(1)
 - 추가 사용 공간 없음
-
 '''
 class Solution:
     def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
