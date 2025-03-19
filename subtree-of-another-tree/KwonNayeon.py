@@ -10,19 +10,19 @@ Time Complexity: O(m * n)
 - n: subRoot의 노드 수
 
 Space Complexity: O(m)
-- 재귀 호출 스택의 최대 깊이 = root의 높이(?)
+- 재귀 호출 스택의 최대 깊이는 root의 높이
 
 풀이방법:
-1. Base case 처리:
-  - subRoot가 없을 때 → True
-  - root가 빈 트리이고, subRoot가 있을 때 → False
-2. 각 노드를 비교하여 동일한 트리인지 판단하는 함수 활용:
-  - isSameTree 함수: 두 트리가 동일한지 체크
-  - 현재 노드부터 시작해서 같은지 확인
-  - 같지 않다면 재귀를 활용하여 왼쪽/오른쪽 자식 검사
-3. 재귀를 활용하여 각 노드에서 서브트리 검사:
-  - 현재 노드부터 시작하는 서브트리가 subRoot와 같은지 확인
-  - 아니면 왼쪽/오른쪽 서브트리에서 검사
+1. Base case:
+  - subRoot가 없는 경우 True
+  - root가 빈 트리이고, subRoot가 있는 경우 False
+2. 서브트리가 동일한지를 확인하는 재귀 함수 활용:
+  - isSameTree()를 사용하여 두 트리가 동일한지 판단
+  - 현재 노드부터 시작해 subRoot와 같은지 확인
+  - 같지 않다면 왼쪽과 오른쪽 서브트리를 다시 검사함
+3. 재귀적으로 서브트리를 탐색
+  - 현재 노드에서 시작하는 서브트리가 subRoot와 같다면 True
+  - 아니라면 왼쪽 또는 오른쪽 서브트리에서 계속 탐색
 """
 # Definition for a binary tree node.
 # class TreeNode:
