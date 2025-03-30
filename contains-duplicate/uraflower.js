@@ -1,4 +1,5 @@
 /**
+ * 입력 배열 내 값 중복 여부를 반환하는 함수
  * @param {number[]} nums
  * @return {boolean}
  */
