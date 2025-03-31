@@ -20,5 +20,6 @@ var maxProduct = function (nums) {
     return answer;
 };
 
-// 시간복잡도 O(n) * O(8) -> nums의 길이 만큼을 for 문으로 순환하면서 Math클래스의 max, min메소드를 호출(인자가 3개, 3개, 2개 이므로 총 8회 순회)
+// 시간복잡도 O(n) -> nums의 길이 만큼을 for 문 순환하기때문에
 // 공간복잡도 O(1) -> 파라미터 nums에 대해 의미있는 공간복잡도를 가지는 변수할당이 없음
+
