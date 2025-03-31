@@ -29,3 +29,30 @@ function twoSum(nums: number[], target: number): number[] {
     map.set(nums[i], i);
   }
 }
+
+/**
+ *
+ * 접근 방법 :
+ *  - 현재 숫자가 확인한 숫자들 목록에 있으면 해당 숫자의 인덱스와 현재 인덱스를 바로 리턴
+ *  - 숫자들 목록에 없으면 숫자와 인덱스를 map에 저장
+ *
+ * 시간복잡도 : O(n)
+ *  - nums 배열을 1회만 순회하니까 O(n)
+ *
+ * 공간복잡도 : O(n)
+ *  - 최악의 경우, nums 배열 크기만큼 map에 저장하니까 O(n)
+ */
+function twoSum(nums: number[], target: number): number[] {
+  const seenNumbers = new Map<number, number>();
+
+  for (let i = 0; i < nums.length; i++) {
+    const neededValue = target - nums[i];
+    if (seenNumbers.has(neededValue)) {
+      return [i, seenNumbers.get(neededValue)!];
+    }
+
+    seenNumbers.set(nums[i], i);
+  }
+
+  return [];
+}
