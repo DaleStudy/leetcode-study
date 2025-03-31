@@ -70,7 +70,7 @@ class Solution {
                 Node newNeighbor = createNode(oldNeighbor.val);
                 newNode.neighbors.add(newNeighbor);
                 newNeighbor.neighbors.add(newNode);
-                dfs(oldNeighbor, newNeighbor);
+                dfs(oldNeighbor);
             }
         }
     }
