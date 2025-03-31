@@ -1,14 +1,21 @@
+// 배열을 한 번 도니 시간 복잡도 O(n)
+// 최악의 경우 nums의 크기 배열만큼 증가하므로 공간 복잡도는 O(n)
+
 const twoSum = (nums, target) => {
-  // 배열을 한 번 순회
+  // {값: 인덱스} 형태로 저장
+  const indicies = {};
+
   for (let i = 0; i < nums.length; i += 1) {
-    // target숫자에서 현재 숫자를 뺀 숫자가 존재하는지 확인한다.
-    const targetIndex = nums.indexOf(target - nums[i]);
-    // targetIndex가 존재하고(-1이 아님), 현재 숫자와 같은 인덱스 숫자가 아니라면 반환한다.
-    if (targetIndex !== -1 && i !== targetIndex) {
-      return [i, targetIndex];
+    // 타겟값에서 현재 가리키는 숫자를 뺀 값을 저장
+    const complement = target - nums[i];
+
+    // complement가 indicies안에 존재하면 해당 값을 반환
+    if (complement in indicies) {
+      const j = indicies[complement];
+      return [j, i];
     }
+    // 존재 하지 않으면 값과 인덱스 형태로 저장 ex> { 11: 0, 15: 1, 2: 2 }
+    indicies[nums[i]] = i;
+    console.log(indicies);
   }
 };
-
-// 시간 복잡도는 O(n^2)
-// 공간 복잡도는 O(1)
