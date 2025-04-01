@@ -7,3 +7,4 @@ class Solution:
             second_num = target - first_num
             if second_num in num_dict and num_dict[second_num] != i:
                 return [i, num_dict[second_num]]
+                
