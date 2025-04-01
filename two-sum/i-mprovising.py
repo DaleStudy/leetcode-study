@@ -10,4 +10,3 @@ class Solution:
             y = target - x
             if (y in table) and table[y] != i:
                 return [i, table[y]]
-

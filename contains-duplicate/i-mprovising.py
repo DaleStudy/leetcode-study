@@ -9,5 +9,3 @@ class Solution:
         if len(nums) == len(nums_set):
             return False
         return True
-        
-        

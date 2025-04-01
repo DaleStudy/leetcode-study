@@ -10,5 +10,3 @@ class Solution:
         if phrase == phrase[::-1]:
             return True
         return False
-        
-        

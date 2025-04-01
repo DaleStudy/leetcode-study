@@ -18,5 +18,3 @@ class Solution:
         if stack: # open bracket remaining
             return False
         return True
-            
-        
