@@ -1,4 +1,9 @@
 /**
+ * O(n) time
+ * O(문자수) space
+ */
+
+/**
  * @param {string} s
  * @param {string} t
  * @return {boolean}
