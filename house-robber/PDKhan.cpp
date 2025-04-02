@@ -1,22 +1,22 @@
 class Solution {
     public:
         int rob(vector<int>& nums) {
-            vector<int> dp;
-    
-            for(int i = 0; i < nums.size() + 3; i++){
-                dp.push_back(0);
+            int n = nums.size();
+
+            if(n == 0) return 0;
+            if(n == 1) return nums[0];
+            if(n == 2) return max(nums[0], nums[1]);
+
+            int prev2 = nums[0];
+            int prev1 = max(nums[0], nums[1]);
+            
+
+            for(int i = 2; i < n; i++){
+                int curr = max(prev1, prev2 + nums[i]);
+                prev2 = prev1;
+                prev1 = curr;
             }
-    
-            for(int i = nums.size()-1; i >= 0; i--){
-                if(dp[i+2] + nums[i] > dp[i+3] + nums[i])
-                    dp[i] = dp[i+2] + nums[i];
-                else
-                    dp[i] = dp[i+3] + nums[i];
-            }
-    
-            if(dp[0] > dp[1])
-                return dp[0];
-            else
-                return dp[1];
+
+            return prev1;
         }
     };
