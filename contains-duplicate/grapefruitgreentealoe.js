@@ -14,7 +14,7 @@
 var containsDuplicate = function (nums) {
   const numberSet = new Set();
   //시간 복잡도 O(n)
-  for (i of nums) {
+  for (let i of nums) {
     if (!numberSet.has(i)) {
       //공간복잡도 O(n)
       numberSet.add(i);
