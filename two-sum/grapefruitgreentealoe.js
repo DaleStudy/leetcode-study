@@ -22,3 +22,27 @@ var twoSum = function (nums, target) {
     }
   }
 };
+
+var twoSum2 = function (nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    //시간복잡도 O(N)
+    const subNum = target - nums[i]; // 공간 O(1)
+    if (nums.includes(subNum) && nums.indexOf(subNum) !== i) {
+      //시간복잡도 O(N). 2중포문과 같은 효과.
+      return [i, nums.indexOf(subNum)];
+    }
+  }
+};
+
+//Better answer
+var twoSum3 = function (nums, target) {
+  // map으로 관리하여 indexing 최적화
+  const numMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const subNum = target - nums[i];
+    if (numMap.has(subNum)) {
+      return [i, numMap.get(subNum)];
+    }
+    numMap.set(nums[i], i);
+  }
+};
