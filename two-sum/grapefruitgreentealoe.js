@@ -39,10 +39,12 @@ var twoSum3 = function (nums, target) {
   // map으로 관리하여 indexing 최적화
   const numMap = new Map();
   for (let i = 0; i < nums.length; i++) {
+    //시간복잡도 O(N)
     const subNum = target - nums[i];
     if (numMap.has(subNum)) {
+      //시간복잡도 O(1)
       return [i, numMap.get(subNum)];
     }
-    numMap.set(nums[i], i);
+    numMap.set(nums[i], i); // 공간 O(1)
   }
 };
