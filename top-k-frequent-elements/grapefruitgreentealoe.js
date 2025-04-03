@@ -14,9 +14,8 @@ var topKFrequent = function (nums, k) {
   const numsFreqMap = new Map(); // O(1)
 
   // O(n) 시간 / O(n) 공간
-  for (let i = 0; i < nums.length; i++) {
-    const count = (numsFreqMap.get(nums[i]) ?? 0) + 1; // O(1)
-    numsFreqMap.set(nums[i], count); // O(1)
+  for (let num of nums) {
+    numsFreqMap.set(num, (numsFreqMap.get(num) ?? 0) + 1);
   }
 
   const arrFromFreqMap = [...numsFreqMap]; // O(n) 시간 / O(n) 공간
