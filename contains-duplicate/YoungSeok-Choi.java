@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     // 시간복잡도 O(n)
     public boolean containsDuplicate(int[] nums) {
