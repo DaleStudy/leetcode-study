@@ -6,4 +6,4 @@ class Solution:
                 temp[i] += 1
             else:
                 temp[i] = 1
-        return [key for key, value in sorted(temp.items(), key=lambda x: x[1],reverse=True)][:k]
+        return [key for key, value in sorted(temp.items(), key=lambda x: x[1], reverse=True)][:k]
