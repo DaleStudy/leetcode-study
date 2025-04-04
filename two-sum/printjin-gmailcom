@@ -6,3 +6,4 @@ class Solution:
             if left in num_map:
                 return [num_map[left], i]
             num_map[num] = i
+            
