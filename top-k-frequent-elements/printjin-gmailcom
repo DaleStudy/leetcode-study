@@ -1,6 +1,6 @@
+from collections import Counter
+
 class Solution:
     def topKFrequent(self, nums, k):
-        nums_set = set(nums)
-        count_map = {num: nums.count(num) for num in nums_set}
-        sorted_nums = sorted(count_map, key=count_map.get, reverse=True)
-        return sorted_nums[:k]
+        count = Counter(nums)
+        return [num for num, _ in count.most_common(k)]
