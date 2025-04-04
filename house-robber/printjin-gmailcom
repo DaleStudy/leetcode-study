@@ -6,4 +6,4 @@ class Solution:
             leftleft = num_map.get(i - 3, 0)
             num_map[i] = max(left + num, leftleft + num)  
         return max(num_map.get(len(nums) - 1, 0), num_map.get(len(nums) - 2, 0))
-    
+
