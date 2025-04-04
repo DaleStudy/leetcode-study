@@ -10,7 +10,8 @@
 var longestConsecutive = function (nums) {
   const numSet = new Set(nums);
   let maxCount = 0;
-  for (let i of numSet) { //n 번 순회
+  for (let i of numSet) {
+    //n 번 순회
     // ++ 이전에 연속체크가 되었을 수 있으므로, 이전 숫자가 존재한다면 pass
     if (numSet.has(i - 1)) continue; //이미 진행 된 연속체크의 경우 하지 않는다.
     //연속이 되는지 확인해서 있으면 1추가.
@@ -25,3 +26,5 @@ var longestConsecutive = function (nums) {
 };
 
 //시간복잡도 O(n) + O(n) = O(n) /공간복잡도 O(n)
+
+//생각할 지점. 양쪽으로 진행된다면, 시간복잡도 최적화 가능
