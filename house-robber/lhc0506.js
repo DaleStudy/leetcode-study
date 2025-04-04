@@ -11,7 +11,7 @@ var rob = function(nums) {
     let oneBefore = 0;
 
     nums.forEach(num => {
-        const prevOneBefore = oneBefore
+        const prevOneBefore = oneBefore;
         oneBefore = Math.max(prevOneBefore, twoBefore + num);
         twoBefore = prevOneBefore;
     });
