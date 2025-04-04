@@ -10,5 +10,5 @@
  *  - nums 배열의 길이만큼 set에 담으니까 O(n)
  */
 function containsDuplicate(nums: number[]): boolean {
-  return nums.length !== new Set([...nums]).size;
+  return nums.length !== new Set(nums).size;
 }
