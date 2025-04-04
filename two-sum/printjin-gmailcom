@@ -5,5 +5,5 @@ class Solution:
             left = target - num
             if left in num_map:
                 return [num_map[left], i]
-            num_map[num] = i
-            
+            num_map[num] = i  
+
