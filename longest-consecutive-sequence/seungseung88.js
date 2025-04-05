@@ -18,12 +18,11 @@ const longestConsecutive = (nums) => {
     // 일단 연속되는 배열에서는 가장 최솟값을 찾음
     if (!set.has(v - 1)) {
       let cnt = 1;
-
       // 연속되는 배열에서 가장 긴 배열을 저장
       while (set.has(v + cnt)) {
         cnt += 1;
-        longest = longest < cnt ? cnt : longest;
       }
+      longest = Math.max(longest, cnt);
     }
   });
 
