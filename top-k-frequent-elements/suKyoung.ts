@@ -93,10 +93,10 @@ function topKFrequentHeap(nums: number[], k: number): number[] {
       const num = Number(numStr);
   
       heap.push([num, frequent]);
-      heap.sort((a, b) => a[1] - b[1]);
+      heap.sort((a, b) => b[1] - a[1]);
 
       if (heap.length > k) {
-        heap.shift();
+        heap.pop();
       }
     }
   
