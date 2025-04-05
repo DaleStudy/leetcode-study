@@ -18,8 +18,6 @@ class Solution:
             result = max(result, currLength)
             lastNum = nums[i]
         
-        return result 
-
-
+        return result
     
     
