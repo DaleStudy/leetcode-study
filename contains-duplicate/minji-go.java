@@ -1,24 +1,15 @@
-/*
-    Problem: https://leetcode.com/problems/contains-duplicate/
-    Description: return true if any value appears at least twice in the array
-    Concept: Array, Hash Table, Sorting
-    Time Complexity: O(n), Runtime: 10ms
-    Space Complexity: O(n), Memory: 58.6MB
-*/
-import java.util.HashSet;
-import java.util.Set;
+/**
+ <a href="https://leetcode.com/problems/contains-duplicate/">week01-1.contains-duplicate</a>
+ <li> Description: return true if any value appears at least twice in the array  </li>
+ <li> Concept: Array, Hash Table, Sorting    </li>
+ <li> Time Complexity: O(n), Runtime: 11ms   </li>
+ <li> Space Complexity: O(n), Memory: 59.27MB </li>
+ */
 
 class Solution {
+    Set<Integer> set = new HashSet<>();
+
     public boolean containsDuplicate(int[] nums) {
-        Set<Integer> count = new HashSet<>();
-        boolean answer = false;
-        for(int num : nums){
-            if(count.contains(num)) {
-                answer = true;
-                break;
-            }
-            count.add(num);
-        }
-        return answer;
+        return !Arrays.stream(nums).allMatch(set::add);
     }
 }
