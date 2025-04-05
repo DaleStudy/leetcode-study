@@ -3,7 +3,7 @@ package week01.longest_consecutive_sequence;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution {
+class Solution {
 
     public boolean containsDuplicate(int[] nums) {
 
