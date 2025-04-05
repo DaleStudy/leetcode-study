@@ -9,7 +9,7 @@ function containsDuplicate1(nums: number[]): boolean {
   });
 
   return isDuplicate;
-}
+};
 
 // 2번째 풀이(Set)
 function containsDuplicate2(nums: number[]): boolean {
@@ -23,4 +23,4 @@ function containsDuplicate2(nums: number[]): boolean {
   }
 
   return false;
-}
+};

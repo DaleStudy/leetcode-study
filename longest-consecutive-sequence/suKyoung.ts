@@ -20,7 +20,7 @@ function longestConsecutive2(nums: number[]): number {
   }
 
   return max;
-}
+};
 
 // 2번풀이 (hashSet)
 function longestConsecutive(nums: number[]): number {
@@ -43,4 +43,4 @@ function longestConsecutive(nums: number[]): number {
   }
 
   return max;
-}
+};
