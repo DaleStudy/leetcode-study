@@ -16,15 +16,15 @@ function twoSum1(nums: number[], target: number): number[] {
 // 2번째 풀이 (indexOf)
 function twoSum2(nums: number[], target: number): number[] {
     for (let i = 0; i < nums.length; i++) {
-        const j = target - nums[i];
-        const index = nums.indexOf(j);
-
-        if (nums.includes(j) && i !== index) {
-            return [i, index];
-        }
+      const j = target - nums[i];
+      const index = nums.indexOf(j);
+  
+      if (index !== -1 && i !== index) {
+        return [i, index];
+      }
     }
     return [];
-};
+  };
 
 // 3번째 풀이 (HashMap)
 function twoSum(nums: number[], target: number): number[] {
