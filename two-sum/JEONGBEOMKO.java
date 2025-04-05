@@ -1,5 +1,3 @@
-package week01.twosum;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,5 +1,3 @@
-package week01.top_k_frequent_elements;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
