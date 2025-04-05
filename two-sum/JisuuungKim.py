@@ -8,3 +8,5 @@ class Solution:
                 return [i, d[x]]
             else:
                 d[cur] = i
+
+    # 시간복잡도 O(n)
