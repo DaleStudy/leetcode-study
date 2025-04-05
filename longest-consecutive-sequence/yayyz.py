@@ -19,6 +19,6 @@ class Solution:
             lastNum = nums[i]
         
         return result 
-    
+
     
     
