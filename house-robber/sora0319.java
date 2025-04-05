@@ -17,3 +17,4 @@ class Solution {
         return house[index];
     }
 }
+
