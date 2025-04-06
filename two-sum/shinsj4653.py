@@ -43,3 +43,5 @@ class Solution:
 
             else:
                 diffDict[target - nums[i]] = i
+
+        return ret
