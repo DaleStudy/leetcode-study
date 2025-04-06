@@ -7,13 +7,7 @@ class Solution {
             if(root->val <= min || root->val >= max)
                 return false;
             
-            if(search(root->left, min, root->val) == false)
-                return false;
-            
-            if(search(root->right, root->val, max) == false)
-                return false;
-            
-            return true;
+            return search(root->left, min, root->val) && search(root->right, root->val, max);
         }
     
         bool isValidBST(TreeNode* root) {
