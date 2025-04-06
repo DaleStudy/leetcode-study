@@ -3,6 +3,7 @@ Constraints:
 - The number of nodes in the tree is in the range [1, 10^4].
 - -2^31 <= Node.val <= 2^31 - 1
 
+<Solution 1: 재귀>
 Time Complexity: O(n)
 - 트리의 모든 노드를 한 번씩 방문함
 
@@ -40,3 +41,11 @@ class Solution:
 
         return validate(root, float("-inf"), float("inf"))
 
+"""
+<Solution 2: 반복문>
+Time Complexity: 
+- 
+
+Space Complexity: 
+- 
+"""
