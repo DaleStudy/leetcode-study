@@ -12,22 +12,13 @@
  */
 
 function topKFrequent(nums: number[], k: number): number[] {
-    let result = []
     const countObject: { [key: number]: number } = {};
 
     for(const num of nums){
-        countObject[num] = (countObject[num] || 0) +1;
+        countObject[num] = (countObject[num] || 0) + 1;
     }
 
-    const sortObject= Object.entries(countObject).sort((a,b) => b[1]- a[1]);
+    const sortObject = Object.entries(countObject).sort((a,b) => b[1] - a[1]);
 
-    for(const [key] of sortObject){
-        if(k>0){
-            result.push(Number(key))
-            k--;
-        }
-
-    }
-
-    return result
+    return sortObject.slice(0, k).map(([key]) => Number(key));
 };
