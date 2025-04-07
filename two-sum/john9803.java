@@ -29,4 +29,4 @@ class john9803 {
     // public int[] 2nSolve(int[] nums, int target){
     // return [];
     // }
-}
+}\n

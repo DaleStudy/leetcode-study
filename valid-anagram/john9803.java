@@ -11,4 +11,4 @@ public class john9803{
 
             if(String.valueOf(charS).equals(String.valueOf(charT))){return true;}
             else{return false;}
-}
+}\n
