@@ -1,3 +1,19 @@
+"""
+📝 Problem: LeetCode 70 - Climbing Stairs
+📅 Date: 2025-04-07
+
+🚀 Approach:
+- Bottom-up DP using an array
+- dp[i] = dp[i-1] + dp[i-2]
+
+⏱️ Time Complexity: O(n)
+💾 Space Complexity: O(n)
+
+📌 Notes:
+- Base case: dp[0] = 1, dp[1] = 1
+- dp[i]: i번째 계단으로 도달하기 위한 모든 경우의 수를 가짐 
+- n <= 2의 경우는 f(1) + f(0)이 합해진 경우이기 때문에 n을 반환
+"""
 class Solution:
     def climbStairs(self, n: int) -> int:
         if n <= 2: 
