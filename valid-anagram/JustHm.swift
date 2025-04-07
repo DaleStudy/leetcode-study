@@ -1,5 +1,5 @@
 class Solution {
-    func isAnagram(_ s: String, _ t: String) -> Bool {
+    func isAnagram(_ s: String, _ t: String) -> Bool { // O(n)
         // s 문자열의 문자를 키로 빈도수를 값으로 저장
         var baseDict = Dictionary(s.map{($0,1)}, uniquingKeysWith: +)
         
@@ -16,14 +16,14 @@ class Solution {
     }
 }
 
-// MARK: 가장 간단한 방법
+// MARK: 가장 간단한 방법 time: O(nlogn)
 class Solution2 {
     func isAnagram(_ s: String, _ t: String) -> Bool {
         s.sorted() == t.sorted()
     }
 }
 
-// MARK: 실행속도가 가장 빠름
+// MARK: 실행속도가 가장 빠름 time: O(n)
 class Solution3 {
     func isAnagram(_ s: String, _ t: String) -> Bool {
         guard s.count == t.count else { return false }
