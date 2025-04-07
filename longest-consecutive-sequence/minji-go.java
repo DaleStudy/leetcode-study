@@ -1,32 +1,29 @@
-/*
-    Problem: https://leetcode.com/problems/longest-consecutive-sequence/
-    Description: return the length of the longest consecutive elements sequence
-    Concept: Array, Hash Table, Union Find
-    Time Complexity: O(n), Runtime: 1141ms
-    Space Complexity: O(n), Memory: 66.74MB
-*/
-import java.util.HashSet;
-import java.util.Set;
+/**
+ * <a href="https://leetcode.com/problems/longest-consecutive-sequence/">week01-4.longest-consecutive-sequence</a>
+ * <li> Description: return the length of the longest consecutive elements sequence </li>
+ * <li> Concept: Array, Hash Table, Union Find  </li>
+ * <li> Time Complexity: O(n), Runtime: 60ms  </li>
+ * <li> Space Complexity: O(n), Memory: 55.7MB </li>
+ */
 
 class Solution {
+    private Set<Integer> set;
+
     public int longestConsecutive(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for(int num: nums) {
-            set.add(num);
-        }
+        set = Arrays.stream(nums)
+                .boxed()
+                .collect(Collectors.toSet());
 
-        int answer = 0;
-        for(int num: nums){
-            if(set.contains(num-1)){ //contains(): O(1)
-                continue;
-            }
-            int length = 1;
-            while (set.contains(num+length)){
-                length++;
-            }
-            answer = Math.max(answer, length);
-        }
+        return set.stream()
+                .filter(num -> !set.contains(num-1))
+                .map(this::calculateLength)
+                .max(Integer::compareTo)
+                .orElse(0);
+    }
 
-        return answer;
+    public int calculateLength(int num) {
+        return (int) IntStream.iterate(num, n->n+1)
+                .takeWhile(set::contains)
+                .count();
     }
 }
