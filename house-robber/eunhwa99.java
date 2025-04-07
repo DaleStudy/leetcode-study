@@ -1,24 +1,21 @@
-import java.util.Arrays;
-
+// 시간 복잡도: O(n) - dp 배열을 한 번 순회
+// 공간 복잡도: O(n) - dp 배열
 class Solution {
-    int size = 0;
-    int[] numArray;
-    int[] dp;
-
     public int rob(int[] nums) {
-        size = nums.length;
-        dp = new int[size];
-        // 배열의 모든 값을 -1로 변경
-        Arrays.fill(dp, -1);
-        numArray = nums;
-        return fun(0);
-    }
+       int[][] dp = new int[nums.length][2]; // 0: not robbed, 1: robbed
 
-    private int fun(int idx) {
-        if (idx >= size) return 0;
-        if (dp[idx] != -1) return dp[idx];
-        dp[idx] = 0; // check
-        dp[idx] += Math.max(fun(idx + 2) + numArray[idx], fun(idx + 1));
-        return dp[idx];
+        if(nums.length == 0) return 0;
+        if(nums.length == 1) return nums[0];
+
+        dp[0][0] = 0;
+        dp[0][1] = nums[0];
+
+        for(int i = 1; i < nums.length; i++){
+            dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1]);
+            dp[i][1] = dp[i-1][0] + nums[i];
+        }
+
+        return Math.max(dp[nums.length-1][0], dp[nums.length-1][1]);
     }
 }
+

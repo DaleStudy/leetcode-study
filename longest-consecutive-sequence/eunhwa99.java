@@ -1,23 +1,23 @@
-import java.util.HashSet;
+import java.util.Arrays;
 
-class Solution {
-    public int longestConsecutive(int[] nums) {
-        HashSet<Integer> mySet = new HashSet<Integer>();
-
-        for (int num : nums) {
-            mySet.add(num);
-        }
-
-        int result = 0;
-        for (int num : mySet) {
-            int cnt = 1;
-            if (!mySet.contains(num - 1)) {
-                while (mySet.contains(++num)) {
-                    ++cnt;
-                }
-                result = Math.max(cnt, result);
+// 시간 복잡도: O(nlogn) - 정렬
+// 공간 복잡도: O(1)
+class Solution{
+    public int longestConsecutive(int[] nums){
+        if(nums.length == 0) return 0;
+        Arrays.sort(nums);
+        int pre = nums[0];
+        int max = 1;
+        int count = 1;
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i] == pre + 1){
+                count++;
+                max = Math.max(max, count);
+            } else if(nums[i] != pre){
+                count = 1;
             }
+            pre = nums[i];
         }
-        return result;
+        return max;
     }
 }
