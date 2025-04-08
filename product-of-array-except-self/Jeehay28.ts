@@ -1,6 +1,6 @@
 // Approach 2
 // 🗓️ 2025-04-08
-// ⏳ Time Complexity: O(n + n + n) = O(n)
+// ⏳ Time Complexity: O(n + n) = O(n)
 // 💾 Space Complexity: O(1)
 // result: required output → not counted
 // before, after: two scalar variables → O(1)
