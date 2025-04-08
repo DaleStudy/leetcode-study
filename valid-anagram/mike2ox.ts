@@ -13,6 +13,7 @@ function isAnagram(s: string, t: string): boolean {
 
 /**
  * Solution2: 자료구조 Map을 사용해서 문자 빈도를 계산해 두 문자열이 애너그램인지 확인하기
+ * 풀이 시간: 23분
  * 시간복잡도: O(n) - 단일 순회로 해결
  * 공간복잡도: O(1) - 최대 26개 알파벳에 대한 고정 크기 맵 사용
  */
