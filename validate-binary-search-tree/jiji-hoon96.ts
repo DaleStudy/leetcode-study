@@ -41,20 +41,16 @@
 function isValidBST(root: TreeNode | null): boolean {
     let prev: number | null = null;
 
-    // 중위 순회를 수행합니다
     function inorder(node: TreeNode | null): boolean {
         if (node === null) return true;
 
-        // 왼쪽 서브트리 검사
         if (!inorder(node.left)) return false;
 
-        // 현재 노드 검사 (중위 순회에서 현재 값은 이전 값보다 커야 함)
         if (prev !== null && node.val <= prev) {
             return false;
         }
         prev = node.val;
 
-        // 오른쪽 서브트리 검사
         return inorder(node.right);
     }
 
