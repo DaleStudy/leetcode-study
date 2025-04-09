@@ -10,7 +10,7 @@ Outputs: how many distinct ways to get to the top?
 
 Constraints: 1 <= n <= 45
 
-Time Complexity: O(2^n) ?
+Time Complexity: O(2^n)
 
 계단 오르는 방법 중, 중복되지 않는 모든 가지 수 구하기
 우선 완탐으로 해보고, 그 다음 최적부분구조 할 수 있는지 체크
@@ -64,6 +64,14 @@ n = 7
 1 2
 
 기저조건또 헷갈...   n 3 // 2 + 1
+
+하지만, 도식화해보니
+결국 dp(n) = dp(n - 1) + dp(n - 2)
+
+1 2
+1 1 1 => dp[2] 값
+
+2 1 => 이건 dp[1] 값
 
 Space Complexity: O(n)
 dp 배열 n만큼의 크기 지님
