@@ -21,7 +21,3 @@ class Solution:
                     left += 1
 
         return [list(x) for x in answer]
-
-
-
-        
