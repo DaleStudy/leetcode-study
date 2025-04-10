@@ -1,14 +1,16 @@
 class Solution:
     def isValidBST(self, root):
-        prev = None
-        def inorder(node):
-            nonlocal prev
+        max_val = float("-inf")
+        def dfs(node):
             if not node:
                 return True
-            if not inorder(node.left):
+            nonlocal max_val
+            if not dfs(node.left):
                 return False
-            if prev is not None and node.val <= prev:
+            if max_val >= node.val:
                 return False
-            prev = node.val
-            return inorder(node.right)
-        return inorder(root)
+            max_val = node.val
+            if not dfs(node.right):
+                return False
+            return True
+        return dfs(root)
