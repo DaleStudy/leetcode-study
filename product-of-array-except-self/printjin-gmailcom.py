@@ -11,3 +11,4 @@ class Solution:
             answer[i] *= right
             right *= nums[i]
         return answer
+    
