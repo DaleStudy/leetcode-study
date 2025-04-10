@@ -9,4 +9,3 @@ class Solution:
             current = prev1 + prev2
             prev1, prev2 = prev2, current
         return prev2
-        
