@@ -1,5 +1,5 @@
 class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
+    def threeSum(self, nums):
         triplets = set()
         nums.sort()
         for i in range(len(nums) - 2):
