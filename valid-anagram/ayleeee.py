@@ -6,3 +6,4 @@ def is_anagram(s: str, t: str) -> bool:
     Sorted : O(nlogn)
     '''
     return Counter(s) == Counter(t)
+    
