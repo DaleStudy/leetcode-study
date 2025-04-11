@@ -23,3 +23,4 @@ class Solution{
     return isValidBSTHelper(node.left, min, node.val) && isValidBSTHelper(node.right, node.val, max);
   }
 }
+
