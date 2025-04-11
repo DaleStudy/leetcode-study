@@ -15,3 +15,4 @@ class Solution(object):
             return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)
 
         return dfs(root, float("-inf"), float("inf"))
+
