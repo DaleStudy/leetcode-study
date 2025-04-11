@@ -28,4 +28,3 @@ class Solution:
             prev = current.val
             current = current.right
         return True
-            
