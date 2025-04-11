@@ -1,5 +1,3 @@
-package week02.Climbing_stairs;
-
 class Solution {
     public int climbStairs(int n) {
 
