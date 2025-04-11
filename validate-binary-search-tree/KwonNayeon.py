@@ -3,11 +3,12 @@ Constraints:
 - The number of nodes in the tree is in the range [1, 10^4].
 - -2^31 <= Node.val <= 2^31 - 1
 
+<Solution 1: 재귀>
 Time Complexity: O(n)
 - 트리의 모든 노드를 한 번씩 방문함
 
 Space Complexity: O(h)
-- 재귀 호출 스택의 최대 깊이는 트리의 높이
+- 스택에는 최대 h개의 노드가 저장됨 (h는 트리의 높이)
 
 풀이방법:
 1. 각 노드가 가질 수 있는 값의 범위를 한정함
@@ -39,4 +40,38 @@ class Solution:
                     validate(node.right, node.val, max_val))
 
         return validate(root, float("-inf"), float("inf"))
+
+"""
+<Solution 2: 반복문>
+Time Complexity: O(n)
+- 트리의 모든 노드를 한 번씩 방문함
+
+Space Complexity: O(h)
+- 스택에는 최대 h개의 노드가 저장됨 (h는 트리의 높이)
+
+노트:
+- 재귀와 동일한 순서로 노드를 방문함 (왼쪽 서브트리 → 현재 노드 → 오른쪽 서브트리)
+- 트리가 매우 깊어질 경우 발생할 수 있는 스택 오버플로우를 방지할 수 있음
+"""
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        stack = []
+        pre_val = float('-inf')
+        current = root
+
+        while current or stack:
+            
+            while current:
+                stack.append(current)
+                current = current.left
+
+            current = stack.pop()
+
+            if current.val <= pre_val:
+                return False
+
+            pre_val = current.val
+            current = current.right
+
+        return True
 
