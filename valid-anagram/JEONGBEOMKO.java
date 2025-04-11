@@ -2,28 +2,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Solution {
-
+    /*
+    time complexity: O(n)
+    space complexity: O(1)
+     */
     public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) return false;
 
-        Map<Character, Integer> charMap = new HashMap<>();
+        Map<Character, Integer> sFrequency = new HashMap<>();
 
-        char[] sArr = s.toCharArray();
-        for (char sa : sArr) {
-            charMap.put(sa, charMap.getOrDefault(sa, 0) + 1);
+        for (int i = 0; i < s.length(); i++) {
+            sFrequency.put(s.charAt(i), sFrequency.getOrDefault(s.charAt(i), 0) + 1);
         }
 
-        char[] tArr = t.toCharArray();
-        for (char ta : tArr) {
-            charMap.put(ta, charMap.getOrDefault(ta, 0) - 1);
-        }
-
-        for (int cnt : charMap.values()) {
-            if (cnt != 0) {
-                return false;
+        for (int i = 0; i < t.length(); i++) {
+            if (sFrequency.getOrDefault(t.charAt(i), 0) != 0) {
+                sFrequency.put(t.charAt(i), sFrequency.get(t.charAt(i)) - 1);
             }
         }
 
-        return true;
+        for (int count : sFrequency.values()) {
+            if (count != 0) return false;
+        }
 
+        return true;
     }
 }
