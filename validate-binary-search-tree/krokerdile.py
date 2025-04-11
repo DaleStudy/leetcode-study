@@ -13,4 +13,3 @@ class Solution:
             return validate(node.left, low, node.val) and validate(node.right, node.val, high)
 
         return validate(root, float('-inf'), float('inf'))
-    
