@@ -43,6 +43,7 @@ class Solution {
     public boolean isValidBST(TreeNode root) {
 
         dfs(root);
+        // iterativeDFS(root);
 
         if (orderedList.isEmpty()) return false;
         for (int i = 0; i < orderedList.size() - 1; i++) {
@@ -64,5 +65,34 @@ class Solution {
         orderedList.add(node.val); // in-order (중위 순회 방식)
         if (node.right != null) dfs(node.right);
 
+    }
+
+
+    /**
+     runtime : 9ms
+     memory : 45.41mb
+     */
+
+    // [idea] : 오른쪽 sub-tree로 이동하며 아래의 1-2-3 과정 반복 수행
+    // [time-complexity] : O(N)
+    // [space-complexity] : O(N)
+
+    public void iterativeDFS(TreeNode root) {
+
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode current = root;
+        while (current != null || !stack.isEmpty()) {
+
+            // 1. 왼쪽의 모든 노드를 계속해서 stack에 push
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            // 2. 왼쪽 노드 끝에 도달하면 스택에서 꺼내서 방문
+            current = stack.pop();
+            orderedList.add(current.val);
+            // 3. 오른쪽 노드로 이동
+            current = current.right;
+        }
     }
 }
