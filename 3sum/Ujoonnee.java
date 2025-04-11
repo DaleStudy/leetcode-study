@@ -1,4 +1,36 @@
 import java.util.*;
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        Set<List<Integer>> set = new HashSet<>();
+        for(int i = 0; i < nums.length && nums[i] <= 0; i++) {
+            int j = i+1;
+            int k = nums.length - 1;
+            while(j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum > 0) {
+                    k--;
+                    continue;
+                }
+
+                if (sum < 0) {
+                    j++;
+                    continue;
+                }
+
+                set.add(List.of(nums[i], nums[j], nums[k]));
+                j++;
+                k--;
+            }
+        }
+
+        return new ArrayList<>(set);
+    }
+}
+
+/*
+import java.util.*;
 import java.util.stream.Collectors;
 
 class Solution {
@@ -52,3 +84,4 @@ class Triplet {
         return Objects.hash(triplet[0], triplet[1], triplet[2]);
     }
 }
+*/
