@@ -1,21 +1,17 @@
 """
-Title: 237. Top K Frequent Elements
-Link: https://leetcode.com/problems/top-k-frequent-elements/
-
-Question:
-    - Given an integer array `nums` and an integer `k`, return the `k` most frequent elements.
-    - You may return the answer in any order.
+Problem: 237. Top K Frequent Elements
 
 Constraints:
-    - 1 <= nums.length <= 10^5
-    - -10^4 <= nums[i] <= 10^4
-    - k is in the range [1, the number of unique elements in the array].
-    - The answer is guaranteed to be unique.
+- 1 <= nums.length <= 10^5
+- -10^4 <= nums[i] <= 10^4
+- k is in the range [1, the number of unique elements in the array].
+- The answer is guaranteed to be unique.
 
-Time Complexity:
-    - O(n log n)
-Space Complexity:
-    - O(n)
+Time Complexity: O(n log n)
+- 
+
+Space Complexity: O(n)
+- 
 """
 
 # Original Solution
