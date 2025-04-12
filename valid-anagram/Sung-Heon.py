@@ -11,5 +11,5 @@ class Solution:
             return False
         if len(t) == 0:
             return True
-        else :
+        else:
             return False
