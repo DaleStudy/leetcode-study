@@ -25,6 +25,3 @@ class Solution(object):
             answer[i] = left[i] * right[i]
 
         return answer
-
-        
-        
