@@ -73,8 +73,7 @@ root =
 결국 풀이 참고
 
 [회고]
-
-
+상한값, 하한값 까지 넘기는 사고 장착하기! 복습 또 복습!
 """
 
 # Definition for a binary tree node.
