@@ -2,26 +2,19 @@ class Solution(object):
     def productExceptSelf(self, nums):
         """
         TimeComplexity: O(n)
-        SpaceComplexity: O(n)
+        SpaceComplexity: O(1)
         """
         n = len(nums)
+        answer = [1] * n # 결과를 저장하는 리스트
         
-
-        # prefix product 수행
-        # left는 i번째 요소 왼쪽에 있는 요소들의 곱
-        left = [1] * n
+        # i번째 요소 왼쪽에 있는 요소들에 대해 prefix product 수행
         for i in range(1, n):
-            left[i] = left[i - 1] * nums[i - 1]
+            answer[i] = answer[i - 1] * nums[i - 1]
 
-        # suffix product 수행
-        # right는 i번째 요소 오른쪽에 있는 요소들의 곱
-        right = [1] * n
-        for i in range(n - 2, -1, -1): # 배열의 마지막 인덱스, [n - 1]은 이미 1로 초기화 되어 있으므로 
-            right[i] = right[i + 1] * nums[i + 1]
-
-        # 두 배열을 이용하여 최종 출력
-        answer = [1] * n
-        for i in range(n):
-            answer[i] = left[i] * right[i]
+        # 오른쪽에 있는 요소들에 대해 suffix product 수행
+        right = 1 # 오른쪽 누적 곱
+        for i in range(n - 1, -1, -1): 
+            answer[i] *= right # 현재 인덱스 왼쪽 곱과 오른쪽 곱을 곱함
+            right *= nums[i] #오른쪽 누적 곱 업데이트
 
         return answer
