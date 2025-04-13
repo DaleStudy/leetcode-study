@@ -14,4 +14,4 @@ function isAnagram(s: string, t: string): boolean {
         count[t.charCodeAt(i) - 97]--
     }
     return count.every(c => c === 0)
-};
+}

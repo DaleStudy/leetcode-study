@@ -31,4 +31,4 @@ function isValidBST(root: TreeNode | null): boolean {
     }
     inOrder(root)
     return isValid
-};
+}

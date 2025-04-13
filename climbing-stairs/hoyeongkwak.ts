@@ -12,4 +12,4 @@ function climbStairs(n: number): number {
     curr = tempPrev + curr
   }
   return curr
-};
+}
