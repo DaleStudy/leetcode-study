@@ -31,6 +31,8 @@ class Solution {
     }
 }
 
+// 시간 복잡도: O(2^(target)) - 각 후보 숫자가 target을 만드는 데에 기여할 수도 있고 안 할 수도 있음
+// 공간 복잡도: O(k * t) - k는 가능한 조합의 수, t는 각 조합의 크기
 class newSolution{
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
@@ -52,3 +54,4 @@ class newSolution{
         }
     }
 }
+
