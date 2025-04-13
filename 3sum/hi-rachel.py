@@ -14,4 +14,3 @@ class Solution:
                 seen.add(nums[j])
 
         return list(triplets)
-    
