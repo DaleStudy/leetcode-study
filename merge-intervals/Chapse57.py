@@ -12,5 +12,7 @@ class Solution:
             else:
                 output.append([start, end])
         return output
-        /n
+
+
+
         
