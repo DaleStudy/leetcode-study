@@ -1,5 +1,4 @@
-
-// NOTE: 카데인 알고리즘.
+// NOTE: 카데인 알고리즘
 // TODO: O(n^2) 복잡도의 브루트포스 방식으로도 풀어보기.
 class Solution {
     public int maxSubArray(int[] nums) {
