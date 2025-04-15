@@ -1,32 +1,21 @@
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * 시간/공간 복잡도
- */
-// 시간 복잡도: 문자열을 한 번씩만 방문 -> O(n)
-// 공간 복잡도: 문자열 길이만큼 공간 필요(hashmap 크기) -> O(n)
+// 시간 복잡도: O(n) - 문자열 길이 n
+// 공간 복잡도: O(1) - 알파벳 개수는 26개로 고정되어 있음
 class Solution {
     public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()) return false; // 길이가 다르면 false
 
-        // s 안의 문자들이 t 에도 동일한 횟수로 등장하는 지 확인
-        if (s.length() != t.length()) return false; // 두 문자열의 길이가 다르다면 아나그램이 아니다.
-
-        // 문자별 횟수 저장 map
-        Map<Character, Integer> sAlphabetCountMap = new HashMap<>();
-        for (char c : s.toCharArray()) { // 시간복잡도: O(n)
-            sAlphabetCountMap.put(c, sAlphabetCountMap.getOrDefault(c, 0) + 1);
+        int[] letterCount = new int[26];
+        // 각 알파벳의 개수를 세기 위한 배열
+        for(int i = 0; i < s.length(); i++){
+            letterCount[s.charAt(i) - 'a']++;
+            letterCount[t.charAt(i) - 'a']--;
         }
 
-        for (char c : t.toCharArray()) { // 시간복잡도: O(n)
-            if (!sAlphabetCountMap.containsKey(c)) return false; // s에 t가 가진 문자열이 없다면 아나그램이 아니다.
-
-            int count = sAlphabetCountMap.get(c) - 1;
-            if (count == 0) sAlphabetCountMap.remove(c);
-            else sAlphabetCountMap.put(c, count);
+        for(int count : letterCount){
+            if(count != 0) return false;
         }
+        return true;
 
-        // 모든 문자가 일치하면 해시맵이 비어 있어야 함
-        return sAlphabetCountMap.isEmpty();
     }
 }
+
