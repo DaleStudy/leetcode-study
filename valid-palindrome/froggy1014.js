@@ -1,8 +1,5 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
-
+// Time Complexity O(n)
+// Space Complexity O(n)
 var isPalindrome = function (s) {
   const str = s.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
   let left = 0;
