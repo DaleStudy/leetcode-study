@@ -22,7 +22,4 @@ class Solution:
             return True, min(left_min, node.val), max(right_max, node.val)
 
         valid, _, _ = is_bst(root)
-        return valid
-
-
-        
+        return valid        
