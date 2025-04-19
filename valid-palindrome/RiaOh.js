@@ -2,6 +2,7 @@
  * @param {string} s
  * @return {boolean}
  */
+// Week 3에 다시 올림
 var isPalindrome = function (s) {
   const arr = [...s];
   let text = "";
