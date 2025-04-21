@@ -4,6 +4,8 @@ Constraints:
  2. -100 <= Node.val <= 100
  3. list1 and list2 are sorted in non-decreasing order
 
+<Solution 1>
+
 Time Complexity: n과 m이 각각 list1과 list2의 길이를 나타낼 때, O(n + m)
  - 각 노드를 한 번씩만 방문하기 때문
 
@@ -44,4 +46,11 @@ class Solution:
 
         return result.next
 
-# Solution 2
+"""
+<Solution 2>
+Time Complexity:
+
+Space Complexity:
+
+풀이 방법:
+"""
