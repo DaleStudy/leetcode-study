@@ -37,3 +37,18 @@ function mergeTwoLists(
   current.next = list1 !== null ? list1 : list2;
   return dummy.next;
 };
+
+// 2번째 풀이 (재귀)
+function mergeTwoLists2(
+  list1: ListNode | null,
+  list2: ListNode | null
+): ListNode | null {
+  if (!(list1 && list2)) return list1 || list2;
+  if (list1.val < list2.val) {
+    list1.next = mergeTwoLists(list1.next, list2);
+    return list1;
+  } else {
+    list2.next = mergeTwoLists(list1, list2.next);
+    return list2;
+  }
+};
