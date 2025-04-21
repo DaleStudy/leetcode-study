@@ -43,3 +43,5 @@ class Solution:
             current.next = list2
 
         return result.next
+
+# Solution 2
