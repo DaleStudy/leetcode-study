@@ -29,4 +29,4 @@ function findMin(nums: number[]): number {
     }
 
     return binarySearchFunc(nums);
-}
+};
