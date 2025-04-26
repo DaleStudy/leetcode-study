@@ -14,7 +14,7 @@ class Solution:
             if i == len(word):
                 return True
             
-            #윺효성 검사
+            #유효성 감사
             # 범위를 벗어나거나 이미 방문했거나 현재 셀의 문자가 단어의 현재 문자와 일치하지 않는 경우
             # 범위 검사
             if r < 0 or r >= rows or c < 0 or c >= cols:
