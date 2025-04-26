@@ -1,21 +1,12 @@
 """
-Title: 215. Valid Palindrome  
-Link: https://leetcode.com/problems/valid-palindrome/  
-
-Summary:
-    - Palindrome이라면 True, 아니라면 False를 반환하는 문제.
-    - Palindrome이란, 앞으로 읽어도 뒤에서부터 읽어도 동일한 단어를 뜻함.
-    - 추가 조건: 대소문자를 구분하지 않으며, 알파벳과 숫자 이외의 문자는 제거해야 함.
-    - e.g. racecar
-
 Conditions:
-    - 입력 문자열이 Palindrome인 경우: `True` 반환
-    - Palindrome이 아닌 경우: `False` 반환
+- 1 <= s.length <= 2 * 10^5
+- s consists only of printable ASCII characters.
 
-Time Complexity:
-    - O(n)
-Space Complexity:
-    - O(n)
+<Solution 1>
+Time Complexity: O(n)
+
+Space Complexity: O(n)
 """
 class Solution:
     def isPalindrome(self, s: str) -> bool:
@@ -23,4 +14,29 @@ class Solution:
         if s == s[::-1]:
             return True
         return False
+"""
+<Solution 2>
+Time Complexity: O(n) 
+- 팰린드롬일 경우, 각 문자를 한 번씩 검사
 
+Space Complexity: O(1)
+- left, right 포인터 외에 추가 공간 사용 없음
+"""
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left, right = 0, len(s) - 1
+
+        while left < right:
+            while left < right and not s[left].isalnum():
+                left += 1
+
+            while left < right and not s[right].isalnum():
+                right -= 1
+
+            if s[left].lower() != s[right].lower():
+                return False
+
+            left += 1
+            right -= 1
+
+        return True
