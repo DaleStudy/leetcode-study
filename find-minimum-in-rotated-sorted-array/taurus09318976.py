@@ -1,76 +1,54 @@
-# 백트래킹 방법을 사용하여 풀이함
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        # 보드의 행과 열 수
-        rows, cols = len(board), len(board[0])
-        # 방문한 셀을 추적하는 집합
-        visited = set()
+    #findMin 메서드는 정수 리스트를 입력 받아 정수를 반환
+    def findMin(self, nums: List[int]) -> int:
+        # 배열의 시작과 끝 인덱스 설정
+        ## left는 배열의 시작 인덱스, right는 배열의 끝 인덱스. len(nums) - 1
+        left, right = 0, len(nums) - 1
         
-        # 깊이우선 탐색(DFS) 함수 정의
-        #r, c은 현재 셀의 행과 열, i는 현재 찾고 있는 단어의 인덱스
-        def dfs(r, c, i):
-            #기본 조건 확인
-            # 단어의 모든 문자를 찾은 경우 성공
-            if i == len(word):
-                return True
-            
-            #윺효성 검사
-            # 범위를 벗어나거나 이미 방문했거나 현재 셀의 문자가 단어의 현재 문자와 일치하지 않는 경우
-            if (r < 0 or c < 0 or 
-                r >= rows or c >= cols or 
-                (r, c) in visited or 
-                board[r][c] != word[i]):
-                return False
-            
-            # 현재 셀을 방문했다고 표시
-            visited.add((r, c))
-            
-            # 상하좌우 방향으로 탐색
-            result = (dfs(r + 1, c, i + 1) or  # 아래
-                     dfs(r - 1, c, i + 1) or  # 위
-                     dfs(r, c + 1, i + 1) or  # 오른쪽
-                     dfs(r, c - 1, i + 1))    # 왼쪽
-            
-            # 백트래킹: 현재 셀을 방문하지 않은 것으로 표시
-            #현재 경로가 실패했으므로 방문 표시 제거
-            visited.remove((r, c))
-            
-            return result
+        #완전히 정렬되어 배열이 회전되지 않은 경우, 첫 번째 요소가 최소값
+        if nums[left] < nums[right]:
+            return nums[left]
         
-        # 보드의 모든 셀에서 시작점으로 시도
-        for r in range(rows):
-            for c in range(cols):
-                if dfs(r, c, 0):
-                    return True
+        # 이진 탐색 실행 : left < right인 동안 반복되며, 검색 범위가 1개 이상의 요소를 포함할 때까지 계속됨
+        while left < right:
+            # 중간 인덱스 계산 : 중간값과 오른쪽 끝값 비교 후, 비교 결과에 따라 검색 범위 조정
+            mid = (left + right) // 2
+            
+            # 중간값이 오른쪽 값보다 큰 경우
+            # -> 최소값은 중간값 오른쪽에 있음
+            if nums[mid] > nums[right]:
+                left = mid + 1
+            # 중간값이 오른쪽 값보다 작거나 같은 경우
+            # -> 최소값은 중간값 포함 왼쪽에 있음
+            else:
+                right = mid
         
-        return False
+        # 최종적으로 찾은 최소값 반환
+        return nums[left]
 
-        #시간 복잡도 (Time Complexity): O(m * n * 4^L)
-            #m: 보드의 행 수
-            #n: 보드의 열 수
-            #L: 단어의 길이
-            #이유:
-                #각 셀에서 시작할 수 있음: O(m * n)
-                #각 위치에서 4방향으로 탐색 가능: O(4^L)
-                #최악의 경우 모든 경로를 탐색해야 함
-                #따라서 시간 복잡도는 O(m * n * 4^L)
-        #공간 복잡도 (Space Complexity): O(L)
-            #L: 단어의 길이
-            #이유:
-                #재귀 호출 스택의 깊이는 단어의 길이에 비례
-                #visited 집합의 크기도 단어의 길이에 비례
-                #따라서 공간 복잡도는 O(L)
-        #DFS vs BFS 비교:
-            #DFS (깊이 우선 탐색):
-            #한 경로를 끝까지 탐색
-            #스택/재귀 사용
-            #메모리 사용이 적음
-            #최단 경로 보장하지 않음
-        #BFS (너비 우선 탐색):
-            #같은 레벨의 모든 노드를 먼저 탐색
-            #큐 사용
-            #메모리 사용이 많음
-            #최단 경로 보장
+# 테스트 코드
+print(Solution().findMin([3, 4, 5, 1, 2]))  # 출력: 1
+print(Solution().findMin([4, 5, 6, 7, 0, 1, 2]))  # 출력: 0
+print(Solution().findMin([1]))  # 출력: 1
+
+
+    #시간 복잡도 (Time Complexity): O(log n)
+        #이유:
+            #이진 탐색 알고리즘 사용
+            #각 단계마다 검색 범위가 절반으로 줄어듦
+            #n개의 요소를 log₂n 번의 비교로 검색
+            #예시:
+            #n = 8: 최대 3번의 비교 (log₂8 = 3)
+            #n = 16: 최대 4번의 비교 (log₂16 = 4)
+            #따라서 시간 복잡도는 O(log n)
+    #공간 복잡도 (Space Complexity): O(1)
+        #이유:
+            #추가적인 데이터 구조 사용하지 않음
+            #사용하는 변수:
+            #left, right, mid: 상수 개수의 정수 변수
+            #입력 크기와 관계없이 일정한 메모리만 사용
+            #따라서 공간 복잡도는 O(1)
+
 
 
 
