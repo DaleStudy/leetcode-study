@@ -16,10 +16,12 @@ class Solution:
             
             #윺효성 검사
             # 범위를 벗어나거나 이미 방문했거나 현재 셀의 문자가 단어의 현재 문자와 일치하지 않는 경우
-            if (r < 0 or c < 0 or 
-                r >= rows or c >= cols or 
-                (r, c) in visited or 
-                board[r][c] != word[i]):
+            # 범위 검사
+            if r < 0 or r >= rows or c < 0 or c >= cols:
+                return False
+                
+            # 방문 및 문자 일치 검사
+            if (r, c) in visited or board[r][c] != word[i]:
                 return False
             
             # 현재 셀을 방문했다고 표시
@@ -60,3 +62,15 @@ class Solution:
                 #재귀 호출 스택의 깊이는 단어의 길이에 비례
                 #visited 집합의 크기도 단어의 길이에 비례
                 #따라서 공간 복잡도는 O(L)
+
+        #DFS vs BFS 비교:
+            #DFS (깊이 우선 탐색):
+            #한 경로를 끝까지 탐색
+            #스택/재귀 사용
+            #메모리 사용이 적음
+            #최단 경로 보장하지 않음
+        #BFS (너비 우선 탐색):
+            #같은 레벨의 모든 노드를 먼저 탐색
+            #큐 사용
+            #메모리 사용이 많음
+            #최단 경로 보장
