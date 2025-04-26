@@ -14,12 +14,6 @@ class Solution {
 		int maxDepth(TreeNode* root) {
 			if (!root)
 				return (0);
-			return (getMaxDepth(root));
-		}
-
-		int getMaxDepth(TreeNode* node, int depth = 0) {
-			if (!node)
-				return (depth);
-			return std::max(getMaxDepth(node->left, depth + 1), getMaxDepth(node->right, depth + 1));
+			return (std::max(maxDepth(root->left), maxDepth(root->right)) + 1);
 		}
 	};
