@@ -66,3 +66,4 @@ list1 = create_linked_list([])
 list2 = create_linked_list([0])
 result = solution.mergeTwoLists(list1, list2)
 print(linked_list_to_list(result))  # [0]
+
