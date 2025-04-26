@@ -57,4 +57,4 @@ class Solution:
 
         head.next = list1 or list2
         return retList.next
-    
+
