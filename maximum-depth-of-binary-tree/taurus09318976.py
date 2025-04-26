@@ -1,58 +1,54 @@
-# Definition for a binary tree node.
+# 이진 트리의 노드를 정의하는 클래스
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+        self.val = val  # 노드의 값
+        self.left = left # 왼쪽 자식 노드
+        self.right = right # 오른쪽 자식 노드
+
 
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        # 루트가 None이면 깊이는 0
+        # 초기 조건 확인. 트리가 비어 있는 경우 깊이는 0
         if not root:
             return 0
         
-        # 왼쪽 서브트리와 오른쪽 서브트리의 최대 깊이를 재귀적으로 계산
-        left_depth = self.maxDepth(root.left)
-        right_depth = self.maxDepth(root.right)
+        # 큐에 루트 노드를 추가, 깊이를 0으로 초기화
+        queue = [root]
+        depth = 0
         
-        # 현재 노드의 깊이(1) + 왼쪽과 오른쪽 중 더 큰 깊이
-        return 1 + max(left_depth, right_depth)
-
-# 테스트 코드
-def create_binary_tree(lst):
-    if not lst:
-        return None
+        # 너비우선 탐색(BFS) 실행. 큐가 비어있지 않은 동안 반복
+        while queue:
+            # 새로운 레벨 시작될 때마다 깊이 증가
+            depth += 1
+            # 현재 레벨의 노드 수 저장
+            level_size = len(queue)
+            
+            # 현재 레벨의 모든 노드를 순차적으로 처리
+            for _ in range(level_size):
+                # 큐에서 노드 하나 꺼내기
+                node = queue.pop(0)
+                
+                # 자식 노드 처리. 다음 레벨의 노드들이 됨
+                ## 왼쪽 자식이 있으면 큐에 추가
+                if node.left:
+                    queue.append(node.left)
+                ## 오른쪽 자식이 있으면 큐에 추가
+                if node.right:
+                    queue.append(node.right)
     
-    root = TreeNode(lst[0])
-    queue = [root]
-    i = 1
-    
-    while queue and i < len(lst):
-        current = queue.pop(0)
-        
-        if lst[i] is not None:
-            current.left = TreeNode(lst[i])
-            queue.append(current.left)
-        i += 1
-        
-        if i < len(lst) and lst[i] is not None:
-            current.right = TreeNode(lst[i])
-            queue.append(current.right)
-        i += 1
-    
-    return root
+        # 최종 깊이 반환
+        return depth
 
-# 테스트 케이스
-solution = Solution()
-
-# 테스트 케이스 1: [3,9,20,None,None,15,7]
-tree1 = create_binary_tree([3,9,20,None,None,15,7])
-print(solution.maxDepth(tree1))  # 3 출력
-
-# 테스트 케이스 2: [1,None,2]
-tree2 = create_binary_tree([1,None,2])
-print(solution.maxDepth(tree2))  # 2 출력
-
-# 테스트 케이스 3: []
-tree3 = create_binary_tree([])
-print(solution.maxDepth(tree3))  # 0 출력 
+    #시간 복잡도 (Time Complexity): O(n)
+        #n: 트리의 총 노드 수
+        #이유:
+            #각 노드를 정확히 한 번씩만 방문
+            #각 노드에서의 연산(추가, 제거)은 상수 시간
+            #따라서 전체 시간 복잡도는 O(n)
+    #공간 복잡도 (Space Complexity): O(n)
+        #최악의 경우: O(n)
+        #평균적인 경우: O(n/2) ≈ O(n)
+        #이유:
+            #큐에 저장되는 최대 노드 수는 트리의 최대 너비
+            #완전 이진 트리의 경우 마지막 레벨에 약 n/2개의 노드가 있을 수 있음
+            #따라서 공간 복잡도는 O(n)
