@@ -1,13 +1,20 @@
 class Solution:
     def wordBreak(self, s, wordDict):
         wordSet = set(wordDict)
-        dp = [False] * (len(s) + 1)
-        dp[0] = True
+        memo = {}
         
-        for i in range(1, len(s) + 1):
-            for j in range(i):
-                if dp[j] and s[j:i] in wordSet:
-                    dp[i] = True
-                    break
+        def backtrack(start):
+            if start == len(s):
+                return True
+            if start in memo:
+                return memo[start]
+            
+            for end in range(start + 1, len(s) + 1):
+                if s[start:end] in wordSet and backtrack(end):
+                    memo[start] = True
+                    return True
+            
+            memo[start] = False
+            return False
         
-        return dp[len(s)]
+        return backtrack(0)
