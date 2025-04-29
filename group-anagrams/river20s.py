@@ -2,7 +2,7 @@ import collections
 from typing import List
 
 class Solution(object):
-    def groupAnagrams(self, strs):
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         """
         :type strs: List[str]
         :rtype: List[List[str]]
