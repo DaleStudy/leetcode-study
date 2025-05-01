@@ -1,3 +1,7 @@
+"""
+시간 복잡도: O(n * D * L) n = 문자열 길이, D = 사전 크기, L = 단어 평균 길이
+공간 복잡도: O(n)
+"""
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         
