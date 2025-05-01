@@ -19,7 +19,7 @@ class Solution(object):
             max_profit = max(max_profit, (price - min_price))
             # 최소 가격 갱신
             min_price = min(min_price, price)
-            # 최소 이익 갱신 이후 최소 가격 갱신해야 함
+            # 최대 이익(max_profit) 갱신 이후 최소 가격(min_price) 갱신해야 함
             # 최대 이익 자체는 이미 '산' 주식에 대해 계산해야 하므로
             # 사는 동시 팔 수 없음
 
