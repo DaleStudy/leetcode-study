@@ -1,5 +1,9 @@
 """
 Time complexity O(n)
+--> O(n * wlog(w))
+n : 주어지는 단어 개수
+w : 평균 단어 길이
+
 Space compexity O(n)
 
 hash table, sorting
