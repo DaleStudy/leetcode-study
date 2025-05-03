@@ -29,9 +29,18 @@ class Solution:
         
         n = len(s) # 문자열 s의 길이, 나중에 인덱스 끝까지 도달했는지 확인하기 위해 사용함
 
+        # <<<--- 메모이제이션 캐시 초기화 ---<<<
+        # key: start_index, value: s[start_index:] 분할 가능 여부 (True/False)
+        memo = {}
+
         # 2. 재귀 함수 정의
         # canBreak(start_index): s[strat_index:] 부분을 분할할 수 있는지 확인
         def canBreak(start_index: int) -> bool:
+
+            # <<<--- 캐시 확인 ---<<<
+            # 이 start_index에 대한 결과가 이미 memo에 있으면 바로 반환
+            if start_index in memo:
+                return memo[start_index]
 
             # 베이스 케이스
             # 시작 인덱스(start_index)가 문자열 끝에 도달했다면 성공
@@ -41,7 +50,6 @@ class Solution:
             # 현재 start_index부터 시작하는 가능한 모든 단어를 트라이를 이용해 찾고
             # 각 단어에 대해 나머지 부분이 분할 가능한지 재귀적으로 확인
             currentNode = trie.root
-
             for i in range(start_index, n):
                 char = s[i]
 
@@ -57,9 +65,13 @@ class Solution:
                     # 나머지 부분 s[i+1:]에 대해서도 분할 가능한지 재귀 호출
                     if canBreak(i + 1):
                         # 나머지 부분 분할 성공 => 전체 분할 가능
+                        # <<<--- 성공 결과 캐시에 저장 ---<<<
+                        memo[start_index] = True
                         return True
             # start_index부터 시작하는 모든 가능한 단어 분할을 시도했으나
             # 성공적인 경로를 찾지 못했다면
+            # <<<--- 실패 결과 캐시에 저장 ---<<<
+            memo[start_index] = False
             return False
     
         # 3. 재귀 함수 호출 시작 
