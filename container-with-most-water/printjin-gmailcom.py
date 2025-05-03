@@ -1,8 +1,13 @@
 class Solution:
     def maxArea(self, height):
-        max_area = 0
-        for i in range(len(height)):
-            for j in range(i + 1, len(height)):
-                area = (j - i) * min(height[i], height[j])
-                max_area = max(max_area, area)
-        return max_area
+        def divide_and_conquer(left, right):
+            if left >= right:
+                return 0
+            min_height = min(height[left], height[right])
+            area = min_height * (right - left)
+            return max(
+                area,
+                divide_and_conquer(left + 1, right),
+                divide_and_conquer(left, right - 1)
+            )
+        return divide_and_conquer(0, len(height) - 1)
