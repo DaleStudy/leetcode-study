@@ -16,4 +16,24 @@ class Solution {
         }
         return result;
     }
+
+    public int[] productExceptSelfV2(int[] nums) {
+        int[] result = new int[nums.length];
+
+        int curr = 1;
+        result[0] = curr;
+        for (int i = 1; i < nums.length; i++) {
+            curr *= nums[i - 1];
+            result[i] = curr;
+        }
+
+        curr = 1;
+        result[nums.length - 1] *= curr;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            curr *= nums[i + 1];
+            result[i] *= curr;
+        }
+
+        return result;
+    }
 }
