@@ -12,7 +12,6 @@ function maxArea(height: number[]): number {
 
         while (left < right) {
             const length = Math.min(height[left], height[right]);
-            console.log(length);
             const area = (right - left) * length;
 
             result = Math.max(area, result);
