@@ -5,8 +5,13 @@ Conditions:
 
 <Solution 1>
 Time Complexity: O(n)
+- 
 
 Space Complexity: O(n)
+- 
+
+풀이 방법: 
+- 
 """
 class Solution:
     def isPalindrome(self, s: str) -> bool:
@@ -17,10 +22,13 @@ class Solution:
 """
 <Solution 2>
 Time Complexity: O(n) 
-- 팰린드롬일 경우, 각 문자를 한 번씩 검사
+- 팰린드롬일 경우, 각 문자를 한 번씩 검사함
 
 Space Complexity: O(1)
 - left, right 포인터 외에 추가 공간 사용 없음
+
+풀이 방법: 
+- 
 """
 class Solution:
     def isPalindrome(self, s: str) -> bool:
