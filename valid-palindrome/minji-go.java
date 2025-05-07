@@ -1,22 +1,19 @@
-/*
-    Problem: https://leetcode.com/problems/valid-palindrome/
-    Description: return true if it is a palindrome, alphanumeric characters(letters and numbers) reads the same forward and backward
-    Concept: Two Pointers, String
-    Time Complexity: O(n), Runtime: 10ms
-    Space Complexity: O(n), Memory: 58.6MB
-*/
+/**
+ * <a href="https://leetcode.com/problems/valid-palindrome/">week03-1.valid-palindrome</a>
+ * <li>Description: return true if it is a palindrome </li>
+ * <li>Topics: Two Pointers, String             </li>
+ * <li>Time Complexity: O(N), Runtime 13ms      </li>
+ * <li>Space Complexity: O(N), Memory 45.55MB   </li>
+ */
 class Solution {
     public boolean isPalindrome(String s) {
-        String regex ="[^A-Za-z0-9]";
-        String palindrome = s.replaceAll(regex,"").toLowerCase(); //replaceAll(), toLowerCase(): O(n)
+        String str = s.toLowerCase().replaceAll("[^0-9a-z]", "");
 
-        boolean answer = true;
-        for(int i=0; i<palindrome.length()/2; i++){
-            if(palindrome.charAt(i) != palindrome.charAt(palindrome.length()-1-i)) {
-                answer = false;
-                break;
+        for (int i = 0; i < str.length() / 2; i++) {
+            if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+                return false;
             }
         }
-        return answer;
+        return true;
     }
 }
