@@ -30,7 +30,7 @@ class WordDictionary:
         ch = word[0]
         if ch == word:
             if ch == '.':
-                return any([node.end for c, node in start.children.items()])
+                return any([node.end for node in start.children.values()])
             elif ch in start.children:
                 if start.children[ch].end:
                     return True
