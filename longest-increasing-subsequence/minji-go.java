@@ -7,22 +7,22 @@
  */
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        List<Integer> dp = new ArrayList<>();
+        List<Integer> lisTails = new ArrayList<>();
 
         for(int num : nums){
-            int idx = Collections.binarySearch(dp, num);
+            int idx = Collections.binarySearch(lisTails, num);
 
             if(idx < 0) {
                 idx = -idx -1;
             }
 
-            if(idx == dp.size()) {
-                dp.add(num);
+            if(idx == lisTails.size()) {
+                lisTails.add(num);
             } else {
-                dp.set(idx, num);
+                lisTails.set(idx, num);
             }
         }
 
-        return dp.size();
+        return lisTails.size();
     }
 }
