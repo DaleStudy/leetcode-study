@@ -22,7 +22,7 @@ class WordDictionary:
         self.root = TrieNode()
 
     # 단어를 문자별로 트라이에 추가
-    def addWord(self, word: str) -> None:
+    def addWord(self, word: str):
         node = self.root
         for char in word:
             if char not in node.children:
@@ -33,7 +33,7 @@ class WordDictionary:
         node.is_end = True
 
     # 깊이 우선 탐색(dfs)함수로 재귀적 탐색.
-    def search(self, word: str) -> bool:
+    def search(self, word: str):
         def dfs(node, index):
             if index == len(word):
                 return node.is_end
