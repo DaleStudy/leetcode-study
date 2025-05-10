@@ -39,3 +39,6 @@ class Solution:
                 right -= 1
         
         return max_water
+
+
+
