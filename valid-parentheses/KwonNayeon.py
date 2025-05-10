@@ -12,28 +12,30 @@ Space Complexity: O(n)
 - 따라서 입력 크기에 비례하는 O(n) 공간 필요
 
 풀이방법:
-1. 스택을 사용하여 여는 괄호('(', '{', '[')를 저장
-2. Dictionary를 사용해 닫는 괄호와 여는 괄호의 쌍을 O(1)로 매칭
-3. 문자열을 순회하면서:
-   - 여는 괄호는 스택에 추가
-   - 닫는 괄호가 나오면:
-     a) 스택이 비어있거나
-     b) 스택 최상단의 괄호가 현재 닫는 괄호와 매칭되지 않으면
-     -> 잘못된 괄호 문자열
-   - 매칭되는 경우 스택에서 pop
-4. 모든 순회가 끝난 후 스택이 비어있어야 올바른 괄호 문자열
+- key: 닫는 괄호, value: 대응하는 여는 괄호
+- 현재 문자가 닫는 괄호인 경우
+  - 스택이 비어있다면(짝이 없음) -> False
+  - 스택에서 가장 최근에 추가된 여는 괄호를 꺼냄, 만약 대응하는 값이 아니라면 -> False
+- 현재 문자가 여는 괄호인 경우 -> stack에 추가
+- 모든 문자 처리 후, 스택이 비어있으면 모든 괄호의 짝이 맞음 (True)
 """
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        pairs = {')': '(', '}': '{', ']': '['}
-        
+
+        mapping = {')': '(', '}': '{', ']': '['}
+
         for char in s:
-            if char in '({[':
-                stack.append(char)
-            else:
-                if not stack or stack[-1] != pairs[char]:
+            if char in mapping:
+                if not stack:
                     return False
-                stack.pop()
-        
-        return len(stack) == 0
+                
+                top = stack.pop()
+
+                if mapping[char] != top:
+                    return False
+            
+            else:
+                stack.append(char)
+
+        return not stack
