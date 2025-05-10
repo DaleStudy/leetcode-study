@@ -38,4 +38,8 @@ class Solution:
                     return False
         
         #스택이 비어있어야 모든 괄호가 닫힘
-        return not stack
+        return not stack  
+
+
+
+
