@@ -1,5 +1,9 @@
 import java.util.*;
 class Solution {
+    /**
+     * time-complexity : O(n)
+     * space-complexity : O(n)
+     */
     public boolean isValid(String s) {
 
         Deque<Character> stack = new ArrayDeque<>();

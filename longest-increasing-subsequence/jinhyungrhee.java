@@ -1,5 +1,9 @@
 import java.util.*;
 class Solution {
+    /**
+     * time-complexity : O(n^2)
+     * space-complexity : O(n)
+     */
     public int lengthOfLIS(int[] nums) {
 
         int[] dp = new int[nums.length];

@@ -1,5 +1,9 @@
 import java.util.*;
 class Solution {
+    /**
+     * time-complexity : O(n * m)
+     * space-complexity : O(1) (excluding the output List)
+     */
     public List<Integer> spiralOrder(int[][] matrix) {
 
         List<Integer> result = new ArrayList<>();

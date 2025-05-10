@@ -9,11 +9,22 @@ class TrieNode {
 }
 
 class WordDictionary {
+    /**
+     * space-complexity : O(N * L) (w.c)
+     *  - N : 단어 수, L : 평균 길이
+     *  - 단어 하나 추가 시 최대 L개의 TrieNode 생성
+     *  - (w.c) 모든 단어가 중복 없이 추가되면 (N*L)개의 노드 필요
+     */
     TrieNode root;
     public WordDictionary() {
         this.root = new TrieNode();
     }
 
+    /**
+     * addWord() Time-complexity : O(L)
+     *  - 각 문자마다 TrieNode를 따라 내려가며 필요한 경우 새 노드 생성
+     *  - 한 단어당 최대 L개의 노드 생성 및 접근
+     */
     public void addWord(String word) {
 
         TrieNode curr = root;
@@ -26,6 +37,14 @@ class WordDictionary {
         curr.word = true;
     }
 
+    /**
+     * search() Time-complexity :
+     *  - '.'가 없는 경우 : O(L)
+     *      -> 일반적인 문자는 한 경로만 탐색
+     *  - '.'가 있는 경우 : O(26^L) (w.c)
+     *      -> 현재 노드의 모든 자식에 대해 DFS 수행
+     *
+     */
     public boolean search(String word) {
         return dfs(word, 0, root);
     }
