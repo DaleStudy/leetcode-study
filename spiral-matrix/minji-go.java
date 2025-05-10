@@ -9,30 +9,34 @@ class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> answer = new ArrayList<>();
         int lr = 0;
-        int hr = matrix.length-1;
+        int hr = matrix.length - 1;
         int lc = 0;
-        int hc = matrix[0].length-1;
+        int hc = matrix[0].length - 1;
 
-        while (lr<=hr && lc<=hc) {
-            for(int c=lc; c<=hc && lr<=hr; c++) {
+        while (lr <= hr && lc <= hc) {
+            for (int c = lc; c <= hc; c++) {
                 answer.add(matrix[lr][c]);
             }
             lr++;
 
-            for(int r=lr; r<=hr && lc<=hc; r++) {
+            for (int r = lr; r <= hr; r++) {
                 answer.add(matrix[r][hc]);
             }
             hc--;
 
-            for(int c=hc; c>=lc && lr<=hr; c--){
-                answer.add(matrix[hr][c]);
+            if (lr <= hr) {
+                for (int c = hc; c >= lc; c--) {
+                    answer.add(matrix[hr][c]);
+                }
+                hr--;
             }
-            hr--;
 
-            for(int r=hr; r>=lr && lc<=hc; r--){
-                answer.add(matrix[r][lc]);
+            if (lc <= hc) {
+                for (int r = hr; r >= lr; r--) {
+                    answer.add(matrix[r][lc]);
+                }
+                lc++;
             }
-            lc++;
         }
         return answer;
     }
