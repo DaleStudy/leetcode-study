@@ -60,4 +60,4 @@ class WordDictionary {
  * obj.addWord(word)
  * var param_2 = obj.search(word)
  */
- 
+
