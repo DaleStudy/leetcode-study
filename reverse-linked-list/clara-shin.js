@@ -2,7 +2,7 @@
  * 단일 연결리스트(Singly Linked List)의 노드 순서를 반대로 뒤집어서 리턴하기
  * follow-up: 연결리스트는 반복적(Iterative) 또는 재귀적(Recursive)으로 뒤집을 수 있는데, 두 가지 방법 다 가능?
  *
- * 반복문(Iterative) 방식
+ * 반복문(Iterative) 방식 (✅ 실무에서 더 많이 사용한다고 함)
  * 포인터 세 개(prev, curr, next)를 사용, 리스트를 한 번 순회하며 역방향으로 연결을 바꿈
  * 시간복잡도: O(n), 공간복잡도: O(1)
  *
