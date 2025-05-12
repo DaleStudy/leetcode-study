@@ -35,4 +35,3 @@ class Solution:
                 end += 1
                 max_len = max(end - start, max_len)
         return max_len
-
