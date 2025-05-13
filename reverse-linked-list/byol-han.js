@@ -23,3 +23,15 @@ var reverseList = function (head) {
 
   return prev; // prev는 새로운 head
 };
+
+/* 
+*** linked list ***
+리스트의 각 노드가 다음 노드를 가리키는 포인터를 가지고 있는 자료구조
+
+리스트의 첫 번째 노드를 head라고 하고, head.next는 두 번째 노드, head.next.next는 세 번째 노드...
+이런식으로 노드들을 순차적으로 접근할 수 있는 자료구조를 '연결 리스트(linked list)'라고 함
+
+reverseList(head)에서 head는 리스트 전체의 진입점.
+head 하나만 알고 있어도, .next를 따라가면서 전체 노드들을 순차적으로 접근할 수 있기 때문에 리스트 전체를 다룰 수 있음
+
+ */
