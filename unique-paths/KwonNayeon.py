@@ -2,6 +2,8 @@
 Constraints:
 - 1 <= m, n <= 100
 
+<Solution 1>
+
 Time Complexity: O(1)
 - math.comb() 사용
 
@@ -21,3 +23,16 @@ class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         from math import comb
         return comb(m+n-2, n-1)
+
+"""
+<Solution 2>
+
+Time Complexity: 
+- 
+
+Space Complexity: 
+- 
+
+풀이방법: 
+"""
+
