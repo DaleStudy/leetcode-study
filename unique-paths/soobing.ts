@@ -34,5 +34,26 @@ function uniquePaths(m: number, n: number): number {
   }
 
   return factorial(m + n - 2)! / (factorial(m - 1) * factorial(n - 1));
+  
 }
 */
+
+/**
+ * 코드 리뷰 답안 기록
+ function uniquePaths(m: number, n: number): number {
+    const memo = new Map<string, number>();
+
+    const traverse = (row: number, col: number) => {
+      if (row >= m || col >= n) return 0;
+      if (row === m - 1 && col === n - 1) return 1;
+      const key = `${row}-${col}`;
+      if (memo.has(key)) return memo.get(key);
+
+      const result = traverse(row + 1, col) + traverse(row, col + 1);
+      memo.set(key, result);
+      return result;
+    };
+
+    return traverse(0, 0);
+  }
+ */
