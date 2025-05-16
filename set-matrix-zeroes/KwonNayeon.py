@@ -5,20 +5,20 @@ Constraints:
 - 1 <= m, n <= 200
 - -2^31 <= matrix[i][j] <= 2^31 - 1
 
-Time Complexity: O(m*n)
-- m은 행, n은 열을 의미
-- 0 찾기: O(m*n)
-- 행과 열 변환: O(m*n)
+<Solution 1>
 
-Space Complexity: O(m*n)
-- zeros 배열이 최대 m*n 크기까지 저장 가능
+Time Complexity: O(m * n)
+- m은 행, n은 열을 의미함
+- 0 찾기: O(m * n)
+- 행과 열 변환: O(m * n)
+
+Space Complexity: O(m * n)
+- zeros 배열이 최대 m * n 크기까지 저장 가능
 
 풀이 방법:
-1. 0 위치 저장
+1. 0 위치를 탐색/저장
 2. 저장된 0의 행과 열을 모두 0으로 변환
-3. 주의점: 행렬 값 탐색과 변경을 동시에 수행하면 원래 어떤 값이 0이었는지 구분하기 어려워짐
 """
-
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         """
@@ -32,17 +32,21 @@ class Solution:
                     zeros.append((r, c))
         
         for r, c in zeros:
+            # 행(row)을 0으로 채움
             for i in range(len(matrix[0])):
                 matrix[r][i] = 0
+            # 열(column)을 0으로 채움
             for i in range(len(matrix)):
                 matrix[i][c] = 0
 
 """
-Time Complexity: O(m*n)
-- 행렬 순회: O(m*n)
-- 행과 열 변환: O(m*n)
+<Solution 2>
 
-Space Complexity: O(m+n)
+Time Complexity: O(m * n)
+- 행렬 순회: O(m * n)
+- 행과 열 변환: O(m * n)
+
+Space Complexity: O(m + n)
 - zero_rows: O(m)
 - zero_cols: O(n)
 
@@ -51,7 +55,6 @@ Space Complexity: O(m+n)
 2. 행과 열 정보를 분리 저장하여 메모리를 효율적으로 사용
 3. 행과 열을 독립적으로 처리하여 불필요한 반복 연산 제거
 """
-
 class Solution:
    def setZeroes(self, matrix: List[List[int]]) -> None:
        """
@@ -75,7 +78,9 @@ class Solution:
                matrix[i][c] = 0
 
 """
-Time Complexity: O(m*n)
+<Solution 3>
+
+Time Complexity: O(m * n)
 
 Space Complexity: O(1)
 - 추가적인 메모리를 사용하지 않고 첫 행과 열을 마커로 활용하여 해결
