@@ -18,7 +18,7 @@ class Solution {
                 if (grid[i][j] == '1') {
 
                     // bfs로 섬 탐색
-                    bfs(i, j, grid);
+                    // bfs(i, j, grid);
 
                     // dfs로 섬 탐색
                     dfs(i, j, grid);
