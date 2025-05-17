@@ -1,28 +1,34 @@
-/*
-    Problem: https://leetcode.com/problems/decode-ways/
-    Description: Given a string s containing only digits, return the number of ways to decode it
-    Concept: String, Dynamic Programming
-    Time Complexity: O(N), Runtime 1ms
-    Space Complexity: O(N), Memory 42.12MB
-*/
+/**
+ * <a href="https://leetcode.com/problems/decode-ways/">week03-5.decode-ways</a>
+ * <li>Description: return the number of ways to decode it </li>
+ * <li>Topics: String, Dynamic Programming  </li>
+ * <li>Time Complexity: O(N), Runtime 1ms   </li>
+ * <li>Space Complexity: O(1), Memory 41.8MB</li>
+ */
 class Solution {
     public int numDecodings(String s) {
-        int[] dp = new int[s.length()];
-        if(decode(s.substring(0, 1))) dp[0]=1;
-        if(s.length()>1 && decode(s.substring(1, 2))) dp[1]+=dp[0];
-        if(s.length()>1 && decode(s.substring(0, 2))) dp[1]+=dp[0];
-
-        for(int i=2; i<s.length(); i++){
-            if(decode(s.substring(i,i+1))) dp[i]+=dp[i-1];
-            if(decode(s.substring(i-1,i+1))) dp[i]+=dp[i-2];
+        if (s.charAt(0) == '0') {
+            return 0;
         }
-        return dp[s.length()-1];
-    }
 
-    public boolean decode(String s){
-        int num = Integer.parseInt(s);
-        int numLength = (int) Math.log10(num) + 1;
-        if(num<0 || num>26 || numLength != s.length()) return false;
-        return true;
+        int last2 = 1;
+        int last1 = 1;
+
+        for (int i = 1; i < s.length(); i++) {
+            int curr = 0;
+            if (s.charAt(i) != '0') {
+                curr += last1;
+            }
+
+            int num = Integer.parseInt(s.substring(i - 1, i + 1));
+            if (num >= 10 && num <= 26) {
+                curr += last2;
+            }
+
+            last2 = last1;
+            last1 = curr;
+        }
+
+        return last1;
     }
 }
