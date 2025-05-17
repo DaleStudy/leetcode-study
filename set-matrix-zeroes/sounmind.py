@@ -3,35 +3,41 @@ from typing import List
 
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
-        """
-        Do not return anything, modify matrix in-place instead.
-        """
-        if not matrix or not matrix[0]:
-            return
-
         rows, cols = len(matrix), len(matrix[0])
-        first_row_has_zero = any(matrix[0][j] == 0 for j in range(cols))
-        first_col_has_zero = any(matrix[i][0] == 0 for i in range(rows))
+        first_row_zero = False
+        first_col_zero = False
 
-        # Use the first row and first column to mark zeros
-        for i in range(1, rows):
-            for j in range(1, cols):
-                if matrix[i][j] == 0:
-                    matrix[0][j] = 0
-                    matrix[i][0] = 0
+        # 첫 행에 0이 있는지 확인
+        for col in range(cols):
+            if matrix[0][col] == 0:
+                first_row_zero = True
+                break
 
-        # Set matrix elements to zero based on marks
-        for i in range(1, rows):
-            for j in range(1, cols):
-                if matrix[0][j] == 0 or matrix[i][0] == 0:
-                    matrix[i][j] = 0
+        # 첫 열에 0이 있는지 확인
+        for row in range(rows):
+            if matrix[row][0] == 0:
+                first_col_zero = True
+                break
 
-        # Set the first row to zero if needed
-        if first_row_has_zero:
-            for j in range(cols):
-                matrix[0][j] = 0
+        # 마커 설정 (첫 행과 첫 열을 이용)
+        for row in range(1, rows):
+            for col in range(1, cols):
+                if matrix[row][col] == 0:
+                    matrix[row][0] = 0
+                    matrix[0][col] = 0
 
-        # Set the first column to zero if needed
-        if first_col_has_zero:
-            for i in range(rows):
-                matrix[i][0] = 0
+        # 마커에 따라 0으로 설정
+        for row in range(1, rows):
+            for col in range(1, cols):
+                if matrix[row][0] == 0 or matrix[0][col] == 0:
+                    matrix[row][col] = 0
+
+        # 첫 행 처리
+        if first_row_zero:
+            for col in range(cols):
+                matrix[0][col] = 0
+
+        # 첫 열 처리
+        if first_col_zero:
+            for row in range(rows):
+                matrix[row][0] = 0
