@@ -1,24 +1,42 @@
 def numDecodings(s: str) -> int:
-    if not s:
+    """
+    Count the number of ways to decode a string where:
+    'A' -> '1', 'B' -> '2', ..., 'Z' -> '26'
+
+    Args:
+        s: A string of digits
+
+    Returns:
+        The number of ways to decode the input string
+    """
+    # Handle edge cases
+    if not s or s[0] == "0":
         return 0
 
-    n = len(s)
+    # Optimization: we only need to track the previous two results
+    prev = 1  # Ways to decode up to index i-2
+    curr = 1  # Ways to decode up to index i-1
 
-    # dp[i] represents the number of ways to decode the string s[:i]
-    dp = [0] * (n + 1)
-    dp[0] = 1
+    for i in range(1, len(s)):
+        # Start with 0 for the new current calculation
+        next_val = 0  # Ways to decode up to index i
 
-    dp[1] = 1 if s[0] != "0" else 0
+        # Single digit decode - if current digit is not '0'
+        if s[i] != "0":
+            # We can decode it independently,
+            # adding all ways to decode up to the previous position.
+            next_val += curr
 
-    for i in range(2, n + 1):
-        if s[i - 1] != "0":
-            # If the one-digit number is valid, we can decode it
-            dp[i] += dp[i - 1]
-
-        two_digit = int(s[i - 2 : i])
-
+        # Two digit decode - if the last two digits form a valid letter (10-26)
+        two_digit = int(s[i - 1 : i + 1])
         if 10 <= two_digit <= 26:
-            # If the two-digit number is valid, we can decode it
-            dp[i] += dp[i - 2]
+            next_val += prev
 
-    return dp[n]
+        # Shift two trackers for the next iteration
+        prev, curr = curr, next_val
+
+        # If there's no way to decode at this point, the whole string is invalid
+        if curr == 0:
+            return 0
+
+    return curr
