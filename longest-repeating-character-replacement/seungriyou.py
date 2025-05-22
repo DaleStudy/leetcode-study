@@ -5,7 +5,7 @@ class Solution:
         """
         [Complexity]
             - TC: O(n)
-            - SC: O(n)
+            - SC: O(1) (* s consists of only uppercase English letters)
 
         [Approach]
             two pointer로 sliding window를 이동해가면서, k번 이내로 replace 했을 때 모두 같은 문자가 될 때의 max_len를 트래킹하면 된다.
