@@ -8,34 +8,36 @@ from collections import deque
 
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        # dfs
         if not node:
             return 
 
-        clones = {}
+        clone = Node(node.val)
+        graph = {node:clone}
+        stack = [node]
+        
+        while stack:
+            node = stack.pop()
+            for n in node.neighbors:
+                if n not in graph:
+                    stack.append(n)
+                    graph[n] = Node(n.val)
+                graph[node].neighbors.append(graph[n])
 
-        def dfs(node):
-            if node in clones:
-                return clones[node]
-            clone = Node(node.val)
-            clones[node] = clone
-            for nei in node.neighbors:
-                clone.neighbors.append(dfs(nei))
-            return clone
-
-        return dfs(node)
+        return clone
     
     def bfs(self, node):
-          if not node:
+        if not node:
             return
           
-        clone = Node(node.val)
-        clones = {node: clone}
+        clone = Node(node.val) # clone first node
+        clones = {node: clone} # reference node : clone node
         queue = deque([node])
         while queue:
             node = queue.popleft()
             for nei in node.neighbors:
                 if nei not in clones:
-                    clones[nei] = Node(nei.val)
-                    queue.append(nei)
-                clones[node].neighbors.append(clones[nei])
+                    clones[nei] = Node(nei.val) # clone node
+                    queue.append(nei) # append queue neighbor reference node
+                clones[node].neighbors.append(clones[nei]) 
         return clone
