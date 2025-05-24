@@ -34,4 +34,19 @@ var reverseList = function (head) {
 reverseList(head)에서 head는 리스트 전체의 진입점.
 head 하나만 알고 있어도, .next를 따라가면서 전체 노드들을 순차적으로 접근할 수 있기 때문에 리스트 전체를 다룰 수 있음
 
+// 노드 구조 정의
+function ListNode(val, next = null) {
+  this.val = val;
+  this.next = next;
+}
+
+// 리스트 만들기
+const node3 = new ListNode(3);              // 마지막 노드
+const node2 = new ListNode(2, node3);       // node2 → node3
+const head  = new ListNode(1, node2);       // head → node2 → node3
+
+// 확인
+console.log(head.val);         // 1
+console.log(head.next.val);    // 2
+console.log(head.next.next.val); // 3
  */
