@@ -4,11 +4,11 @@ Constraints:
 - -10 <= nums[i] <= 10
 - The product of any subarray of nums is guaranteed to fit in a 32-bit integer.
 
-Time Complexity: 
-- O(n): 배열을 한 번만 순회하면서 각 위치에서 상수 시간 연산만 수행
+Time Complexity: O(n)
+- 배열을 한 번만 순회하면서 각 위치에서 상수 시간 연산만 수행
 
-Space Complexity: 
-- O(1): 고정된 추가 변수만 사용 (curr_max, curr_min, ...)
+Space Complexity: O(1)
+- 고정된 추가 변수만 사용 (curr_max, curr_min, ...)
 
 풀이방법:
 1. DP로 각 위치에서 가능한 최대곱과 최소곱을 동시에 추적함
@@ -33,5 +33,4 @@ class Solution:
             result = max(result, curr_max)
             
         return result
-
 
