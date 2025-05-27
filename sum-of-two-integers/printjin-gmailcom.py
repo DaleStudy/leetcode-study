@@ -15,4 +15,3 @@ class Solution:
         # 그런데 32비트 부호있는 정수에서는 양수 최대값이 MAX_INT
         # a > MAX_INT라면 음수라는 뜻이므로, 보수 처리를 해줌
         return a if a <= MAX_INT else ~(a ^ MASK)
-    
