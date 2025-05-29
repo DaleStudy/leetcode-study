@@ -16,26 +16,24 @@ Space Complexity: O(1)
   - 그러므로 계속 왼쪽으로 이동하다 결국 사라짐
   - 캐리가 0이 되면 루프 종료
 """
-# Solution 1: 이해하기 쉬운 버전
-class Solution:
-    def getSum(self, a: int, b: int) -> int:
-        while b:
-            # XOR: 어디서 캐리가 발생하는지 확인
-            current_sum = a ^ b
-
-            # AND: 캐리를 다음 자리로 올림
-            next_carry = (a & b) << 1
-
-            a = current_sum
-            b = next_carry
-
-        return a
-
-# Solution 2: 최적화 버전
+# Solution 1
 class Solution:
     def getSum(self, a: int, b: int) -> int:
         while b:
             a, b = a ^ b, (a & b) << 1
 
         return a
+    
+# Solution 2: 음수 케이스 처리
+class Solution:
+    def getSum(self, a: int, b: int) -> int:
+        mask = 0xffffffff   # 32비트 마스킹
+
+        while b & mask:
+            # 캐리 없는 덧셈 + 32비트 제한, 캐리 계산 + 32비트 제한
+            a, b = (a ^ b) & mask, ((a & b) << 1) & mask
+
+        # a <= 0x7FFFFFFF: 양수일 때 그대로 반환(0x7FFFFFFF = 32비트 최대 양수)
+        # a > 0x7FFFFFFF: 음수일 때 Python 음수로 변환
+        return a if a <= 0x7FFFFFFF else a | (~mask)
 
