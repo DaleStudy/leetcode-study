@@ -23,8 +23,13 @@ Space Complexity: O(s + t)
 3. 최소 길이의 윈도우 반환
 
 메모:
-- 풀이 방법을 보고 익힘
-- 해시맵과 슬라이딩 윈도우 관련 다른 문제들을 풀고 이 문제 스스로 풀어보기
+- 관련 문제:
+  - Two Sum (딕셔너리)
+  - Ransom Note (Counter)
+  - Longest Substring Without Repeating (슬라이딩 윈도우)
+  - Permutation in String (슬라이딩 윈도우 + Counter)
+  - Find All Anagrams in a String (슬라이딩 윈도우 + Counter)
+- 4, 5번 문제 먼저 풀어보기
 """
 class Solution:
    def minWindow(self, s: str, t: str) -> str:
@@ -46,4 +51,3 @@ class Solution:
                low += 1
                
        return s[min_low : min_high + 1] if min_high < len(s) else ""
-
