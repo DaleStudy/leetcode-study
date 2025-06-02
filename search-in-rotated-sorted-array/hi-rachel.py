@@ -1,5 +1,3 @@
-from typing import List
-
 """
 https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/
 
@@ -10,6 +8,8 @@ Idea: 이진 탐색 패턴 사용
 TC: O(logN)
 SC: O(1)
 """
+
+from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
