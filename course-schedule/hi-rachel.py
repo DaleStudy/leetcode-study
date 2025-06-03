@@ -1,7 +1,6 @@
-from typing import List
-from collections import defaultdict
-
 """
+https://leetcode.com/problems/course-schedule/
+
 문제: 수강 해야 하는 모든 강좌의 수 numCourses가 주어질 때, 모든 강좌를 끝낼 수 있으면 true, 아니면 false를 반환해라.
      prerequisites[i] = [ai, bi], bi를 수강하기 위해선 반드시 ai를 사전 수강해야만 한다.
      
@@ -27,6 +26,7 @@ TC: O(V + E), V: 과목 수, E: prerequisite 관계 수
 SC: O(V + E), 그래프 + 진입차수 배열
 """
 
+from typing import List
 from collections import defaultdict, deque
 
 class Solution:
