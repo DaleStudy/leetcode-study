@@ -20,7 +20,7 @@ function canFinish(numCourses: number, prerequisites: number[][]): boolean {
   const traversing = new Set<number>();
   const finished = new Set<number>();
 
-  const canFinish = (crs: number): boolean => {
+  const dfs = (crs: number): boolean => {
     if (traversing.has(crs)) return false; // cycle detected
 
     if (finished.has(crs)) return true; // already visited
@@ -28,7 +28,7 @@ function canFinish(numCourses: number, prerequisites: number[][]): boolean {
     traversing.add(crs);
 
     for (const pre of graph.get(crs)!) {
-      if (!canFinish(pre)) return false;
+      if (!dfs(pre)) return false;
     }
 
     traversing.delete(crs);
@@ -38,8 +38,9 @@ function canFinish(numCourses: number, prerequisites: number[][]): boolean {
   };
 
   for (const crs of graph.keys()) {
-    if (!canFinish(crs)) return false;
+    if (!dfs(crs)) return false;
   }
 
   return true;
 }
+
