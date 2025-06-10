@@ -5,8 +5,11 @@ Constraints:
  3. Each element nums[i] is between 0 and n inclusive
  4. All numbers in nums are unique (no duplicates)
 
+ <Solution 1>
+
 Time Complexity: O(nlogn)
  - 정렬에 nlogn, 순회에 n이 필요하므로 전체적으로 O(nlogn)
+
 Space Complexity: O(1)
  - 추가 공간을 사용하지 않고 입력 배열만 사용
 
@@ -26,3 +29,14 @@ class Solution:
          
         return len(nums)
 
+'''
+<Solution 2>
+
+Time Complexity: 
+- 
+
+Space Complexity:
+- 
+
+풀이 방법:
+'''
