@@ -39,7 +39,8 @@ class Solution:
         prev = None
         curr = head
 
-        while curr is not None:
+        # 마지막 노드도 처리해야 함
+        while curr:
 
             temp = curr.next
             curr.next = prev
