@@ -68,6 +68,37 @@ class Solution:
 
         return prev.next
 
+    def removeNthFromEnd_length(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        """
+        [Complexity]
+            - TC: O(n)
+            - SC: O(1)
+
+        [Approach]
+            linked list의 전체 길이를 구하고, head에서부터 (길이 - n - 1) 번 전진하여 node를 건너뛰면 된다.
+            (2 pass)
+        """
+        # linked list의 length 구하기
+        length = 0
+        curr = head
+        while curr:
+            length += 1
+            curr = curr.next
+
+        # length == n라면, head를 제거
+        if length == n:
+            return head.next
+
+        # length - n - 1 번 이동
+        curr = head
+        for _ in range(length - n - 1):
+            curr = curr.next
+
+        # node 제거
+        curr.next = curr.next.next
+
+        return head
+
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         """
         [Complexity]
@@ -75,7 +106,7 @@ class Solution:
             - SC: O(1)
 
         [Approach]
-            slow, fast의 two pointer를 이용해 반복문으로 풀 수 있다.
+            slow, fast의 two pointer를 이용해 반복문으로 풀 수 있다. (1 pass)
                 1. fast를 n 번 전진
                 2. fast가 끝에 도달한 경우, 첫 번째 node를 제거해야하므로 head.next 반환
                 3. 현재 fast의 위치에서 slow와 fast를 함께 전진하면, fast가 끝에 도달할 때 slow는 뒤에서부터 n + 1번째 node임
