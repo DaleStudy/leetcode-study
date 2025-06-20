@@ -1,3 +1,14 @@
+/*
+    풀이 :
+        list를 vector에 저장한 뒤 끝에서 n - 1 번째 노드->next를 n번째 노드->next로 치환
+
+    노드 개수 : N
+
+    TC : O (N)
+
+    SC : O (N)
+*/
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {

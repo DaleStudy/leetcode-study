@@ -1,3 +1,20 @@
+/*
+    풀이 :
+        인접리스트 방식으로 그래프를 저장
+        visited에 방문한 노드 표시
+        노드를 순회하면서 방문하지 않은 노드이면 dfs를 통해 방문으로 표시함 -> 연결된 모든 노드 방문 처리
+        component 개수 + 1
+
+        이 로직을 노드 전체에 대해 반복
+
+        정점 개수 : V 간선 개수 : E
+
+        TC : O (V + E)
+
+        SC : O (V + E)
+
+*/
+
 #include <vector>
 using namespace std;
 
