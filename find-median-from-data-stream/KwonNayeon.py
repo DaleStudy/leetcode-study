@@ -40,4 +40,4 @@ class MedianFinder:
             mid1 = self.nums[n // 2 - 1]
             mid2 = self.nums[n // 2]
             return (mid1 + mid2) / 2.0
-    
+
