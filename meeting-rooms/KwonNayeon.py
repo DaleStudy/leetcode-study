@@ -13,12 +13,21 @@ Space Complexity: O(1)
 
 풀이방법:
 1. Base case: 빈 배열/none일 때 True 반환
-2. intervals를 시작점 기준으로 정렬
-3. prev_end 초기화 (첫 번째 미팅의 종료 시간)
+2. 리스트(ntervals)를 시작점 기준으로 정렬
+3. prev_end(첫 번째 미팅의 종료 시간) 변수 초기화
 4. 두 번째 미팅부터 순회하면서:
   - 만약 현재 시작점 (미팅 시작 시간)이 이전 미팅의 종료 시간보다 작으면 false 반환
   - 그렇지 않으면 prev_end를 현재 미팅의 종료 시간으로 업데이트
 5. 모든 미팅을 검사한 후에도 충돌이 없으면 true 반환
+
+메모:
+
+변수명 헷갈림:
+- intervals는 리스트 -> `.end` 속성 없음
+- interval은 객체 -> `.end` 속성 있음
+
+정렬 문법:
+- list.sort(key=lambda x: x.start)
 """
 from typing import List
 
