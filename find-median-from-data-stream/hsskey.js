@@ -99,5 +99,4 @@ class Heap {
     }
     return (this.small.peek() + this.large.peek()) / 2;
   };
-
   

@@ -35,4 +35,3 @@ var kthSmallest = function(root, k) {
     return -1;
   };
   
-  
