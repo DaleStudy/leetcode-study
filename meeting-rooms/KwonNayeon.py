@@ -21,12 +21,10 @@ Space Complexity: O(1)
 5. 모든 미팅을 검사한 후에도 충돌이 없으면 true 반환
 
 메모:
-
-변수명 헷갈림:
+1. 변수명 헷갈림
 - intervals는 리스트 -> `.end` 속성 없음
 - interval은 객체 -> `.end` 속성 있음
-
-정렬 문법:
+2. 정렬 문법
 - list.sort(key=lambda x: x.start)
 """
 from typing import List
