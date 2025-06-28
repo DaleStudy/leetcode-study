@@ -39,10 +39,14 @@ class Solution:
         prev = None
         curr = head
 
-        while curr is not None:
+        # while문 조건 - 마지막 노드도 처리해야 함
+        while curr:
 
             temp = curr.next
             curr.next = prev
+
+            # prev: 지금까지 뒤집어진 부분의 시작점
+            # curr: 아직 처리 안 한 부분의 시작점
             prev = curr
             curr = temp
 

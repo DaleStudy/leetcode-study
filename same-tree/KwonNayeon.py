@@ -12,8 +12,8 @@ Space Complexity: O(h)
 풀이방법:
 1. DFS와 재귀를 활용하여 두 트리를 동시에 탐색
 2. base case:
-   - p와 q가 모두 None이면 → 같은 트리
-   - 둘 중 하나만 None이거나 노드의 값이 다르면 → 다른 트리
+   - p와 q가 모두 None일 때: 같은 트리
+   - 둘 중 하나만 None이거나 노드의 값이 다를 때: 다른 트리
 3. 재귀로 왼쪽과 오른쪽 서브트리가 모두 같은지 확인
 """
 # Definition for a binary tree node.
@@ -31,4 +31,3 @@ class Solution:
             return False
 
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-
