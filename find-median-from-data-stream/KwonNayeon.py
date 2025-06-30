@@ -4,6 +4,8 @@ Constraints:
 - There will be at least one element in the data structure before calling findMedian.
 - At most 5 * 10^4 calls will be made to addNum and findMedian.
 
+<Solution 1: 리스트 활용>
+
 Time Complexity: 
 - addNum(): O(nlogn)
   - 매번 정렬하기 때문
@@ -40,4 +42,16 @@ class MedianFinder:
             mid1 = self.nums[n // 2 - 1]
             mid2 = self.nums[n // 2]
             return (mid1 + mid2) / 2.0
+
+"""
+<Solution 2: 힙 활용>
+
+Time Complexity: 
+
+Space Complexity: 
+
+풀이방법:
+
+"""
+from heapq import heappop, heappush
 
