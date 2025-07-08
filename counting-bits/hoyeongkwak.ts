@@ -1,18 +1,11 @@
-function levelOrder(root: TreeNode | null): number[][] {
-    if (root == null) return []
-    const result: number[][] = []
-    let queue: TreeNode[] = [root]
-    while (queue.length > 0) {
-        const levelSize = queue.length
-        const currentLevel: number[] = []
-        for(let i = 0; i< levelSize; i++) {
-            const node = queue.shift()!
-            currentLevel.push(node.val)
-
-            if (node.left) queue.push(node.left)
-            if (node.right) queue.push(node.right)
-        }
-        result.push(currentLevel)
+/*
+Time Complexity: O(n)
+Space Complexity: O(n)
+*/
+function countBits(n: number): number[] {
+    const result: number[] = new Array(n + 1).fill(0)
+    for(let i = 1; i <= n; i++) {
+        result[i] = result[i >> 1] + (i & 1)
     }
     return result
-}
+};
