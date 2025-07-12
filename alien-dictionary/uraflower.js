@@ -22,7 +22,11 @@ const alienOrder = (words) => {
 
     const minLen = Math.min(prev.length, current.length);
     for (let j = 0; j < minLen; j++) {
-      graph[prev[j]].add(current[j]);
+      if (prev[j] !== current[j]) {
+        graph[prev[j]].add(current[j]);
+        found = true;
+        break;
+      }
     }
     // 모순 처리
     if (!found && prev.length > current.length) {
@@ -63,7 +67,7 @@ const alienOrder = (words) => {
     }
   }
 
-  return output.reverse().join('')
+  return output.reverse().join('');
 }
 
 
