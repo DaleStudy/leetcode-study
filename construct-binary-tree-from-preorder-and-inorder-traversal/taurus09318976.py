@@ -31,7 +31,7 @@
 - 왼쪽: [9] (인덱스 0까지)
 - 오른쪽: [15, 20, 7] (인덱스 2부터)
 
-3단계: 왼쪽 서브트리 크기로 preorder 분할  
+3단계: 왼쪽 서브트리 크기로 preorder 분할
 왼쪽 크기가 1이면 preorder에서도 1개만 가져옴
 - 루트 제외: [9, 20, 15, 7]
 - 왼쪽 크기(1)만큼: [9]
@@ -69,28 +69,25 @@ class Solution:
         # 1. 기본 케이스: 빈 배열이면 None 반환
         if not preorder or not inorder:
             return None
-        
+
         # 2. preorder의 첫 번째가 루트
         root_val = preorder[0]
         root = TreeNode(root_val)
-        
+
         # 3. inorder에서 루트 위치 찾기
         root_index = inorder.index(root_val)
-        
+
         # 4. inorder를 루트 기준으로 분할
         left_inorder = inorder[:root_index]
         right_inorder = inorder[root_index + 1:]
-        
+
         # 5. preorder도 해당 크기만큼 분할
         left_preorder = preorder[1:1 + len(left_inorder)]
         right_preorder = preorder[1 + len(left_inorder):]
-        
+
         # 6. 재귀적으로 왼쪽과 오른쪽 서브트리 구성
         root.left = self.buildTree(left_preorder, left_inorder)
         root.right = self.buildTree(right_preorder, right_inorder)
-        
+
         return root
 
-
-
-        
