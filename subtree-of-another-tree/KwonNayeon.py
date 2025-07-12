@@ -14,15 +14,11 @@ Space Complexity: O(m)
 
 풀이방법:
 1. Base case:
-  - subRoot가 없는 경우 True
+  - subRoot가 없는 경우 True (빈 트리는 모든 트리의 서브트리이기 때문)
   - root가 빈 트리이고, subRoot가 있는 경우 False
-2. 서브트리가 동일한지를 확인하는 재귀 함수 활용:
-  - isSameTree()를 사용하여 두 트리가 동일한지 판단
-  - 현재 노드부터 시작해 subRoot와 같은지 확인
-  - 같지 않다면 왼쪽과 오른쪽 서브트리를 다시 검사함
-3. 재귀적으로 서브트리를 탐색
-  - 현재 노드에서 시작하는 서브트리가 subRoot와 같다면 True
-  - 아니라면 왼쪽 또는 오른쪽 서브트리에서 계속 탐색
+2. 두 단계로 나누어 처리:
+   - isSameTree(): 두 트리가 동일한지 비교
+   - isSubtree(): 현재 노드가 안 맞으면 왼쪽/오른쪽 서브트리에서 재귀 탐색
 """
 # Definition for a binary tree node.
 # class TreeNode:
