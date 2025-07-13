@@ -10,9 +10,14 @@ Space Complexity: O(n)
 - 결과 리스트는 모든 노드의 값을 저장함
 
 풀이방법:
-1. queue와 BFS를 활용하여 레벨 순서로 노드를 순회
-2. 각 레벨의 노드들을 별도의 리스트로 모아서 결과에 추가
-3. 각 노드를 처리할 때 그 노드의 자식들을 큐에 추가하여 다음 레벨로 넘어감
+1. 루트가 없으면 빈 리스트 반환
+2. 큐에 루트 넣기
+3. while 큐가 빌 때까지:
+  - 현재 레벨의 노드 개수 저장
+  - 그 개수만큼 노드를 꺼냄
+    - 노드의 값 저장
+    - 자식이 있으면 큐에 추가
+  - 결과에 현재 레벨을 추가
 """
 # Definition for a binary tree node.
 # class TreeNode:
@@ -44,3 +49,4 @@ class Solution:
             result.append(current_level)
 
         return result
+
