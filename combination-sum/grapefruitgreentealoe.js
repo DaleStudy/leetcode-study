@@ -86,8 +86,8 @@ var combinationSum = function(candidates, target) {
     return dp[target]
 };
 /**
-시간복잡도: O(N × target × 2^target)
-N개 후보를 순회하면서, 각 후보마다 target까지의 값들에 대해 기존 조합들을 복사해서 새 조합을 생성하는데, 조합 개수가 지수적으로 증가함
-공간복잡도: O(target × 2^target)
-dp 배열의 각 인덱스에 해당 값을 만드는 모든 조합들을 저장하며, 최악의 경우 조합 개수가 지수적으로 증가함
+시간복잡도: O(N × target × M)
+N개 후보를 순회하면서, 각 후보마다 target까지의 값들에 대해 기존 조합들을 복사해서 새 조합을 생성하는데, 기존의 조합의 수 M을 곱해야함
+공간복잡도: O(target × M)
+dp 배열의 각 인덱스에 해당 값을 만드는 모든 조합들을 저장. 조합개수에 따라서 커짐
  */
