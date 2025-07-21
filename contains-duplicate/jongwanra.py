@@ -16,3 +16,4 @@ class Solution(object):
     def containsDuplacate(self, nums):
         num_set = set(nums)
         return len(num_set) != len(nums)
+
