@@ -1,5 +1,5 @@
-# 시간 복잡도 : o(n) for loop
-# 공간 복잡도 o(1) hash map
+# 시간 복잡도 : o(n)
+# 공간 복잡도 o(n)
 
 
 class Solution:
@@ -12,3 +12,19 @@ class Solution:
             hashmap[n] = i
         return False
 
+
+# -------------------------------------------------------------------------------------------------------- #
+
+# 시간 복잡도 : o(n)
+# 공간 복잡도 o(n)
+
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = set()
+
+        for n in nums:
+            if n in seen:
+                return True
+            seen.add(n)
+        return False
