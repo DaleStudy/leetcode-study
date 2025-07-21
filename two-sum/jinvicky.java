@@ -6,19 +6,17 @@ import java.util.Map;
  */
 class Solution {
 
-    /**
-     * brute force 풀이
-     */
-//    public int[] twoSumByBruteForce(int[] nums, int target) {
-//        for (int i = 0; i < nums.length; i++) {
-//            for (int j = i + 1; j < nums.length; j++) {
-//                if (nums[i] + nums[j] == target) {
-//                    return new int[]{i, j};
-//                }
-//            }
-//        }
-//        return new int[2];
-//    }
+    public int[] twoSumByBruteForce(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        return new int[2];
+    }
+
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> numberMap = new HashMap<>();
 
