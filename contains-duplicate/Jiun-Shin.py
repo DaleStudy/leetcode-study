@@ -10,3 +10,4 @@ class Solution:
                 return True
             hashmap[n] = i
         return False
+
