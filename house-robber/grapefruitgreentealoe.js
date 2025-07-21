@@ -43,3 +43,23 @@ var rob2 = function (nums) {
 };
 //공간복잡도를 O(1)로 개선
 
+
+//7.21 풀이시간 10분 소요
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var rob = function(nums) {
+    const dp = new Array(nums.length+1).fill(0);
+    dp[1] = nums[0]
+    for(let i = 2; i<=nums.length;i++){
+        dp[i] = Math.max(dp[i-1],dp[i-2]+nums[i-1])
+    }
+    return dp[nums.length]
+};
+/**
+시간복잡도 : O(n)
+공간복잡도 : O(n)
+ */
