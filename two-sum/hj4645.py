@@ -9,4 +9,3 @@ class Solution:
             if remain in dict:
                 return [dict[remain], i]
             dict[num] = i
-            
