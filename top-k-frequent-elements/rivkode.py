@@ -8,18 +8,35 @@ from typing import List
 # - and when sorting takes O(n), hash[x] occupy O(1)
 
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        hash = dict()
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
 
-        # for loop nums to set count for each element in hash(dictionary)
-        for num in nums:
-            if num in hash:
-                hash[num] += 1
+        dic = {}
+
+        for v in nums:
+            if v in dic:
+                cur = dic[v]
+                cur += 1
+                dic[v] = cur
             else:
-                hash[num] = 1
+                dic[v] = 1
 
-        # sort (TimSort), using lambda function to set a sorting key which is a count
-        return sorted(hash, key=lambda x: hash[x], reverse=True)[:k]
+        reverse_desc = sorted(dic.items(), key=lambda item: item[1], reverse=True)
+
+        n = 0
+        result = []
+        for v in reverse_desc:
+            if n == k:
+                break
+            
+            result.append(v[0])
+            n += 1
+        
+        return result
 
 if __name__ == "__main__":
     solution = Solution()
