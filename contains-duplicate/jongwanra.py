@@ -13,7 +13,6 @@ SC: O(N)
 """
 
 class Solution(object):
-    def containsDuplacate(self, nums):
-        num_set = set(nums)
-        return len(num_set) != len(nums)
+    def containsDuplicate(self, nums):
+        return len(set(nums)) != len(nums)
 
