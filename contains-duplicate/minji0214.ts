@@ -3,8 +3,9 @@ function containsDuplicate(nums: number[]): boolean {
   for(let i = 0; i< nums.length; i ++ ){
     if(nums.findIndex((value)=> value === nums[i]) !== i){
         answer = true
-        return false
+        break;
      }
     }  
     return answer
 };
+//-> time lit 초과 오류 발생
