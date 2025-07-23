@@ -8,7 +8,7 @@ class Solution {
         for(int i = 0; i < nums.length; i++) {
             if(map.containsKey(target - nums[i])) {
                 int j = map.get(target - nums[i]);
-                return new int[]{i, j};
+                return new int[]{j, i};
             }
             map.put(nums[i], i);
         }
