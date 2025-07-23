@@ -39,9 +39,8 @@ var containsDuplicate = function(nums) {
     const container = new Set();
     for(let i =0; i<nums.length;i++){
         if(container.has(nums[i])) return true;
-        else(container.add(nums[i]))
+        else container.add(nums[i])
     }
     return false
 };
-
 //위의 코드보다, 리턴을 더 빨리한다는 이점이 있다.
