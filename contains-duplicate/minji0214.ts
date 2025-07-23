@@ -8,4 +8,4 @@ function containsDuplicate(nums: number[]): boolean {
     }  
     return answer
 };
-//-> time lit 초과 오류 발생
+//-> time limit 초과 오류 발생
