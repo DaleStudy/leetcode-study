@@ -1,4 +1,9 @@
 /**
+ * solve 1
+ *
+ * 시간 복잡도: O(n^2)
+ * 공간 복잡도: O(1)
+ *
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
@@ -16,5 +21,30 @@ var twoSum = function(nums, target) {
                 }
             }
         }
+    }
+};
+
+
+/**
+ * solve 2
+ *
+ * 시간 복잡도: O(n)
+ * 공간 복잡도: O(n)
+ *
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    const map = new Map();
+
+    for (let i = 0; i < nums.length; i++) {
+        const temp = target - nums[i];
+
+        if (map.has(temp)) {
+            return [map.get(temp), i];
+        }
+
+        map.set(nums[i], i);
     }
 };
