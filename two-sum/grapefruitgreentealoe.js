@@ -48,3 +48,30 @@ var twoSum3 = function (nums, target) {
     numMap.set(nums[i], i); // 공간 O(1)
   }
 };
+
+
+//25.7.24 
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    //우선 nums배열에서 target보다 큰것은 삭제한다. => 이것 또한 시간복잡도가 든다. 하지말자
+    //1. 투포인터 방식으로 접근한다. 
+    for(let i=0;i<nums.length-1;i++){
+        let total = nums[i]
+        for(let j=i+1;j<nums.length;j++){
+            if(total+nums[j] == target){
+                return [i,j]
+            }
+        }
+    }    
+};
+
+/**
+ * 시간복잡도: O(N^2)
+ * 공간복잡도: O(1)
+ */
+
+//투포인터로 다시 풀었지만, 이 문제의 핵심은 Map의 메소드를 활용하는것. 
