@@ -1,39 +1,46 @@
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Map;
 
+/**
+ * time complexity : O(n)
+ */
 public class Geegong {
 
     public int longestConsecutive(int[] nums) {
-
         HashSet<Integer> setOfNums = new HashSet<>();
-        int start = 0;
-        int end = 0;
+        // key : startIndex , value : length
+        Map<Integer, Integer> lengthMap = new HashMap<>();
+
+        // sort..? 를 해야될까 싶음..
 
         // initialize
         for (int num : nums) {
             setOfNums.add(num);
-            start = Math.min(start, num);
-            end = Math.max(end, num);
         }
 
         Integer longest = 0;
-        Integer current = 0;
-        while (start <= end) {
 
-            iterate(setOfNums, start, current);
-            longest = Math.max(longest, current);
+        for (Integer num : setOfNums) {
+            int length = iterate(setOfNums, num, 0, lengthMap);
+            longest = Math.max(longest, length);
         }
+
+        return longest;
     }
 
-    public Integer iterate(HashSet<Integer> hashSet, Integer start, Integer currentLength) {
+    public Integer iterate(HashSet<Integer> hashSet, int currIndex, int currLength, Map<Integer, Integer> lengthMap) {
+        if (lengthMap.containsKey(currIndex)) {
+            return lengthMap.get(currIndex);
+        }
 
-        if (hashSet.contains(start)) {
-            currentLength++;
-            iterate(hashSet, start+1, currentLength);
+        if (hashSet.contains(currIndex)) {
+            currLength++;
+            return iterate(hashSet, currIndex+1, currLength, lengthMap);
 
         } else {
-            // currentLength 를 리턴해야 하나..
-            return start;
+            lengthMap.put(currIndex, currLength);
+            return currLength;
         }
 
     }
