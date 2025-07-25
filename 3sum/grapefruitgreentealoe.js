@@ -61,3 +61,41 @@ N^3 이상으로 보임.
 */
 
 //2. 투포인터로 풀기
+
+/*
+우선 내가 문제에 대한 이해가 틀렸다. 숫자의 순서가 다르다고 하더라도, 같은 숫자의 조합을 가지고 있다면 안된다. 
+값이 원하는 값보다 작으면 오른쪽 값을 옮기고, 크면 왼쪽 값을 옮기는 투포인터 전략을 취해보았다. 
+
+ */
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+  const triplets = []
+  nums.sort((a,b)=>a-b)
+  for(let i =0;i<nums.length -2 ;i++){
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+  	let low = i+1
+   	,high = nums.length -1
+    
+    while(low < high){
+     	const three_sum = nums[i] + nums[low] + nums[high]
+        if(three_sum<0){
+        	low +=1
+        }
+      	else if(three_sum >0){
+        	high -=1
+        }
+		else{
+        	triplets.push([nums[i],nums[low],nums[high]])
+            while (low < high && nums[low] === nums[low + 1]) low++;
+            while (low < high && nums[high] === nums[high - 1]) high--;
+          	low = low+1
+            high = high -1                 
+        }
+    }
+  }
+  return triplets
+};
