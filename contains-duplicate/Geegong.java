@@ -5,6 +5,12 @@ import java.util.Map;
 public class Geegong {
 
 
+    /**
+     * time complexity : O(n)
+     * space complexity : o(n)
+     * @param nums
+     * @return
+     */
     public boolean containsDuplicate(int[] nums) {
         HashSet<Integer> uniques = new HashSet<>();
 
