@@ -22,4 +22,3 @@ class Solution:
             result.append(temp_list[i][0])
         
         return result
-        
