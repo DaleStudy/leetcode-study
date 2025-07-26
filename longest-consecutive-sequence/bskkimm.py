@@ -25,4 +25,3 @@ class Solution:
         longest_consecutive = max(list(dict_consecutive.values()))
 
         return longest_consecutive
-            
