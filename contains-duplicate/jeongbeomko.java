@@ -1,5 +1,9 @@
 import java.util.HashSet;
 
+/*
+* 시간복잡도: O(n)
+* 공간복잡도: O(n)
+* */
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         HashSet<Integer> numSet  = new HashSet<>();
