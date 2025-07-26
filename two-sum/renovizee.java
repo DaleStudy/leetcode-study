@@ -11,26 +11,43 @@ import java.util.Map;
 // 3. 똑같은 원소를 두번 사용하지 못하고, 정확히 하나의 정답만 있다.
 
 class Solution {
-    // Solv2: map
+    // Solv3: map 최적화
     // 시간복잡도 : O(n)
     // 공간복잡도 : O(n)
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         int[] result = new int[2];
         for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i], i);
-        }
-
-        for (int i = 0; i < nums.length; i++) {
             int key = target - nums[i];
             if (map.containsKey(key) && map.get(key) != i) {
                 result[0] = i;
                 result[1] = map.get(key);
             }
+            map.put(nums[i], i);
         }
         return result;
-
     }
+//-------------------------------------------------------------------------------------------------------------
+    // Solv2: map
+    // 시간복잡도 : O(n)
+    // 공간복잡도 : O(n)
+//    public int[] twoSum(int[] nums, int target) {
+//        Map<Integer, Integer> map = new HashMap<>();
+//        int[] result = new int[2];
+//        for (int i = 0; i < nums.length; i++) {
+//            map.put(nums[i], i);
+//        }
+//
+//        for (int i = 0; i < nums.length; i++) {
+//            int key = target - nums[i];
+//            if (map.containsKey(key) && map.get(key) != i) {
+//                result[0] = i;
+//                result[1] = map.get(key);
+//            }
+//        }
+//        return result;
+//
+//    }
 //-------------------------------------------------------------------------------------------------------------
 //    Solv1: Brute Force
 //    시간복잡도 : O(n^2)
