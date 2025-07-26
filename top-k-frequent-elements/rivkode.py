@@ -18,12 +18,7 @@ class Solution:
         dic = {}
 
         for v in nums:
-            if v in dic:
-                cur = dic[v]
-                cur += 1
-                dic[v] = cur
-            else:
-                dic[v] = 1
+            dic[v] = dic.get(v, 0) + 1
 
         reverse_desc = sorted(dic.items(), key=lambda item: item[1], reverse=True)
 
