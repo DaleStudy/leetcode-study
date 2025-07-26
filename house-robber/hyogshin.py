@@ -11,6 +11,15 @@ class Solution:
         return max(dp)
 
 '''
-시간 복잡도: for loop -> O(n)
-공간 복잡도: dp 배열 
+시간 복잡도: O(n log n)
+- set() -> O(n)
+- sorted() -> O(n log n)
+- for loop -> O(n)
+- max() -> O(n)
+
+공간 복잡도: O(n)
+- set() -> O(n)
+- sorted list -> O(n)
+- rs -> O(n)
+- O(3n) => O(n)
 '''

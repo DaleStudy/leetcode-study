@@ -13,6 +13,11 @@ class Solution:
         return rs        
 
 '''
-시간 복잡도: for loop 사용 -> O(n) 
-공간 복잡도: len(nums) + rs 배열에서 number 2개 저장
+시간 복잡도: O(n^2)
+- nums.index(pair) -> O(n)
+- for loop 안에서 nums.index(pair) 최대 2번 호출 -> O(2n^2) -> O(n^2)
+
+공간 복잡도: O(1)
+- rs 배열에서 number 2개 저장 -> O(1) 공간
+- nums 복사나 set/dict 없음
 '''

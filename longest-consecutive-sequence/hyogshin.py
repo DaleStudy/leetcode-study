@@ -18,6 +18,15 @@ class Solution:
         return max(rs)
         
 '''
-시간 복잡도: for loop 1회 -> O(n)
-공간 복잡도: nums 리스트 + rs 배열 (최대 len(nums)) + sorted로 nums 배열 복사 
+시간 복잡도: O(n log n)
+- set(nums) -> O(n)
+- sorted(list(s)) -> O(n log n)
+- for loop -> O(n)
+- O(2n) + O(n log n) => O(2n) 이 아니라 왜 O(n log n) 이지?
+
+공간 복잡도: O(n)
+- set -> O(n)
+- sorted() -> O(n)
+- rs -> O(n)
+- O(3n) => O(n)
 '''
