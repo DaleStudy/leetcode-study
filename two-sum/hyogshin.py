@@ -11,4 +11,8 @@ class Solution:
                 rs.append(idx)
                 break
         return rs        
-        
+
+'''
+시간 복잡도: for loop 사용 -> O(n) 
+공간 복잡도: len(nums) + rs 배열에서 number 2개 저장
+'''

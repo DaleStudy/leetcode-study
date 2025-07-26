@@ -17,3 +17,7 @@ class Solution:
         rs.append(cnt)
         return max(rs)
         
+'''
+시간 복잡도: for loop 1회 -> O(n)
+공간 복잡도: nums 리스트 + rs 배열 (최대 len(nums)) + sorted로 nums 배열 복사 
+'''

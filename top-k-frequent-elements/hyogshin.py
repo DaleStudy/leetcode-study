@@ -21,4 +21,8 @@ class Solution:
                 minus[idx] = 0
 
         return ans
-        
+
+'''
+시간 복잡도: for loop 2회 -> O(2n) -> O(n)
+공간 복잡도: 배열 크기 (10**4 + 1) 두 개 + nums 리스트 + ans 배열
+'''
