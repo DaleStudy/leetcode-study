@@ -5,11 +5,14 @@
 # The size of the set for storing deduplicated elements is proportional to the length of the input list.
 
 class Solution:
-    def containsDuplicate(self, nums: list[int]) -> bool:
-        list_len = len(nums)
-        set_len = len(set(nums))
+    def containsDuplicate(self, nums):
+        list_num = len(nums)
+        set_num = len(set(nums))
 
-        return list_len != set_len
+        if list_num != set_num:
+            return True
+        else:
+            return False
 
 if __name__ == "__main__":
     solution = Solution()
@@ -25,3 +28,6 @@ if __name__ == "__main__":
         print(f"start {index} test")
         print(f"input : {test}")
         print(f"Is valid palindrome ? {solution.containsDuplicate(test)}\n")
+
+
+
