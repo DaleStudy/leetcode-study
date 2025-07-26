@@ -8,10 +8,20 @@
         - 변수 i, j 그리고 리턴 시 사용하는 [i, j]만 존재
         - 따라서 O(1)의 공간 복잡도를 가짐짐
 """
+"""
+    class Solution:
+        def twoSum(self, nums: List[int], target: int) -> List[int]:
+            for i in range(len(nums)-1):
+                for j in range(i+1, len(nums)):
+                    if nums[i] + nums[j] == target:
+                        return [i, j]
+"""
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for i in range(len(nums)-1):
-            for j in range(i+1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    return [i, j]
+        d = {num: idx for idx, num in enumerate(nums)}
+
+        for i, v in enumerate(nums):
+            idx = target - v
+            if idx in d and d[idx] != i:
+                return [i, d[idx]]
