@@ -14,20 +14,21 @@ var threeSum = function(nums) {
     const numsLength = nums.length
     if(numsLength ==3 && nums.reduce((a,b)=>a+b,0) == 0) return [nums]
 
-   const ret = []
-   const seen = new Set();
+    const ret = []
+    const seen = new Set();
     nums.sort((a, b) => a - b);
+
     function dfs(arr,start,dep){
     if(dep == 3) {
-    if(arr.length !==3) return
-    const arrTotal = arr.reduce((a,b)=>a+b,0);
-    if(arrTotal == 0){
-        const string = [...arr].sort((a,b)=>a-b).join(',')
-        if(!seen.has(string)){
-            seen.add(string)
-            ret.push(arr)
-        }
-    }
+      if(arr.length !==3) return
+      const arrTotal = arr.reduce((a,b)=>a+b,0);
+      if(arrTotal == 0){
+          const string = [...arr].sort((a,b)=>a-b).join(',')
+          if(!seen.has(string)){
+              seen.add(string)
+              ret.push(arr)
+          }
+      }
         return 
     }
     //만약 start가 0이 되면, i를 감소시켜야하고, 새로운 배열을 추가해야한다. 기존의 배열에 넣어주는게 아니다. 
