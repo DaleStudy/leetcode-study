@@ -1,11 +1,19 @@
-# 가장 자주 등장한 상위 K개의 문자 배열 반환
-# O(n log n) time, O(n) space
+"""
+https://leetcode.com/problems/top-k-frequent-elements/
+
+Given an integer array nums and an integer k, return the k most frequent elements.
+You may return the answer in any order.
+
+TC: O(n log n)
+SC: O(n)
+"""
 
 from collections import defaultdict
+from typing import List
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        numdict = defaultdict(int);
+        numdict = defaultdict(int)
 
         for num in nums:
             numdict[num] += 1
@@ -15,3 +23,14 @@ class Solution:
         keys = list(sort_dict)
 
         return keys[:k]
+    
+# heapq 풀이
+from collections import Counter
+import heapq
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        counter = Counter(nums)
+        return heapq.nlargest(k, counter.keys(), key=counter.get)
+
+
