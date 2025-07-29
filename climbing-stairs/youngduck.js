@@ -24,7 +24,7 @@ var climbStairs = function (n) {
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function (n) {
+var climbStairsOptimized = function (n) {
   const dp = Array(n).fill(0);
   dp[1] = 1;
   dp[2] = 2;
