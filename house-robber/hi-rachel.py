@@ -10,19 +10,37 @@
 # **dp[i] = max(dp[i-1], dp[i-2] + nums[i])**
 # nums 길이가 2인 경우 range(2, 2)는 for문 안 돈다.
 
+from typing import List
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        if not nums: return 0
-        if len(nums) == 1: return nums[0]
-
+        if len(nums) == 1:
+            return nums[0]
+        
         dp = [0] * len(nums)
         dp[0] = nums[0]
         dp[1] = max(nums[0], nums[1])
 
         for i in range(2, len(nums)):
-            dp[i] = max(dp[i - 1], nums[i] + dp[i - 2])
+            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
         
         return dp[-1]
+
+"""
+공간 최적화 풀이
+
+prev2: i-2까지의 최대값 + 현재 돈
+prev1: i번째 집 안 털고, 이전까지의 최대값 유지
+
+TC: O(n)
+SC: O(1)
+"""
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        prev2, prev1 = 0, 0
+        for num in nums:
+            prev2, prev1 = prev1, max(prev1, prev2 + num)
+        return prev1 
 
 
 # TS 코드
