@@ -1,5 +1,28 @@
 import java.util.*;
+// 2번째 푼 코드
+class Solution {
+    public int longestConsecutive(int[] nums) {
+       Set<Integer> set = new HashSet<>();
+        for (int n : nums) {
+            set.add(n);
+        }
 
+        int cntMax = 0;
+        for (int n : set) {  
+            if (!set.contains(n - 1)) {
+                int end = n;
+                while (set.contains(end + 1)) {
+                    end++;
+                }
+                cntMax = Math.max(cntMax, end - n + 1);
+            }
+        }
+
+        return cntMax;
+    }
+}
+
+// 처음 풀어본 코드
 class Solution {
     public int longestConsecutive(int[] nums) {
         Set<Integer> checkList = new HashSet<>();
