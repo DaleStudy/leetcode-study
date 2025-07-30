@@ -1,1 +1,1 @@
-// this week's goal
+// week 2's goal
