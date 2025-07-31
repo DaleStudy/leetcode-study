@@ -2,6 +2,12 @@ import java.util.*;
 
 public class Geegong {
 
+    /**
+     * Time complexity : O(n^2)
+     * space complexity : O(n^2)
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> threeSum(int[] nums) {
 
         // 중복되는 값은 없어야 하기에 HashSet 으로 result
@@ -9,6 +15,7 @@ public class Geegong {
 
         // Key : 배열 원소 , value : List<String> 인덱스들
         // elementMap 은 two pointer 의 값을 더한 값에서 0이 되기 위한 요소를 찾기위해 사용될 것임
+        // tc : O(n)
         Map<Integer, List<Integer>> elementMap = new HashMap<>();
         for (int index = 0; index<nums.length; index++) {
             int value = nums[index];
@@ -26,6 +33,7 @@ public class Geegong {
         // leftIndex : 0에서 부터 시작하는 index
         // rightIndex : nums.length - 1에서부터 감소하는 index
         // leftIndex > rightIndex 되는 순간까지만 for문을 돌 것이다.
+        // tc : O(N^2 / 2)
         for (int leftIndex=0; leftIndex < nums.length; leftIndex++) {
             for (int rightIndex=nums.length - 1; rightIndex >= 0; rightIndex--) {
 
@@ -71,3 +79,4 @@ public class Geegong {
         return -1;
     }
 }
+
