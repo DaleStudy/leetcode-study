@@ -64,3 +64,5 @@ if __name__ == "__main__":
 
     result = solution.isAnagram(s, t)
     print(result)
+
+
