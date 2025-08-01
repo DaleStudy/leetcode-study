@@ -20,3 +20,4 @@ class Solution {
         return Arrays.equals(chr1, chr2);
     }
 }
+
