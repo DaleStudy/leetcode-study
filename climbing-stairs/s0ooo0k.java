@@ -14,3 +14,4 @@ class Solution {
         return piv[n-1];
     }
 }
+
