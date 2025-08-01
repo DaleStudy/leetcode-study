@@ -12,3 +12,4 @@ class Solution {
         return valid(node.left, min, node.val) && valid(node.right, node.val, max);
     }
 }
+
