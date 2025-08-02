@@ -44,3 +44,5 @@ var threeSum = function(nums) {
     
     return result;
 };
+// 시간복잡도: O(n^2)
+// 공간복잡도: O(1)
