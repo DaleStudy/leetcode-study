@@ -1,0 +1,1 @@
+// frequency is k times
