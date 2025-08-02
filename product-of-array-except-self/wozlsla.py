@@ -15,7 +15,7 @@ a b c 1 --> abc x 1
 
 # Complexity
 - Time complexity : O(N)
-- Space complexity : O(N)
+- Space complexity : O(N) / O(1)
 """
 
 from typing import List
@@ -24,16 +24,34 @@ from typing import List
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
 
+        n = len(nums)
+        res = [1] * n
+
+        prefix_product = 1
+        for i in range(n):
+            res[i] = prefix_product
+            prefix_product *= nums[i]
+
+        suffix_product = 1
+        for i in range(n - 1, -1, -1):
+            res[i] *= suffix_product
+            suffix_product *= nums[i]
+
+
+"""
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+
         # 중복 계산을 피하는 방법?
-        res_1 = [1] * len(nums)  # [1, 1, 1, 1]
-        res_2 = [1] * len(nums)  # [1, 1, 1, 1]
+        res_1 = [1] * len(nums) 
+        res_2 = [1] * len(nums)
 
         for n in range(1, len(nums)):  # [1, 1(a), 2(ab), 6(abc)]
             res_1[n] = res_1[n - 1] * nums[n - 1]
 
-        nums.reverse()  # [4, 3, 2, 1]
-        for n in range(1, len(nums)):  # [1, 4(d), 12(cd), 24(bcd)]
-            res_2[n] = res_2[n - 1] * nums[n - 1]
+        # reverse X -> range를 반대로
+        for n in range(len(nums) - 1, -1, -1):  # [1, 4(d), 12(cd), 24(bcd)]
+            res_2[n] = res_2[n + 1] * nums[n + 1]
 
         res_2.reverse()
         return [res_1[i] * res_2[i] for i in range(len(nums))]
@@ -41,6 +59,7 @@ class Solution:
 
 sol = Solution()
 print(sol.productExceptSelf([1, 2, 3, 4]))
+"""
 
 
 """
