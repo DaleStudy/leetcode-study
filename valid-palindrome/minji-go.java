@@ -1,22 +1,43 @@
-/*
-    Problem: https://leetcode.com/problems/valid-palindrome/
-    Description: return true if it is a palindrome, alphanumeric characters(letters and numbers) reads the same forward and backward
-    Concept: Two Pointers, String
-    Time Complexity: O(n), Runtime: 10ms
-    Space Complexity: O(n), Memory: 58.6MB
-*/
+/**
+ * <a href="https://leetcode.com/problems/valid-palindrome/">week03-1.valid-palindrome</a>
+ * <li>Description: return true if it is a palindrome </li>
+ * <li>Topics: Two Pointers, String             </li>
+ * <li>Time Complexity: O(N), Runtime 2ms       </li>
+ * <li>Space Complexity: O(1), Memory 42.75MB   </li>
+ */
 class Solution {
     public boolean isPalindrome(String s) {
-        String regex ="[^A-Za-z0-9]";
-        String palindrome = s.replaceAll(regex,"").toLowerCase(); //replaceAll(), toLowerCase(): O(n)
+        int left = 0;
+        int right = s.length() - 1;
 
-        boolean answer = true;
-        for(int i=0; i<palindrome.length()/2; i++){
-            if(palindrome.charAt(i) != palindrome.charAt(palindrome.length()-1-i)) {
-                answer = false;
-                break;
+        while (left < right) {
+            char charLeft = s.charAt(left);
+            char charRight = s.charAt(right);
+            if (isNotValidCharacter(charLeft)) {
+                left++;
+                continue;
             }
+            if (isNotValidCharacter(charRight)) {
+                right--;
+                continue;
+            }
+
+            if (Character.toLowerCase(charLeft) != Character.toLowerCase(charRight)) {
+                return false;
+            }
+            left++;
+            right--;
         }
-        return answer;
+        return true;
+
+    }
+
+    private boolean isNotValidCharacter(char c) {
+        if ((c >= '0' && c <= '9')
+                || (c >= 'a' && c <= 'z')
+                || (c >= 'A' && c <= 'Z')) {
+            return false;
+        }
+        return true;
     }
 }

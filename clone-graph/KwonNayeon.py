@@ -29,17 +29,25 @@ Space Complexity: O(N)
 - N: 노드의 개수
 - dictionary와 재귀 호출 스택 공간
 
+풀이 방법:
+- 문제에서 요구하는 것: Deep copy
+- Base case: 빈 그래프 처리
+- 딕셔너리 생성 후 dfs
+  - 만약 이미 복사한 노드라면 해당 복사본을 반환함
+  - 아니라면, 새로운 노드를 생성하여 딕셔너리에 저장
+  - 이웃 노드의 경우에도 dfs()로 복사본을 만들어서 현재 노드의 neighbors 리스트에 추가함
+- 주어진 노드부터 재귀 시작
+
 # Definition for a Node.
 class Node:
    def __init__(self, val = 0, neighbors = None):
        self.val = val
        self.neighbors = neighbors if neighbors is not None else []
-
-참고 사항:
-- 혼자 풀기 어려워서, 문제와 답을 이해하는 것에 집중했습니다!
 """
 class Solution:
    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+       
+       # 빈 그래프 처리
        if not node:
            return None
            
@@ -51,13 +59,11 @@ class Solution:
            
            # 새로운 노드 생성
            copy = Node(node.val)
-           dict[node.val] = copy  # dictionary에 기록
+           dict[node.val] = copy
            
-           # 각 neighbor에 대해서도 같은 과정 수행
-           for neighbor in node.neighbors:
-               copy.neighbors.append(dfs(neighbor))
+           for neighbor in node.neighbors:          # 원본의 각 이웃에 대하여
+               copy.neighbors.append(dfs(neighbor)) # 그 이웃의 복사본을 만들어서 추가함
                
            return copy
        
        return dfs(node)
-

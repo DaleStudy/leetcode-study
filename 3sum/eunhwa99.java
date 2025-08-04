@@ -2,68 +2,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * 문제 풀이
- */
-// -4 -1 -1 0  2  2
-// p1 p2         p3   sum < 0 -> p2 앞으로
-// p1    p2      p3   sum < 0 -> p2 앞으로
-// p1      p2    p3   sum < 0 -> p2 앞으로
-// p1          p2p3   sum = 0 -> p1 앞으로
-//    p1 p2      p3   sum = 0 -> p3 값 다른 게 나올 때까지 이동
-//    p1 p2 p3        sum < 0 -> p2 앞으로 인데, p2 > p3 되므로 p1 앞으로
-//       p1 p2    p3      sum = 0 반복
+// 시간 복잡도: O(n^2) - nums 배열을 정렬하는 데 O(nlogn) 소요, 이후 이중 포인터로 O(n^2)
+// 공간 복잡도: O(1) - 결과 리스트를 제외한 추가 공간 사용 없음
+class Solution{
+    public List<List<Integer>> threeSum(int[] nums){
+        Arrays.sort(nums);
 
-/**
- * 시간/공간 복잡도
-  */
-// 시간 복잡도 - 순회 횟수: n + (n-1) + (n-2) + .. => O(N^2)
-// 공간 복잡도 - 배열을 정렬하는 데 O(n log n)의 공간 + 결과를 저장하는 answer 리스트는 문제의 요구에 따라 O(k)의 공간 = O(n log n) (배열 정렬을 위한 공간) + O(k) (결과 저장 공간)
+        List<List<Integer>> result = new ArrayList<>();
 
-class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);  // Sort the array first
-        List<List<Integer>> answer = new ArrayList<>();
+        for(int i=0;i<nums.length-2;i++){
+            if(i>0 && nums[i] == nums[i-1]) continue; // 중복된 값 건너뛰기
+            int left = i+1;
+            int right = nums.length-1;
 
-        for (int pointer1 = 0; pointer1 < nums.length - 2; pointer1++) {
-            // pointer1 의 중복 값 skip
-            if (pointer1 > 0 && nums[pointer1] == nums[pointer1 - 1]) {
-                continue;
-            }
-
-            int pointer2 = pointer1 + 1;  // pointer2 는 pointer1 의 한 칸 앞
-            int pointer3 = nums.length - 1;  // pointer3 는 끝에서 부터
-
-            while (pointer2 < pointer3) {
-                int sum = nums[pointer1] + nums[pointer2] + nums[pointer3];
-
-                if (sum < 0) {
-                    pointer2++;
-                } else if (sum > 0) {
-                    pointer3--;
+            while(left < right){
+                int sum = nums[i] + nums[left] + nums[right];
+                if(sum == 0){
+                    result.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    while(left < right && nums[left] == nums[left+1]) left++; // 중복된 값 건너뛰기
+                    while(left < right && nums[right] == nums[right-1]) right--; // 중복된 값 건너뛰기
+                    left++;
+                    right--;
+                } else if(sum < 0){
+                    left++;
                 } else {
-                    // sum == 0
-                    answer.add(Arrays.asList(nums[pointer1], nums[pointer2], nums[pointer3]));
-
-                    // pointer2 중복 값 제거
-                    while (pointer2 < pointer3 && nums[pointer2] == nums[pointer2 + 1]) {
-                        pointer2++;
-                    }
-
-                    // pointer3 중복 값 제거
-                    while (pointer2 < pointer3 && nums[pointer3] == nums[pointer3 - 1]) {
-                        pointer3--;
-                    }
-
-                    // 두 값 모두 move
-                    pointer2++;
-                    pointer3--;
+                    right--;
                 }
             }
         }
-
-        return answer;
+        return result;
     }
 }
-
-

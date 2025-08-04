@@ -13,6 +13,7 @@
 
 ## 차수
 
+- 5기 (Jul 20, 2025 - Nov 1, 2025): [프로젝트](https://github.com/orgs/DaleStudy/projects/16/views/3), [팀](https://github.com/orgs/DaleStudy/teams/leetcode05)
 - 4기 (Mar 30, 2025 - Jul 12, 2025): [프로젝트](https://github.com/orgs/DaleStudy/projects/13/views/3), [팀](https://github.com/orgs/DaleStudy/teams/leetcode04)
 - 3기 (Dec 08, 2024 - Mar 22, 2025): [프로젝트](https://github.com/orgs/DaleStudy/projects/12/views/3), [팀](https://github.com/orgs/DaleStudy/teams/leetcode03)
 - 2기 (Aug 11, 2024 - Nov 23, 2024): [프로젝트](https://github.com/orgs/DaleStudy/projects/3/views/3), [팀](https://github.com/orgs/DaleStudy/teams/leetcode02)
