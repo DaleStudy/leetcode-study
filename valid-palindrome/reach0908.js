@@ -1,6 +1,6 @@
 /**
  * 시간복잡도: O(N)
- * 공간복잡도: O(N)
+ * 공간복잡도: O(1)
  * @param {string} s
  * @return {boolean}
  */
