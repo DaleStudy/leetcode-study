@@ -1,4 +1,20 @@
 import java.util.*;
+// 2번째 풀이
+class Solution {
+    public int rob(int[] nums) {
+        int[] dp = new int[nums.length+1];
+        dp[1] = nums[0];
+
+        for(int i = 1; i < nums.length; i++){
+            dp[i+1] = Math.max(dp[i-1] + nums[i], dp[i]);
+        }
+        return dp[nums.length];
+    }
+}
+
+
+
+// 1번째 풀이
 class Solution {
     public int rob(int[] nums) {
         int[] house = new int[nums.length];
