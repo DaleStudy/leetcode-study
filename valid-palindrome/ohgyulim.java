@@ -1,4 +1,9 @@
 class Solution {
+    /* 시간 복잡도: O(N)
+    * - for 루프: O(N)
+    * 
+    * 공간 복잡도: O(N), StringBuilder
+    */ 
     public boolean isPalindrome(String s) {
         StringBuilder sb = new StringBuilder();
 
