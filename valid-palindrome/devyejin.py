@@ -4,4 +4,3 @@ class Solution:
         s = s.replace(" ", "")
         changed_s = [c.lower() for c in s if c.isalnum()]
         return changed_s == changed_s[::-1]
-
