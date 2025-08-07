@@ -1,6 +1,8 @@
 # 처음 풀이
 # O(n log n) time, O(n) space
 
+from typing import List
+
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         if nums == []:
@@ -67,11 +69,19 @@ class Solution:
         return longest
     
 
-# 최종 개선 풀이
-# O(n) time, O(n) space
-# 위 풀이에서 한쪽으로 구간을 찾지 않고, 양쪽으로 찾으며 숫자를 집합에서 제거하며
-# 집합에서 원소가 하나도 남지 않을 때까지 하면 가장 긴 구간의 길이를 구할 수 있다.
-# 배열의 모든 정수를 set에 저장했으므로 공간 복잡도는 O(n)
+"""
+최종 개선 풀이
+O(n) time, O(n) space
+
+위 풀이에서 한쪽으로 구간을 찾지 않고, 양쪽으로 찾으며 숫자를 집합에서 제거하며
+집합에서 원소가 하나도 남지 않을 때까지 하면 가장 긴 구간의 길이를 구할 수 있다.
+
+배열의 모든 정수를 set에 저장했으므로 공간 복잡도는 O(n), 시간 복잡도 O(n)
+set 삽입: O(1), 삭제: 평균 O(1), 순서 보장 x => 순서를 무시하고 존재 여부(빠른 탐색)이 중요할 때 사용.
+존재하지 않는 값을 pop(), remove()시 KeyError 주의
+
+max(a, b): 두 값 중 큰 값을 반환 → O(1)
+"""
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
@@ -93,6 +103,28 @@ class Solution:
         
         return longest
     
+"""
+25/7/23 복습, 위 최적화 풀이로 풀지 못함
+TC: O(n log n)
+SC: O(n)
+"""
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        nums = sorted(list(set(nums)))
+        max_cnt = 1
+        cnt = 1
+
+        for i in range(len(nums) - 1):
+            if nums[i] + 1 == nums[i + 1]:
+                cnt += 1
+                max_cnt = max(max_cnt, cnt)
+            else:
+                cnt = 1
+
+        return max_cnt
+
 # TS 풀이
 # O(n) time, O(n) space
 # JavaScript Set에서 값을 꺼내고자 할때는 **numSet.values().next().value** 사용
