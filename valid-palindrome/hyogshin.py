@@ -24,4 +24,3 @@ class Solution:
                 break
         
         return is_pal
-        
