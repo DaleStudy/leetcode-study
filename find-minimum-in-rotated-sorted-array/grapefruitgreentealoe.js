@@ -1,5 +1,3 @@
-
-
 /*
 회전한 데이터에서 제일 작은 값을 찾는 문제라는 것을 기억해야한다.
 그렇게 때문에, left, right를 각각 0, nums.length -1 로 두어서, left와 right가 같아질때 탈출하고, 그 같아진 index에 대한 nums[index]를 찾아내면 될 것 같다.
