@@ -16,7 +16,6 @@ var coinChange = function(coins, amount) {
             return 
         }else{
             for(let c of coins){
-                //여기서 dfs를 안들어가는 방법은 없을까?
                 dfs(idx+coin,c)
             }
         }
