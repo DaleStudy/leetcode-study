@@ -60,3 +60,16 @@ function backTracking(startPoint,board,word,check){
     }
     return dfs(...startPoint,0)
 }
+
+/*
+시간 복잡도: O(m × n × 3^{L-1}) 
+-  m × n: 시작점 후보 개수 
+-  3^{L-1}: 첫 번째 이후로는 3방향으로만 뻗어나가는 경우의 수
+
+
+공간 복잡도: O(m × n)
+- 방문 체크 배열: O(m × n)
+- 재귀 호출 스택: 최악의 경우 단어 길이 L까지 깊어질 수 있으므로 O(L)
+
+여기서 m, n은 보드 크기, L은 단어 길이
+ */
