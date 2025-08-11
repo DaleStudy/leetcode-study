@@ -1,4 +1,4 @@
-//두개의 정렬된 링크드 리스트 list1, list2의 Head를 받았다.(리스트가 아니라, 연결리스트의 헤드라는 것!)
+//두개의 정렬된 링크드 리스트 list1, list2의 Head를 받았다.(리스트가 아니라, 연결리스트의 헤드)
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
