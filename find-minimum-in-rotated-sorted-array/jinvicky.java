@@ -15,13 +15,17 @@ class Solution {
             int mid = left + (right - left) / 2;
 
             // 중간값이 오른쪽값보다 크다면 왼쪽 포인터를 중간값+1로 증가합니다.
-            if (nums[mid] > nums[right]) {
+            if (nums[mid] > nums[right]) { // <= 와 동일
                 left = mid + 1;
             } else {
                 // 중간값보다 오른쪽값이 크다면 중간값이 최대 범위가 되어야 합니다.
+                // 최소값이 mid일 가능성이 있기 때문이다.
                 right = mid;
             }
         }
         return nums[left];
     }
 }
+
+// 처음에는 전형 이진 탐색으로서 left = mid+1, right = mid-1을 했으나 실패
+// 하지만 최소 숫자는 무조건 left가 가리키는 값임.
