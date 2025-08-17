@@ -53,3 +53,38 @@ var findMin = function(nums) {
 
     return result;
 };
+
+/**
+ * 풀이 3
+ * 이진 탐색 Binary Search
+ *
+ * @param {number[]} nums
+ * @return {number}
+ *
+ * 시간 복잡도(TC): O(log n)
+ * 공간 복잡도(SC): O(1)
+ *
+ * 관련 알고리즘: 이진 탐색 Binary Search
+ *
+ * 문제 풀이 방법:
+ * 1. 배열을 이진 탐색으로 탐색
+ */
+
+var findMin = function(nums) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left < right) {
+        const mid = Math.floor((left + right) / 2);
+
+        // mid가 right보다 크면 최소값은 오른쪽
+        if (nums[mid] > nums[right]) {
+            left = mid + 1;
+        } else {
+            // mid가 right보다 작다면
+            right = mid;
+        }
+    }
+
+    return nums[left];
+};
