@@ -5,8 +5,8 @@
 - dp로 해당 날짜까지 가장 큰 수익을 저장
 시간 복잡도: O(n)
 - for 문 하나 -> O(n)
-공간 복잡도: O(n)
-- dp 리스트 -> O(n)
+공간 복잡도: O(1)
+- 상수 변수만 사용 -> O(1)
 '''
 
 class Solution:
@@ -17,4 +17,5 @@ class Solution:
             least = min(prices[i], least)
             largest = max(prices[i] - least, largest)
         return largest
-            
+
+
