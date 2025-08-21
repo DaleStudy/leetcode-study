@@ -57,6 +57,7 @@ class Solution {
          */
         for (int i = 1; i <= n; i++) {
             for (int j = 0; j < i; j++) {
+                // 예시를 보면 (start, end)에서 start가 증가할 동안 end는 고정됩니다. 따라서 start=j, end=i가 되어야 합니다.
                 if (dp[j] && wordSet.contains(s.substring(j, i))) {
                     dp[i] = true;
                     break;
