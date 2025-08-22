@@ -1,3 +1,25 @@
+// using set
+function wordBreak(s: string, wordDict: string[]): boolean {
+  const sLen = s.length;
+
+  const dp: boolean[] = new Array(sLen + 1).fill(false);
+  dp[0] = true;
+
+  const wordSet = new Set<string>(wordDict);
+
+  for (let i = 1; i <= sLen; i++) {
+    for (let j = 0; j < i; j++) {
+      if (dp[j] && wordSet.has(s.substring(j, i))) {
+        dp[i] = true;
+        break;
+      }
+    }
+  }
+
+  return dp[sLen];
+}
+
+// using trie
 class TNode {
   isEndOf: boolean;
   children: Map<string, TNode>;
