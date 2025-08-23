@@ -12,9 +12,9 @@ tan -> ant
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         strResult = {}
-        for str in strs:
-            sortedStr = ''.join(sorted(str))
+        for word in strs:
+            sortedStr = ''.join(sorted(word))
             if sortedStr not in strResult:
                 strResult[sortedStr] = []
-            strResult[sortedStr].append(str)
+            strResult[sortedStr].append(word)
         return list(strResult.values())
