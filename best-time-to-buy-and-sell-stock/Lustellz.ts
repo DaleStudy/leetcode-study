@@ -1,5 +1,7 @@
 function maxProfit(prices: number[]): number {
 
+        // Runtime: 1ms
+        // Memory: 66.23MB
         let minPrice: number = prices[0];
         let maxProfit: number = 0;
 
@@ -13,4 +15,7 @@ function maxProfit(prices: number[]): number {
             }
         }
         return maxProfit;
+
+        // What I was planning to do: Recursion
+        // Result: referring other's code
 };
