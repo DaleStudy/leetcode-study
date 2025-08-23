@@ -1,3 +1,16 @@
+"""
+풀이 방법
+- insert: 입력된 단어의 캐릭터로 for loop을 돌아 node.children에 없는 캐릭터라면 추가하고 있다면 node.isEnd = True
+- search: 입력된 단어를 캐릭터 단위로 for loop을 돌고 node.children에 없다면 바로 False 반환, 만약 모든 캐릭터가 있는 경우 단어있는 확인하기 위해 isEnd 체크
+- startsWith: 입력된 prefix로 for loop을 돌아 node.children에 없다면 바로 False 반환
+
+시간 복잡도: O(n)
+- for loop -> O(n)
+
+공간 복잡도: O(n)
+- Trie를 저장하는 공간 -> O(n)
+"""
+
 from typing import List
 
 class TrieNode:
@@ -57,3 +70,4 @@ if __name__ == "__main__":
     print(trie.search("bat"))      # True
     print(trie.startsWith("ba"))   # True
     print(trie.search("bad"))      # False
+
