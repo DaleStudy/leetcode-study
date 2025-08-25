@@ -1,6 +1,7 @@
 class Solution {
     /**
      * 기존 house-robber 1 문제에서 로직을 가져오되, 접근법을 달리하는 문제
+     * 처음생각했던 접근법은 그냥 dp값에서 첫번째 또는 마지막 요소를 빼서 나온 최댓값 아닌가? 했지만 범위에 따라 dp가 달라지므로 오답
      */
     public int rob(int[] nums) {
         if (nums.length == 1) return nums[0];
