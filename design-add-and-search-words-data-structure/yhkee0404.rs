@@ -37,7 +37,7 @@ impl WordDictionary {
         return Self::search_from_index(&self.trie, &word)
     }
 
-    // T(n) = S(n) = ((2^2)n) = O(n)
+    // T(n) = S(n) = ((26^2)n) = O(n)
     fn search_from_index(trie: &Trie, word: &str) -> bool {
         return match word.chars()
                 .next() {
