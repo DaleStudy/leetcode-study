@@ -11,7 +11,7 @@ class Solution {
 
         while (start < end) {
             int y = Math.min(height[start], height[end]); // y축은 더 작은 값으로 설정
-            int x = Math.abs(start - end);
+            int x = Math.abs(start - end); // end - start도 가능
             int calculatedArea = x * y;
             area = Math.max(area, calculatedArea);
 
