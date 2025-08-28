@@ -22,7 +22,7 @@ impl WordDictionary {
         }
     }
     
-    // T(n) = S(n) = O(26n) = O(n)
+    // T(n) = S(n) = O(n)
     fn add_word(&mut self, word: String) {
         let mut t = &mut self.trie;
         for c in word.chars() {
@@ -37,7 +37,7 @@ impl WordDictionary {
         return Self::search_from_index(&self.trie, &word)
     }
 
-    // T(n) = S(n) = ((26^2)n) = O(n)
+    // T(n) = S(n) = O((n - 2) * 26^2) = O(n)
     fn search_from_index(trie: &Trie, word: &str) -> bool {
         return match word.chars()
                 .next() {
