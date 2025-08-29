@@ -1,3 +1,33 @@
+// using binary search, lower bound
+function lengthOfLIS(nums: number[]): number {
+  const n = nums.length;
+  const sub: number[] = [];
+
+  for (const num of nums) {
+    if (sub.length === 0 || num > sub[sub.length - 1]) {
+      sub.push(num);
+    } else if (num <= sub[sub.length - 1]) {
+      let l = 0;
+      let r = sub.length - 1;
+
+      while (l < r) {
+        const mid = Math.floor((l + r) / 2);
+
+        if (num <= sub[mid]) {
+          r = mid;
+        } else {
+          l = mid + 1;
+        }
+      }
+
+      sub[l] = num;
+    }
+  }
+
+  return sub.length;
+}
+
+// using dp
 function lengthOfLIS(nums: number[]): number {
   const n = nums.length;
   const dp: number[] = Array(n).fill(1);
