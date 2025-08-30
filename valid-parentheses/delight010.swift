@@ -3,8 +3,8 @@ class Solution {
         let dictionary: [Character: Character] = [")":"(", "]":"[", "}":"{"]
         var stack: [Character] = []
         for char in s {
-            if let closeBucket = dictionary[char] {
-                if stack.isEmpty == false, stack.removeLast() == closeBucket {
+            if let openBucket = dictionary[char] {
+                if stack.isEmpty == false, stack.removeLast() == openBucket {
                     continue
                 } else {
                     return false
