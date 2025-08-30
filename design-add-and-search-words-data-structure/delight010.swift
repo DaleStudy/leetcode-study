@@ -18,10 +18,8 @@ class WordDictionary {
                 currentNode?.children[char] = TrieNode()
             }
             currentNode = currentNode?.children[char]
-            if index == word.count - 1 {
-                currentNode?.isEndOfWord = true
-            }
         }
+        currentNode?.isEndOfWord = true
     }
     
     func search(_ word: String) -> Bool {
