@@ -25,7 +25,7 @@ class WordDictionary {
         node.isEndOfWord = true
     }
     
-    // O(m) ~ O(26^m) time / O(1) space
+    // O(m) ~ O(26^m) time / O(m) space
     func search(_ word: String) -> Bool {
         return dfs(word: Array(word), index: 0, node: root)
     }
