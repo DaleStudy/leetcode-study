@@ -5,7 +5,7 @@ class WordDictionary {
         var isEndOfWord: Bool = false
     }
     
-    var root: TrieNode?
+    var root: TrieNode
 
     init() {
         root = TrieNode()
