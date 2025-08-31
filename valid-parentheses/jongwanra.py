@@ -12,8 +12,6 @@ https://leetcode.com/problems/valid-parentheses/
 Time: O(N), N = s.length
 Space: O(N), N = stack.length
 """
-from os import popen
-
 
 class Solution:
     def isValid(self, s: str) -> bool:
@@ -23,11 +21,12 @@ class Solution:
             # 여는 괄호인 경우 Stack 추가
             if bracket in bracket_dict:
                 stack.append(bracket)
-                continue
-
             # 닫는 괄호인 경우
-            if not stack or bracket_dict[stack.pop()] != bracket:
-                return False
+            else:
+                if not stack:
+                    return False
+                if bracket_dict[stack.pop()] != bracket:
+                    return False
 
         return not stack
 
@@ -43,4 +42,5 @@ print(sol.isValid("([)]") == False)
 # Edge Case
 print(sol.isValid("(") == False)
 print(sol.isValid("]") == False)
+
 
