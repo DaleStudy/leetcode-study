@@ -24,4 +24,40 @@ class Solution {
         current.next = null; // 마지막 tail 정리
         return newHead;
     }
+
+    /**
+     * 포인터 반복문을 새로 배웠을 때 fast/slow와 같은 투 포인터 알고리즘과 헷갈렸지만 둘은 전혀 다르다.
+     * 포인터 반복문
+     * * 링크 방향 뒤집기
+     * * 3개 포인터 (prev, cur, next)
+     * * 리스트 자체 구조 변경
+     * <p>
+     * 투 포인터
+     * * 중간, 사이클, 교차점 등 탐색
+     * * 2개 포인터 (slow, fast)
+     * * 리스트 구조 그대로, 위치 정보만 얻음
+     * <p>
+     * https://bcp0109.tistory.com/142
+     */
+    public ListNode reverseListByPointer(ListNode head) {
+        ListNode prev = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode next = cur.next; // next라는 temp 변수를 사용해서 prev와 cur.next 값을 바꾼다.
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+            // 대각선으로 / / / / 으로 변수명 암기하기
+        }
+        return prev;
+    }
+
+    public ListNode reverseListByRecursion(ListNode head) {
+        // head.next가 null인지도 확인하는 로직이 필요합니다. (nullPointerException 방지)
+        if (head == null || head.next == null) return null;
+        ListNode newHead = reverseListByRecursion(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
 }
