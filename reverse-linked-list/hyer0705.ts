@@ -10,6 +10,7 @@
  * }
  */
 
+// using iterative
 function reverseList(head: ListNode | null): ListNode | null {
   if (!head) return null;
 
@@ -24,4 +25,16 @@ function reverseList(head: ListNode | null): ListNode | null {
   }
 
   return prev;
+}
+
+// using recursive
+function reverseList(head: ListNode | null): ListNode | null {
+  if (!head || !head.next) return head;
+
+  const newHead = reverseList(head.next);
+
+  head.next.next = head;
+  head.next = null;
+
+  return newHead;
 }
