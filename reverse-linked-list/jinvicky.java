@@ -54,7 +54,7 @@ class Solution {
 
     public ListNode reverseListByRecursion(ListNode head) {
         // head.next가 null인지도 확인하는 로직이 필요합니다. (nullPointerException 방지)
-        if (head == null || head.next == null) return null;
+        if (head == null || head.next == null) return null; // 재귀의 끝, 이제 기존 연산을 취합한다.
         ListNode newHead = reverseListByRecursion(head.next);
         head.next.next = head;
         head.next = null;
