@@ -58,3 +58,29 @@ class Solution:
             max_len = max(max_len, right - left + 1)
             
         return max_len
+
+
+# HashMap 풀이
+def lengthOfLongestSubstring(s: str) -> int:
+    if not s:
+        return 0
+ 
+    left = 0  # 윈도우 시작점
+    max_length = 0  # 최대 길이
+    seen = {}  # 문자의 마지막 등장 위치를 저장하는 해시맵
+ 
+    for right in range(len(s)):
+        char = s[right]
+ 
+        # 현재 문자가 윈도우 내에 이미 존재하는 경우
+        if char in seen and seen[char] >= left:
+            # 윈도우 시작점을 중복 문자 다음 위치로 이동
+            left = seen[char] + 1
+ 
+        # 현재 문자의 위치 업데이트
+        seen[char] = right
+ 
+        # 현재 윈도우 길이와 최대 길이 비교 후 업데이트
+        max_length = max(max_length, right - left + 1)
+ 
+    return max_length
