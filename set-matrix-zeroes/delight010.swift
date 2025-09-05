@@ -1,4 +1,6 @@
 class Solution {
+    // Time complexity O(MN)
+    // Space complexity O(1)
     func setZeroes(_ matrix: inout [[Int]]) {
         var firstRowHasZero = false
         var firstColHasZero = false
