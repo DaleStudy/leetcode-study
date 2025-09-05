@@ -1,4 +1,6 @@
 class Solution {
+    // Time complexity O(MN)
+    // Space complexity O(MN)
     func uniquePaths(_ m: Int, _ n: Int) -> Int {
         let column = Array(repeating: 1, count: n)
         var grid: [[Int]] = Array(repeating: column, count: m)
