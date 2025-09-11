@@ -5,10 +5,10 @@ static _TABLE: OnceLock<Vec<i32>> = OnceLock::new();
 impl Solution {
 
     pub fn reverse_bits(mut n: i32) -> i32 {
-        let mut x: u32 = 0;
+        let mut x = 0;
         for i in 0..6 {
-            let shift = if i == 5 {2} else {6} as u32;
-            x = x << shift | Self::init_table()[(n & (1 << shift) - 1) as usize] as u32 >> 6 - shift;
+            let shift = if i == 5 {2} else {6};
+            x = x << shift | Self::init_table()[(n & (1 << shift) - 1) as usize] >> 6 - shift;
             n >>= 6;
         }
         x as i32
