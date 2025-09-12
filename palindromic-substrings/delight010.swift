@@ -1,4 +1,6 @@
 class Solution {
+    // Time O(n^2)
+    // Space O(n)
     func countSubstrings(_ s: String) -> Int {
         let charArray = Array(s)
         var count = 0

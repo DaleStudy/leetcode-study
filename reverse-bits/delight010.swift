@@ -1,4 +1,6 @@
 class Solution {
+    // Time O(1)
+    // Space O(1)
     func reverseBits(_ n: Int) -> Int {
         var number = n
         var result = 0
