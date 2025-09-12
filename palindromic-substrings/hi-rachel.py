@@ -76,7 +76,6 @@ class Solution:
     def countSubstrings(self, s: str) -> int:
         count = 0
         for center in range(len(s)):
-            print(center)
             count += self.expand(s, center, center)
 
             count += self.expand(s, center, center + 1)
