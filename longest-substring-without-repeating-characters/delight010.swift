@@ -1,6 +1,6 @@
 class Solution {
     // Time complexity O(N)
-    // Space complexity O(min(m,n))
+    // Space complexity O(N)
     func lengthOfLongestSubstring(_ s: String) -> Int {
         if s.isEmpty {
             return 0
