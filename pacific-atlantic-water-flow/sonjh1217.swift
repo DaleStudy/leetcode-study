@@ -20,7 +20,7 @@ class Solution {
             }
             
             while head < queue.count {
-                var (i, j) = queue[head]
+                let (i, j) = queue[head]
                 head += 1
                 
                 for (di, dj) in directions {
