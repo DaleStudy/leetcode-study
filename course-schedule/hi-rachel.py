@@ -135,6 +135,8 @@ class Solution:
                 return False
         return True
 
+from functools import cache
+
 # 줄인 코드
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
