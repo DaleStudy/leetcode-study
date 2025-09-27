@@ -1,16 +1,33 @@
 """
 https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/
 
-문제: 회전된 오름차순 정렬된 배열 nums에서 target 값의 인덱스를 반환하라.
+- in → 리스트 전체를 선형 탐색 (O(N))
+- index → 다시 처음부터 선형 탐색 (O(N))
 
-Idea: 이진 탐색 패턴 사용
-
-TC: O(logN)
+Brute Force
+TC: O(N)
 SC: O(1)
 """
 
 from typing import List
 
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if target in nums:
+            return nums.index(target)
+        else:
+            return -1
+
+"""
+문제: 회전된 오름차순 정렬된 배열 nums에서 target 값의 인덱스를 반환하라.
+
+Idea: 이진 탐색 패턴 사용
+
+
+TC: O(logN), while 루프에서 매번 절반씩 줄
+SC: O(1)
+"""
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         left, right = 0, len(nums) - 1
