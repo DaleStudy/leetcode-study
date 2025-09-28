@@ -56,3 +56,104 @@ class Solution:
                     queue.append(neighbor)
             
         return completed == numCourses
+
+"""
+위상 정렬을 구하는 알고리즘
+1. DFS 기반 (스택을 쌓아 뒤집는 방식)
+2. Kahn 알고리즘 (진입차수 0부터 차례로 큐 처리)
+
+Kahn 알고리즘이란?
+방향 그래프에서 진입차수(indegree)가 0인 정점부터 차례로 제거(큐에 넣어 꺼내기)하며 위상 순서를 만드는 방법.
+진입차수가 0인 정점이 하나도 없는데 아직 남은 정점이 있다면 사이클 존재 -> 위상 정렬 불가.
+
+위상 순서: 방향 그래프에서 간선(u→v)이 있다면, 순서에서 u가 항상 v보다 앞에 나오는 정점들의 나열.
+진입차수: 정점으로 들어오는 간선의 개수.
+
+
+TC: O(V + E), V: 과목 수, E: prerequisite 관계 수
+SC: O(V + E), 그래프 + 진입차수 배열
+"""
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+         # 1) 그래프(인접 리스트)와 진입차수 배열 만들기
+        adj = [[] for _ in range(numCourses)]
+        indeg = [0] * numCourses
+        for a, b in prerequisites:  # b -> a (b를 먼저 들어야 a를 들을 수 있음)
+            adj[b].append(a)
+            indeg[a] += 1
+        
+        # 2) 진입차수 0인 정점들로 큐 초기화
+        q = deque([i for i in range(numCourses) if indeg[i] == 0])
+        taken = 0  # 처리(수강) 완료한 과목 수
+
+        # 3) 큐에서 빼며 간선 제거(=후속 과목 진입차수 감소)
+        while q:
+            u = q.popleft()
+            taken += 1
+            for v in adj[u]:
+                indeg[v] -= 1
+                if indeg[v] == 0:
+                    q.append(v)
+
+        # 4) 모두 처리됐으면 사이클 없음
+        return taken == numCourses
+
+
+"""
+DFS 기반
+TC: O(V + E), V: 과목 수, E: prerequisite 관계 수
+SC: O(V + E), 그래프 + 탐색 중인 과목 집합 + 수강 완료한 과목 집합
+"""
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = {i: [] for i in range(numCourses)}
+        for crs, pre in prerequisites:
+            # 선수 과목을 원소로 추가
+            graph[crs].append(pre)
+
+        # 탐색중
+        traversing = set()
+        # 수강가능한 과목
+        finished = set()
+
+        def can_finish(crs):
+            if crs in traversing:
+                return False
+            if crs in finished:
+                return True
+            
+            traversing.add(crs)
+            for pre in graph[crs]:
+                if not can_finish(pre):
+                    return False
+            traversing.remove(crs)
+            finished.add(crs)
+            return True
+
+        for crs in graph:
+            if not can_finish(crs):
+                return False
+        return True
+
+from functools import cache
+
+# 줄인 코드
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = {i: [] for i in range(numCourses)}
+        for crs, pre in prerequisites:
+            graph[crs].append(pre)
+
+        traversing = set()
+
+        @cache
+        def can_finish(crs):
+            if crs in traversing:
+                return False
+            
+            traversing.add(crs)
+            result = all(can_finish(pre) for pre in graph[crs])
+            traversing.remove(crs)
+            return result
+
+        return all(can_finish(crs) for crs in graph)
