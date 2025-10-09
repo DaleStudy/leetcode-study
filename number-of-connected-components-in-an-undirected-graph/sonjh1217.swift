@@ -37,5 +37,3 @@ class Solution {
     }
 }
 
-print(Solution().countComponents(3, [[0,1], [0,2]]))
-print(Solution().countComponents(6, [[0,1], [1,2], [2, 3], [4, 5]]  ))
