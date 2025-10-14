@@ -11,8 +11,8 @@
  *     }
  * }
  *
- * Time Complexity: O(h) where h is the height of the tree
- * Space Complexity: O(1)
+ * Time Complexity: O(logn) in average, O(n) in the worst case
+ * Space Complexity: O(logn) in average, O(n) in the worst case
  */
 function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
   if (p.val < root.val && q.val < root.val) {
