@@ -1,4 +1,5 @@
 class Solution {
+    // 최소값은 음수가 곱해질 때 최대값이 될 수 있기 때문에 최소, 최대를 각각 dp[]로 관리해야 한다.
     public int maxProduct(int[] nums) {
         if (nums.length == 1)
             return nums[0];
@@ -15,6 +16,11 @@ class Solution {
 
         for (int i = 1; i < len; i++) {
             // 후보 3을 준비
+            /**
+             * 현재 인덱스값 (justNum)
+             * 이전 인덱스 최소값 x 현재 인덱스 값 (reverse)
+             * 이전 인덱스 최대값 x 현재 인덱스 값 (keep)
+             */
             int justNum = nums[i];
             // 계속 더한 값
             int keep = justNum * max[i-1];
