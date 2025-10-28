@@ -12,6 +12,8 @@
  * }
  */
 
+// Time Complexity: O(m * n), m: root의 노드 수, n: subRoot의 노드 수
+// Space Complexity: O(h), h: root의 높이
 function isSubtree(root: TreeNode | null, subRoot: TreeNode | null): boolean {
   if (!root) return false;
 
