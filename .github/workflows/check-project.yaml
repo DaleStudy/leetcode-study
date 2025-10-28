@@ -1,0 +1,124 @@
+name: Check Project Week 🗓️
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  check-project:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      # GitHub App Token 생성
+      - name: Generate GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      # PR 라벨 확인
+      - name: Get PR labels
+        id: pr-labels
+        run: |
+          echo "🔍 PR 번호: ${{ github.event.pull_request.number }}"
+          pr_number="${{ github.event.pull_request.number }}"
+
+          echo "📋 PR 라벨 조회 중..."
+          labels_json=$(gh pr view $pr_number --json labels -q '.labels[].name')
+          echo "확인된 라벨: $labels_json"
+
+          if [ -n "$labels_json" ]; then
+            has_maintenance=$(echo $labels_json | grep -q 'maintenance' && echo 'true' || echo 'false')
+            echo "maintenance 라벨 포함 여부: $has_maintenance"
+            echo "has_maintenance=$has_maintenance" >> $GITHUB_OUTPUT
+          else
+            echo "maintenance 라벨이 없는 PR입니다. Week 설정을 검사합니다."
+            echo "has_maintenance=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      # Week 설정 확인
+      - name: Check Week setting in project
+        if: ${{ steps.pr-labels.outputs.has_maintenance != 'true' }}
+        run: |
+          echo "🔍 Week 설정 검사 시작"
+          pr_number="${{ github.event.pull_request.number }}"
+
+          echo "📋 프로젝트 정보 조회 중..."
+          project_data=$(gh api graphql -f query='
+            query {
+              repository(owner: "${{ github.repository_owner }}", name: "${{ github.event.repository.name }}") {
+                pullRequest(number: '$pr_number') {
+                  projectItems(first: 10) {
+                    nodes {
+                      project {
+                        title
+                      }
+                      fieldValues(first: 20) {
+                        nodes {
+                          __typename
+                          ... on ProjectV2ItemFieldIterationValue {
+                            title
+                            field {
+                              ... on ProjectV2FieldCommon {
+                                name
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ' 2>&1)
+
+          if [ $? -ne 0 ]; then
+            echo "⚠️ 프로젝트 정보를 가져올 수 없습니다."
+            echo "$project_data"
+            echo "## ❌ Week 설정 검증 실패" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "프로젝트 정보를 조회할 수 없습니다. PR이 프로젝트에 추가되었는지 확인해주세요." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "📚 [답안 제출 가이드 참고](https://github.com/DaleStudy/leetcode-study/wiki/%EB%8B%B5%EC%95%88-%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C#pr-%EC%9E%91%EC%84%B1%EB%B2%95)" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          echo "프로젝트 데이터:"
+          echo "$project_data"
+
+          # Week 필드 값 추출 (Iteration 타입의 Week 필드)
+          week_value=$(echo "$project_data" | jq -r '
+            .data.repository.pullRequest.projectItems.nodes[].fieldValues.nodes[] |
+            select(.__typename == "ProjectV2ItemFieldIterationValue") |
+            select(.field.name == "Week") |
+            .title
+          ' 2>/dev/null | head -n 1)
+
+          echo "추출된 Week 값: '$week_value'"
+
+          if [ -z "$week_value" ] || [ "$week_value" = "null" ]; then
+            echo "## ❌ Week 설정 검증 실패" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ **PR에 Week 설정이 누락되었습니다!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 설정 방법" >> $GITHUB_STEP_SUMMARY
+            echo "1. PR 우측의 \`Projects\` 섹션에서 \`리트코드 스터디\` 옆 드롭다운(▼) 클릭" >> $GITHUB_STEP_SUMMARY
+            echo "2. 현재 주차를 선택해주세요 (예: \`Week 14(current)\` 또는 \`Week 14\`)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "📚 [자세한 가이드 보기](https://github.com/DaleStudy/leetcode-study/wiki/%EB%8B%B5%EC%95%88-%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C#pr-%EC%9E%91%EC%84%B1%EB%B2%95)" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          echo "## ✅ Week 설정 검증 성공" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Week 설정: **$week_value**" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Week 설정이 올바르게 되어 있습니다!"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
