@@ -127,3 +127,4 @@ class Solution {
 //         return checkEqual(root.left, subRoot.left) && checkEqual(root.right, subRoot.right);
 //     }
 // }
+
