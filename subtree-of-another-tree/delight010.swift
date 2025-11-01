@@ -1,29 +1,20 @@
 class Solution {
     // Time O(M * N)
-    // Space O(N)
+    // Space O(M + N)
     func isSubtree(_ root: TreeNode?, _ subRoot: TreeNode?) -> Bool {
         if let root = root, let subRoot = subRoot {
-            if root.val == subRoot.val {
-                return dfs(root.left, subRoot: subRoot.left) && dfs(root.right, subRoot: subRoot.right) || isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
-            }
-            return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
+            return dfs(root, subRoot) || isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
         }
         
-        return false
+        return root == nil && subRoot == nil
     }
     
     private func dfs(_ root: TreeNode?, subRoot: TreeNode?) -> Bool {
-        if root == nil && subRoot == nil {
-            return true
-        }
-        
         if let root = root, let subRoot = subRoot {
-            if root.val == subRoot.val {
-                return dfs(root.left, subRoot: subRoot.left) && dfs(root.right, subRoot: subRoot.right)
-            }
+            return root.val == subRoot.val && dfs(root.left, subRoot.left) && dfs(root.right, subRoot.right)
         }
         
-        return false
+        return root == nil && subRoot == nil
     }
 }
  

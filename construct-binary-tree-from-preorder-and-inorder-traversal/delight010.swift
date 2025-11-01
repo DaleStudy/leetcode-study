@@ -1,13 +1,16 @@
 class Solution {
-    // Time O(N)
+    // Time O(N^2)
     // Space O(N)
     func buildTree(_ preorder: [Int], _ inorder: [Int]) -> TreeNode? {
+        return buildTree(preorder[...], inorder[...])
+    }
+    
+    func buildTree(_ preorder: ArraySlice<Int>, _ inorder: ArraySlice<Int>) -> TreeNode? {
         if preorder.isEmpty {
             return nil
         }
         
-        let totalCount = preorder.count
-        let rootNode = TreeNode(preorder[0])
+        let rootNode = TreeNode(preorder.first!)
         var rootIndex = 0
         
         for (index, value) in inorder.enumerated() {
@@ -16,9 +19,8 @@ class Solution {
                 break
             }
         }
-        
-        rootNode.left = buildTree(Array(preorder[1..<rootIndex + 1]), Array(inorder[0..<rootIndex + 1]))
-        rootNode.right = buildTree(Array(preorder[1 + rootIndex..<totalCount]), Array(inorder[1 + rootIndex..<totalCount]))
+        rootNode.left = buildTree(preorder[preorder.startIndex + 1..<preorder.startIndex + rootIndex + 1], inorder[inorder.startIndex..<inorder.startIndex + rootIndex])
+        rootNode.right = buildTree(preorder[preorder.startIndex + 1 + rootIndex..<preorder.endIndex], inorder[inorder.startIndex + 1 + rootIndex..<inorder.endIndex])
         
         return rootNode
     }
