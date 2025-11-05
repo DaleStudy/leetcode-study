@@ -3,15 +3,17 @@ name: Project Week Check (Scheduled) 🔔
 on:
   schedule:
     # 매일 오전 10시, 오후 6시 (KST 기준, UTC로는 1시, 9시)
-    - cron: '0 1,9 * * *'
-  workflow_dispatch:  # 수동 실행
+    - cron: "0 1,9 * * *"
+  pull_request:
+    types: [opened, reopened, synchronize, edited, labeled, unlabeled]
+  workflow_dispatch: # 수동 실행
 
 jobs:
   check-all-prs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write  # 댓글 작성 권한
+      pull-requests: write # 댓글 작성 권한
 
     steps:
       - name: Get all open PRs
@@ -73,22 +75,9 @@ jobs:
 
               if [ -z "$existing_comment" ]; then
                 # 새 댓글 작성
-                COMMENT_BODY="## ⚠️ Week 설정이 누락되었습니다
-
-프로젝트에서 Week를 설정해주세요!
-
-### 설정 방법
-1. PR 우측의 \`Projects\` 섹션에서 \`리트코드 스터디\` 옆 드롭다운(▼) 클릭
-2. 현재 주차를 선택해주세요 (예: \`Week 14(current)\` 또는 \`Week 14\`)
-
-📚 [자세한 가이드 보기](https://github.com/DaleStudy/leetcode-study/wiki/%EB%8B%B5%EC%95%88-%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C#pr-%EC%9E%91%EC%84%B1%EB%B2%95)
-
----
-🤖 이 댓글은 GitHub App을 통해 자동으로 작성되었습니다."
-
                 gh pr comment $pr_number \
                   --repo ${{ github.repository }} \
-                  --body "$COMMENT_BODY"
+                  --body $'## ⚠️ Week 설정이 누락되었습니다\n\n프로젝트에서 Week를 설정해주세요!\n\n### 설정 방법\n1. PR 우측의 `Projects` 섹션에서 `리트코드 스터디` 옆 드롭다운(▼) 클릭\n2. 현재 주차를 선택해주세요 (예: `Week 14(current)` 또는 `Week 14`)\n\n📚 [자세한 가이드 보기](https://github.com/DaleStudy/leetcode-study/wiki/%EB%8B%B5%EC%95%88-%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C#pr-%EC%9E%91%EC%84%B1%EB%B2%95)\n\n---\n🤖 이 댓글은 GitHub App을 통해 자동으로 작성되었습니다.'
                 echo "  ✅ 댓글 작성 완료"
               else
                 echo "  ℹ️  이미 알림 댓글이 있음 - 스킵"
