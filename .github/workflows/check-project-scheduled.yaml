@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write # 댓글 작성 권한
+      issues: write         # PR 댓글 작성 권한
+      pull-requests: write  # PR 정보 읽기 권한
 
     steps:
       - name: Get all open PRs
