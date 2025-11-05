@@ -1,0 +1,110 @@
+name: Project Week Check (Scheduled) 🔔
+
+on:
+  schedule:
+    # 매일 오전 10시, 오후 6시 (KST 기준, UTC로는 1시, 9시)
+    - cron: '0 1,9 * * *'
+  workflow_dispatch:  # 수동 실행
+
+jobs:
+  check-all-prs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write  # 댓글 작성 권한
+
+    steps:
+      - name: Get all open PRs
+        id: get-prs
+        run: |
+          echo "📋 Open PR 목록 조회 중..."
+          prs=$(gh pr list \
+            --repo ${{ github.repository }} \
+            --state open \
+            --json number,labels \
+            --limit 100)
+
+          echo "prs=$prs" >> $GITHUB_OUTPUT
+          echo "Open PR 수: $(echo $prs | jq 'length')"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Check Week settings for all PRs
+        run: |
+          prs='${{ steps.get-prs.outputs.prs }}'
+          WORKER_URL="https://dalestudy.daleseo.workers.dev"
+          repo_owner="${{ github.repository_owner }}"
+          repo_name="${{ github.event.repository.name }}"
+
+          echo "$prs" | jq -c '.[]' | while read -r pr; do
+            pr_number=$(echo $pr | jq -r '.number')
+            labels=$(echo $pr | jq -r '.labels[].name' | tr '\n' ',')
+
+            # maintenance 라벨이 있으면 스킵
+            if echo "$labels" | grep -q "maintenance"; then
+              echo "⏭️  PR #$pr_number: maintenance 라벨 - 스킵"
+              continue
+            fi
+
+            echo ""
+            echo "🔍 PR #$pr_number 검사 중..."
+
+            # GitHub App으로 Week 설정 확인
+            response=$(curl -s -X POST "$WORKER_URL" \
+              -H "Content-Type: application/json" \
+              -d "{\"pr_number\": $pr_number, \"repo_owner\": \"$repo_owner\", \"repo_name\": \"$repo_name\"}")
+
+            week=$(echo $response | jq -r '.week')
+            project_found=$(echo $response | jq -r '.project_found')
+
+            echo "  Week: $week"
+            echo "  Project found: $project_found"
+
+            # Week 설정이 없으면 댓글 작성
+            if [ "$week" = "null" ] || [ -z "$week" ]; then
+              echo "  ⚠️  Week 설정 누락 - 댓글 작성"
+
+              # 이미 봇이 댓글을 달았는지 확인
+              existing_comment=$(gh pr view $pr_number \
+                --repo ${{ github.repository }} \
+                --json comments \
+                --jq '.comments[] | select(.author.login == "github-actions[bot]") | select(.body | contains("Week 설정이 누락")) | .id' \
+                | head -n 1)
+
+              if [ -z "$existing_comment" ]; then
+                # 새 댓글 작성
+                COMMENT_BODY="## ⚠️ Week 설정이 누락되었습니다
+
+프로젝트에서 Week를 설정해주세요!
+
+### 설정 방법
+1. PR 우측의 \`Projects\` 섹션에서 \`리트코드 스터디\` 옆 드롭다운(▼) 클릭
+2. 현재 주차를 선택해주세요 (예: \`Week 14(current)\` 또는 \`Week 14\`)
+
+📚 [자세한 가이드 보기](https://github.com/DaleStudy/leetcode-study/wiki/%EB%8B%B5%EC%95%88-%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C#pr-%EC%9E%91%EC%84%B1%EB%B2%95)
+
+---
+🤖 이 댓글은 GitHub App을 통해 자동으로 작성되었습니다."
+
+                gh pr comment $pr_number \
+                  --repo ${{ github.repository }} \
+                  --body "$COMMENT_BODY"
+                echo "  ✅ 댓글 작성 완료"
+              else
+                echo "  ℹ️  이미 알림 댓글이 있음 - 스킵"
+              fi
+            else
+              echo "  ✅ Week 설정 정상: $week"
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Summary
+        run: |
+          echo "## 🎯 Week 설정 체크 완료" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "모든 Open PR의 Week 설정을 확인했습니다." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Week 설정이 없는 PR에 자동으로 댓글을 작성했습니다." >> $GITHUB_STEP_SUMMARY
+          echo "- 다음 체크: $(date -u -d '+1 hour' +'%Y-%m-%d %H:00 UTC')" >> $GITHUB_STEP_SUMMARY
