@@ -65,21 +65,24 @@ jobs:
 
             # Week 설정이 없으면 댓글 작성
             if [ "$week" = "null" ] || [ -z "$week" ]; then
-              echo "  ⚠️  Week 설정 누락 - 댓글 작성"
+              echo "  ⚠️  Week 설정 누락 - 댓글 작성 시도"
 
-              # 이미 봇이 댓글을 달았는지 확인
+              # 이미 봇이 댓글을 달았는지 확인 (에러 발생 시 무시)
               existing_comment=$(gh pr view $pr_number \
                 --repo ${{ github.repository }} \
                 --json comments \
                 --jq '.comments[] | select(.author.login == "github-actions[bot]") | select(.body | contains("Week 설정이 누락")) | .id' \
-                | head -n 1)
+                2>/dev/null | head -n 1) || true
 
               if [ -z "$existing_comment" ]; then
                 # 새 댓글 작성
-                gh pr comment $pr_number \
+                if gh pr comment $pr_number \
                   --repo ${{ github.repository }} \
-                  --body $'## ⚠️ Week 설정이 누락되었습니다\n\n프로젝트에서 Week를 설정해주세요!\n\n### 설정 방법\n1. PR 우측의 `Projects` 섹션에서 `리트코드 스터디` 옆 드롭다운(▼) 클릭\n2. 현재 주차를 선택해주세요 (예: `Week 14(current)` 또는 `Week 14`)\n\n📚 [자세한 가이드 보기](https://github.com/DaleStudy/leetcode-study/wiki/%EB%8B%B5%EC%95%88-%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C#pr-%EC%9E%91%EC%84%B1%EB%B2%95)\n\n---\n🤖 이 댓글은 GitHub App을 통해 자동으로 작성되었습니다.'
-                echo "  ✅ 댓글 작성 완료"
+                  --body $'## ⚠️ Week 설정이 누락되었습니다\n\n프로젝트에서 Week를 설정해주세요!\n\n### 설정 방법\n1. PR 우측의 `Projects` 섹션에서 `리트코드 스터디` 옆 드롭다운(▼) 클릭\n2. 현재 주차를 선택해주세요 (예: `Week 14(current)` 또는 `Week 14`)\n\n📚 [자세한 가이드 보기](https://github.com/DaleStudy/leetcode-study/wiki/%EB%8B%B5%EC%95%88-%EC%A0%9C%EC%B6%9C-%EA%B0%80%EC%9D%B4%EB%93%9C#pr-%EC%9E%91%EC%84%B1%EB%B2%95)\n\n---\n🤖 이 댓글은 GitHub App을 통해 자동으로 작성되었습니다.' 2>/dev/null; then
+                  echo "  ✅ 댓글 작성 완료"
+                else
+                  echo "  ❌ 댓글 작성 실패 (권한 문제 가능성)"
+                fi
               else
                 echo "  ℹ️  이미 알림 댓글이 있음 - 스킵"
               fi
