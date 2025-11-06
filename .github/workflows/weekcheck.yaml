@@ -1,0 +1,45 @@
+name: Week Check 🗓️
+
+on:
+  schedule:
+    # 매일 오전 10시, 오후 6시 (KST 기준, UTC로는 1시, 9시)
+    - cron: "0 1,9 * * *"
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  check-all-prs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check all PRs via GitHub App
+        id: check
+        run: |
+          echo "🔍 GitHub App을 통해 모든 Open PR 검사 중..."
+
+          response=$(curl -s -X POST "https://github.dalestudy.com/check-weeks" \
+            -H "Content-Type: application/json" \
+            -d "{\"repo_owner\": \"${{ github.repository_owner }}\", \"repo_name\": \"${{ github.event.repository.name }}\"}")
+
+          echo "response=$response" >> $GITHUB_OUTPUT
+          echo "$response" | jq '.'
+
+      - name: Summary
+        run: |
+          response='${{ steps.check.outputs.response }}'
+
+          total=$(echo "$response" | jq -r '.total_prs // 0')
+          checked=$(echo "$response" | jq -r '.checked // 0')
+          commented=$(echo "$response" | jq -r '.commented // 0')
+          deleted=$(echo "$response" | jq -r '.deleted // 0')
+
+          echo "## 🎯 Week 설정 체크 완료" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- 📋 전체 Open PR: **$total**개" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ 검사한 PR: **$checked**개" >> $GITHUB_STEP_SUMMARY
+          echo "- 💬 댓글 작성한 PR: **$commented**개" >> $GITHUB_STEP_SUMMARY
+          echo "- 🗑️  댓글 삭제한 PR: **$deleted**개" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "다음 체크: $(date -u -d '+1 hour' +'%Y-%m-%d %H:00 UTC')" >> $GITHUB_STEP_SUMMARY
