@@ -5,7 +5,6 @@ on:
     # 매일 오전 10시, 오후 6시 (KST 기준, UTC로는 1시, 9시)
     - cron: "0 1,9 * * *"
   workflow_dispatch:
-  pull_request:
 
 jobs:
   check-all-prs:
