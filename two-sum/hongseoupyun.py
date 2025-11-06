@@ -7,3 +7,4 @@ class Solution:
                 return [seen[complement], i]
             seen[num] = i               
         return []
+      
