@@ -134,7 +134,8 @@ jobs:
           merge_base=$(git merge-base ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
           echo "Merge base 커밋: $merge_base"
 
-          files=$(git diff --name-only $merge_base ${{ github.event.pull_request.head.sha }} | tr -d '"')
+          # .github 디렉토리 하위 파일 제외하고 대상 파일로 지정
+          files=$(git diff --name-only "$merge_base" ${{ github.event.pull_request.head.sha }} -- . ':(exclude).github/**' | tr -d '"')
           pr_author="${{ github.event.pull_request.user.login }}"
           success=true
 
