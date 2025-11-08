@@ -1,5 +1,9 @@
 name: Integration 🔄
 
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
   pull_request:
 
@@ -41,7 +45,7 @@ jobs:
           echo "현재 커밋: ${{ github.sha }}"
 
           files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | tr -d '"')
-          success=true
+          target_file_list=()
 
           echo "📝 변경된 파일 목록:"
           echo "$files"
@@ -50,17 +54,30 @@ jobs:
           for file in $files; do
             echo "검사 중: $file"
             if [ -s "$file" ] && [ "$(tail -c 1 $file | wc -l)" -eq 0 ]; then
-              echo "❌ 줄바꿈 누락: $file"
+              # 개행 추가
+              echo >> "$file"
+              echo "✏️ 개행 추가: $file"
               echo "- $file" >> $GITHUB_STEP_SUMMARY
-              success=false
+              target_file_list+=("$file")
             else
               echo "✅ 정상: $file"
             fi
           done
 
-          if [ "$success" = false ]; then
-            echo "⚠️ 줄바꿈 검사 실패"
-            echo -e "\n:warning: 파일 끝의 누락된 줄바꿈을 추가해 주세요." >> $GITHUB_STEP_SUMMARY
+          if [ "${#target_file_list[@]}" -gt 0 ]; then
+            echo -e "\n자동 수정된 파일 수: ${#target_file_list[@]}" >> "$GITHUB_STEP_SUMMARY"
+            
+            # 유저 설정
+            git config --global user.name "${GITHUB_ACTOR}"
+            git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+            # 변경분 커밋 & 푸시
+            git checkout "${GITHUB_HEAD_REF}"
+            git add -A
+            git commit -m "chore(ci): add missing trailing newline to files"
+            git push origin "HEAD:${GITHUB_HEAD_REF}"
+
+            echo "✅ 누락된 개행 자동 추가 및 커밋/푸시 완료"
             exit 1
           else
             echo "✅ 모든 파일의 줄바꿈 정상"
