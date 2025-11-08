@@ -1,8 +1,8 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # Time complexity: O(nlogn)
+        # Time complexity: O(nlog(n))
         # Space Complexity: O(n)
-        
+
         if len(nums) <= k:
             return list(set(nums))
 
