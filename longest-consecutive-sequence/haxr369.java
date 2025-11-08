@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 class Solution {
   /**
+   * 13분 소요.
    * Runtime: 23 ms (Beats 80.31%)
    * Memory: 77.33 (Beats 9.66%)
    * Space Complexity: O(N)
