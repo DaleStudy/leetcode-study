@@ -8,10 +8,11 @@ var longestConsecutive = function (nums) {
   let numsSet = new Set(nums);
   const N = nums.length;
 
-  for (let i = 0; i < N; i++) {
-    let temp = nums[i];
-    let length = 1;
-    if (!numsSet.has(temp - 1)) {
+  for (let num of numsSet) {
+    if (!numsSet.has(num - 1)) {
+      let temp = num;
+      let length = 1;
+
       while (numsSet.has(temp + 1)) {
         length += 1;
         temp += 1;
