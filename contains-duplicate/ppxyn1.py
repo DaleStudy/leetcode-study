@@ -16,3 +16,4 @@ class Solution:
 Trial and error
 Printing I/O inside the loop may cause Output Limit Exceeded
 '''
+
