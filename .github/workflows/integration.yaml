@@ -78,7 +78,6 @@ jobs:
             git push origin "HEAD:${GITHUB_HEAD_REF}"
 
             echo "✅ 누락된 개행 자동 추가 및 커밋/푸시 완료"
-            exit 1
           else
             echo "✅ 모든 파일의 줄바꿈 정상"
           fi
