@@ -1,0 +1,153 @@
+name: Management 🔧
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Action to perform"
+        required: true
+        type: choice
+        default: "approve-prs"
+        options:
+          - approve-prs
+          - merge-prs
+      exclude_prs:
+        description: 'PR numbers to exclude (comma-separated, e.g., "1972,1973")'
+        required: false
+        type: string
+        default: ""
+
+jobs:
+  approve-prs:
+    name: Approve Open PRs 👍
+    runs-on: ubuntu-latest
+    if: ${{ inputs.action == 'approve-prs' }}
+    permissions:
+      contents: read
+
+    steps:
+      - name: Approve PRs via GitHub App
+        id: approve
+        run: |
+          echo "👍 GitHub App을 통해 모든 Open PR 승인 중..."
+
+          # Parse exclude_prs input into JSON array
+          exclude_input="${{ inputs.exclude_prs }}"
+          if [ -z "$exclude_input" ]; then
+            excludes="[]"
+          else
+            # Convert "1972,1973" to [1972,1973]
+            excludes="[$(echo "$exclude_input" | sed 's/,/, /g')]"
+          fi
+
+          echo "제외할 PR: $excludes"
+
+          response=$(curl -s -X POST "https://github.dalestudy.com/approve-prs" \
+            -H "Content-Type: application/json" \
+            -d "{\"repo_name\": \"${{ github.event.repository.name }}\", \"excludes\": $excludes}")
+
+          echo "response=$response" >> $GITHUB_OUTPUT
+          echo "$response" | jq '.'
+
+      - name: Summary
+        run: |
+          response='${{ steps.approve.outputs.response }}'
+
+          success=$(echo "$response" | jq -r '.success // false')
+          total=$(echo "$response" | jq -r '.total_open_prs // 0')
+          processed=$(echo "$response" | jq -r '.processed // 0')
+          approved=$(echo "$response" | jq -r '.approved // 0')
+          skipped=$(echo "$response" | jq -r '.skipped // 0')
+
+          echo "## 👍 PR 승인 완료" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "$success" = "true" ]; then
+            echo "✅ **성공적으로 완료되었습니다**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **오류가 발생했습니다**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- 📋 전체 Open PR: **$total**개" >> $GITHUB_STEP_SUMMARY
+          echo "- 🔍 검사한 PR: **$processed**개" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ 승인한 PR: **$approved**개" >> $GITHUB_STEP_SUMMARY
+          echo "- ⏭️  건너뛴 PR: **$skipped**개" >> $GITHUB_STEP_SUMMARY
+
+          # Show detailed results if available
+          results=$(echo "$response" | jq -r '.results // []')
+          if [ "$results" != "[]" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 📝 상세 결과" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "$response" | jq -r '.results[] | "- PR #\(.pr_number): \(.status) \(if .reason then "(\(.reason))" else "" end)"' >> $GITHUB_STEP_SUMMARY
+          fi
+
+  merge-prs:
+    name: Merge Open PRs 🚀
+    runs-on: ubuntu-latest
+    if: ${{ inputs.action == 'merge-prs' }}
+    permissions:
+      contents: read
+
+    steps:
+      - name: Merge PRs via GitHub App
+        id: merge
+        run: |
+          echo "🚀 GitHub App을 통해 모든 승인된 PR 머지 중..."
+
+          # Parse exclude_prs input into JSON array
+          exclude_input="${{ inputs.exclude_prs }}"
+          if [ -z "$exclude_input" ]; then
+            excludes="[]"
+          else
+            # Convert "1972,1973" to [1972,1973]
+            excludes="[$(echo "$exclude_input" | sed 's/,/, /g')]"
+          fi
+
+          merge_method="merge"
+          echo "머지 방식: $merge_method"
+          echo "제외할 PR: $excludes"
+
+          response=$(curl -s -X POST "https://github.dalestudy.com/merge-prs" \
+            -H "Content-Type: application/json" \
+            -d "{\"repo_name\": \"${{ github.event.repository.name }}\", \"merge_method\": \"$merge_method\", \"excludes\": $excludes}")
+
+          echo "response=$response" >> $GITHUB_OUTPUT
+          echo "$response" | jq '.'
+
+      - name: Summary
+        run: |
+          response='${{ steps.merge.outputs.response }}'
+
+          success=$(echo "$response" | jq -r '.success // false')
+          total=$(echo "$response" | jq -r '.total_open_prs // 0')
+          processed=$(echo "$response" | jq -r '.processed // 0')
+          merged=$(echo "$response" | jq -r '.merged // 0')
+          skipped=$(echo "$response" | jq -r '.skipped // 0')
+          merge_method=$(echo "$response" | jq -r '.merge_method // "unknown"')
+
+          echo "## 🚀 PR 머지 완료" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "$success" = "true" ]; then
+            echo "✅ **성공적으로 완료되었습니다**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **오류가 발생했습니다**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- 🔧 머지 방식: **$merge_method**" >> $GITHUB_STEP_SUMMARY
+          echo "- 📋 전체 Open PR: **$total**개" >> $GITHUB_STEP_SUMMARY
+          echo "- 🔍 검사한 PR: **$processed**개" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ 머지한 PR: **$merged**개" >> $GITHUB_STEP_SUMMARY
+          echo "- ⏭️  건너뛴 PR: **$skipped**개" >> $GITHUB_STEP_SUMMARY
+
+          # Show detailed results if available
+          results=$(echo "$response" | jq -r '.results // []')
+          if [ "$results" != "[]" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 📝 상세 결과" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "$response" | jq -r '.results[] | "- PR #\(.pr_number): \(.status) \(if .reason then "(\(.reason))" else "" end)"' >> $GITHUB_STEP_SUMMARY
+          fi
