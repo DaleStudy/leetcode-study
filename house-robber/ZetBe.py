@@ -31,4 +31,3 @@ class Solution:
             dp[i] = max(dp[i-2], dp[i-3]) + nums[i]
         return max(dp[len(nums)-1], dp[len(nums)-2])
     
-    

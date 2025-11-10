@@ -32,4 +32,3 @@ class Solution:
             answ.append(a[i][0])
         return answ
 
-        
