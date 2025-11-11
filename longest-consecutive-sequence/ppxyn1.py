@@ -1,5 +1,4 @@
 # idea: - 
-
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         sorted_nums = sorted(list(set(nums))) 
@@ -15,8 +14,5 @@ class Solution:
                 tmp = 1 
         ans = max(max_len, tmp)
         return  ans
-
-
-
 
     
