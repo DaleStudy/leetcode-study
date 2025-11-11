@@ -10,4 +10,3 @@ class Solution:
                 return [idx, dic[target-num]] 
             else:
                 dic[num] = idx
-
