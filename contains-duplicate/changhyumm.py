@@ -7,4 +7,3 @@ class Solution:
             else:
                 dic[num] = True
         return False
-    
