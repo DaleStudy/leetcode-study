@@ -13,4 +13,3 @@ class Solution:
             rob_prev = max_today
         
         return max_today
-    
