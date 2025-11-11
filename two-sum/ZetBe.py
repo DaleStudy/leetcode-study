@@ -19,6 +19,18 @@
 최악의 경우, n*(n-1)/2번의 탐색이 필요한데, 이는 결국 O(n^2)이다.
 '''
 
+# 추가로 코드리뷰를 통해 가독성 개선한 코드 
+'''
+for i in range(len(nums)):
+    if target - nums[i] in d:
+        return [d[target-nums[i]][0], i]
+    if nums[i] not in d:
+        d[nums[i]] = [i]
+            
+    else:
+        
+        d[nums[i]] += [i]
+'''
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -37,3 +49,4 @@ class Solution:
             if target-i in d and len(d[target-i]) >= 2 and target == i*2:
                 answ = [d[target-i][0], d[i][1]]
                 return answ
+
