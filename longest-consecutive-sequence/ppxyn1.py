@@ -14,6 +14,4 @@ class Solution:
                 tmp = 1 
         ans = max(max_len, tmp)
         return  ans
-   
-    
-    
+
