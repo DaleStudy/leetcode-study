@@ -9,15 +9,12 @@ class Solution:
             return len(numsSet)
 
         # Use priority queue to sort in O(n)
-        sorted = []
-        for num in numsSet:
-            heapq.heappush(sorted, num)
+        pq = heapq.heapify(list(numsSet))
         
-        prev = heapq.heappop(sorted)
+        prev = heapq.heappop(pq)
         answer, count = 1, 1
-
         for i in range(len(numsSet) - 1):
-            popped = heapq.heappop(sorted)
+            popped = heapq.heappop(pq)
             if prev + 1 == popped:
                 count += 1
             else:
