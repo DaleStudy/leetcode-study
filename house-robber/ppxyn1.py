@@ -18,3 +18,4 @@ class Solution:
             lst[i] = max(lst[i-1], lst[i-2] + nums[i])
 
         return lst[-1]
+
