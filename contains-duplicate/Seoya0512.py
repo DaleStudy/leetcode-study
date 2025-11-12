@@ -13,11 +13,9 @@ Space Complexity:
     - 중복을 제거한 원소들이 새로운 집합(set)에 저장되므로, 
       최대 nums의 크기만큼 추가 공간이 필요합니다.
 '''
-
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         if len(nums) != len(set(nums)):
             return True
         else:
             return False
-        

@@ -20,7 +20,7 @@ class Solution:
                 if (xnum + nums[jdx]) == target:
                     return [idx, jdx]
         return []
-                
+                  
 '''
 (개선)
 Approach:
@@ -45,5 +45,3 @@ class Solution:
             if diff in hash_map:
                 return [hash_map[diff], i]
             hash_map[num] = i
-
-        
