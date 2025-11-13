@@ -6,3 +6,4 @@ class Solution:
             if diff in prevMap:
                 return [prevMap[diff], i]
             prevMap[n] = i 
+            
