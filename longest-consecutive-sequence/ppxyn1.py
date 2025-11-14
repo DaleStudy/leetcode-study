@@ -1,9 +1,24 @@
-# idea: - 
-
+# idea: Hash
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        ans = 0
-        return ans
+        if not nums:
+            return 0
+
+        num_set = set(nums)
+        max_len = 1  
+
+        for num in num_set:
+            if num - 1 not in num_set:
+                current = num
+                tmp = 1
+                while current + 1 in num_set:
+                    current += 1
+                    tmp += 1
+                if tmp > max_len:
+                    max_len = tmp
+        return max_len
+    
+
 
 
 
@@ -30,6 +45,7 @@ But I realised that I missed another constraint they mentioned, which is "You mu
 #                 tmp = 1 
 #         ans = max(max_len, tmp)
 #         return  ans
+
 
 
 
