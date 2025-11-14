@@ -41,3 +41,4 @@ function rob(nums: number[]): number {
   }
   return solve(nums.length - 1);
 }
+

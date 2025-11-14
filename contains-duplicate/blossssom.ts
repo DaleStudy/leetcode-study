@@ -38,3 +38,4 @@ const exam01 = containsDuplicate([1, 2, 3, 1]);
 const exam02 = containsDuplicate([1, 2, 3, 4]);
 
 console.log(exam01, exam02);
+

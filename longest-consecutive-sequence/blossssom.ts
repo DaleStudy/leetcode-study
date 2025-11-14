@@ -50,3 +50,4 @@ function longestConsecutive(nums: number[]): number {
   }
   return answer;
 }
+
