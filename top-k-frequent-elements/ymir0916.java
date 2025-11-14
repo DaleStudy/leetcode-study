@@ -24,3 +24,4 @@ class Solution {
                 .mapToInt(Integer::intValue)
                 .toArray();
     }
+}
