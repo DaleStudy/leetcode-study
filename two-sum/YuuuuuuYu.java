@@ -1,8 +1,8 @@
 /**
- * Runtime: 3ms
+ * Runtime: 2ms
  * Time Complexity: O(n)
  *
- * Memory: 46.97MB
+ * Memory: 47.41MB
  * Space Complexity: O(n)
  *
  * Approach: HashMap을 사용하여 짝을 이루는 값(pair) 검사
@@ -14,7 +14,7 @@ class Solution {
         Map <Integer, Integer> map = new HashMap<>();
         for (int i=0; i<nums.length; i++) {
             int pair = target-nums[i];
-            if (map.containsKey(pair) && map.get(pair) != i) {
+            if (map.containsKey(pair)) {
                 return new int[]{i, map.get(pair)};
             }
             map.put(nums[i], i);
