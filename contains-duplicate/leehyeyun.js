@@ -28,4 +28,5 @@ var containsDuplicate = function(nums) {
 // 테스트 실행
 console.log("Example 1:", containsDuplicate([1, 2, 3, 1])); // true
 console.log("Example 2:", containsDuplicate([1, 2, 3, 4])); // false
-console.log("Example 3:", containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])); // true
+console.log("Example 3:", containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])); // true 
+
