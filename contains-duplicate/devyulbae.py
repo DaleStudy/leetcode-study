@@ -1,5 +1,5 @@
 """
-Blind75 - 3. Contains Duplicate
+Blind75 - 1. Contains Duplicate
 https://leetcode.com/problems/contains-duplicate/
 
 Counter를 사용한 풀이
