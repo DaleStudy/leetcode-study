@@ -7,4 +7,3 @@ class Solution:
       if other in passed:
         return [passed[other], i]
       passed[num] = i
-      
