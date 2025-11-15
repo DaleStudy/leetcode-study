@@ -1,3 +1,7 @@
+# 시간 복잡도
+# 입력 list를 정렬해서 사용 -> 최대 O(n log n)
+# 공간 복잡도
+# 입력 list를 set으로 변환 -> 최대 O(n)
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         nums.sort()
