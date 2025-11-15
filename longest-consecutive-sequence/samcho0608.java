@@ -1,6 +1,8 @@
 import java.util.HashSet;
 import java.util.Set;
 
+// link: https://leetcode.com/problems/longest-consecutive-sequence/
+// difficulty: Medium
 class Solution {
     // Problem: 
     // * nums is unsorted

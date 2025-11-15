@@ -1,3 +1,5 @@
+// link: https://leetcode.com/problems/house-robber/description/
+// difficulty: Medium
 class Solution {
     // Problem:
     // * can't rob two adj houses in the same night

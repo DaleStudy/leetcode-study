@@ -1,5 +1,8 @@
 import java.util.*;
 
+// link: https://leetcode.com/problems/top-k-frequent-elements/description/
+// difficulty: Medium
+
 // Time complexity: O(Nlogk)
 // Space complexity: O(N)
 class Solution1 {
