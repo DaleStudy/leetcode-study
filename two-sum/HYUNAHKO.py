@@ -10,3 +10,4 @@ class Solution:
                         result.append(idx1)
                         result.append(idx2)
                         return result
+
