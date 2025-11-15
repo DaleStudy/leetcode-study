@@ -2,21 +2,26 @@ import java.util.HashSet;
 import java.util.Set;
 
 class Solution {
+    // Problem: 
     // * nums is unsorted
     // * return: length of longest consecutive elements sequence
     // * req: O(N) time
+    // Solution:
+    // * Time Complexity: O(N)
+    // * Space Complexity: O(N)
     public int longestConsecutive(int[] nums) {
+        // Time Complexity: O(N)
+        // Space Complexity: O(N)
         Set<Integer> uniq = new HashSet<>();
-
-        // O(N)
         for(int num : nums) {
             uniq.add(num);
         }
 
-        // O(N)
+        // Time Complexity: O(N)
+        // * nested loop but is O(N) due to skipping non-root element
         int maxLen = 0;
         for(int num : uniq) {
-            // 기존에 시작된 consecutive sequence가 있으면 스킵
+            // skip if num isn't the root(aka first number in the sequence)
             if(uniq.contains(num - 1)) continue;
 
             // count till end of consecutive sequence
