@@ -11,4 +11,3 @@ class Solution:
                 if i == len(nums[:-2]):
                   return False
                 continue
-
