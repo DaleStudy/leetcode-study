@@ -8,7 +8,7 @@ class Solution {
     /**
      * Runtime: 2 ms (Beats 98.15%)
      * Memory: 44.74 MB (Beats 38.46%)
-     * Space Complexity: O(N)
+     * Space Complexity: O(1)
      * - 26 크기의 배열 2개 사용으로 2*O(26)
      * > O(1)
      * Time Complexity: O(N)
