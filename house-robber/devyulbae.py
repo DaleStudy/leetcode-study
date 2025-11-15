@@ -16,11 +16,24 @@ class Solution:
         if not nums:
             return 0
         
-        def dfs(s):
+        memo = {}
+
+        def dfs(s, memo):
             if s >= len(nums):
                 return 0
-            return max(dfs(s+1), nums[s] + dfs(s+2))
+            if s+1 in memo:
+                prev1 = memo[s+1]
+            else:
+                prev1 = dfs(s+1, memo)
+                memo[s+1] = prev1
+            
+            if s+2 in memo:
+                prev2 = memo[s+2]
+            else:
+                prev2 = dfs(s+2, memo)
+                memo[s+2] = prev2
+
+            return max(prev1, prev2 + nums[s])
         
-        return dfs(0)
-        
+        return dfs(0, memo)
         
