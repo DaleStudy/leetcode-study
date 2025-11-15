@@ -61,7 +61,7 @@ Time Complexity: O(n)
 - 버킷을 뒤에서부터 순회하며 상위 k개 숫자 채우기: O(n) 
 
 Space Complexity: O(n)
-- freq 딕셔너리와 bucket 리스트로 인해 O(n) 발생  
+- hash_map 딕셔너리와 bucket 리스트로 인해 O(n) 발생  
 '''
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
@@ -69,7 +69,7 @@ class Solution:
         for num in nums:
             hash_map[num] = hash_map.get(num, 0) + 1
 
-        # 인덱스 = 등장 횟수, 값 = 그 횟수만큼 등장한 숫자 리스트
+        # 예시 nums = [1,6,6,3,2,6,8], bucket = [[1,3,2,8],[],[6]]
         bucket = [[] for _ in range(len(nums) + 1)]
         for num, count in hash_map.items():
             bucket[count].append(num)
