@@ -1,7 +1,7 @@
 /*
 시간 복잡도: O(n)
 공간 복잡도: O(n)
-*.
+*/
 function twoSum(nums: number[], target: number): number[] {
   const map = new Map<number, number>();
 
