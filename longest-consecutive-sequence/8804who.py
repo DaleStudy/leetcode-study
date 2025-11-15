@@ -16,5 +16,4 @@ class Solution:
             
             answer = max(answer, l+r-1)
         return answer
-        
-        
+    
