@@ -1,11 +1,15 @@
 class Solution {
+    // Problem:
     // * can't rob two adj houses in the same night
     // * return: max amount of money robbale in one night
+    // Solution:
+    // * Time Complexity: O(N)
+    // * Space Complexity: O(N)
     public int rob(int[] nums) {
         if(nums.length == 1) return nums[0];
         if(nums.length == 2) return Math.max(nums[0], nums[1]);
 
-        // maxSum[i] = max sum possible at i (inclusive)
+        // maxSum[i] = max sum possible with nums[i]
         int[] maxSum = new int[nums.length];
         maxSum[0] = nums[0];
         maxSum[1] = nums[1];
