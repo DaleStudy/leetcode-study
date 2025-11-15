@@ -20,9 +20,6 @@ class Solution:
         return ssol
 
 
-                
-
-            
         
 # @lc code=end
 
