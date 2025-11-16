@@ -9,4 +9,3 @@ class Solution:
         counter[num] = 1
 
     return [num[0] for num in sorted(counter.items(), key=lambda x: x[1])[-k:]]
-  
