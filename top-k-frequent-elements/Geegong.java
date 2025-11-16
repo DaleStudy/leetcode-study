@@ -15,7 +15,7 @@ public class Geegong {
      *    - O(N) : frequency 그룹핑된 그룹 갯수만큼 iterate
      * @param nums
      * @param k
-     * @return
+     * @return int[]
      */
     public int[] topKFrequent(int[] nums, int k) {
 
@@ -56,7 +56,8 @@ public class Geegong {
 
         return result.stream().mapToInt(Integer::intValue).toArray();
 
-
+// 아래 문제풀이는 예전 기수에 풀었던 방법으로 Map 으로 빈도수와 num을 관리하는 값을 가지긴 하나
+// sorting은 하지 않고 maxNumOfFrequency를 구하여 순차적으로 작은 값들을 꺼내서 k만큼 리턴한다
 //        int[] result = new int[k];
 //
 //        // key : num element in nums / value : frequency of num elements

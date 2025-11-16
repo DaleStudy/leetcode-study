@@ -9,7 +9,7 @@ public class Geegong {
      * time complexity : O(n)
      * space complexity : o(n)
      * @param nums
-     * @return
+     * @return boolean
      */
     public boolean containsDuplicate(int[] nums) {
 
