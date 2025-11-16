@@ -80,7 +80,7 @@ jobs:
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "### 📝 상세 결과" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "$response" | jq -r '.results[] | "- PR #\(.pr_number): \(.status) \(if .reason then "(\(.reason))" else "" end)"' >> $GITHUB_STEP_SUMMARY
+            echo "$response" | jq -r '.results[] | "- PR #\(.pr) [\(.title)]: \(if .skipped then "⏭️ skipped (\(.reason))" elif .approved then "✅ approved" else "❌ failed (\(.error // "unknown"))" end)"' >> $GITHUB_STEP_SUMMARY
           fi
 
   merge-prs:
@@ -149,5 +149,5 @@ jobs:
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "### 📝 상세 결과" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "$response" | jq -r '.results[] | "- PR #\(.pr_number): \(.status) \(if .reason then "(\(.reason))" else "" end)"' >> $GITHUB_STEP_SUMMARY
+            echo "$response" | jq -r '.results[] | "- PR #\(.pr) [\(.title)]: \(if .skipped then "⏭️ skipped (\(.reason))" elif .merged then "✅ merged" else "❌ failed (\(.error // "unknown"))" end)"' >> $GITHUB_STEP_SUMMARY
           fi
