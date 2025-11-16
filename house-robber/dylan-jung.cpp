@@ -1,20 +1,18 @@
+// TC: O(N), SC: O(1)
 class Solution {
 public:
-    int dp[100] = { 0 };
     int rob(vector<int>& nums) {
-        dp[0] = nums[0];
-        if(nums.size() >= 2) {
-            dp[1] = nums[1];
+        if (nums.size() == 1) return nums[0];
+        
+        int prev2 = nums[0];        // dp[i-2]
+        int prev1 = max(nums[0], nums[1]); // dp[i-1]
+        
+        for (int i = 2; i < nums.size(); i++) {
+            int cur = max(prev1, prev2 + nums[i]); 
+            prev2 = prev1;
+            prev1 = cur;
         }
-        for(int i = 2; i < nums.size(); i++) {
-            for(int j = 0; j < i-1; j++) {
-                dp[i] = max(dp[j] + nums[i], dp[i]);
-            }
-        }
-        int m = -1;
-        for(int i = 0; i < nums.size(); i++) {
-            m = max(dp[i], m);
-        }
-        return m;
+        
+        return prev1;
     }
 };
