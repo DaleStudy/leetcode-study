@@ -1,6 +1,12 @@
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 1번째 풀이: 최종 풀이로 prefix, suffix product의 공간복잡도를 O(1)로 최적화
+ * 2번째 풀이: 기본적인 prefix, suffix product 구현
+ * 3번째 풀이: 새그먼트 트리를 응용한 범위 곱 게산 구현
+ * 
+ */
 class Solution {
 
   /**
