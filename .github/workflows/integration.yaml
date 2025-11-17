@@ -2,10 +2,12 @@ name: Integration 🔄
 
 on:
   pull_request:
+  merge_group:
 
 jobs:
   linelint:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,11 +19,11 @@ jobs:
         run: |
           echo "🔍 PR 번호: ${{ github.event.pull_request.number }}"
           pr_number="${{ github.event.pull_request.number }}"
-          
+
           echo "📋 PR 라벨 조회 중..."
           labels_json=$(gh pr view $pr_number --json labels -q '.labels[].name')
           echo "확인된 라벨: $labels_json"
-          
+
           if [ -n "$labels_json" ]; then
             has_maintenance=$(echo $labels_json | grep -q 'maintenance' && echo 'true' || echo 'false')
             echo "maintenance 라벨 포함 여부: $has_maintenance"

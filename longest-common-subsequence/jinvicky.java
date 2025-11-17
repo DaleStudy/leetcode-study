@@ -1,5 +1,8 @@
 class Solution {
+    // dp 표를 봐야 이해가 더 쉽다. https://twinw.tistory.com/126
+    // dp, 즉 메모이제이션의 범위는 이전 row인 것이다. (기존 cell 위주의 문제보다 넓은 범위)
     public int longestCommonSubsequence(String text1, String text2) {
+        // 왼쪽과 위로 1줄씩 버퍼(여유) 배열이 있다. 즉, dp[0][..], dp[..][0]은 0으로 초기화된 상태
         int m = text1.length();
         int n = text2.length();
 
