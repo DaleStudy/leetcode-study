@@ -4,6 +4,7 @@
  * @returns 두 문자열의 나열을 바꿔 동일한 문자열이 나올 수 있는지 반환
  * @description
  * - 1. 시간 복잡도: O(n), 공간 복잡도 O(1)
+ * - 2. 시간, 공간 복잡도는 같지만 1번 보다는 빠름 -> 동시처리, 
  */
 
 // function isAnagram(s: string, t: string): boolean {
