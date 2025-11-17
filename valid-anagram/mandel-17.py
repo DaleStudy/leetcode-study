@@ -12,4 +12,3 @@ class Solution:
         if dict_s == dict_t:
             return True
         return False
-    
