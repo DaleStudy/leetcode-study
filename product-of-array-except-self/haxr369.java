@@ -2,100 +2,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 1번째 풀이: 최종 풀이로 prefix, suffix product의 공간복잡도를 O(1)로 최적화
+ * 
+ * 마지막 풀이가 최종풀이고 점차 복잡도가 개선됩니다.
+ * 
+ * 1번째 풀이: 새그먼트 트리를 응용한 범위 곱 게산 구현
  * 2번째 풀이: 기본적인 prefix, suffix product 구현
- * 3번째 풀이: 새그먼트 트리를 응용한 범위 곱 게산 구현
+ * 3번째 풀이: 최종 풀이로 prefix, suffix product의 공간복잡도를 O(1)로 최적화
  * 
  */
 class Solution {
-
-  /**
-   * 풀이요약: 좌우로 누적곱하는 배역을 만들고, i를 제외한 좌우 범위 누적곱을 곱한다.
-   * prefix-product 배열을 출력 배열로 사용하기
-   * suffix-product 배열 대신 오른쪽 누적곱을 한 변수로만 관리한다.
-   * 
-   * 풀이결과:
-   * Runtime: 2 ms (Beats 89.36%)
-   * Memory: 72.28 MB (Beats 5.61%)
-   * Space Complexity: O(1)
-   * - 길이가 N인 배열을 1개를 만들지만, return에 쓰이므로 카운팅 안됨.
-   * - suffix-product 게산용 변수 1개
-   * > O(1) > O(1)
-   * Time Complexity: O(N)
-   * - 길이 N인 배열 2번 순회하기 > O(N)
-   * > O(N) > O(N)
-   * 
-   */
-  public int[] productExceptSelf(int[] nums) {
-    int L = nums.length;
-    int[] leftAccMul = new int[L];
-
-    // 0부터 누적곱하기
-    leftAccMul[0] = 1;
-    for (int i = 1; i < L; i++) {
-      leftAccMul[i] = leftAccMul[i - 1] * nums[i - 1];
-      // System.out.println("i->"+i+" val->"+leftAccMul[i]);
-    }
-    // System.out.println("--------------");
-    // L-1부터 누적곱하기
-    int rightAccMul = nums[L - 1];
-    for (int i = L - 2; i >= 0; i--) {
-      // L-1번째 숫자는 suffix-product에서 곱할게 없다..
-      // 0번째 숫자는 1~L-1 범위 누적곱만 곱해야한다.
-      leftAccMul[i] *= rightAccMul;
-      rightAccMul *= nums[i];
-      // System.out.println("i->"+i+" val->"+leftAccMul[i]);
-    }
-    return leftAccMul;
-  }
-
-  /**
-   * 풀이요약: 좌우로 누적곱하는 배역을 만들고, i를 제외한 좌우 범위 누적곱을 곱한다.
-   * prefix-product와 suffix-product를 구하기
-   * 
-   * 풀이결과:
-   * Runtime: 3 ms (Beats 21.34%)
-   * Memory: 64.97 MB (Beats 19.65%)
-   * Space Complexity: O(N)
-   * - 길이가 N인 배열을 3개를 만들기
-   * > O(N) + O(N) + O(N) > O(N)
-   * Time Complexity: O(N)
-   * - 길이 N인 배열 2번 순회하기 > O(N)
-   * - 0~N을 순회하면서 누적곱 곱하기 > O(N)
-   * > O(N) + O(N) > O(N)
-   */
-  public int[] productExceptSelf2(int[] nums) {
-    int L = nums.length;
-    int[] leftAccMul = new int[L];
-    int[] rightAccMul = new int[L];
-    int[] ans = new int[L];
-
-    // 0부터 누적곱하기
-    leftAccMul[0] = nums[0];
-    for (int i = 1; i < L; i++) {
-      leftAccMul[i] = leftAccMul[i - 1] * nums[i];
-    }
-
-    // L-1부터 누적곱하기
-    rightAccMul[L - 1] = nums[L - 1];
-    for (int i = L - 2; i >= 0; i--) {
-      rightAccMul[i] = rightAccMul[i + 1] * nums[i];
-    }
-
-    // i를 제외한 누적곱을 곱하기
-    for (int i = 0; i < L; i++) {
-      int val = 1;
-      if (i == 0) { // 오른쪽 누적곱만 곱하기
-        val *= rightAccMul[i + 1]; // i+1 ~ L-1까지 곱한 값
-      } else if (i == L - 1) { // 왼쪽 누적곱만 곱하기
-        val *= leftAccMul[i - 1]; // 0~L-2까지 곱한 값
-      } else {
-        val *= leftAccMul[i - 1] * rightAccMul[i + 1];
-      }
-      ans[i] = val;
-    }
-    return ans;
-  }
 
   /**
    * 풀이요약: 범위를 반씩 나누며 곱을 캐싱하고, 제외할 인덱스만 골라 탐색하는 분할 정복 기반 배타 곱 계산
@@ -190,5 +105,93 @@ class Solution {
     mp.put(k, v);
     // System.out.println("put2 k->"+k+" v->"+v);
     return v;
+  }
+
+  /**
+   * 풀이요약: 좌우로 누적곱하는 배역을 만들고, i를 제외한 좌우 범위 누적곱을 곱한다.
+   * prefix-product와 suffix-product를 구하기
+   * 
+   * 풀이결과:
+   * Runtime: 3 ms (Beats 21.34%)
+   * Memory: 64.97 MB (Beats 19.65%)
+   * Space Complexity: O(N)
+   * - 길이가 N인 배열을 3개를 만들기
+   * > O(N) + O(N) + O(N) > O(N)
+   * Time Complexity: O(N)
+   * - 길이 N인 배열 2번 순회하기 > O(N)
+   * - 0~N을 순회하면서 누적곱 곱하기 > O(N)
+   * > O(N) + O(N) > O(N)
+   */
+  public int[] productExceptSelf2(int[] nums) {
+    int L = nums.length;
+    int[] leftAccMul = new int[L];
+    int[] rightAccMul = new int[L];
+    int[] ans = new int[L];
+
+    // 0부터 누적곱하기
+    leftAccMul[0] = nums[0];
+    for (int i = 1; i < L; i++) {
+      leftAccMul[i] = leftAccMul[i - 1] * nums[i];
+    }
+
+    // L-1부터 누적곱하기
+    rightAccMul[L - 1] = nums[L - 1];
+    for (int i = L - 2; i >= 0; i--) {
+      rightAccMul[i] = rightAccMul[i + 1] * nums[i];
+    }
+
+    // i를 제외한 누적곱을 곱하기
+    for (int i = 0; i < L; i++) {
+      int val = 1;
+      if (i == 0) { // 오른쪽 누적곱만 곱하기
+        val *= rightAccMul[i + 1]; // i+1 ~ L-1까지 곱한 값
+      } else if (i == L - 1) { // 왼쪽 누적곱만 곱하기
+        val *= leftAccMul[i - 1]; // 0~L-2까지 곱한 값
+      } else {
+        val *= leftAccMul[i - 1] * rightAccMul[i + 1];
+      }
+      ans[i] = val;
+    }
+    return ans;
+  }
+
+  /**
+   * 풀이요약: 좌우로 누적곱하는 배역을 만들고, i를 제외한 좌우 범위 누적곱을 곱한다.
+   * prefix-product 배열을 출력 배열로 사용하기
+   * suffix-product 배열 대신 오른쪽 누적곱을 한 변수로만 관리한다.
+   * 
+   * 풀이결과:
+   * Runtime: 2 ms (Beats 89.36%)
+   * Memory: 72.28 MB (Beats 5.61%)
+   * Space Complexity: O(1)
+   * - 길이가 N인 배열을 1개를 만들지만, return에 쓰이므로 카운팅 안됨.
+   * - suffix-product 게산용 변수 1개
+   * > O(1) > O(1)
+   * Time Complexity: O(N)
+   * - 길이 N인 배열 2번 순회하기 > O(N)
+   * > O(N) > O(N)
+   * 
+   */
+  public int[] productExceptSelf3(int[] nums) {
+    int L = nums.length;
+    int[] leftAccMul = new int[L];
+
+    // 0부터 누적곱하기
+    leftAccMul[0] = 1;
+    for (int i = 1; i < L; i++) {
+      leftAccMul[i] = leftAccMul[i - 1] * nums[i - 1];
+      // System.out.println("i->"+i+" val->"+leftAccMul[i]);
+    }
+    // System.out.println("--------------");
+    // L-1부터 누적곱하기
+    int rightAccMul = nums[L - 1];
+    for (int i = L - 2; i >= 0; i--) {
+      // L-1번째 숫자는 suffix-product에서 곱할게 없다..
+      // 0번째 숫자는 1~L-1 범위 누적곱만 곱해야한다.
+      leftAccMul[i] *= rightAccMul;
+      rightAccMul *= nums[i];
+      // System.out.println("i->"+i+" val->"+leftAccMul[i]);
+    }
+    return leftAccMul;
   }
 }
