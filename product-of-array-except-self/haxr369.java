@@ -2,12 +2,59 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Solution {
+
   /**
-   * 풀이요약: 범위를 반씩 나누며 곱을 캐싱하고, 제외할 인덱스만 골라 탐색하는 분할 정복 기반 배타 곱 계산
-   * 
+   * 풀이요약: 좌우로 누적곱하는 배역을 만들고, i를 제외한 좌우 범위 누적곱을 곱한다.
+   * prefix-product와 suffix-product를 구하기
    * 
    * 풀이결과:
-   * 
+   * Runtime: 3 ms (Beats 21.34%)
+   * Memory: 64.97 MB (Beats 19.65%)
+   * Space Complexity: O(N)
+   * - 길이가 N인 배열을 3개를 만들기
+   * > O(N) + O(N) + O(N) > O(N)
+   * Time Complexity: O(N)
+   * - 길이 N인 배열 2번 순회하기 > O(N)
+   * - 0~N을 순회하면서 누적곱 곱하기 > O(N)
+   * > O(N) + O(N) > O(N)
+   */
+  public int[] productExceptSelf(int[] nums) {
+    int L = nums.length;
+    int[] leftAccMul = new int[L];
+    int[] rightAccMul = new int[L];
+    int[] ans = new int[L];
+
+    // 0부터 누적곱하기
+    leftAccMul[0] = nums[0];
+    for (int i = 1; i < L; i++) {
+      leftAccMul[i] = leftAccMul[i - 1] * nums[i];
+    }
+
+    // L-1부터 누적곱하기
+    rightAccMul[L - 1] = nums[L - 1];
+    for (int i = L - 2; i >= 0; i--) {
+      rightAccMul[i] = rightAccMul[i + 1] * nums[i];
+    }
+
+    // i를 제외한 누적곱을 곱하기
+    for (int i = 0; i < L; i++) {
+      int val = 1;
+      if (i == 0) { // 오른쪽 누적곱만 곱하기
+        val *= rightAccMul[i + 1]; // i+1 ~ L-1까지 곱한 값
+      } else if (i == L - 1) { // 왼쪽 누적곱만 곱하기
+        val *= leftAccMul[i - 1]; // 0~L-2까지 곱한 값
+      } else {
+        val *= leftAccMul[i - 1] * rightAccMul[i + 1];
+      }
+      ans[i] = val;
+    }
+    return ans;
+  }
+
+  /**
+   * 풀이요약: 범위를 반씩 나누며 곱을 캐싱하고, 제외할 인덱스만 골라 탐색하는 분할 정복 기반 배타 곱 계산
+   *
+   * 풀이결과:
    * Runtime: 872 ms (Beats 3.62%)
    * Memory: 137.29 MB (Beats 5.61%)
    * Space Complexity: O(NlogN)
