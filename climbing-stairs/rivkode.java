@@ -4,10 +4,6 @@
 메모이제이션과 dp를 사용하면 풀 수 있을 것 같은데
 dp 아니네
 
-점화식
-
-count(n) = count(n-1) + 
-
 만약 5를 만드려면
 3을 만드는 경우의 수와 2를 만드는 경우의 수를 곱하면 되는것 아닌가 ?
 
@@ -60,6 +56,8 @@ count(n) = count(n-1) +
 
 count(3) = coun(1) + count(2)
 count(4) = count(3) + count(2)
+
+점화식
 
 count(n) = count(n-1) + count(n-2)
 
