@@ -1,3 +1,5 @@
+# TC: O(1)
+# SC: O(1)
 class Solution:
   def climbStairs(self, n: int) -> int:
     dp = [0] * (n+2)
