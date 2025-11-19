@@ -19,7 +19,6 @@ f(1) = f(0) * f(2) * ... * f(n)
 f(n-1) = f(0) * ... * f(n-2) * f(n)
 
 모르겠다.. 오늘은 해설 보고 내일 기억해서 풀어보자
- */
 function productExceptSelf(nums: number[]): number[] {
   const forward = [nums[0]];
   const backward = [nums[nums.length - 1]];
@@ -35,4 +34,33 @@ function productExceptSelf(nums: number[]): number[] {
   }
 
   return result;
+}
+
+ */
+/**
+[두번째 시도]
+접근은 맞았다. 결국 제대로 수식을 작성해야 하는 듯
+수식을 작성해보면, 
+forward 는 [1, 2, 2*3, 2*3*4]
+backward 는 [3*4*5, 4*5, 5, 1] 가 나와야 한다.
+
+시간 복잡도: O(2n)
+공간 복잡도: O(3n)
+*/
+
+function productExceptSelf(nums: number[]): number[] {
+  const forward = [1]
+  const backward = [1]
+  for (let i=0; i<nums.length-1; i++) {
+    forward.push(nums[i] * forward[i])
+    backward.push(nums[nums.length-1-i] * backward[i])
+
+  }
+
+  const result = []
+  for (let i=0; i<nums.length; i++){
+    result.push(forward[i] * backward[nums.length-1-i])
+  }
+
+  return result
 }
