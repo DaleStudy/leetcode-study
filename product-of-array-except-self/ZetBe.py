@@ -38,3 +38,4 @@ class Solution:
         for i in nums:
             answer.append(now//i)
         return answer
+
