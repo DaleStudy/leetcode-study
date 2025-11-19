@@ -1,6 +1,7 @@
 # 문제내용
 # 한번에 1칸 또는 2칸을 오를수있음 정확히 n칸에 도달할수있는 방법수를 구하라
 # 계단 문제 = 피보나치 수열
+
 class Solution:
     def climbStairs(self, n: int) -> int:
         # 1칸 또는 0칸 계단은 방법이 1가지뿐
