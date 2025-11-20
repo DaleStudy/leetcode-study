@@ -110,3 +110,37 @@ function threeSum(nums: number[]): number[][] {
 
 근데 어떻게든 못만듦.
  */
+
+/**
+어제 해답을 보았으니, 다시한번 풀어보자.
+핵심은 투 포인터를 사용하는 것, 자료구조에 얽메이지 않는 것
+ */
+
+function threeSum(nums: number[]): number[][] {
+  nums.sort((a, b) => a - b);
+  const results = [];
+
+  // [-4, -1, -1, 0, 1, 2]
+  for (let i = 0; i < nums.length; i++) {
+    while (nums[i - 1] === nums[i]) i++;
+
+    let low = i + 1;
+    let high = nums.length - 1;
+    while (low < high) {
+      const sum = nums[i] + nums[low] + nums[high];
+      if (sum < 0) {
+        low++;
+      } else if (sum > 0) {
+        high--;
+      } else {
+        while (nums[high] === nums[high - 1]) high--;
+        while (nums[low] === nums[low + 1]) low++;
+        results.push([nums[i], nums[low], nums[high]]);
+        low++;
+        high--;
+      }
+    }
+  }
+
+  return results;
+}
