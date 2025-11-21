@@ -29,8 +29,3 @@ function climbStairs(n: number): number {
 
     return prev2
 };
-
-
-
-
-

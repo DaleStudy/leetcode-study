@@ -26,13 +26,3 @@ class Solution:
             prev2 = current
 
         return prev2
-
-
-            
-        
-        
-
-
-
-
-        
