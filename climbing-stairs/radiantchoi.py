@@ -7,4 +7,3 @@ class Solution:
                 stairs.append(stairs[i - 1] + stairs[i - 2])
         
         return stairs[-1]
-        
