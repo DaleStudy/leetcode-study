@@ -22,3 +22,4 @@ class Solution:
             one_before = current # f 밀기
         
         return current
+    

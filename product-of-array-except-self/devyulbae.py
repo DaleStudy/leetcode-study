@@ -33,5 +33,6 @@ class Solution:
             
             answer = []
             for i in range(len(nums)):
-                answer.append((left_product[i-1] if i>0 else 1)* (right_product[-1-i] if i < len(nums)-1 else 1))
+                answer.append((left_product[i-1] if i>0 else 1)* (right_product[-2-i] if i < len(nums)-1 else 1))
             return answer
+        
