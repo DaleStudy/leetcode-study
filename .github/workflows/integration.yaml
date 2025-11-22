@@ -2,10 +2,12 @@ name: Integration 🔄
 
 on:
   pull_request:
+  merge_group:
 
 jobs:
   linelint:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
         with:
