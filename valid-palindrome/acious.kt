@@ -8,7 +8,7 @@ class Solution {
         // - 양쪽 끝의 char를 비교해서 같으면 양쪽 index를 이동시킴.
         // - 양쪽 끝의 char를 비교해서 같지않으면 return false
         // 시간복잡도 : O(n/2)
-        // 공간복잡도 : O(n)
+        // 공간복잡도 : O(1)
         if (s.isEmpty()) {
             return true
         }
