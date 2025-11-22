@@ -20,4 +20,3 @@ class Solution:
             total += combination(combination_n, combination_r)
 
         return int(total)
-    
