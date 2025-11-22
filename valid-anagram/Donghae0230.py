@@ -1,3 +1,5 @@
+# 시간 복잡도: O(n), for문 사용
+# 공간 복잡도: O(n), 길이 n인 s_list, t_list 생성
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         s_list = sorted(list(s))
