@@ -33,3 +33,4 @@ function productExceptSelf(nums: number[]): number[] {
 const nums = [1, 2, 3, 4];
 productExceptSelf(nums);
 
+
