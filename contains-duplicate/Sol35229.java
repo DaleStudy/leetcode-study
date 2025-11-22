@@ -24,4 +24,5 @@ public class Sol35229 {
         }
         return false;
     }
+
 }
