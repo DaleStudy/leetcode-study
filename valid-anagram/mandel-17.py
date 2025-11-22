@@ -1,15 +1,14 @@
+import collections
+
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        def count_char(target_str):
-            dict_char = {}
-            for c in target_str:
-              dict_char[c] = dict_char.get(c, 0) + 1
-            return dict_char
+    num_dict = collections.defaultdict(int)
 
-        dict_s = count_char(s)          
-        dict_t = count_char(t)
+    def climbStairs(self, n: int) -> int:
+        if n <= 2:
+            return n
 
-        if dict_s == dict_t:
-            return True
-        return False
+        if self.num_dict[n]:
+            return self.num_dict[n]
         
+        self.num_dict[n] = self.climbStairs(n-1) + self.climbStairs(n-2)
+        return self.num_dict[n]
