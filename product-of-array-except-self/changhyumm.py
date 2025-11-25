@@ -20,4 +20,3 @@ class Solution:
         for k in range(len(left)):
             answer.append(left[k]*right[k])
         return answer
-    
