@@ -1,3 +1,9 @@
+# 문자열 길이가 n일 때
+# 시간 복잡도: O(n)
+# - alphanumeric 확인할 때 전체 문자를 순회하는 게 최대
+# 공간 복잡도: O(n)
+# - 최악의 경우는 입력 전체가 alphanumeric일 때(특수 문자 없을 때)
+
 class Solution:
     # Alphanumeric 스트링 이외의 문자열을 먼저 제외 시킨 이후 lowercase로 변경한 다음, 양 끝에서부터 문자열을 비교한다.
     def isPalindrome(self, s: str) -> bool:
