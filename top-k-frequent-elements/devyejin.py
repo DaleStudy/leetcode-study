@@ -1,9 +1,16 @@
+"""
+time complexity: O(nlogn)
+space complexity: O(n)
+"""
+
+from typing import List
 from collections import Counter
-import heapq
+from heapq import nlargest
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = Counter(nums)
+        return [num for num, _ in nlargest(k, count.items(), key=lambda x: x[1])]
 
 
-class Solution(object):
-    def topKFrequent(self, nums, k):
-        counter = sorted(Counter(nums).items(), key=lambda item: -item[1])
-        return list(num for num, count in counter[:k])
 
