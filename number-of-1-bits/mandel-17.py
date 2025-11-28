@@ -8,4 +8,3 @@ class Solution:
             n = n // 2
         cnt_dict = collections.Counter(two_digit)
         return cnt_dict[1]
-        
