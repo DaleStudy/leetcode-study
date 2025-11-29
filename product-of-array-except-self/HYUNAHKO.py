@@ -8,12 +8,11 @@ class Solution:
         p = 1
         for i in range(n):
             result_list[i] = p
-            p *= nums[i] 
-            
+            p *= nums[i]            
+        
         p = 1
         for i in range(n - 1, -1, -1): 
             result_list[i] *= p
             p *= nums[i] 
             
         return result_list
-   
