@@ -1,25 +1,30 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        if s[0] == '0':
-            return 0
+        memo = {}
         
-        n = len(s)
-        # dp[i]를 i번쨰까지 처리했을떄의 경우의 수의 합으로 정의
-        dp = [0] * n
-        # dp[0] = 1 (첫자리 수)
-        dp[0] = 1
-
-        # i번쨰 숫자가 1~9로 대체될 수 있으면 이전까지의 경우의 수 합을 이어감
-        # i번쨰 숫자(두자리수)가 10~26으로 대체될 수 있으면 앞자리는 사용한 것이므로 그 앞자리까지의 상태를 가져옴
+        def decode(index):
+            # 이미 계산했으면 바로 반환
+            if index in memo:
+                return memo[index]
+            
+            # 기저 사례
+            ## 끝까지 왔으면 성공
+            if index == len(s):
+                return 1
+            ## 0으로 시작하면 불가능
+            if s[index] == '0':
+                return 0
+            
+            # 재귀 계산
+            ways = decode(index + 1)
+            
+            if index + 1 < len(s) and int(s[index:index+2]) <= 26:
+                ways += decode(index + 2)
+            
+            # 메모이제이션
+            memo[index] = ways
+            return ways
+        
         # 시간복잡도, 공간복잡도 O(n)
-        for i in range(1, n):
-            num1 = int(s[i])
-            num2 = int(s[i -1 : i + 1])
-            if 1 <= num1 <= 9:
-                dp[i] += dp[i - 1]
-            if 10 <= num2 <= 26:
-                if i == 1:
-                    dp[i] += 1
-                else:
-                    dp[i] += dp[i - 2]
-        return dp[n-1]
+
+        return decode(0)
