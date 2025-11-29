@@ -16,4 +16,3 @@ class Solution:
         result = []
         n, result = self.devide_by_2(n, result)
         return result.count(1)
-        
