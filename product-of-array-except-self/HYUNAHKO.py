@@ -17,24 +17,3 @@ class Solution:
             
         return result_list
         
-    
-
-class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        result_list = [0] * len(nums)
-        if len(nums) <2 or len(nums) > 1e5:
-            return None 
-        
-        for idx in range(0, len(nums)):
-            result = 1
-            for idx_left in range(0, idx):
-                result *= nums[idx_left]
-
-            for idx_right in range(idx+1, len(nums)):
-                result *= nums[idx_right]
-            
-            result_list[idx] = result
-
-
-        return result_list
-        

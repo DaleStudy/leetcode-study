@@ -9,4 +9,3 @@ class Solution:
             if (str1 != result[n-i-1]):
                 return False
         return True
-    
