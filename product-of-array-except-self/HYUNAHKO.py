@@ -16,4 +16,4 @@ class Solution:
             p *= nums[i] 
             
         return result_list
-        
+   
