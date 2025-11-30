@@ -70,22 +70,6 @@ class Solution:
         return True
 
 
-""" 전처리 필요함
-class Solution:
-    def isPalindrome(self, s: str) -> bool:
-
-        chars = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
-
-        for i in range(len(chars)//2):
-            left = chars[i]
-            right = chars[len(chars) - 1 - i]
-
-            if left != right:
-                return False
-        
-        return True
-"""
-
 """ 정규식
 import re
 
@@ -126,3 +110,34 @@ class Solution:
 * iterator
 데이터의 순차적인 접근 방식을 정의하는 객체일 뿐, 그 자체로 모든 데이터를 메모리에 담고 있는 리스트나 튜플과 같은 직접적인 데이터 구조가 아니다.
 """
+
+
+### 6기 ###
+import re
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+
+        if len(s) == 0:
+            return True
+
+        # remove non-alphanumeric
+        result = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+
+        # forward/backward 비교
+        # 정렬 없이 비교하는 게 효율적일 것 같다. index
+        for i in range(len(result)//2):
+            if result[i] == result[-(i+1)]:
+                continue
+            else:
+                return False
+        return True
+
+""" Q. 왜 단순 인덱스 비교보다 복사본을 생성하는 슬라이싱 솔루션이 더 빠른가?
+
+인터프리터 오버헤드 : for 루프, range() 생성, 조건문(if), 인덱스 계산(-(i+1)) 등 모든 작업이 Python 인터프리터 레벨에서 실행
+  - 인덱싱 연산은 C로 구현된 내부 함수를 호출하여 문자열이 저장된 메모리 위치에서 해당 위치의 문자 값(character)을 '가져옴'
+  - 메모리 블록 자체를 통째로 비교하는 것이 아니라, 매번 루프가 돌 때마다 두 개의 문자를 개별적으로 가져와서 비교하며, 이 모든 단계를 Python 인터프리터가 제어한다 -> Python 루프의 오버헤드
+슬라이싱(C언어로 구현) : C 코드는 메모리 블록을 직접 비교하는 방식으로 매우 빠르게 전체 문자열이 일치하는지 검사
+  - 정규식도 C로 구현돼서 빠른거임
+""" 
