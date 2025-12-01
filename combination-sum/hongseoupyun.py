@@ -20,6 +20,49 @@
 # // Hence, if we starts from 2, next dfs calls can start from index of 2 or index of 3, but not index of 5 directly
 # // Moreover, if we start from 3, next dfs calls can start from index of 3 or index of 5, but not index of 2 directly
 
+# backtrack(8, [], 0)
+# │
+# ├─ i = 0 pick 2 → backtrack(6, [2], 0)
+# │   │
+# │   ├─ i = 0 pick 2 → backtrack(4, [2,2], 0)
+# │   │   │
+# │   │   ├─ i = 0 pick 2 → backtrack(2, [2,2,2], 0)
+# │   │   │   │
+# │   │   │   ├─ i = 0 pick 2 → backtrack(0, [2,2,2,2], 0) 🟢 success → return
+# │   │   │   │
+# │   │   │   ├─ i = 1 pick 3 → backtrack(-1, [2,2,2,3], 1) 🔴 → return
+# │   │   │   │
+# │   │   │   └─ i = 2 pick 5 → backtrack(-3, [2,2,2,5], 2) 🔴 → return
+# │   │   │
+# │   │   └─ loop end → pop → combination = [2,2]
+# │   │
+# │   ├─ i = 1 pick 3 → backtrack(1, [2,2,3], 1)
+# │   │   │
+# │   │   ├─ i = 1 pick 3 → backtrack(0, [2,2,3,3], 1) 🟢 success → return
+# │   │   │
+# │   │   └─ i = 2 pick 5 → backtrack(-4, [2,2,3,5], 2) 🔴 → return
+# │   │
+# │   ├─ loop end → pop → [2,2]
+# │   │
+# │   └─ i = 2 pick 5 → backtrack(-1, [2,2,5], 2) 🔴 → return
+# │
+# ├─ loop end → pop → [2]
+# │
+# ├─ i = 1 pick 3 → backtrack(3, [2,3], 1)
+# │   │
+# │   ├─ i = 1 pick 3 → backtrack(0, [2,3,3], 1) 🟢 success → return
+# │   │
+# │   └─ i = 2 pick 5 → backtrack(-2, [2,3,5], 2) 🔴 → return
+# │
+# ├─ loop end → pop → [2]
+# │
+# ├─ i = 2 pick 5 → backtrack(1, [2,5], 2)
+# │       │
+# │       └─ i = 2 pick 5 → backtrack(-4, [2,5,5], 2) 🔴 → return
+# │
+# └─ loop end → pop → []
+
+
 
 
 from typing import List
@@ -50,9 +93,3 @@ class Solution:
         # initial call
         backtrack(target, [], 0)
         return result
-
-        
-
-
-        
-        
