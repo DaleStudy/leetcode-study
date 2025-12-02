@@ -4,7 +4,6 @@ class Solution:
         if not root:
             return 0
         queue = deque([root])
-        print(queue)
         depth = 0
 
         while queue:
