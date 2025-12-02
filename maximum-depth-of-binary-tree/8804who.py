@@ -19,3 +19,4 @@ class Solution:
             return max(l, r)
 
         return dfs(root, 1)
+    
