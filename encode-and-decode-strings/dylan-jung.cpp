@@ -22,4 +22,3 @@ class Codec {
             return result;
         }
     };
-    
