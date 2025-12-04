@@ -9,4 +9,3 @@ class Solution:
         right = self.maxDepth(root.right)
 
         return 1 + max(left, right)
-        
