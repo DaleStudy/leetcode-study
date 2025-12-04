@@ -19,6 +19,9 @@ class Solution:
                 stack.append((node.right, depth+1))
         return max_depth
 
+    
+
+
 # another way : Down-top : recursive
 # class Solution:
 #     def maxDepth(self, root: Optional[TreeNode]) -> int:
@@ -31,8 +34,3 @@ class Solution:
 
 
 
-
-
-
-
-        
