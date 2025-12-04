@@ -20,5 +20,6 @@ class Solution:
             for col in range(cols):
                 if dfs(row, col, 0):
                     return True
-        # 시간복잡도 O(len(row)*len(col)*4^(word))
+        # 시간복잡도 O(rows*cols*4^(word))
+        # 공간복잡도 O(rows*cols)
         return False
