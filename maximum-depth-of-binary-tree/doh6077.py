@@ -1,4 +1,5 @@
 
+# Time: O(n)
 # Maximum Depth of Binary Tree 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
@@ -8,6 +9,4 @@ class Solution:
         right = self.maxDepth(root.right)
 
         return 1 + max(left, right)
-
-        # Time: O(n)
         
