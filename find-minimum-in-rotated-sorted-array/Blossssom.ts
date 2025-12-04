@@ -29,3 +29,4 @@ function findMin(nums: number[]): number {
 
 const nums = [2, 1];
 console.log(findMin(nums));
+
