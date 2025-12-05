@@ -1,11 +1,11 @@
 /**
- * Runtime: 130ms
+ * Runtime: 128ms
  * Time Complexity: O(m x n x 4^l)
  * - m: board의 행 길이
  * - n: board의 열 길이
  * - l: word의 길이
  *
- * Memory: 42.32MB
+ * Memory: 42.69MB
  * Space Complexity: O(l)
  *
  * Approach: DFS + 백트래킹
@@ -37,14 +37,14 @@ class Solution {
         return false;
     }
 
-    private boolean dfs(char[][] board, int x, int y, int index, String word) {
+    boolean dfs(char[][] board, int x, int y, int index, String word) {
         if (index == word.length()-1) {
             return true;
         }
 
         char temp = board[x][y];
         char nextChar = word.charAt(index+1);
-        board[x][y] = '#';
+        board[x][y] = ' ';
 
         for (int i=0; i<4; i++) {
             int nx = x+dx[i];
