@@ -11,4 +11,3 @@ class Solution:
                 answer=price-min_price
         return answer
     
-
