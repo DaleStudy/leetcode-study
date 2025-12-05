@@ -10,3 +10,4 @@ class Solution:
             if answer<price-min_price:
                 answer=price-min_price
         return answer
+    

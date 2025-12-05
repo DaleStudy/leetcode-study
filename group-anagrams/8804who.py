@@ -6,3 +6,4 @@ class Solution:
             dic[sorted_str].append(string)
 
         return list(dic.values())
+    
