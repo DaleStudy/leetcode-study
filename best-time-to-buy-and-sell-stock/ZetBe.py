@@ -20,3 +20,4 @@ class Solution:
                 ma = prices[i]
                 answ = max(answ, ma-mi)
         return answ
+
