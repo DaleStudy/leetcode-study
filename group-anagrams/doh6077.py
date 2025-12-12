@@ -14,5 +14,4 @@ class Solution:
             anagrams_dict[key].append(s)
 
         return list(anagrams_dict.values())
-
-        
+    
