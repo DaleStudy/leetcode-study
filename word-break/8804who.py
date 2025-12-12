@@ -13,3 +13,4 @@ class Solution:
                     dp[i+len(word)] = True
     
         return dp[-1]
+    
