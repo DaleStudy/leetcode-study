@@ -1,7 +1,10 @@
 """
+Blind 75 - Best Time to Buy and Sell Stock
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
-1번 순회 -> O(n)
+시간복잡도 : O(n)
+공간복잡도 : O(1)
+풀이 : 한 번의 순회로 해결
 
 prices = [7,1,5,3,6,4]
 
@@ -26,3 +29,4 @@ class Solution:
             max_profit = max(max_profit, price - min_price)
         
         return max_profit
+    

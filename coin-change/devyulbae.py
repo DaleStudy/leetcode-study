@@ -16,3 +16,4 @@ class Solution:
                 dp[x] = min(dp[x], dp[x - coin] + 1) # 해당 금액을 만들기 위한 최소 동전 개수 갱신
 
         return dp[amount] if dp[amount] != float('inf') else -1 # amount를 만들 수 없는 경우 -1 반환
+    
