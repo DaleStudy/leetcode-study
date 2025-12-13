@@ -47,3 +47,4 @@ class Solution:
                 if self.dfs(board, word, i, j, 0):
                     return True
         return False
+    
