@@ -25,3 +25,4 @@ class WordDictionary:
                 return any(dfs(node[k], idx + 1) for k in node if k != "$")
             return False
         return dfs(self.root, 0)
+

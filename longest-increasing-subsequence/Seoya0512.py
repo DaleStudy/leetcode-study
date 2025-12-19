@@ -9,3 +9,4 @@ class Solution:
                 if nums[prev] < nums[cur]:
                     dp[cur] = max(1+dp[prev], dp[cur])
         return max(dp)
+

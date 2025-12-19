@@ -35,3 +35,4 @@ class Solution:
                     result.append(matrix[j].pop(0))
 
         return result
+
