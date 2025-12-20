@@ -39,3 +39,25 @@ class Solution:
         
         # 위의 모든 invalid한 경우를 통과했다면 valid하다고 할 수 있다.
         return True
+
+    # 리뷰 반영 풀이
+    # 괄호의 쌍을 key-value로 하는 pairs 딕셔너리를 이용하여, if 조건을 더욱 간단하게 할 수 있음
+    def isValid(self, s: str) -> bool:
+        stack = []
+        pairs = {")": "(", "}": "{", "]": "["}
+
+        for ss in s:
+            if ss in ('(', '[', '{'):
+                stack.append(ss)
+            else:
+                if not stack:
+                    return False
+
+                last_ss = stack[-1]
+                if last_ss == pairs[ss]:
+                    stack.pop()
+                else:
+                    return False
+        if stack:
+            return False
+        return True
