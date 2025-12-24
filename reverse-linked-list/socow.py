@@ -6,9 +6,9 @@
 - 예: 1→2→3→4→5 → 5→4→3→2→1
 
 🎯 핵심 알고리즘
-- 패턴: 반복 (Iterative) / 재귀 (Recursive)
+- 패턴: 반복 (Iterative) 
 - 시간복잡도: O(n)
-- 공간복잡도: O(1) (반복) / O(n) (재귀 - 콜스택)
+- 공간복잡도: O(1) (반복) 
 
 💡 핵심 아이디어
 1. prev = None, curr = head로 시작
@@ -39,21 +39,3 @@ class Solution:
             curr = next_node       # curr 이동
         
         return prev
-
-
-# 재귀 방식 (Recursive)
-class SolutionRecursive:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # Base case: 빈 리스트 또는 마지막 노드
-        if not head or not head.next:
-            return head
-        
-        # 재귀: 나머지 리스트 뒤집기
-        new_head = self.reverseList(head.next)
-        
-        # 현재 노드의 다음 노드가 나를 가리키게 함
-        head.next.next = head
-        head.next = None
-        
-        return new_head
-
