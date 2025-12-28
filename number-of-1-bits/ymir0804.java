@@ -1,5 +1,3 @@
-import java.util.List;
-
 class Solution {
     public int hammingWeight(int n) {
         int result = 1;
