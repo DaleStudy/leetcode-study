@@ -57,4 +57,3 @@ class Solution:
         return not stack
     
 
-    
