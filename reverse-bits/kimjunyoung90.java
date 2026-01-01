@@ -28,13 +28,9 @@ class Solution {
 
     private String toReverseBinary(int n) {
         StringBuilder sb = new StringBuilder();
-        while(n > 0) {
-            int remain = n % 2;
-            sb.append(remain);
+        for (int i = 0; i < 32; i++) {
+            sb.append(n % 2);
             n /= 2;
-        }
-        while(32 >= sb.length()) {
-            sb.append("0");
         }
         return sb.toString();
     }
