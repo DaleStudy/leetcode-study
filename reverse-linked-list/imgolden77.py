@@ -18,3 +18,4 @@ class Solution:
         return prev
     
 # First time, return Curr, but the result was [] so I changed to "return prev" as the new head of the reversed Linked list.
+
