@@ -23,3 +23,5 @@ function countSubstrings(s: string): number {
 
 const s = "aaa";
 countSubstrings(s);
+
+
