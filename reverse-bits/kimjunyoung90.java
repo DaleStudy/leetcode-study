@@ -1,37 +1,21 @@
 class Solution {
     public int reverseBits(int n) {
-
-        //1. 이진수 변환
-        String binary = toReverseBinary(n);
-
-        //2. 10진수 출력
-        int result = toNumber(binary);
-        return result;
-    }
-
-    private int toNumber(String binary) {
         int result = 0;
-        for (int i = binary.length(); i > 0 ; i--) {
-            char nChar = binary.charAt(i - 1);
-            result += (nChar == '0' ? 0 : 1) * square(32 - i);
-        }
-        return result;
-    }
 
-    private int square(int i) {
-        int result = 1;
-        for (int j = 0; j < i; j++) {
-            result *= 2;
-        }
-        return result;
-    }
-
-    private String toReverseBinary(int n) {
-        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 32; i++) {
-            sb.append(n % 2);
-            n /= 2;
+            //1. result 새 비트 공간 확보
+            result = result << 1;
+
+            //2. n의 마지막 비트 추출
+            int last = (n & 1);
+
+            //3. 마지막 비트 result에 추가
+            result = result | last;
+
+            //4. n 계산한 비트 제거
+            n = n >> 1;
         }
-        return sb.toString();
+
+        return result;
     }
 }
