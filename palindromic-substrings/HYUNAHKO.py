@@ -18,4 +18,3 @@ class Solution:
             expand(i, i + 1)
             
         return self.count
- 
