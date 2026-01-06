@@ -35,21 +35,4 @@ class Solution:
         return max_len
 
 
-# Set을 사용한 방식 (더 직관적)
-class SolutionWithSet:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        char_set = set()
-        left = 0
-        max_len = 0
-        
-        for right in range(len(s)):
-            # 중복이 사라질 때까지 left 이동
-            while s[right] in char_set:
-                char_set.remove(s[left])
-                left += 1
-            
-            char_set.add(s[right])
-            max_len = max(max_len, right - left + 1)
-        
-        return max_len
 
