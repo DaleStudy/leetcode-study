@@ -23,4 +23,3 @@ class Solution:
             curMin = min(curMin * num, temp, num)
             res = max(res, curMax)
         return res
-        
