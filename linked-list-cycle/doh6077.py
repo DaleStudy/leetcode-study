@@ -22,6 +22,3 @@ class Solution:
                 return True 
             head = head.next 
         return False 
-
-
-        
