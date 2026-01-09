@@ -7,4 +7,3 @@ class Solution:
             cycle_set.add(head)
             head = head.next
         return False
-        
