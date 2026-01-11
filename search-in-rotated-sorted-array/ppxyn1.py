@@ -14,14 +14,12 @@ class Solution:
             if nums[mid] == target:
                 return mid
             
-            # left ~ mid is sorted
             if nums[left] <= nums[mid]:
                 if nums[left] <= target < nums[mid]:
                     right = mid - 1
                 else:
                     left = mid + 1
             
-            # mid ~ right is sorted
             else:
                 if nums[mid] < target <= nums[right]:
                     left = mid + 1
