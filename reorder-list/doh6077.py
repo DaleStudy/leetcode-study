@@ -40,4 +40,3 @@ class Solution:
                 count += 1 
             index += 1
             head = head.next
-            
