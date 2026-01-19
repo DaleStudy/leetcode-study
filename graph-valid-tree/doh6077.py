@@ -26,8 +26,3 @@ class Solution:
             return True
 
         return dfs(0, -1) and n == len(visit)
-
-
-
-        
-
