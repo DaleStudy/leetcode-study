@@ -28,3 +28,4 @@ class Solution:
             val += rightMax if rightMax > 0 else 0
         
         return val
+    
