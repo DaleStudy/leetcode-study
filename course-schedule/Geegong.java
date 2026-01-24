@@ -16,7 +16,6 @@ public class Geegong {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
 
         int[] indegreeCnt = new int[numCourses];
-        Arrays.fill(indegreeCnt, 0);
         List<List<Integer>> outdegree = new ArrayList<>();
         // set outdegree
         for (int idx=0; idx<numCourses; idx++) {
@@ -51,8 +50,7 @@ public class Geegong {
             currentTakenCnt++;
 
             List<Integer> targets = outdegree.get(indegreeZero);
-            for (int idx=0; idx<targets.size(); idx++) {
-                int course = targets.get(idx);
+            for (int course : targets) {
                 indegreeCnt[course]--;
                 if (indegreeCnt[course] == 0) {
                     queue.add(course);
