@@ -46,7 +46,7 @@ public class Geegong {
 
 
         int currentTakenCnt = 0;
-        while(queue.iterator().hasNext()) {
+        while(!queue.isEmpty()) {
             int indegreeZero = queue.poll();
             currentTakenCnt++;
 
