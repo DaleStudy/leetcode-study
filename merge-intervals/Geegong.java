@@ -18,26 +18,17 @@ public class Geegong {
         List<int[]> result = new ArrayList<>();
 
         result.add(intervals[0]);
-        int[] prev = intervals[0];
-        for (int idx = 1; idx<intervals.length; idx++) {
+        for (int i = 1; i < intervals.length; i++) {
+            int[] last = result.get(result.size() - 1);
+            int[] cur = intervals[i];
 
-            int[] current = intervals[idx];
-
-            // 2. merge
-            if (prev[1] >= current[0]) {
-                // if there is value in temp merge , currently merged
-                int[] last = result.get(result.size() - 1);
-                int[] newThing = new int[]{last[0], Math.max(last[1], current[1])} ;
-                result.remove(result.size() - 1);
-                result.add(result.size() - 1, newThing);
-
+            if (last[1] >= cur[0]) {
+                // merge (update last end)
+                last[1] = Math.max(last[1], cur[1]);
             } else {
-
-                // 3. no merge
-                result.add(new int[]{current[0], current[1]});
+                // no overlap
+                result.add(cur);
             }
-
-            prev = current;
         }
 
         return result.toArray(t -> new int[result.size()][]);

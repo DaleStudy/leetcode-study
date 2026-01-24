@@ -4,7 +4,7 @@ public class Geegong {
 
     /**
      * 이전 기수와는 다르게 배열을 활용해서 문제 풀이
-     * time complexity : O(N^2)
+     * time complexity : O(26^N) (worst case)
      * space complexity : O(26 * N) => O(N)
      */
     public static class Node {
