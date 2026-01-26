@@ -24,5 +24,3 @@ class Solution:
             return dfs(node1.left,node2.left) and dfs(node1.right,node2.right)
 
         return dfs(p, q) 
-
-        
