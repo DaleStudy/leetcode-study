@@ -45,4 +45,3 @@ class Solution:
                 res += 1
                 prevEnd = min(prevEnd, end)
         return res
-    
