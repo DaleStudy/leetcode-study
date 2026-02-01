@@ -17,6 +17,7 @@ class Solution:
             return
 
         while curr or stack:
+            while curr:
                 stack.append(curr)
                 curr = curr.left 
             curr = stack.pop()
@@ -26,6 +27,4 @@ class Solution:
                 return curr.val
             
             curr = curr.right 
-
-
 
