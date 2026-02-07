@@ -27,5 +27,3 @@ class Solution:
         dfs(root)
 
         return aligned_arr[k - 1]
-
-        

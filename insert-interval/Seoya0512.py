@@ -24,4 +24,3 @@ class Solution:
             else:
                 output.append(interval)
         return output
-        
