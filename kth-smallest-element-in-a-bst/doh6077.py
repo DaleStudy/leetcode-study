@@ -24,4 +24,3 @@ class Solution:
                 dfs(node.right)
         dfs(root)
         return final[0]
-    
