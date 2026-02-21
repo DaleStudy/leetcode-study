@@ -51,6 +51,11 @@ jobs:
           echo "## 줄바꿈 누락 파일" >> $GITHUB_STEP_SUMMARY
           for file in $files; do
             echo "검사 중: $file"
+            # 바이너리 파일은 줄바꿈 검사 대상에서 제외
+            if [ -s "$file" ] && ! grep -qI . "$file"; then
+              echo "⏭️ 건너뜀 (바이너리): $file"
+              continue
+            fi
             if [ -s "$file" ] && [ "$(tail -c 1 $file | wc -l)" -eq 0 ]; then
               echo "❌ 줄바꿈 누락: $file"
               echo "- $file" >> $GITHUB_STEP_SUMMARY
