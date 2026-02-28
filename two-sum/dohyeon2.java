@@ -21,12 +21,7 @@ class Solution {
             boolean indexExists = index != null;
             boolean indexExistsAndIndexIsNotTheNum = indexExists && i != index;
             if (indexExistsAndIndexIsNotTheNum) {
-                // Manual sort
-                if (i < index) {
-                    return new int[] { i, index };
-                } else {
-                    return new int[] { index, i };
-                }
+                return new int[] { i, index };
             }
         }
 
