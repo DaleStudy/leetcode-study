@@ -1,18 +1,11 @@
 import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Comparator;
+import java.util.ArrayList;
 
-public class dohyeon2 {
+class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        // approach : 
-        // 1. create map to match num to frequency
-        // 2. create max frequency Priority Queue for sort
-        // 3. pop the max value from the queue until k
-        // time complexity O(n log n) : priority queue comparison
+        // time complexity O(n)
         // space complexity O(n)
 
-        // ChatGPT says that there is O(n) solution for this, how?
         HashMap<Integer, Integer> frequentMap = new HashMap<>();
 
         for (int i = 0; i < nums.length; i++) {
@@ -20,23 +13,35 @@ public class dohyeon2 {
             frequentMap.merge(num, 1, Integer::sum);
         }
 
-        PriorityQueue<Map.Entry<Integer, Integer>> PQ = new PriorityQueue<>(k,
-                Comparator.comparing(Map.Entry<Integer, Integer>::getValue).reversed());
+        ArrayList<Integer>[] buckets = new ArrayList[nums.length + 1];
 
-        for(Map.Entry<Integer,Integer> e : frequentMap.entrySet()){
-            PQ.add(e);
+        for (int i = 0; i <= nums.length; i++) {
+            buckets[i] = new ArrayList<>();
         }
+
+        frequentMap.forEach((Integer a, Integer b) -> {
+            // Assign the largest values from the front of the array
+            buckets[nums.length - b].add(a);
+        });
 
         int[] result = new int[k];
 
-        int idx = 0;
+        int pointer = 0;
 
-        while (idx < k && PQ.size() > 0) {
-            Map.Entry<Integer, Integer> v = PQ.poll();
-            result[idx] = (int) v.getKey();
-            idx++;
+        for (int i = 0; i < buckets.length; i++) {
+            ArrayList<Integer> list = buckets[i];
+            if (list.size() == 0) {
+                continue;
+            }
+            for (Integer num : list) {
+                result[pointer] = (int) num;
+                // Return the result when the pointer reaches k
+                if (pointer == (k - 1))
+                    return result;
+                pointer++;
+            }
         }
 
         return result;
     }
-} 
+}
