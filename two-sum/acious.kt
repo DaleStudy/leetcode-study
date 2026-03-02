@@ -2,6 +2,7 @@ class Solution {
     // nums의 모든 숫자를 Map에 저장. key는 nums의 숫자, value는 해당 숫자의 인덱스
     // target의 숫자가 동일한 숫자가 더해져야 하는 케이스 (예: target = 4, nums = [2, 2])를 위해 value는 List로 저장
     // 시간복잡도: O(n), 공간복잡도: O(n)
+    // improvement point : 한번의 루프를 순회하는 것으로도 문제를 해결할 수 있음.
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val map = mutableMapOf<Int, MutableList<Int>>()
         for (index in nums.indices) { // nums.indices는 nums의 인덱스 범위를 반환
