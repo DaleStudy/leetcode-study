@@ -1,8 +1,11 @@
 function twoSum(nums: number[], target: number): number[] {
-  for (let lt = 0; lt < nums.length - 1; lt++) {
-    for (let rt = lt + 1; rt < nums.length; rt++) {
-      if (nums[lt] + nums[rt] === target) return [lt, rt];
+  const table = new Map();
+  nums.forEach((num, idx) => table.set(num, idx));
+
+  for (let i = 0; i < nums.length; i++) {
+    const result = target - nums[i];
+    if (table.has(result) && table.get(result) !== i) {
+      return [i, table.get(result)];
     }
   }
-  return [0, 0];
 }
