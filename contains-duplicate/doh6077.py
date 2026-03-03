@@ -5,4 +5,3 @@ class Solution:
         # Create a set to store unique numbers from nums
         nums_set = set(nums)
         return len(nums_set) != len(nums)
-        
