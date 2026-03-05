@@ -13,3 +13,4 @@ class Solution:
                 answer.append(f[0])
             k -= 1
         return answer
+
