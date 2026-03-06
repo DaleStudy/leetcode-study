@@ -32,3 +32,10 @@ class Solution:
                 r += 1
         
         return longest
+
+
+
+
+nums = [1,2,3,5]
+nums.sort()
+print(nums)
