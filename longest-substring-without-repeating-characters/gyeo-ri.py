@@ -19,5 +19,18 @@ class Solution:
 
 
 if __name__ == "__main__":
-    s = Solution()
-    print(s.lengthOfLongestSubstring("a"))
+    solution = Solution()
+
+    test_cases = [
+        ("abcabcbb", 3),
+        ("bbbbb", 1),
+        ("pwwkew", 3),
+        ("a", 1),
+        ("bb!1  2@!#$1%3", 9),
+    ]
+    for idx, cases_ in enumerate(test_cases):
+        s, answer = cases_
+        result = solution.lengthOfLongestSubstring(s)
+        assert (
+            answer == result
+        ), f"Test Case {idx} Failed: Expected {answer}, Got {result}"
