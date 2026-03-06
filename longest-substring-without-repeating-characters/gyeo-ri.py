@@ -10,9 +10,7 @@ class Solution:
                 start_idx += 1
 
             used_characters.add(s[end_idx])
-            current_length = end_idx - start_idx + 1
-            if current_length > longest_length:
-                longest_length = current_length
+            longest_length = max(longest_length, end_idx - start_idx + 1)
 
         return longest_length
 
