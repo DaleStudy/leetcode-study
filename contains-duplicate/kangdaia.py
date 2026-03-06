@@ -1,5 +1,5 @@
 class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
+    def containsDuplicate(self, nums: list[int]) -> bool:
         """
         리스트에 숫자가 두번 이상 등장하는 경우가 있으면 True, 
         모든 숫자가 한 번씩만 등장하면 (unique) False를 반환하는 함수
