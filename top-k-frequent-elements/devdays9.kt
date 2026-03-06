@@ -12,7 +12,7 @@ class Solution {
         val heap = PriorityQueue<Int>(frequencyMap.size) { num1, num2 ->
             frequencyMap[num2]!!.compareTo(frequencyMap[num1]!!)
         }
-        heap.addAll(frequencyMap.keys)
+        heap += frequencyMap.keys
         return IntArray(k) { heap.poll() }
     }
 }
