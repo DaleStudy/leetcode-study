@@ -5,7 +5,7 @@ typealias Frequency = Int
 
 class Solution {
     fun topKFrequent(nums: IntArray, k: Int): IntArray {
-        val frequencyMap = HashMap<Number, Frequency>(k)
+        val frequencyMap = HashMap<Number, Frequency>(nums.size)
         nums.forEach {
             frequencyMap.merge(it, 1, Int::plus)
         }
