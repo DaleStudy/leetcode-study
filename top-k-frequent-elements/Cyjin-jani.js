@@ -11,6 +11,13 @@ const topKFrequent = function (nums, k) {
     tempArr[val].push(+key);
   }
 
-  const answer = tempArr.flat();
-  return answer.slice(-k);
+  // answer.flat(), return answer.slice(-k) 대신 좀 더 최적화된 코드로 변경합니다.
+  const answer = [];
+  for (let i = tempArr.length - 1; i >= 0; i--) {
+    for (let num of tempArr[i]) {
+      answer.push(num);
+      if (answer.length === k) return answer;
+    }
+  }
+  return answer;
 };
