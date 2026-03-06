@@ -1,21 +1,20 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        longest_substring: str = ""
-        current_substring: str = ""
+        used_characters = set()
+        longest_length = 0
+        start_idx = 0
 
-        for c in s:
-            if len(longest_substring) < len(current_substring):
-                longest_substring = current_substring
+        for end_idx in range(len(s)):
+            while s[end_idx] in used_characters:
+                used_characters.remove(s[start_idx])
+                start_idx += 1
 
-            if c not in set(current_substring):
-                current_substring += c
+            used_characters.add(s[end_idx])
+            current_length = end_idx - start_idx + 1
+            if current_length > longest_length:
+                longest_length = current_length
 
-            else:
-                current_substring = current_substring.split(c)[1] + c
-
-            if len(longest_substring) < len(current_substring):
-                longest_substring = current_substring
-        return len(longest_substring)
+        return longest_length
 
 
 if __name__ == "__main__":
