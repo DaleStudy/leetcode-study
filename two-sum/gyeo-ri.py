@@ -12,18 +12,18 @@ class Solution:
 
 if __name__ == "__main__":
     test_cases = [
-        ([2, 7, 11, 15], 9, [0, 1]),
-        ([3, 2, 4], 6, [1, 2]),
-        ([3, 3], 6, [0, 1]),
-        ([-2, -3, 0, 3], 1, [0, 3]),
-        ([0, -5, 2, 6], -3, [1, 2]),
-        ([4, 7, 2, 0, 0], 0, [3, 4]),
+        ([2, 7, 11, 15], 9, {0, 1}),
+        ([3, 2, 4], 6, {1, 2}),
+        ([3, 3], 6, {0, 1}),
+        ([-2, -3, 0, 3], 1, {0, 3}),
+        ([0, -5, 2, 6], -3, {1, 2}),
+        ([4, 7, 2, 0, 0], 0, {3, 4}),
     ]
 
     solution = Solution()
     for idx, case_ in enumerate(test_cases):
         nums, target, answer = case_
         result = solution.twoSum(nums, target)
-        assert (
-            answer == result
+        assert answer == set(
+            result
         ), f"Test Case {idx} Failed: Expected {answer}, Got {result}"
