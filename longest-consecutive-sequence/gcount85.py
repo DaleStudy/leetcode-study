@@ -14,19 +14,19 @@ while counting consecutive ones.
 4. return max_count
 
 # Complexity
-- Time complexity: O(N)
+- Time complexity: O(N log N)
 
-- Space complexity: O(1)
+- Space complexity: O(N)
 """
 
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        nums.sort()
+        nums.sort()  # Time complexity O(N log N), Space complexity O(N)
         max_count = 0
         count = 1
         prev = 0
-        for n in nums[1:]:
+        for n in nums[1:]:  # Space complexity O(N)
             if n == nums[prev] + 1:
                 count += 1
             elif n < nums[prev] or n > nums[prev] + 1:
