@@ -1,5 +1,5 @@
-package productofarrayexceptself
-
+// TC: O(n)
+// SC: O(n)
 func productExceptSelf(nums []int) []int {
 	result := make([]int, 0)
 
