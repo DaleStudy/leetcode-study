@@ -38,4 +38,3 @@ class Solution:
         if cur.right:
             self.go_right(cur.right, cur.val, MM)
 
-        
