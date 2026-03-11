@@ -3,7 +3,7 @@ class Solution:
         """
         nums의 각 원소에 대해서, 그 원소를 제외한 나머지 원소들의 곱을 구하는 함수
         시간제약은 O(n)이고, 나눗셈을 사용하지 않아야 함
-        
+
         방법:
         1. brute-force. 각 원소마다, 나머지 원소들의 곱을 구하기. O(n)의 시간 제약을 만족하지 못함
         2. 전체 곱을 구해두고, 각 원소마다 자기 자신의 값으로 나누기. 나눗셈 제약에 걸려 사용 불가
@@ -27,7 +27,7 @@ class Solution:
             answer[idx] = nxt
             nxt *= num
         nxt = 1
-        for idx in range(len(nums)-1, -1, -1):
+        for idx in range(len(nums) - 1, -1, -1):
             answer[idx] *= nxt
             nxt *= nums[idx]
         return answer
