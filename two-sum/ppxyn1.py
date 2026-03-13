@@ -1,5 +1,6 @@
 # idea: For each number n in nums, check if (target - n) exists in the remaining elements.
 
+# Ans 1
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         for idx, num in enumerate(nums):
@@ -8,27 +9,28 @@ class Solution:
                 return [idx, nums.index(required_num, idx+1)]
 
 
-'''
-Trial and error
-idea : two pointer
-I struggled to handle the indices of the original array after sorting it.
-The code below fails when negative numbers are involved.
-I realized it would be tricky to solve this problem with the two-pointer.
-'''
 
-# class Solution:
-#     def twoSum(self, nums: List[int], target: int) -> List[int]:
-#         sorted_nums = sorted(nums)
-#         left, right = 0, len(nums) - 1
+# Ans 2
+# idea : Two-pointer
+# Time Complexity : O(n log n)
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # Keep original indices !
+        new_nums = [(idx, num) for idx, num in enumerate(nums)]
+        new_nums.sort(key=lambda x: x[1])
+
+        left, right = 0, len(new_nums)-1
         
-#         while left < right:
-#             s = sorted_nums[left] + sorted_nums[right]
-#             if s == target:
-#                 left_idx = nums.index(sorted_nums[left])
-#                 right_idx = nums.index(sorted_nums[right], left_idx + 1)
-#                 return [left_idx, right_idx]
-#             elif s < target:
-#                 left += 1
-#             else:
-#                 right -= 1
+        while left < right:
+            idx_left, idx_right = new_nums[left][0], new_nums[right][0]
+            val = new_nums[left][1] + new_nums[right][1]
+            if val == target:
+                return [idx_left, idx_right]
+            elif val < target:
+                left +=1 
+            else:
+                right -=1
+        return []
+
 
