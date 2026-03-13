@@ -1,5 +1,6 @@
 # idea: dictonary
 
+# Ans 1
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         count_dict = {}
@@ -15,7 +16,19 @@ class Solution:
             ans.append(sorted_items[i][0])
         return ans
     
-'''
-Similar way : Using Counter() function
-'''
+
+
+# With Couter 
+# Time Complexity: O(nlog(n))
+
+from collections import Counter
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count_dict = Counter(nums)
+        count_dict = sorted(count_dict.items(), key=lambda x: x[1], reverse=True)
+        ans = []
+        for i in range(k):
+            ans.append(count_dict[i][0])
+        return ans
+    
 
