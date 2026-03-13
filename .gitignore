@@ -2,5 +2,3 @@
 .vscode/
 .DS_Store
 .env
-*.iml # 아직 없다면 같이 추가 추천
-*.iml
