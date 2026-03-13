@@ -14,6 +14,7 @@
 #include <unordered_map>
 using namespace std;
 
+// 첫 번째 풀이 --> 배열 두 개를 이용해서 직접 비교
 #pragma region FirstIdea_TwoArrays
 namespace first_idea {
 
@@ -48,6 +49,7 @@ public:
 }  // namespace first_idea
 #pragma endregion
 
+// 두 번째 풀이 --> 배열 하나를 사용해서 풀이
 #pragma region FinalSolution_OneArray
 class Solution {
 public:
@@ -74,6 +76,7 @@ public:
 };
 #pragma endregion
 
+// 세 번째 풀이 --> unordered_map 이용하기
 #pragma region Alternative_UnorderedMap
 namespace unordered_map_idea {
 
