@@ -1,6 +1,5 @@
 from typing import List
 
-
 """
 Ideation:
     배열을 정렬한 뒤, 인접한 숫자들을 비교하면서 가장 긴 연속 수열의 길이를 구한다.
@@ -12,6 +11,8 @@ Ideation:
 Time Complexity: O(n log n)
 Space Complexity: O(1)
 """
+
+
 class Solution:
 
     def longestConsecutive(self, nums: List[int]) -> int:
