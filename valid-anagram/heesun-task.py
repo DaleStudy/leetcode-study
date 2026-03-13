@@ -25,3 +25,4 @@ class Solution:
                     del s_dict[t_letter]
 
         return len(s_dict) == 0
+      
