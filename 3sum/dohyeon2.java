@@ -4,7 +4,7 @@ import java.util.List;
 
 class Solution {
     // TC: O(n^2)
-    // SC: O(1)
+    // SC: O(n^2)
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> answer = new ArrayList<List<Integer>>();
 
@@ -41,11 +41,9 @@ class Solution {
 
                     left++;
                     right--;
-                }
-                if (sum < 0) {
+                } else if (sum < 0) {
                     left++;
-                }
-                if (sum > 0) {
+                } else {
                     right--;
                 }
             }
