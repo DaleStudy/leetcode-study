@@ -17,10 +17,10 @@ class Solution:
             right = len(nums) - 1
 
             while left < right:
-                sum = nums[left] + nums[right]
-                if sum < target:
+                sum_ = nums[left] + nums[right]
+                if sum_ < target:
                     left = left + 1
-                elif sum > target:
+                elif sum_ > target:
                     right = right - 1
                 else:
                     if nums[left] not in visited:     # 중복 제거
