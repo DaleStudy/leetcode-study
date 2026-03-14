@@ -5,45 +5,45 @@ class Solution {
     // SC : O(n)
     public int[] productExceptSelf(int[] nums) {
         /**
+         * I previously solved this problem using division,
+         * but the problem restricts that approach.
+         * This was pointed out in the following comment:
+         * https://github.com/DaleStudy/leetcode-study/pull/2396#discussion_r2934545648
+         *
          * Approach:
-         * 1. Calculate the product of all non-zero elements
-         * 2. Count how many zeros exist in the array.
-         * 3. Handle three cases:
-         * - If there are more than one zero, all results are 0.
-         * - If there is exactly one zero,
-         * only the index with 0 gets the total product; others are 0.
-         * - If there is no zero, each result is totalProduct / nums[i].
+         * Compute prefix products using left[i-1] * nums[i-1],
+         * which represents the product of elements before i.
+         *
+         * Compute suffix products using right[i+1] * nums[i+1]
+         * by traversing from right to left.
+         *
+         * The result at index i is:
+         * left[i] * right[i]
          */
-        int zeroCount = 0;
 
-        for (int n : nums) {
-            if (n == 0) {
-                zeroCount++;
-            }
-            if (zeroCount > 1) {
-                break;
-            }
+        int[] answer = new int[nums.length];
+
+        int[] left = new int[nums.length];
+        Arrays.fill(left, 1);
+        int[] right = new int[nums.length];
+        Arrays.fill(right, 1);
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i - 1 < 0)
+                continue;
+            left[i] *= left[i - 1] * nums[i - 1];
         }
 
-        if (zeroCount > 1) {
-            return new int[nums.length];
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (i + 1 > nums.length - 1)
+                continue;
+            right[i] *= right[i + 1] * nums[i + 1];
         }
 
-        int production = Arrays.stream(nums).filter((n) -> {
-            return n != 0;
-        }).reduce(1, (a, b) -> a * b);
-
-        if (zeroCount == 1) {
-            return Arrays.stream(nums).map((n) -> {
-                if (n == 0) {
-                    return production;
-                }
-                return 0;
-            }).toArray();
+        for (int i = 0; i < nums.length; i++) {
+            answer[i] = left[i] * right[i];
         }
 
-        return Arrays.stream(nums).map((n) -> {
-            return production / n;
-        }).toArray();
+        return answer;
     }
 }
