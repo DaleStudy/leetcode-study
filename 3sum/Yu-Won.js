@@ -2,7 +2,7 @@
  * 문제: https://leetcode.com/problems/3sum/description/
  *
  * 요구사항:
- * nums: number[]가 주어질 때
+ * nums: number[]가 주어질 때 3개의 합이 0이되는 배열을 리턴한다.
  *
  * * */
 
