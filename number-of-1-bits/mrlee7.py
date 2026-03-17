@@ -6,4 +6,3 @@ class Solution:
             result += n % 2
             n //= 2
         return result
-
