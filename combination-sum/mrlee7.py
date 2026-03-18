@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         result, nums = list(), list()
@@ -13,5 +16,5 @@ class Solution:
                 dfs(idx, total_sum + num)
                 nums.pop()
 
-        dfs(0,0)
+        dfs(0, 0)
         return result
