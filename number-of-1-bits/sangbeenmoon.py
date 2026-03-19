@@ -7,3 +7,4 @@ class Solution:
             n = n // 2
             print(n)
         return cnt
+    
