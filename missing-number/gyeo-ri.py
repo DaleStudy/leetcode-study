@@ -8,9 +8,16 @@
 
 class Solution:
     def missingNumber(self, nums: list[int]) -> int:
+        # (Runtime: 3ms / Beats 61.16%, Memory 20.23MB / Beats: 98.53% )
         len_nums = len(nums)
         total_sum = int(len_nums * (len_nums + 1) / 2)
         return total_sum - sum(nums)
+
+        """
+        이때, 아래와 같이 변수 선언 없이 계산하면(In Memory) 메모리는 조금 더 쓰지만 속도는 빨라진다.
+        (Runtime: 0ms / Beats 100.00%, Memory 20.34MB / Beats: 90.41% )
+        return int(len(nums) * (len(nums) + 1) / 2) - sum(nums)
+        """
 
 
 if __name__ == "__main__":
