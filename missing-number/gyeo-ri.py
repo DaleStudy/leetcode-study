@@ -1,18 +1,16 @@
 """
 [결과 요약]
-# 재시도횟수: 1회
+# 재시도횟수: 2회
     1. 반복문으로 구하기: 로직은 쉬우나 n이 최대 10^4이므로 input 길이에 따라 속도가 느려질 수 있음
+    2. 등차수열의 원리를 활용하여 n!을 구한 다음 nums의 합을 빼주기
 """
 
 
 class Solution:
     def missingNumber(self, nums: list[int]) -> int:
         len_nums = len(nums)
-        for i in range(len_nums + 1):
-            if i not in nums:
-                return i
-
-        raise Exception("No Answer")
+        total_sum = int(len_nums * (len_nums + 1) / 2)
+        return total_sum - sum(nums)
 
 
 if __name__ == "__main__":
