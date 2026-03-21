@@ -18,9 +18,3 @@ class Solution:
                 nums.append(candidates[j])
                 self.go(j, candidates, nums, sum_ + candidates[j], target)
                 nums.pop()
-
-        
-
-
-            
-
