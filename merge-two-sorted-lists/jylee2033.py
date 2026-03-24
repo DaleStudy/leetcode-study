@@ -25,3 +25,6 @@ class Solution:
         cur.next = list1 or list2
 
         return output.next
+
+# Time Complexity : O(n + m), n - lenght of list1, m - length of list2
+# Space Complexity : O(1)
