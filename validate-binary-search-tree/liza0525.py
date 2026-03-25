@@ -20,3 +20,31 @@ class Solution:
                 return False
         
         return True
+
+
+# 7기 풀이
+# 시간 복잡도: O(n)
+#  - 전체 트리 노드를 탐색하기 때문에 n
+# 공간 복잡도: O(n)
+#  - 노드를 저장하는 리스트는 n의 길이만큼 생김
+class Solution:
+    # 중위 순회 결과가 strictly increasing인지 확인하는 방식
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        tree_res = []
+
+        def inorder_search(node):
+            if node.left:
+                inorder_search(node.left)
+
+            tree_res.append(node.val)
+            
+            if node.right:
+                inorder_search(node.right)
+        
+        inorder_search(root)
+
+        for i in range(len(tree_res) - 1):
+            # i번째 값이 i + 1번째 값보다 크거나 같으면 strictly increasing하지 않다는 의미이므로 False를 리턴한다.
+            if tree_res[i] >= tree_res[i + 1]:
+                return False
+        return True

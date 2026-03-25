@@ -1,49 +1,5 @@
-/**
- * 
- * @param candidates 
- * @param target 
- * 
- * backtracking 알고리즘으로 문제 해결 
- * 
- */
+function combinationSum(candidates: number[], target: number): number[][] {}
 
-function combinationSum(candidates: number[], target: number): number[][] {
-    const result : number[][] = [];
-    if(candidates.length === 0){
-        return result ;    
-    }
-
-    candidates.sort((a,b)=> a-b);
-
-    const validCandidates : number[] = candidates.filter(num => num <= target);
-
-    if(validCandidates.length ===0) {
-        return result;
-    }
-
-    const currentCombination : number[] = [];
-
-    function backtrack (startIndex : number, remainingTarget : number) :void {
-        if(remainingTarget === 0){
-            result.push([...currentCombination]);
-            return;
-        }
-
-        for(let i=startIndex; i<validCandidates.length; i++){
-            const currentNum = validCandidates[i];
-
-            if(currentNum > remainingTarget) {
-                break;
-            }
-            currentCombination.push(currentNum);
-
-            backtrack(i,remainingTarget - currentNum)
-
-            currentCombination.pop()            
-
-        }
-    }
-
-    backtrack(0, target);
-    return result;
-  };
+combinationSum([2, 3, 6, 7], 7); // [[2,2,3], [7]]
+combinationSum([2, 3, 5], 8); // [[2,2,2,2],[2,3,3],[3,5]]
+combinationSum([2], 1); // []
