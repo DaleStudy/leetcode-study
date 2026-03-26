@@ -36,3 +36,25 @@ class Solution:
         max_depth = find_max_depth(root, 0)
 
         return max_depth
+
+
+# 7기 풀이
+# 시간복잡도: O(n)
+#  - 트리의 모든 노드를 한 번 씩 방문하므로, 전체 노드 수 n만큼 시간이 걸림
+# 공간복잡도: O(n)
+#  - 트리의 높이만큼 재귀 스택이 쌓임. 최악의 경우는 트리가 한 쪽으로 치우쳤을 때이므로 노드 n만큼의 최대 스택을 쌓게 됨
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        def find_depth(node, depth):
+            if not node:
+                # node가 None일 때는 depth을 그대로 반환
+                return depth
+            # 현재 노드 기준 왼쪽 노드 쪽의 깊이 탐색
+            left_depth = find_depth(node.left, depth + 1)
+            # 현재 노드 기준 오른쪽 노드 쪽의 깊이 탐색
+            right_depth = find_depth(node.right, depth + 1)
+
+            # 왼쪽과 오른쪽 중 더 깊은 depth를 반환
+            return max(left_depth, right_depth)
+
+        return find_depth(root, 0)
