@@ -1,31 +1,19 @@
-from collections import deque
-
-
 class Solution:
     def isValid(self, s: str) -> bool:
-        character_map = {
-            "(": ")",
-            "{": "}",
-            "[": "]",
-        }
-        s_stack = deque()
+        character_map = {"(": ")", "{": "}", "[": "]"}
+        s_list = []
 
         for c in s:
-            if c in character_map.keys():
-                s_stack.append(c)
+            if c in character_map:
+                s_list.append(character_map[c])
 
             else:
-                if len(s_stack) > 0:
-                    previous = s_stack.pop()
-                    if character_map[previous] != c:
-                        return False
-                else:
-                    return False
+                if len(s_list) > 0:
+                    if s_list.pop() == c:
+                        continue
+                return False
 
-        if len(s_stack) > 0:
-            return False
-        else:
-            return True
+        return len(s_list) == 0
 
 
 if __name__ == "__main__":
