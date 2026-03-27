@@ -1,38 +1,30 @@
 /**
- * Definition for singly-linked list.
- * struct ListNode {
+ * Definition for a binary tree node.
+ * struct TreeNode {
  *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        ListNode dummy; // head 초기화의 복잡성을 낮추기 위한 더미노드
-        ListNode* tail = &dummy;
+    int maxDepth(TreeNode* root) {
+        return solve(root, 0);
+    }
 
-        while (list1 != nullptr && list2 != nullptr)
+    int solve(TreeNode* root, int depth)
+    {
+        if (root == nullptr)
         {
-            if (list1->val < list2->val)
-            {
-                tail->next = list1;
-                list1 = list1->next;
-            }
-            else
-            {
-                tail->next = list2;
-                list2 = list2->next;
-            }
-
-            tail = tail->next;
+            return depth;
         }
 
-        tail->next = (list1 == nullptr) ? list2 : list1;
+        int l = solve(root->left, depth);
+        int r = solve(root->right, depth);
 
-        return dummy.next;
+        return max(l, r) + 1;
     }
-}
-;
+};
