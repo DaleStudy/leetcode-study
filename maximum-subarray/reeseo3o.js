@@ -1,4 +1,5 @@
-/**
+/** 
+ * DFS
  * Time complexity: O(n)
  * Space complexity: O(h) - h is the height of the tree, worst case O(n)
  */
@@ -11,7 +12,11 @@ const maxDepth = (root) => {
   return 1 + Math.max(leftDepth, rightDepth);
 };
 
-// BFS - TC: O(n) | SC: O(n)
+/**
+ * BFS
+ * Time complexity: O(n)
+ * Space complexity: O(n)
+ */
 const maxDepthBFS = (root) => {
   if (root === null) return 0;
 
