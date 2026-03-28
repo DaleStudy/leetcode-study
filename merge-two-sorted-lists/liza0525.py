@@ -41,3 +41,40 @@ class Solution:
 
         # dummy 노드 다음부터가 실제 머지된 리스트의 시작점
         return root_node.next
+
+
+# 7기 풀이
+# 시간 복잡도: O(n + m)
+#   - list1의 길이 n, list2의 길이 m의 개수를 번갈아가며 탐색할 때 최악
+# 공간 복잡도: O(1)
+#   - dummy 노드와 curr 만 사용하므로 추가 공간 없음
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode()  # dummy node를 만들어 dummy.next부터 리스트들을 머지하도록 한다.
+        curr = dummy  # curr 포인트를 dummy에 둔다
+
+        # list1과 list2 모두가 있을 때 루프를 돈다.
+        # 둘 중 하나라도 None이 되는 순간 루프 탈출
+        while list1 and list2:
+            if list1.val < list2.val:
+                # list1의 숫자가 더 작을 땐 curr.next에 list1의 헤드를 넣고,
+                # 포인터를 next node로 옮김
+                curr.next = list1
+                list1 = list1.next
+            else:
+                # list2의 숫자가 더 작을 땐 curr.next에 list2의 헤드를 넣고,
+                # 포인터를 next node로 옮김
+                curr.next = list2
+                list2 = list2.next
+            
+            # 다음 노드 merge를 위해 curr도 포인터를 next로 변경
+            curr = curr.next
+        
+        # 루프 탈출 후 남아 있는 리스트가 있다면 curr의 next에 남은 리스트를 머지한다.
+        if list1:
+            curr.next = list1
+        elif list2:
+            curr.next = list2
+
+        # dummy 노드는 예비용, dummy.next를 리턴
+        return dummy.next
