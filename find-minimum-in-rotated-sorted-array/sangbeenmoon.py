@@ -19,4 +19,4 @@ class Solution:
             else:
                 right = mid
             
-        return min(nums[left], nums[right], nums[mid])
+        return nums[left]
