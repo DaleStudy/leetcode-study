@@ -22,6 +22,7 @@ const maxProfit_naive = function (prices) {
 const maxProfit = function (prices) {
   let buyIdx = 0;
   let sellIdx = 1;
+  let profit = 0;
 
   while (sellIdx < prices.length) {
     let buyPrice = prices[buyIdx];
