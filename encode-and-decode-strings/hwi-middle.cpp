@@ -7,7 +7,7 @@ public:
         for(auto& s : strs)
         {
             str += s;
-            str.push_back(3);
+            str.push_back(3); // 문제의 입력으로 오지 않는 값(ETX, End of Text)을 구분자로 사용
         }
 
         return str;
@@ -27,7 +27,3 @@ public:
         return v;
     }
 };
-
-// Your Codec object will be instantiated and called as such:
-// Codec codec;
-// codec.decode(codec.encode(strs));

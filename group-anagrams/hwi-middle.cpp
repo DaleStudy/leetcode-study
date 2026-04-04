@@ -1,5 +1,6 @@
 class Solution {
 private:
+    // 단어별로 알파벳 개수를 세는 구조체
     struct chnum
     {
         int cnt[26];
@@ -34,16 +35,16 @@ struct chnumHash
 
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<chnum, vector<string>, chnumHash> ns;
+        unordered_map<chnum, vector<string>, chnumHash> ns; // 알파벳 개수를 넣으면 알파벳 구성을 갖는 문자열 배열이 나옴
         for (auto& str : strs)
         {
             chnum n;
             for (auto ch : str)
             {
-                n.cnt[ch - 'a']++;
+                n.cnt[ch - 'a']++; // 알파벳 개수를 세고...
             }
 
-            ns[n].push_back(str);
+            ns[n].push_back(str); // 해시맵에 넣음
         }
 
         vector<vector<string>> v;

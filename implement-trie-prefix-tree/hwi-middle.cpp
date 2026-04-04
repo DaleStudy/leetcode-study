@@ -60,8 +60,8 @@ public:
 private:
 	struct Node
 	{
-		bool isWord = false;
-		unique_ptr<Node> children[26];
+		bool isWord = false; // 이 노드가 단어의 끝인지 저장
+		unique_ptr<Node> children[26]; // 자식 노드 저장
 	};
 
 	unique_ptr<Node> mRoot;
