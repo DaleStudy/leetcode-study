@@ -1,3 +1,5 @@
+// 문제풀이 해설 보고 푼 문제입니다.
+
 var TrieNode = function () {
     this.children = {};
     this.isEnd = false;
