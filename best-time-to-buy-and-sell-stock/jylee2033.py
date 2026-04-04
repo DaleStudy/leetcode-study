@@ -8,18 +8,23 @@ class Solution:
         profit = 0
 
         # Iterate through prices
-        for i, price in enumerate(prices):
+        # for i, price in enumerate(prices):
+        #     if price < buy:
+        #         buy = price
+        #
+        #         for j in range(i + 1, len(prices)):
+        #             if prices[j] <= buy:
+        #                 continue
+        #
+        #             if prices[j] - buy > profit:
+        #                 profit = prices[j] - buy
+        for price in prices:
             if price < buy:
                 buy = price
-
-                for j in range(i + 1, len(prices)):
-                    if prices[j] <= buy:
-                        continue
-
-                    if prices[j] - buy > profit:
-                        profit = prices[j] - buy
+            elif price - buy > profit:
+                profit = price - buy
 
         return profit
 
-# Time Complexity: O(n^2)
+# Time Complexity: O(n)
 # Space Complexity: O(1)
