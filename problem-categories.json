@@ -11,7 +11,11 @@
   "alien-dictionary": {
     "difficulty": "Hard",
     "categories": [
-      "Graph",
+      "Array",
+      "String",
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Graph Theory",
       "Topological Sort"
     ],
     "intended_approach": "인접한 단어 쌍에서 문자 순서 관계를 엣지로 추출하고, 위상 정렬(BFS/DFS)로 순서를 결정합니다."
@@ -28,40 +32,46 @@
     "difficulty": "Medium",
     "categories": [
       "Tree",
-      "BFS"
+      "Breadth-First Search",
+      "Binary Tree"
     ],
     "intended_approach": "큐를 사용한 BFS로 레벨별로 노드를 처리합니다."
   },
   "binary-tree-maximum-path-sum": {
     "difficulty": "Hard",
     "categories": [
+      "Dynamic Programming",
       "Tree",
-      "DFS",
-      "Dynamic Programming"
+      "Depth-First Search",
+      "Binary Tree"
     ],
     "intended_approach": "DFS로 각 노드에서의 최대 gain을 계산하고, 좌우 자식을 포함한 경로 합을 전역 최댓값과 비교합니다."
   },
   "climbing-stairs": {
     "difficulty": "Easy",
     "categories": [
-      "Dynamic Programming"
+      "Math",
+      "Dynamic Programming",
+      "Memoization"
     ],
     "intended_approach": "dp[i] = dp[i-1] + dp[i-2] 피보나치 점화식으로 풀어야 합니다."
   },
   "clone-graph": {
     "difficulty": "Medium",
     "categories": [
-      "Graph",
-      "BFS",
-      "DFS",
-      "Hash Table"
+      "Hash Table",
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Graph Theory"
     ],
     "intended_approach": "HashMap으로 원본 노드와 복제 노드를 매핑하면서 BFS 또는 DFS로 순회합니다."
   },
   "coin-change": {
     "difficulty": "Medium",
     "categories": [
-      "Dynamic Programming"
+      "Array",
+      "Dynamic Programming",
+      "Breadth-First Search"
     ],
     "intended_approach": "dp[i] = amount i를 만드는 최소 동전 수로 정의하고, Bottom-up DP로 풀어야 합니다."
   },
@@ -76,9 +86,11 @@
   "construct-binary-tree-from-preorder-and-inorder-traversal": {
     "difficulty": "Medium",
     "categories": [
+      "Array",
+      "Hash Table",
+      "Divide and Conquer",
       "Tree",
-      "DFS",
-      "Hash Table"
+      "Binary Tree"
     ],
     "intended_approach": "preorder의 첫 원소가 루트이고, inorder에서 루트 위치를 HashMap으로 O(1) 조회해 재귀적으로 트리를 구성합니다."
   },
@@ -95,7 +107,8 @@
     "difficulty": "Easy",
     "categories": [
       "Array",
-      "Hash Table"
+      "Hash Table",
+      "Sorting"
     ],
     "intended_approach": "HashSet에 원소를 추가하면서 이미 존재하는지 확인합니다. O(n), O(n)."
   },
@@ -110,15 +123,17 @@
   "course-schedule": {
     "difficulty": "Medium",
     "categories": [
-      "Graph",
-      "Topological Sort",
-      "DFS"
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Graph Theory",
+      "Topological Sort"
     ],
     "intended_approach": "방향 그래프에서 사이클 존재 여부를 DFS(색칠 기법) 또는 BFS 위상 정렬로 감지합니다."
   },
   "decode-ways": {
     "difficulty": "Medium",
     "categories": [
+      "String",
       "Dynamic Programming"
     ],
     "intended_approach": "dp[i] = s[:i]를 디코딩하는 경우의 수로 정의하고, 1자리/2자리 해석 가능 여부에 따라 Bottom-up DP로 풀어야 합니다."
@@ -126,23 +141,30 @@
   "design-add-and-search-words-data-structure": {
     "difficulty": "Medium",
     "categories": [
-      "Trie",
-      "DFS"
+      "String",
+      "Depth-First Search",
+      "Design",
+      "Trie"
     ],
     "intended_approach": "Trie를 구현하고, '.' 와일드카드 처리를 위해 DFS로 모든 자식 노드를 탐색합니다."
   },
   "encode-and-decode-strings": {
     "difficulty": "Medium",
     "categories": [
-      "String"
+      "Array",
+      "String",
+      "Design"
     ],
     "intended_approach": "각 문자열 앞에 길이를 접두사로 붙이는 방식(예: '4#word')으로 구분자 충돌 없이 인코딩/디코딩합니다."
   },
   "find-median-from-data-stream": {
     "difficulty": "Hard",
     "categories": [
-      "Heap",
-      "Two Pointers"
+      "Two Pointers",
+      "Design",
+      "Sorting",
+      "Heap (Priority Queue)",
+      "Data Stream"
     ],
     "intended_approach": "최대 힙(작은 절반)과 최소 힙(큰 절반)을 유지하며 중앙값을 O(log n)에 구합니다."
   },
@@ -157,9 +179,10 @@
   "graph-valid-tree": {
     "difficulty": "Medium",
     "categories": [
-      "Graph",
+      "Depth-First Search",
+      "Breadth-First Search",
       "Union-Find",
-      "DFS"
+      "Graph Theory"
     ],
     "intended_approach": "Union-Find 또는 DFS로 사이클 여부를 확인하고, 모든 노드가 연결되어 있는지 검증합니다."
   },
@@ -168,13 +191,15 @@
     "categories": [
       "Array",
       "Hash Table",
-      "String"
+      "String",
+      "Sorting"
     ],
     "intended_approach": "정렬된 문자열 또는 문자 카운팅 튜플을 HashMap의 키로 사용해 그룹핑합니다."
   },
   "house-robber": {
     "difficulty": "Medium",
     "categories": [
+      "Array",
       "Dynamic Programming"
     ],
     "intended_approach": "dp[i] = max(dp[i-1], dp[i-2] + nums[i]) 점화식으로 O(n), O(1) DP로 풀어야 합니다."
@@ -182,6 +207,7 @@
   "house-robber-ii": {
     "difficulty": "Medium",
     "categories": [
+      "Array",
       "Dynamic Programming"
     ],
     "intended_approach": "원형 배열을 첫 집 포함/제외 두 경우로 분리해 house-robber를 두 번 실행합니다."
@@ -189,8 +215,10 @@
   "implement-trie-prefix-tree": {
     "difficulty": "Medium",
     "categories": [
-      "Trie",
-      "Hash Table"
+      "Hash Table",
+      "String",
+      "Design",
+      "Trie"
     ],
     "intended_approach": "각 노드가 자식 맵과 is_end 플래그를 갖는 Trie 자료구조를 직접 구현합니다."
   },
@@ -205,8 +233,9 @@
     "difficulty": "Easy",
     "categories": [
       "Tree",
-      "DFS",
-      "BFS"
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Binary Tree"
     ],
     "intended_approach": "DFS 재귀 또는 BFS로 각 노드의 좌우 자식을 교환합니다."
   },
@@ -214,6 +243,7 @@
     "difficulty": "Medium",
     "categories": [
       "Array",
+      "Dynamic Programming",
       "Greedy"
     ],
     "intended_approach": "현재까지 도달 가능한 최대 인덱스를 추적하는 Greedy로 O(n)에 풀어야 합니다."
@@ -222,13 +252,16 @@
     "difficulty": "Medium",
     "categories": [
       "Tree",
-      "DFS"
+      "Depth-First Search",
+      "Binary Search Tree",
+      "Binary Tree"
     ],
     "intended_approach": "BST의 중위 순회(In-order traversal)는 오름차순이므로 k번째 원소가 정답입니다."
   },
   "linked-list-cycle": {
     "difficulty": "Easy",
     "categories": [
+      "Hash Table",
       "Linked List",
       "Two Pointers"
     ],
@@ -237,6 +270,7 @@
   "longest-common-subsequence": {
     "difficulty": "Medium",
     "categories": [
+      "String",
       "Dynamic Programming"
     ],
     "intended_approach": "2D DP 테이블 dp[i][j] = text1[:i]와 text2[:j]의 LCS 길이로 풀어야 합니다."
@@ -245,21 +279,24 @@
     "difficulty": "Medium",
     "categories": [
       "Array",
-      "Hash Table"
+      "Hash Table",
+      "Union-Find"
     ],
     "intended_approach": "HashSet에 모든 수를 넣고, 시퀀스 시작점(num-1이 없는 수)에서만 연속 길이를 셉니다. O(n)."
   },
   "longest-increasing-subsequence": {
     "difficulty": "Medium",
     "categories": [
-      "Dynamic Programming",
-      "Binary Search"
+      "Array",
+      "Binary Search",
+      "Dynamic Programming"
     ],
     "intended_approach": "O(n log n)은 이진 탐색으로 patience sorting, O(n²)은 기본 DP로 풀어야 합니다."
   },
   "longest-palindromic-substring": {
     "difficulty": "Medium",
     "categories": [
+      "Two Pointers",
       "String",
       "Dynamic Programming"
     ],
@@ -268,6 +305,7 @@
   "longest-repeating-character-replacement": {
     "difficulty": "Medium",
     "categories": [
+      "Hash Table",
       "String",
       "Sliding Window"
     ],
@@ -276,9 +314,9 @@
   "longest-substring-without-repeating-characters": {
     "difficulty": "Medium",
     "categories": [
+      "Hash Table",
       "String",
-      "Sliding Window",
-      "Hash Table"
+      "Sliding Window"
     ],
     "intended_approach": "슬라이딩 윈도우 + HashMap으로 중복 문자 발생 시 왼쪽 포인터를 이동합니다. O(n)."
   },
@@ -286,7 +324,9 @@
     "difficulty": "Medium",
     "categories": [
       "Tree",
-      "DFS"
+      "Depth-First Search",
+      "Binary Search Tree",
+      "Binary Tree"
     ],
     "intended_approach": "BST 속성(p, q가 모두 왼쪽/오른쪽이면 내려가고, 분기되면 현재 노드가 LCA)을 활용해 재귀합니다."
   },
@@ -294,14 +334,16 @@
     "difficulty": "Easy",
     "categories": [
       "Tree",
-      "DFS",
-      "BFS"
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Binary Tree"
     ],
     "intended_approach": "DFS 재귀로 max(left, right) + 1을 반환하거나 BFS로 레벨을 셉니다."
   },
   "maximum-product-subarray": {
     "difficulty": "Medium",
     "categories": [
+      "Array",
       "Dynamic Programming"
     ],
     "intended_approach": "음수 곱셈을 고려해 현재 최댓값과 최솟값을 동시에 추적하는 DP로 풀어야 합니다."
@@ -309,6 +351,8 @@
   "maximum-subarray": {
     "difficulty": "Medium",
     "categories": [
+      "Array",
+      "Divide and Conquer",
       "Dynamic Programming"
     ],
     "intended_approach": "카데인 알고리즘: 현재 합이 음수가 되면 초기화하는 방식으로 O(n), O(1)에 풀어야 합니다."
@@ -325,8 +369,11 @@
     "difficulty": "Medium",
     "categories": [
       "Array",
-      "Heap",
-      "Sorting"
+      "Two Pointers",
+      "Greedy",
+      "Sorting",
+      "Heap (Priority Queue)",
+      "Prefix Sum"
     ],
     "intended_approach": "최소 힙으로 진행 중인 회의의 종료 시간을 관리하고, 새 회의가 시작될 때 가장 빨리 끝나는 회의와 비교합니다."
   },
@@ -342,8 +389,9 @@
     "difficulty": "Hard",
     "categories": [
       "Linked List",
-      "Heap",
-      "Divide and Conquer"
+      "Divide and Conquer",
+      "Heap (Priority Queue)",
+      "Merge Sort"
     ],
     "intended_approach": "최소 힙(Priority Queue)에 각 리스트의 헤드를 넣고 순서대로 추출합니다. O(n log k)."
   },
@@ -351,16 +399,16 @@
     "difficulty": "Easy",
     "categories": [
       "Linked List",
-      "Two Pointers"
+      "Recursion"
     ],
     "intended_approach": "두 포인터로 작은 쪽을 연결하는 반복 또는 재귀로 풀어야 합니다."
   },
   "minimum-window-substring": {
     "difficulty": "Hard",
     "categories": [
+      "Hash Table",
       "String",
-      "Sliding Window",
-      "Hash Table"
+      "Sliding Window"
     ],
     "intended_approach": "슬라이딩 윈도우 + 문자 카운팅 HashMap으로, 조건 충족 시 윈도우를 줄이며 최솟값을 갱신합니다."
   },
@@ -368,8 +416,11 @@
     "difficulty": "Easy",
     "categories": [
       "Array",
+      "Hash Table",
+      "Math",
+      "Binary Search",
       "Bit Manipulation",
-      "Math"
+      "Sorting"
     ],
     "intended_approach": "XOR(모든 수 XOR 인덱스) 또는 가우스 공식(n*(n+1)/2 - 합)으로 O(n), O(1)에 풀어야 합니다."
   },
@@ -377,6 +428,7 @@
     "difficulty": "Medium",
     "categories": [
       "Array",
+      "Dynamic Programming",
       "Greedy",
       "Sorting"
     ],
@@ -385,6 +437,7 @@
   "number-of-1-bits": {
     "difficulty": "Easy",
     "categories": [
+      "Divide and Conquer",
       "Bit Manipulation"
     ],
     "intended_approach": "n & (n-1)로 가장 낮은 1 비트를 제거하는 방식으로 set bit 수를 셉니다."
@@ -392,33 +445,38 @@
   "number-of-connected-components-in-an-undirected-graph": {
     "difficulty": "Medium",
     "categories": [
-      "Graph",
+      "Depth-First Search",
+      "Breadth-First Search",
       "Union-Find",
-      "DFS"
+      "Graph Theory"
     ],
     "intended_approach": "Union-Find 또는 DFS/BFS로 연결 컴포넌트 수를 셉니다."
   },
   "number-of-islands": {
     "difficulty": "Medium",
     "categories": [
-      "Graph",
-      "DFS",
-      "BFS"
+      "Array",
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Union-Find",
+      "Matrix"
     ],
     "intended_approach": "육지 셀을 발견하면 DFS/BFS로 연결된 육지를 모두 방문 처리하고 카운트합니다."
   },
   "pacific-atlantic-water-flow": {
     "difficulty": "Medium",
     "categories": [
-      "Graph",
-      "DFS",
-      "BFS"
+      "Array",
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Matrix"
     ],
     "intended_approach": "역방향으로 태평양/대서양 경계에서 DFS/BFS를 시작해 도달 가능한 셀의 교집합을 구합니다."
   },
   "palindromic-substrings": {
     "difficulty": "Medium",
     "categories": [
+      "Two Pointers",
       "String",
       "Dynamic Programming"
     ],
@@ -427,7 +485,8 @@
   "product-of-array-except-self": {
     "difficulty": "Medium",
     "categories": [
-      "Array"
+      "Array",
+      "Prefix Sum"
     ],
     "intended_approach": "나눗셈 없이 prefix 곱 배열과 suffix 곱을 활용해 O(n), O(1) 추가 공간으로 풀어야 합니다."
   },
@@ -443,13 +502,16 @@
     "difficulty": "Medium",
     "categories": [
       "Linked List",
-      "Two Pointers"
+      "Two Pointers",
+      "Stack",
+      "Recursion"
     ],
     "intended_approach": "중간 찾기(느린/빠른 포인터) → 후반 역전 → 교차 병합 세 단계로 풀어야 합니다."
   },
   "reverse-bits": {
     "difficulty": "Easy",
     "categories": [
+      "Divide and Conquer",
       "Bit Manipulation"
     ],
     "intended_approach": "비트를 하나씩 추출해 결과에 왼쪽으로 추가하는 비트 시프트 연산으로 풀어야 합니다."
@@ -457,7 +519,8 @@
   "reverse-linked-list": {
     "difficulty": "Easy",
     "categories": [
-      "Linked List"
+      "Linked List",
+      "Recursion"
     ],
     "intended_approach": "prev/curr 포인터로 방향을 뒤집는 반복(O(1) 공간) 또는 재귀로 풀어야 합니다."
   },
@@ -465,7 +528,8 @@
     "difficulty": "Medium",
     "categories": [
       "Array",
-      "Math"
+      "Math",
+      "Matrix"
     ],
     "intended_approach": "전치(Transpose) 후 각 행을 좌우 반전하면 O(1) 추가 공간으로 90도 회전됩니다."
   },
@@ -473,7 +537,9 @@
     "difficulty": "Easy",
     "categories": [
       "Tree",
-      "DFS"
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Binary Tree"
     ],
     "intended_approach": "두 트리를 동시에 DFS 재귀로 순회하며 값과 구조를 비교합니다."
   },
@@ -488,16 +554,21 @@
   "serialize-and-deserialize-binary-tree": {
     "difficulty": "Hard",
     "categories": [
+      "String",
       "Tree",
-      "BFS",
-      "DFS"
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Design",
+      "Binary Tree"
     ],
     "intended_approach": "BFS(레벨 순서) 또는 DFS 전위 순회로 직렬화하고, null 마커로 구조를 복원합니다."
   },
   "set-matrix-zeroes": {
     "difficulty": "Medium",
     "categories": [
-      "Array"
+      "Array",
+      "Hash Table",
+      "Matrix"
     ],
     "intended_approach": "첫 행/열을 마커 행으로 활용해 O(1) 추가 공간으로 풀어야 합니다."
   },
@@ -505,6 +576,7 @@
     "difficulty": "Medium",
     "categories": [
       "Array",
+      "Matrix",
       "Simulation"
     ],
     "intended_approach": "상/하/좌/우 경계를 좁혀가며 시뮬레이션으로 순회합니다."
@@ -513,13 +585,17 @@
     "difficulty": "Easy",
     "categories": [
       "Tree",
-      "DFS"
+      "Depth-First Search",
+      "String Matching",
+      "Binary Tree",
+      "Hash Function"
     ],
     "intended_approach": "각 노드에서 same-tree 판별 함수를 호출하는 DFS로 풀어야 합니다."
   },
   "sum-of-two-integers": {
     "difficulty": "Medium",
     "categories": [
+      "Math",
       "Bit Manipulation"
     ],
     "intended_approach": "XOR로 합(올림 없는 덧셈), AND 후 왼쪽 시프트로 올림을 계산하고 올림이 0이 될 때까지 반복합니다."
@@ -529,7 +605,12 @@
     "categories": [
       "Array",
       "Hash Table",
-      "Heap"
+      "Divide and Conquer",
+      "Sorting",
+      "Heap (Priority Queue)",
+      "Bucket Sort",
+      "Counting",
+      "Quickselect"
     ],
     "intended_approach": "버킷 정렬(빈도를 인덱스로 사용)로 O(n)에 풀거나, 최소 힙으로 O(n log k)에 풀어야 합니다."
   },
@@ -544,32 +625,34 @@
   "unique-paths": {
     "difficulty": "Medium",
     "categories": [
+      "Math",
       "Dynamic Programming",
-      "Math"
+      "Combinatorics"
     ],
     "intended_approach": "dp[i][j] = dp[i-1][j] + dp[i][j-1]로 2D DP, 또는 조합 C(m+n-2, m-1)으로 수학적으로 풀 수 있습니다."
   },
   "valid-anagram": {
     "difficulty": "Easy",
     "categories": [
+      "Hash Table",
       "String",
-      "Hash Table"
+      "Sorting"
     ],
     "intended_approach": "문자 카운팅 배열(26) 또는 HashMap으로 두 문자열의 빈도를 비교합니다."
   },
   "valid-palindrome": {
     "difficulty": "Easy",
     "categories": [
-      "String",
-      "Two Pointers"
+      "Two Pointers",
+      "String"
     ],
     "intended_approach": "양 끝에서 시작하는 투 포인터로 영숫자만 비교합니다. O(n), O(1)."
   },
   "valid-parentheses": {
     "difficulty": "Easy",
     "categories": [
-      "Stack",
-      "String"
+      "String",
+      "Stack"
     ],
     "intended_approach": "스택을 사용해 여는 괄호를 push하고, 닫는 괄호가 나오면 스택 top과 대응 여부를 확인합니다."
   },
@@ -577,30 +660,43 @@
     "difficulty": "Medium",
     "categories": [
       "Tree",
-      "DFS"
+      "Depth-First Search",
+      "Binary Search Tree",
+      "Binary Tree"
     ],
     "intended_approach": "DFS로 각 노드에 유효 범위(min, max)를 전달하며 BST 조건을 검증합니다."
   },
   "word-break": {
     "difficulty": "Medium",
     "categories": [
-      "Dynamic Programming"
+      "Array",
+      "Hash Table",
+      "String",
+      "Dynamic Programming",
+      "Trie",
+      "Memoization"
     ],
     "intended_approach": "dp[i] = s[:i]가 wordDict로 분리 가능한지 여부로 정의하고, Bottom-up DP로 O(n²)에 풀어야 합니다."
   },
   "word-search": {
     "difficulty": "Medium",
     "categories": [
-      "Graph",
-      "Backtracking"
+      "Array",
+      "String",
+      "Backtracking",
+      "Depth-First Search",
+      "Matrix"
     ],
     "intended_approach": "각 셀에서 DFS 백트래킹으로 탐색하고, 방문한 셀을 임시 마킹해 중복 방문을 방지합니다."
   },
   "word-search-ii": {
     "difficulty": "Hard",
     "categories": [
+      "Array",
+      "String",
+      "Backtracking",
       "Trie",
-      "Backtracking"
+      "Matrix"
     ],
     "intended_approach": "단어 목록으로 Trie를 구성하고, 그리드를 DFS 백트래킹으로 탐색하며 Trie 노드와 함께 매칭합니다."
   }
