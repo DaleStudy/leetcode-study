@@ -1,5 +1,5 @@
 // math의 min을 이용하는 방법
-// tc: O(n^3)
+// tc: O(n^4)
 // sc: 잘 몰랐는데 모든 요소를 함수 인자로 풀어 콜스택에 올린다 하여 O(n)이 된다고 함..
 // (대용량의 배열 시 maximum exceed 에러가 날 수 있음)
 const findMin_use_math_min = function (nums) {
