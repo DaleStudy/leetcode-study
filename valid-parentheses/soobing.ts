@@ -1,3 +1,4 @@
+// 3rd tried
 function isValid(s: string): boolean {
   const result: string[] = [];
   const open = ["(", "[", "{"];
