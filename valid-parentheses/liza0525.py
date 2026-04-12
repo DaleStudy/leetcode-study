@@ -61,3 +61,37 @@ class Solution:
         if stack:
             return False
         return True
+
+
+
+# 7기 풀이
+# 시간 복잡도: O(n)
+# - s의 길이 n에 시간복잡도가 정해짐
+# 공간 복잡도: O(n)
+# - 왼쪽 괄호를 저장할 stacks(list) 변수의 길이는 s의 길이에 의해 정해짐
+# - stack의 최대 길이는 s가 모두 왼쪽 괄호로 되어 있을 때
+class Solution:
+    def isValid(self, s: str) -> bool:
+        # 오른쪽 괄호가 들어올 때의 쌍을 쉽게 찾기 위해 만든 dictionary
+        brackets = {")": "(", "}": "{", "]": "["}
+
+        # 왼쪽 괄호를 저장할 list
+        stacks = []
+
+        for ss in s:
+            if stacks and ss in brackets.keys():
+                # stacks에 괄호가 저장되어 있으면서, ss로 오른쪽 괄호가 들어오면
+                # 쌍을 비교
+                if stacks[-1] != brackets[ss]:
+                    # stacks의 마지막 문자(가장 늦게 들어온 왼쪽 괄호)와 현재 들어온 오른쪽 괄호의 쌍이 같지 않으면
+                    # 괄호의 쌍이 맞지 않으므로 False를 early return
+                    return False
+                else:
+                    # 쌍이 맞는다면 stacks에 있는 마지막 왼쪽 괄호는 더이상 비교할 필요가 없으므로 pop
+                    stacks.pop()
+            else:
+                # ss가 왼쪽 괄호인 경우엔 stacks에 쌓아준다
+                stacks.append(ss)
+
+        # 모든 쌍비교를 하고 stacks에 괄호가 남아있는 지 여부를 return
+        return not stacks
