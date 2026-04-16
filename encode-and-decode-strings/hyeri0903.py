@@ -2,6 +2,7 @@ class Solution:
     """
     @param: strs: a list of strings
     @return: encodes a list of strings to a single string.
+    모르겠어서 해설의 힘을 빌렸어요..ㅠ
     """
     def encode(self, strs: List[str]):
         text = ""
