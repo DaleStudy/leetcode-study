@@ -23,7 +23,6 @@ var maxProfit = function (prices) {
     return maxProfit;
 };
 
-
 // -----아래는 이전에 작성한 답안입니다.
 // /**
 //  * @param {number[]} prices

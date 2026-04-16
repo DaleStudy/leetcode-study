@@ -20,6 +20,4 @@ class Solution:
                 continue
             if not stack or brackets[stack.pop()] != b:
                 return False
-        if not stack:
-            return True
-        return False
+        return not stack
