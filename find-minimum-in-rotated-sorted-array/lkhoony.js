@@ -7,7 +7,7 @@ const findMin_use_math_min = function (nums) {
 };
 
 // 메서드를 사용하지 않은 풀이.
-// tc: O(n^5)
+// tc: O(n^6)
 // sc: O(1)
 const findMin_naive = function (nums) {
   let min = nums[0];
