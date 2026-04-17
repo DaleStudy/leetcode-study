@@ -22,3 +22,6 @@ class Solution:
         # Handle the last node
         cur.next = prev
         return cur
+
+# Time Complexity: O(n)
+# Space Complexity: O(1)
