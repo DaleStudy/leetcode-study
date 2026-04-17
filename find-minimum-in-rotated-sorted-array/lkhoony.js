@@ -23,7 +23,7 @@ const findMin_naive = function (nums) {
 };
 
 // 시간복잡도를 문제의 요구사항에 맞도록 줄여본 풀이
-// tc: O(n*logn)
+// tc: O(n^2*logn)
 // sc: O(1)
 const findMin = function (nums) {
   let left = 0,
