@@ -11,12 +11,14 @@ class Solution:
         reversed_node = None
 
         while current_node:
-            reversed_node = ListNode(current_node.val, next=reversed_node)
+            next_node = current_node.next
+            current_node.next = reversed_node
 
-            if not current_node.next:
-                return reversed_node
+            if next_node is None:
+                return current_node
 
-            current_node = current_node.next
+            reversed_node = current_node
+            current_node = next_node
 
 
 if __name__ == "__main__":
