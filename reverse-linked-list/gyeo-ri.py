@@ -7,16 +7,16 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: ListNode | None) -> ListNode | None:
+        current_node = head
         reversed_node = None
 
-        while head:
-            reversed_node = ListNode(head.val, next=reversed_node)
+        while current_node:
+            reversed_node = ListNode(current_node.val, next=reversed_node)
 
-            if not head.next:
+            if not current_node.next:
                 return reversed_node
 
-            else:
-                head = head.next
+            current_node = current_node.next
 
 
 if __name__ == "__main__":
