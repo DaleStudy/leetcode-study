@@ -6,7 +6,6 @@ class Solution:
         '''
         m = len(grid)
         n = len(grid[0])
-        visited = [ [0] * n for _ in range(m)]
         count = 0
 
         def dfs(i, j):
@@ -14,10 +13,10 @@ class Solution:
             if i < 0 or i >= m or j < 0 or j >= n or grid[i][j] == "0":
                 return
 
-            if visited[i][j] == 1:
+            if grid[i][j] == "#":
                 return
-
-            visited[i][j] = 1 #방문표시
+            #방문표시
+            grid[i][j] = "#"
 
             dfs(i+1, j)
             dfs(i-1, j)
@@ -26,7 +25,7 @@ class Solution:
         
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == "1" and visited[i][j] == 0:
+                if grid[i][j] == "1" and grid[i][j] != "#":
                     dfs(i,j)
                     count += 1
         return count
