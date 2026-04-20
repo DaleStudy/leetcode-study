@@ -1,27 +1,29 @@
-// 1. Brute force
 function twoSum(nums: number[], target: number): number[] {
-  for (let i = 0; i < nums.length - 1; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) {
-        return [i, j];
+  const map = new Map<number, number[]>();
+  for(let i = 0; i < nums.length; i++) {
+      const current = map.get(nums[i]);
+      if(current) {
+          current.push(i);
+      } else {
+          map.set(nums[i], [i]);
       }
-    }
-  }
-  return [];
-}
-
-// 2. Hashmap
-function twoSum(nums: number[], target: number): number[] {
-  const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
-    map.set(nums[i], i);
   }
 
-  for (let i = 0; i < nums.length; i++) {
-    const targetIndex = map.get(target - nums[i]);
-    if (targetIndex && targetIndex !== i) {
-      return [i, targetIndex];
-    }
+  nums.sort((a, b) => a - b);
+  let left = 0;
+  let right = nums.length - 1;
+
+  while(left < right) {
+      if(nums[left] + nums[right] === target) {
+          return [map.get(nums[left])?.pop() ?? 0, map.get(nums[right])?.pop() ?? 0];
+      }
+
+      if(nums[left] + nums[right] > target) {
+          right--;
+      } else {
+          left++;
+      }
   }
+
   return [];
-}
+};
