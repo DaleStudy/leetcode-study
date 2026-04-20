@@ -10,8 +10,11 @@
  * >>>, >>, <<, &, |
  * - signed, unsigned 연산
  */
+
+// test2
 function reverseBits(n: number): number {
   let result = 0;
+
   for (let i = 0; i < 32; i++) {
     result <<= 1;
     result |= n & 1;
