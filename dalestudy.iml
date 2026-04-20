@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$" />
+          <root url="file://$MODULE_DIR$/3sum" />
+          <root url="file://$MODULE_DIR$/alien-dictionary" />
+          <root url="file://$MODULE_DIR$/best-time-to-buy-and-sell-stock" />
+          <root url="file://$MODULE_DIR$/binary-tree-level-order-traversal" />
+          <root url="file://$MODULE_DIR$/binary-tree-maximum-path-sum" />
+          <root url="file://$MODULE_DIR$/climbing-stairs" />
+          <root url="file://$MODULE_DIR$/clone-graph" />
+          <root url="file://$MODULE_DIR$/coin-change" />
+          <root url="file://$MODULE_DIR$/combination-sum" />
+          <root url="file://$MODULE_DIR$/construct-binary-tree-from-preorder-and-inorder-traversal" />
+          <root url="file://$MODULE_DIR$/container-with-most-water" />
+          <root url="file://$MODULE_DIR$/contains-duplicate" />
+          <root url="file://$MODULE_DIR$/counting-bits" />
+          <root url="file://$MODULE_DIR$/course-schedule" />
+          <root url="file://$MODULE_DIR$/decode-ways" />
+          <root url="file://$MODULE_DIR$/design-add-and-search-words-data-structure" />
+          <root url="file://$MODULE_DIR$/encode-and-decode-strings" />
+          <root url="file://$MODULE_DIR$/find-median-from-data-stream" />
+          <root url="file://$MODULE_DIR$/find-minimum-in-rotated-sorted-array" />
+          <root url="file://$MODULE_DIR$/graph-valid-tree" />
+          <root url="file://$MODULE_DIR$/group-anagrams" />
+          <root url="file://$MODULE_DIR$/house-robber" />
+          <root url="file://$MODULE_DIR$/house-robber-ii" />
+          <root url="file://$MODULE_DIR$/implement-trie-prefix-tree" />
+          <root url="file://$MODULE_DIR$/insert-interval" />
+          <root url="file://$MODULE_DIR$/invert-binary-tree" />
+          <root url="file://$MODULE_DIR$/jump-game" />
+          <root url="file://$MODULE_DIR$/kth-smallest-element-in-a-bst" />
+          <root url="file://$MODULE_DIR$/linked-list-cycle" />
+          <root url="file://$MODULE_DIR$/longest-common-subsequence" />
+          <root url="file://$MODULE_DIR$/longest-consecutive-sequence" />
+          <root url="file://$MODULE_DIR$/longest-increasing-subsequence" />
+          <root url="file://$MODULE_DIR$/longest-palindromic-substring" />
+          <root url="file://$MODULE_DIR$/longest-repeating-character-replacement" />
+          <root url="file://$MODULE_DIR$/longest-substring-without-repeating-characters" />
+          <root url="file://$MODULE_DIR$/lowest-common-ancestor-of-a-binary-search-tree" />
+          <root url="file://$MODULE_DIR$/maximum-depth-of-binary-tree" />
+          <root url="file://$MODULE_DIR$/maximum-product-subarray" />
+          <root url="file://$MODULE_DIR$/maximum-subarray" />
+          <root url="file://$MODULE_DIR$/meeting-rooms" />
+          <root url="file://$MODULE_DIR$/meeting-rooms-ii" />
+          <root url="file://$MODULE_DIR$/merge-intervals" />
+          <root url="file://$MODULE_DIR$/merge-k-sorted-lists" />
+          <root url="file://$MODULE_DIR$/merge-two-sorted-lists" />
+          <root url="file://$MODULE_DIR$/minimum-window-substring" />
+          <root url="file://$MODULE_DIR$/missing-number" />
+          <root url="file://$MODULE_DIR$/non-overlapping-intervals" />
+          <root url="file://$MODULE_DIR$/number-of-1-bits" />
+          <root url="file://$MODULE_DIR$/number-of-connected-components-in-an-undirected-graph" />
+          <root url="file://$MODULE_DIR$/number-of-islands" />
+          <root url="file://$MODULE_DIR$/pacific-atlantic-water-flow" />
+          <root url="file://$MODULE_DIR$/palindromic-substrings" />
+          <root url="file://$MODULE_DIR$/product-of-array-except-self" />
+          <root url="file://$MODULE_DIR$/remove-nth-node-from-end-of-list" />
+          <root url="file://$MODULE_DIR$/reorder-list" />
+          <root url="file://$MODULE_DIR$/reverse-bits" />
+          <root url="file://$MODULE_DIR$/reverse-linked-list" />
+          <root url="file://$MODULE_DIR$/rotate-image" />
+          <root url="file://$MODULE_DIR$/same-tree" />
+          <root url="file://$MODULE_DIR$/search-in-rotated-sorted-array" />
+          <root url="file://$MODULE_DIR$/serialize-and-deserialize-binary-tree" />
+          <root url="file://$MODULE_DIR$/set-matrix-zeroes" />
+          <root url="file://$MODULE_DIR$/spiral-matrix" />
+          <root url="file://$MODULE_DIR$/subtree-of-another-tree" />
+          <root url="file://$MODULE_DIR$/sum-of-two-integers" />
+          <root url="file://$MODULE_DIR$/top-k-frequent-elements" />
+          <root url="file://$MODULE_DIR$/two-sum" />
+          <root url="file://$MODULE_DIR$/unique-paths" />
+          <root url="file://$MODULE_DIR$/valid-anagram" />
+          <root url="file://$MODULE_DIR$/valid-palindrome" />
+          <root url="file://$MODULE_DIR$/valid-parentheses" />
+          <root url="file://$MODULE_DIR$/validate-binary-search-tree" />
+          <root url="file://$MODULE_DIR$/word-break" />
+          <root url="file://$MODULE_DIR$/word-search" />
+          <root url="file://$MODULE_DIR$/word-search-ii" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
