@@ -63,5 +63,5 @@ WordDictionary.prototype._search = function(node, word, index) {
 
 // n: 단어수, m: 단어 길이
 // addWord: 시간 복잡도 O(m)
-// search: 	시간 복잡도 O(m)
+// search: 	시간 복잡도 O(m^2)
 // 공간 복잡도 O(n * m)
