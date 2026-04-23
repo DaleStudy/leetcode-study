@@ -1,10 +1,11 @@
 function containsDuplicate(nums: number[]): boolean {
-  const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
-    if (map.get(nums[i])) {
-      return true;
-    } else map.set(nums[i], 1);
+  const checkMap = new Map();
+  for(const n of nums) {
+      if(checkMap.has(n)) {
+          return true;
+      } else {
+          checkMap.set(n, 1);
+      }
   }
-
   return false;
-}
+};
