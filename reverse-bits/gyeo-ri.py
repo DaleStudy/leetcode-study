@@ -2,7 +2,11 @@ class Solution:
     def reverseBits(self, n: int) -> int:
         result = 0
         for _ in range(32):
+            # 1. n의 마지막 자리를 뽑아서(n & 1)
+            # 2. result의 마지막 자리를 0으로 만든 다음(result << 1 -> 마지막 자리가 0)
+            # 3. 그 마지막 자리에 n의 마지막 자리를 붙임(0과의 OR 연산)
             result = (result << 1) | (n & 1)
+            # n의 자리를 이동
             n >>= 1
         return result
 
