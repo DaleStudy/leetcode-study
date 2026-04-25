@@ -1,8 +1,10 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
-        n_binary_str = bin(n).replace("0b", "").zfill(32)
-        n_reversed_binary = "".join(reversed(n_binary_str))
-        return int(n_reversed_binary, 2)
+        result = 0
+        for _ in range(32):
+            result = (result << 1) | (n & 1)
+            n >>= 1
+        return result
 
 
 if __name__ == "__main__":
