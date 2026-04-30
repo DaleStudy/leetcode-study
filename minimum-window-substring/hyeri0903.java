@@ -10,7 +10,7 @@ class Solution {
         - 정답 없으면 emptystring "" return
         3.solution
         - brutforce, 모든 substring 구해서 t문자 포함 여부 체크, time complexity: O(n^2)
-        - two pointer: right pointer 움직이다가 t문자 모두 포함하면 left pointer 옮기면서 가장 작은 사이즈의 substring 구하기, time compliexty: O(n)
+        - two pointer: right pointer 움직이다가 t문자 모두 포함하면 left pointer 옮기면서 가장 작은 사이즈의 substring 구하기, time compliexty: O(m+n), space: O(1)
         힌트 봐도 모르겠어서 풀이보고 풀었습니다 ㅜㅜ
          */
 
