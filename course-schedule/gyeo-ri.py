@@ -35,7 +35,6 @@ class Solution:
 
             # 수강 가능한 강의를 하나 꺼내서 수강 처리
             current = available_courses.popleft()
-            required_courses[current] = -1
             done += 1
 
             # 이 강의의 선행 강의 찾기
@@ -45,7 +44,7 @@ class Solution:
                 if required_courses[next_] == 0:
                     available_courses.append(next_)
 
-        return True if done == numCourses else False
+        return done == numCourses
 
 
 if __name__ == "__main__":
