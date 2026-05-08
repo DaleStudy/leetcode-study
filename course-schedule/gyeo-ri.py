@@ -11,50 +11,44 @@
 
 """
 
-from collections import deque
-
 
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
-        def dfs(current: int):
-            current_state = course_states[current]
+        # 3. DFS 함수 정의
+        def dfs(current: int) -> bool:
+            match course_states[current]:
+                case 2:  # 탐색 완료
+                    return True
+                case 1:  # 탐색 중
+                    return False
+                case 0:  # 탐색 전
+                    course_states[current] = 1
+                    for next_ in course_graph[current]:
+                        if not dfs(next_):
+                            return False
 
-            if current_state == 1:
-                return False
+                    course_states[current] = 2
+                    return True
 
-            elif current_state == 2:
-                return True
-
-            else:
-                course_states[current] = 1
-                required_courses = course_graph[current]
-
-                for next_ in required_courses:
-                    result = dfs(next_)
-                    if not result:
-                        return False
-
-            course_states[current] = 2
-            return True
-
-        # 1-a. 인덱스가 0부터 시작하는 그래프 초기화
+        # 1. 인덱스가 0부터 시작하는 그래프 초기화
         course_graph: list[list[int]] = [[] for _ in range(numCourses)]
         for after, before in prerequisites:
             course_graph[before].append(after)
 
-        # 1-b. 각 노드별 탐색 상태를 표시하는 객체
-        # 0: 탐색 전 / 1: 탐색 중 / 2: 탐색 완료
+        # 2. 각 노드별 탐색 상태를 표시하는 객체
         course_states: list[int] = [0] * numCourses
 
+        # 3. 모든 노드를 1회씩 순회하면서 dfs
         for course in range(numCourses):
-            result = dfs(course)
-            if result is False:
+            if not dfs(course):
                 return False
         return True
 
 
 """
 # 위상정렬
+from collections import deque
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
         # 1-a. 인덱스가 0부터 시작하는 그래프 초기화
