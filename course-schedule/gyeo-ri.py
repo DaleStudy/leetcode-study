@@ -3,12 +3,56 @@
 # 시도한 로직 수: 1
     1. 위상 정렬로 푸는 방법
         - 시간복잡도 O(n) / 공간복잡도 O(n)
-            - 실제로는 numCourses + len(prerequisites) 만큼의 복잡도
+            - 실제로는 numCourses + len(prerequisites) 만큼의 복잡도 (O(V+E))
+    2. DFS를 활용하는 방법
+        - 1번과 동일하게 O(V+E)
+
 """
 
 from collections import deque
 
 
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
+        def dfs(current: int):
+            current_state = course_states[current]
+
+            if current_state == 1:
+                return False
+
+            elif current_state == 2:
+                return True
+
+            else:
+                course_states[current] = 1
+                required_courses = course_graph[current]
+
+                for next_ in required_courses:
+                    result = dfs(next_)
+                    if not result:
+                        return False
+
+            course_states[current] = 2
+            return True
+
+        # 1-a. 인덱스가 0부터 시작하는 그래프 초기화
+        course_graph: list[list[int]] = [[] for _ in range(numCourses)]
+        for after, before in prerequisites:
+            course_graph[before].append(after)
+
+        # 1-b. 각 노드별 탐색 상태를 표시하는 객체
+        # 0: 탐색 전 / 1: 탐색 중 / 2: 탐색 완료
+        course_states: list[int] = [0] * numCourses
+
+        for course in range(numCourses):
+            result = dfs(course)
+            if result is False:
+                return False
+        return True
+
+
+"""
+# 위상정렬
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
         # 1-a. 인덱스가 0부터 시작하는 그래프 초기화
@@ -45,6 +89,7 @@ class Solution:
                     available_courses.append(next_)
 
         return done == numCourses
+"""
 
 
 if __name__ == "__main__":
