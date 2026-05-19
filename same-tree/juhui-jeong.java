@@ -11,6 +11,10 @@ class Solution {
     }
 }
 
+/*
+ * 시간 복잡도: O(n)
+ * 공간 복잡도: O(n)
+ */
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         Queue<TreeNode> queueP = new LinkedList<>();
