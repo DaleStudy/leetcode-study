@@ -48,5 +48,5 @@ func threeSum(nums []int) [][]int {
 		filteredResult = append(filteredResult, k[0:len(k)])
 	}
 
-	return result.keys()
+	return filteredResult
 }
