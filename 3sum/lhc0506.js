@@ -3,7 +3,7 @@
  * @return {number[][]}
  */
 var threeSum = function(nums) {
-    const result = [];
+    const result = []; const seen = new Set();
     const numsMap = {};
 
     nums.forEach((num, index) => {
