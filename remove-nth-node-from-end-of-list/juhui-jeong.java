@@ -1,29 +1,3 @@
-/* 
-시간 복잡도: O(N)
-공간 복잡도: O(1)
-*/
-class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-
-        ListNode fast = dummy;
-        ListNode slow = dummy;
-        
-        for (int i = 0; i <= n; i++) {
-            fast = fast.next;
-        }
-
-        while(fast != null) {
-            fast = fast.next;
-            slow = slow.next;
-        }
-
-        slow.next = slow.next.next;
-
-        return dummy.next;
-    }
-}
 
 /* 
 첫 번째 풀이
@@ -47,3 +21,60 @@ class Solution {
     }
 }
 */
+
+
+/* 
+시간 복잡도: O(N)
+공간 복잡도: O(1)
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode fast = dummy;
+        ListNode slow = dummy;
+        
+        for (int i = 0; i <= n; i++) {
+            fast = fast.next;
+        }
+
+        while(fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        slow.next = slow.next.next;
+
+        return dummy.next;
+    }
+}
+*/
+
+/**
+ * 
+ * 시간 복잡도는 O(n)
+ * 공간 복잡도는 O(1)
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int length = 0;
+        ListNode curLenCheck = head;
+
+        while(curLenCheck != null) {
+            length++;
+            curLenCheck = curLenCheck.next;
+        }
+
+        int targetIndex = length - n;
+        if (targetIndex == 0) return head.next;
+
+        ListNode targetPrev = head;
+        for (int i=0; i < targetIndex-1; i++) {
+            targetPrev = targetPrev.next;
+        }
+        targetPrev.next = targetPrev.next.next;
+
+        return head;
+    }
+}
