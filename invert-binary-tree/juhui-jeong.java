@@ -1,6 +1,7 @@
 /*
- * 시간 복잡도: O(1)
- * 공간 복잡도: O(1)
+이전 풀이
+ * 시간 복잡도: O(n)
+ * 공간 복잡도: O(n)
  */
 public class Solution {
     public TreeNode invertTree(TreeNode root) {
@@ -27,6 +28,33 @@ public class Solution {
             }
         }
 
+        return root;
+    }
+}
+
+/**
+ * 시간 복잡도: O(n)
+ * 공간 복잡도: O(n)
+ * DFS 풀이
+ */
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) return null;
+
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        stack.push(root);
+
+        while(!stack.isEmpty()) {
+            TreeNode cur = stack.pop();
+            
+            TreeNode temp = cur.left;
+            cur.left = cur.right;
+            cur.right = temp;
+ 
+            if (cur.left != null) stack.push(cur.left);
+
+            if (cur.right != null) stack.push(cur.right);
+        }
         return root;
     }
 }
