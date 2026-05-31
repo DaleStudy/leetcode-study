@@ -1,0 +1,24 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        result = []
+        
+        def backtrack(start_idx, current_combination, current_sum):
+            if current_sum == target:
+                result.append(current_combination[:]) 
+                return
+            if current_sum > target:
+                return
+            
+            # 모든 후보 탐색
+            for i in range(start_idx, len(candidates)):
+                # 현재 숫자 선택
+                current_combination.append(candidates[i])
+                
+                # 같은 숫자를 다시 사용할 수 있으므로 i부터 시작
+                backtrack(i, current_combination, current_sum + candidates[i])
+                
+                # 백트래킹
+                current_combination.pop()
+        
+        backtrack(0, [], 0)
+        return result

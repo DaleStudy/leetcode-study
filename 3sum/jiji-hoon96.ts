@@ -1,71 +1,69 @@
-/**
- * @param {number[]} nums
- * @return {number[][]}
- *
- * 풀이 1
- *
- * 이렇게 푸니까 시간복잡도 O(n^3) / 공간복잡도 O(n) 라서 복잡한 예시에는 time limit 이 발생함
- * 개선해보자..
- *
- * function threeSum(nums: number[]): number[][] {
- *  nums.sort((a, b) => a - b);
- *     let result = []
- *     for (let i= 0; i<nums.length; i++){
- *         for(let j= i+1 ; j <nums.length; j++){
- *             for (let k = j+1; k<nums.length; k++){
- *                 if(nums[i]+nums[j]+nums[k]===0){
- *                     result.push([nums[i], nums[j], nums[k]]);
- *                 }
- *             }
- *         }
- *     }
- *
- *     return Array.from(
- *         new Set(result.map(item => JSON.stringify(item))),
- *         str => JSON.parse(str)
- *     );
- *     }
- *
- *  풀이 2
- *
- *  투포인터를 활용해보자.
- *  아래처럼 문제를 풀게되면 시간복잡도 O(n^2) / 공간복잡도 O(1) 이다.
- *  시공간 복잡도가 줄긴하지만 메모리 사용량과 큰 숫자를 다룰 때 성능이 매우 좋다!
- */
+// time limit 실패
 
+// function threeSum(nums: number[]): number[][] {
+// 	const result: number[][] = [];
+// 	for (let i = 0; i < nums.length; i++) {
+// 		for (let j = 1; j < nums.length; j++) {
+// 			for (let k = 2; k < nums.length; k++) {
+// 				if (
+// 					i !== j &&
+// 					j !== k &&
+// 					i !== k &&
+// 					nums[i] + nums[j] + nums[k] === 0
+// 				) {
+// 					const hasArray = result.some(
+// 						(item) =>
+// 							JSON.stringify([...item].sort((a, b) => a - b)) ===
+// 							JSON.stringify([nums[i], nums[j], nums[k]].sort((a, b) => a - b)),
+// 					);
+// 					if (!hasArray) {
+// 						result.push([nums[i], nums[j], nums[k]]);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return result;
+// }
 
 function threeSum(nums: number[]): number[][] {
-    let result : number[][] = []
-    nums.sort((a, b) => a - b);
-    const n = nums.length;
+	const result: number[][] = [];
+	nums.sort((a, b) => a - b);
 
-    for(let first = 0; first<n-2; first++){
-        // 첫번째가 양수면 0이 될 수 없음
-        if(nums[first] > 0) break;
+	for (let i = 0; i < nums.length - 2; i++) {
+		if (i > 0 && nums[i] === nums[i - 1]) continue;
 
-        //중복된 수는 건너뜀
-        if(first > 0 && nums[first]===nums[first-1]) continue;
+		let left = i + 1;
+		let right = nums.length - 1;
 
-        let left = first + 1;
-        let right = n-1;
+		while (left < right) {
+			const sum = nums[i] + nums[left] + nums[right];
 
-        while(left < right){
-            const sum = nums[first] +nums[left] + nums[right];
-
-            if(sum < 0){
-                left ++
-            }else if(sum > 0){
-                right --;
-            }else{
-                result.push([nums[first],nums[left],nums[right]]);
-                // left, left+1 이 같을 때 중복된 수는 건너뜀
-                while(left < right && nums[left] === nums[left+1]) left++;
-                // right, right+1 이 같을 때 중복된 수는 건너뜀
-                while(left < right && nums[right] === nums[right-1]) right--;
-                left++;
-                right--;
-            }
-        }
-    }
-    return result;
+			if (sum === 0) {
+				result.push([nums[i], nums[left], nums[right]]);
+				while (left < right && nums[left] === nums[left + 1]) left++;
+				while (left < right && nums[right] === nums[right - 1]) right--;
+				left++;
+				right--;
+			} else if (sum < 0) {
+				left++;
+			} else {
+				right--;
+			}
+		}
+	}
+	return result;
 }
+
+threeSum([-1, 0, 1, 2, -1, -4]); // [[-1,-1,2],[-1,0,1]]
+threeSum([0, 1, 1]); // []
+threeSum([0, 0, 0]); // [[0,0,0]]
+threeSum([
+	12, 5, -12, 4, -11, 11, 2, 7, 2, -5, -14, -3, -3, 3, 2, -10, 9, -15, 2, 14,
+	-3, -15, -3, -14, -1, -7, 11, -4, -11, 12, -15, -14, 2, 10, -2, -1, 6, 7, 13,
+	-15, -13, 6, -10, -9, -14, 7, -12, 3, -1, 5, 2, 11, 6, 14, 12, -10, 14, 0, -7,
+	11, -10, -7, 4, -1, -12, -13, 13, 1, 9, 3, 1, 3, -5, 6, 9, -4, -2, 5, 14, 12,
+	-5, -6, 1, 8, -15, -10, 5, -15, -2, 5, 3, 3, 13, -8, -13, 8, -5, 8, -6, 11,
+	-12, 3, 0, -2, -6, -14, 2, 0, 6, 1, -11, 9, 2, -3, -6, 3, 3, -15, -5, -14, 5,
+	13, -4, -4, -10, -10, 11,
+]); // [[-15,1,14],[-15,2,13],[-15,3,12],[-15,4,11],[-15,5,10],[-15,6,9],[-15,7,8],[-14,0,14],[-14,1,13],[-14,2,12],[-14,3,11],[-14,4,10],[-14,5,9],[-14,6,8],[-14,7,7],[-13,-1,14],[-13,0,13],[-13,1,12],[-13,2,11],[-13,3,10],[-13,4,9],[-13,5,8],[-13,6,7],[-12,-2,14],[-12,-1,13],[-12,0,12],[-12,1,11],[-12,2,10],[-12,3,9],[-12,4,8],[-12,5,7],[-12,6,6],[-11,-3,14],[-11,-2,13],[-11,-1,12],[-11,0,11],[-11,1,10],[-11,2,9],[-11,3,8],[-11,4,7],[-11,5,6],[-10,-4,14],[-10,-3,13],[-10,-2,12],[-10,-1,11],[-10,0,10],[-10,1,9],[-10,2,8],[-10,3,7],[-10,4,6],[-10,5,5],[-9,-5,14],[-9,-4,13],[-9,-3,12],[-9,-2,11],[-9,-1,10],[-9,0,9],[-9,1,8],[-9,2,7],[-9,3,6],[-9,4,5],[-8,-6,14],[-8,-5,13],[-8,-4,12],[-8,-3,11],[-8,-2,10],[-8,-1,9],[-8,0,8],[-8,1,7],[-8,2,6],[-8,3,5],[-8,4,4],[-7,-7,14],[-7,-6,13],[-7,-5,12],[-7,-4,11],[-7,-3,10],[-7,-2,9],[-7,-1,8],[-7,0,7],[-7,1,6],[-7,2,5],[-7,3,4],[-6,-6,12],[-6,-5,11],[-6,-4,10],[-6,-3,9],[-6,-2,8],[-6,-1,7],[-6,0,6],[-6,1,5],[-6,2,4],[-6,3,3],[-5,-5,10],[-5,-4,9],[-5,-3,8...
