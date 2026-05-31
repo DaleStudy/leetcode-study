@@ -16,7 +16,7 @@
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         /**
-        1.problem: 2개의 bst 가 동일한지 체크
+        1.problem: 2개의 binary tree 가 동일한지 체크
         2.constraints - 구조와 노드가 동일해야된다
         3.solution - DFS
         1) 두 트리의 노드가 모두 null -> true
