@@ -9,6 +9,7 @@ class Solution {
         3.solution
         - dp[i] = max(dp[i-1], dp[i-2] + nums[i]) -> 이전값 vs i 번째 털었을 경우 max 값
         - case는 2가지. 1)0집 포함, n-1불포함 2)0집 불포함, n-1 포함
+        - time complexity: O(n), space complexity: O(1)
          */
          int currentMax = 0;
          int n = nums.length;
