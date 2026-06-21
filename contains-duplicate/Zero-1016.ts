@@ -23,5 +23,3 @@ function containsDuplicate1(nums: number[]): boolean {
 function containsDuplicate2(nums: number[]): boolean {
   return new Set(nums).size !== nums.length;
 }
-
-// 두 풀이 전부 시간복잡도 O(n), 공간복잡도 O(n)
