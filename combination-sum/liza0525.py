@@ -38,3 +38,42 @@ class Solution:
         dfs([], 0)
 
         return results
+
+
+# 7기 풀이
+# T: target 수, C: candidates의 최소값일 때,
+# 시간 복잡도: O(n ^ (T/C))
+# - 최악의 경우는 가장 작은 candidate로 target을 만드는 횟수만큼 candidates를 탐색할 때이다. (dominant)
+# - sorting은 O(n log n)이며, 무시 가능
+# 공간 복잡도: O(T/C)
+# - dfs의 call stack의 깊이는 T/C가 최대 깊이
+# - result의 조합 또한 T/C가 최대 길이
+class Solution:
+    # DFS로 문제를 풀이하며 조건에 맞춰 가지치기가 필요한 문제
+    # 문제 풀이 편의를 위해 candidates를 sorting한 후 풀이를 한다.
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
+        results = []
+
+        def dfs(target, result):
+            if target == 0:
+                # 더이상 target을 만드는데 숫자가 필요하지 않으므로
+                # 정답 array에 deepcopy하여 저장
+                results.append(result[:])
+                return
+            
+            for candidate in candidates:
+                if candidate > target:
+                    # 후보 수가 target보다 크면 그 이후의 수는 더이상 탐색하지 않아도 된다
+                    return
+                if result and candidate < result[-1]:
+                    # 후보 수가 result의 마지막 수보다 크면 skip한다(result 내 숫자들도 작은 수부터 저장되게 함)
+                    continue
+                result.append(candidate)
+                # target에서 candidate를 뺀 만큼 다음 stack 계산을 한다.
+                dfs(target - candidate, result)
+                result.pop()
+
+        dfs(target, [])
+
+        return results

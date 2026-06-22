@@ -23,3 +23,34 @@ class Solution:
             if cnt != 0:
                 return False
         return True
+
+
+
+# 7기 풀이
+# 시간 복잡도: O(n)
+#  - s, t, letter_dict를 모두 한 loop당 한 번 씩만 돈다.
+# 공간 복잡도: O(n)
+#  - letter_dict 생성 시 s의 길이(n이라고 할 때)에 종속된다.
+from collections import defaultdict
+
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        # s를 구성하는 각 알파벳의 개수를 저장할 defaultdict을 생성 
+        letter_dict = defaultdict(int)
+
+        # s의 문자열을 돌며 각 알파벳의 개수를 카운트
+        for ss in s:
+            letter_dict[ss] += 1
+
+        # t 문자열을 돌만셔 각 알파벳의 개수만큼 dictionary에서 빼준다.
+        for tt in t:
+            letter_dict[tt] -= 1
+
+        # s, t를 돌며 각 알파벳의 개수를 센 후 value들은 모두 0이 되어야 한다. (아나그램 특성 상)
+        # 각 알파벳의 value가 양수면 s에 더 많았고, 음수면 t가 더 많았다는 의미가 됨
+        for v in letter_dict.values():
+            if v != 0:
+                return False
+
+        return True

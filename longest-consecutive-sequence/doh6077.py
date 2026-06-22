@@ -1,4 +1,5 @@
 # 배열을 정렬하고 포인터를 두개 사용
+"""
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         if not nums:
@@ -32,3 +33,32 @@ class Solution:
                 r += 1
         
         return longest
+"""
+from typing import List
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if len(nums) <= 1:
+            return len(nums)
+
+        nums.sort()
+        r = 1
+        curr = nums[0]
+        count = 1
+        max_count = 1
+
+        while r < len(nums):
+            if nums[r] == curr:
+                r += 1
+                continue
+
+            if nums[r] == curr + 1:
+                count += 1
+            else:
+                count = 1
+
+            curr = nums[r]
+            max_count = max(max_count, count)
+            r += 1
+
+        return max_count

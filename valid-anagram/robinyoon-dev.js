@@ -4,18 +4,16 @@
  * @return {boolean}
  */
 var isAnagram = function (s, t) {
-    //1. s와 t를 Array로 만든다.
-    const sArray = s.split("");
-    const tArray = t.split("");
+    const counter = new Array(26).fill(0);
 
-    //2. sArray와 tArray의 sort를 같게 만든다.
-    const sortedSArray = sArray.sort();
-    const sortedTArray = tArray.sort();
+    //edge case: s와 t의 길이가 다른 경우
+    if(s.length !== t.length) return false;
 
-    //3. sArray와 tArray가 같은지 판별한다.
-    const result = JSON.stringify(sortedSArray) === JSON.stringify(sortedTArray);
+    for(let i = 0; i < s.length; i++){
+        counter[s.charCodeAt(i) - 97]++;
+        counter[t.charCodeAt(i) - 97]--;
+    }
 
-    //4. 같으면 true를, 다르면 false를 반환한다.
-    return result;
-
+    return counter.every(count => count === 0);
 };
+

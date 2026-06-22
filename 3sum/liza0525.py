@@ -36,3 +36,39 @@ class Solution:
                     results.add((nums[i], nums[left], nums[right]))
                     left, right = left + 1, right - 1
         return list(results)
+
+
+# 7기 풀이
+# 시간 복잡도: O(n^2)
+#  - 배열 정렬: O(n log n)
+#  - for문과 while문을 이용한 이중 loop문으로 탐색: O(n^2)
+#  - 전체 시간 복잡도는 O(n^2)
+# 공간 복잡도: O(1)
+#  - 결과 저장 공간은 output이므로 제외 (변수 이름: results)
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()  # 정렬을 한 번 한 후
+        results = set()
+
+        # for 문과 투포인터를 이용해 문제를 푼다.
+        for i in range(len(nums) - 2):
+            # i번째와 i - 1 번째 값이 같은 경우에는 이미 이전 loop에서 계산했기 때문에 다음 루프로 넘긴다
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+
+            # 포인터 지정
+            left, right = i + 1, len(nums) - 1
+            while left < right:
+                result = nums[i] + nums[left] + nums[right]
+                if result < 0:
+                    # 합이 0보다 작다면 요소의 값을 올려야 하기 때문에 left를 올린다. (nums는 정렬이 된 상태)
+                    left += 1
+                elif result > 0:
+                    # 합이 0보다 크다면 요소의 값을 줄여야 하기 때문에 right를 내린다. (nums는 정렬이 된 상태)
+                    right -= 1
+                else:
+                    # 합이 0이면 결과 저장 후, 포인터를 조정하여 다음 triplet 세트를 찾는다.
+                    results.add((nums[i], nums[left], nums[right]))
+                    left, right = left + 1, right - 1
+
+        return list(results)

@@ -1,15 +1,16 @@
+// 3rd tried
 function wordBreak(s: string, wordDict: string[]): boolean {
   const dp = new Array(s.length + 1).fill(false);
-  dp[s.length] = true;
+    dp[0] = true;
 
-  for (let i = s.length - 1; i >= 0; i--) {
-    for (const word of wordDict) {
-      if (i + word.length <= s.length && s.slice(i, i + word.length) === word) {
-        dp[i] = dp[i + word.length];
-      }
-
-      if (dp[i]) break;
+    for (let i = 1; i <= s.length; i++) {
+        for (let j = 0; j < i; j++) {
+            if (dp[j] && wordDict.includes(s.slice(j, i))) {
+                dp[i] = true;
+                break;
+            }
+        }
     }
-  }
-  return dp[0];
-}
+
+    return dp[s.length];
+};

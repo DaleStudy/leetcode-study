@@ -17,4 +17,3 @@ class Solution:
             cur = cur.next
         return p
         
-        

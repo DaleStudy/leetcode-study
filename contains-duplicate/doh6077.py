@@ -1,10 +1,7 @@
+# https://leetcode.com/problems/contains-duplicate/description/
 
-# set에 저장하면서 중복 여부 확인하기
 class Solution:
-    def containsDuplicate(self, nums: list[int]) -> bool:
-        hashset = set()
-        for i in nums:
-            if i in hashset:
-                return True
-            hashset.add(i)
-        return False
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        # Create a set to store unique numbers from nums
+        nums_set = set(nums)
+        return len(nums_set) != len(nums)

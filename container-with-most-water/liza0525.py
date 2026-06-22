@@ -29,3 +29,36 @@ class Solution:
             )
 
         return result_area
+
+
+# 7기 풀이
+# 시간 복잡도: O(n)
+# - two point 알고리즘을 이용하기 때문에 heights 변수의 길이인 n에 시간복잡도가 정해짐
+# 공간 복잡도: O(1)
+# - 몇 개의 변수만 사용함
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        # 양 끝 포인터 지정
+        start, end = 0, len(height) - 1
+
+        # max_area는 현재 포인터들을 이용했을 때의 넓이 계산
+        # 이때 높이는 작은 쪽으로 선택하여 계산해야 함
+        max_area = min(height[start], height[end]) * (end - start)
+
+        # start가 end보다 작을 때 루프 돌기
+        while start < end:
+            # 문제의 핵심 아이디어는, 높이가 큰 쪽을 움직이면 얻을 수 있는 최선이 현재보다 클 수 없다.
+            # 이는, start의 높이와 end의 높이 중 큰 쪽의 포인터를 고정하여 움직여야 한다는 것
+            # (물의 높이는 작은 쪽에 의해 정해지는데, 큰 쪽 포인터를 움직이면 x 길이만 짧아지게 되어 오히려 넓이이 줄어듦)
+            if height[start] < height[end]:
+                # start 쪽의 높이가 낮으면 start를 움직임
+                start += 1
+            else:
+                # end 쪽의 높이가 낮으면 end를 움직임
+                end -= 1
+
+            # 포인터를 옮기고 난 후의 넓이를 계산하여, 기존의 max_area와 비교하여 큰 쪽으로 업데이트
+            curr_area = min(height[start], height[end]) * (end - start)
+            max_area = max(max_area, curr_area)
+        
+        return max_area

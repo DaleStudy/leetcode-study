@@ -1,5 +1,6 @@
 # idea: Hash
 
+# Ans 1
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         count_dict={}
@@ -12,8 +13,10 @@ class Solution:
         return False
     
 
-'''
-Trial and error
-Printing I/O inside the loop may cause Output Limit Exceeded
-'''
+# Ans 2
+# Time Complexity: O(n) (Set)
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        return len(nums) != len(set(nums))
+
 
