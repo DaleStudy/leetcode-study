@@ -16,3 +16,4 @@ class Solution:
             ans = max(ans, next - num)
 
         return ans
+

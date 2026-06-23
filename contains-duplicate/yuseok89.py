@@ -9,3 +9,4 @@ class Solution:
             dup_check.add(num)
 
         return False
+

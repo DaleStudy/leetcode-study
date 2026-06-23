@@ -12,3 +12,4 @@ class Solution:
                 return [idx, idx_map[need]]
 
         return []
+

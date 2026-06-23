@@ -9,3 +9,4 @@ class Solution:
             one_before = cur
 
         return max(one_before, two_before)
+
