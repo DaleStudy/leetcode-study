@@ -9,4 +9,3 @@ class Solution:
                 return [i, num_map[pair]]
             else:
                 num_map[num] = i
-                
