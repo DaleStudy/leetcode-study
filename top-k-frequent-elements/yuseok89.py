@@ -1,31 +1,26 @@
-// TC: O(NlogK)
+// TC: O(N)
 // SC: O(N)
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 
-        import heapq
+        cnt = Counter(nums)  # TC: O(n)
+        freq_map = defaultdict(list)
+        freq_max = 0
 
-        heap = []
-        cnt = {}
-
-        for num in nums:
-            if num not in cnt:
-                cnt[num] = 0
-
-            cnt[num] = cnt[num] + 1
-
-        for num in cnt.keys():
-            if len(heap) < k:
-                heapq.heappush(heap, cnt[num])
-            elif heap[0] < cnt[num]:
-                heapq.heappop(heap)
-                heapq.heappush(heap, cnt[num])
+        for num, freq in cnt.items():
+            freq_map[freq].append(num)
+            freq_max = max(freq_max, freq)
 
         ret = []
 
-        for num in cnt.keys():
-            if cnt[num] >= heap[0]:
-                ret.append(num)
+        for freq in range(freq_max, 0, -1):
+            if freq not in freq_map:
+                continue
+
+            ret.extend(freq_map[freq])
+
+            if len(ret) >= k:
+                break
 
         return ret
 
