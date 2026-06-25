@@ -86,8 +86,8 @@ class SolutionC:
 
         return result
 
-# Solution D: 우선순위 힙
-#  - Time: O(nlogN)
+# Solution D: 파이썬의 heapq 라이브러리 사용하여 최소힙으로 정렬
+#  - Time: O(N logN)
 # - Space: O(N)
 # - Runtime: 7ms  / Beats 51.93%
 # - Memory: 23.00MB / Beats 42.12%
@@ -95,7 +95,8 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]: 
         counter = Counter(nums)
 
-        # nums를 우선순위 힙으로 변경
+        # heapq 라이브러리는 최소힙으로 구현되어 있어서
+        # 우선순위를 높아려면 count를 음수로 저장해야함
         heap = []
         for num, count in counter.items():
             heapq.heappush(heap, (-count, num))
