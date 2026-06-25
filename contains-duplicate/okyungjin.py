@@ -1,8 +1,3 @@
-# Time: O(N)
-# Space: O(N)
-
-
-
 # 문제: https://leetcode.com/problems/contains-duplicate/
 
 # 아이디어:
@@ -33,4 +28,3 @@ class Solution:
             seen.add(n)
 
         return False
-            
