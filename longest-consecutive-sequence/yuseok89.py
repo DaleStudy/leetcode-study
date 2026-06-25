@@ -1,4 +1,5 @@
-// TC: O(n), SC: O(n)
+// TC: O(n)
+// SC: O(n)
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         nums_unique = set(nums)
