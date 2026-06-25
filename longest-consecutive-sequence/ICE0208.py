@@ -1,5 +1,5 @@
 # 2차 풀이
-class Solution:
+class Solution2:
     def longestConsecutive(self, nums: List[int]) -> int:
         ss = set(nums)
 
@@ -22,32 +22,32 @@ class Solution:
         return max_cnt
 
 
-# # 1차 풀이
-# class Solution:
-#     def longestConsecutive(self, nums: List[int]) -> int:
-#         ss = set(nums)
-#         visit = set()
+# 1차 풀이
+class Solution1:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        ss = set(nums)
+        visit = set()
 
-#         max_cnt = 0
-#         for n in ss:
-#             if n in visit:
-#                 continue
-#             visit.add(n)
+        max_cnt = 0
+        for n in ss:
+            if n in visit:
+                continue
+            visit.add(n)
 
-#             cnt = 1
+            cnt = 1
             
-#             i = n+1
-#             while i in ss:
-#                 visit.add(i)
-#                 i += 1
-#                 cnt += 1
+            i = n+1
+            while i in ss:
+                visit.add(i)
+                i += 1
+                cnt += 1
 
-#             i = n-1
-#             while i in ss:
-#                 visit.add(i)
-#                 cnt += 1
-#                 i -= 1
+            i = n-1
+            while i in ss:
+                visit.add(i)
+                cnt += 1
+                i -= 1
             
-#             max_cnt = max(max_cnt, cnt)
+            max_cnt = max(max_cnt, cnt)
         
-#         return max_cnt
+        return max_cnt
