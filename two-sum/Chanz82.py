@@ -10,11 +10,11 @@ class Solution:
         ## - 따라서 Worst N번 이므로, 2n = O(n)이라고 생각합니다.
 
         hashmap = dict()
+
         for idx, num in enumerate(nums):
-            hashmap[num] = idx
-        
-        for idx, num in enumerate(nums):
-            matched_num_idx = hashmap.get(target-num)
-            if matched_num_idx and matched_num_idx != idx:
-                return [idx, matched_num_idx]
+            possible_match = target - num
+            if possible_match in hashmap:
+                return [idx, hashmap[possible_match]]
+            else:
+                hashmap[num] = idx
         
