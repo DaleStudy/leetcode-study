@@ -14,8 +14,6 @@
 
 function rob(nums) {
   switch (nums.length) {
-    case 0:
-      return 0;
     case 1:
       return nums[0];
     case 2:

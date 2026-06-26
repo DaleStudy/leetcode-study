@@ -35,10 +35,6 @@ function topKFrequent(nums, k) {
     if (bucket[i].length > 0) {
       result.push(...bucket[i]);
     }
-
-    if (result.length === k) {
-      return result.slice(0, k).map(Number);
-    }
-    result.slice(0, k);
   }
+  return result.slice(0, k);
 }
