@@ -18,3 +18,5 @@ class Solution(object):
         for x in freq[:k]:
             result.append(x[0])
         return result
+    
+    

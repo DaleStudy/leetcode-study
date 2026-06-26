@@ -10,3 +10,5 @@ class Solution(object):
             if (target - nums[i]) in seen:
                 return [seen[target - nums[i]],i]   
             seen[nums[i]] =i
+
+
