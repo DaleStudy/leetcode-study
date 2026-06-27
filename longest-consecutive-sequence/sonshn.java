@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Finds the length of the longest consecutive elements sequence in an unsorted array.
+ * 주어진 배열에서 연속된 정수의 가장 긴 길이를 찾는 문제
  * 
  * 시간 복잡도: O(n log n), 공간 복잡도: O(1)
  */
