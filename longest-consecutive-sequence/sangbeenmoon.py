@@ -16,3 +16,36 @@ class Solution:
                 answer = max(answer , length)
 
         return answer
+
+
+
+# 정렬하면 쉬운데 O(n)이 필요하네 → set으로 조회를 O(1)로 → 근데 중복으로 세네 → 시작점에서만 세자
+
+# TC : O(n)
+# SC : O(n)
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        s = set()
+
+        for num in nums:
+            s.add(num)
+
+        ans = 0
+        
+        for num in s:
+            if num - 1 in s:
+                continue
+            
+            sub_ans = 1
+            next_num = num + 1
+            while next_num in s:
+                sub_ans = sub_ans + 1
+                next_num = next_num + 1
+            ans = max(ans, sub_ans)
+        
+        return ans
+
+            
+
+
