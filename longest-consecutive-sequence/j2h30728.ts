@@ -45,8 +45,8 @@ function longestConsecutive(nums: number[]): number {
       while (set.has(current + 1)) {
         count++;
         current++;
-        max = Math.max(count, max);
       }
+      max = Math.max(count, max);
     }
   }
 
