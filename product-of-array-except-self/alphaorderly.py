@@ -2,36 +2,34 @@ class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         """
         O(N) Time complexity
-        O(N) Space complexity
-
-        If output array does not count as extra space as written in follow up,
-        it is O(1) solution
         """
         N = len(nums)
 
-        z_count = 0
-        multed = 1
+        zeroes = nums.count(0)
 
-        # 1. Create a multiplied number contains all array integers
-        # - Count zero for edge case
-        for n in nums:
-            if n == 0:
-                z_count += 1
-                if z_count > 1:
-                    return [0] * N
-                continue
-
-            multed *= n
+        if zeroes > 1:
+            return [0] * N
 
         ans = [0] * N
+        acc = 1
 
-        # 2. Generate ans array with edge case ( 1 zero number )
-        for i, n in enumerate(nums):
-            if z_count == 1:
-                if n == 0:
-                    ans[i] = multed
-                continue
+        # This could make logic complex, so treat it separately
+        if zeroes == 1:
+            place = nums.index(0)
+            for i in range(N):
+                if i != place:
+                    acc *= nums[i]
+            ans[place] = acc
+            return ans
 
-            ans[i] = multed // n
+        for i in range(N):
+            ans[i] = acc
+            acc *= nums[i]
+
+        acc = 1
+
+        for i in range(N - 1, -1, -1):
+            ans[i] *= acc
+            acc *= nums[i]
 
         return ans

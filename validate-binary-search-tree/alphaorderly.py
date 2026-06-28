@@ -21,7 +21,7 @@ class Solution:
         """
         O(N)
         """
-        s = [(root, -float("inf"), float(inf))]
+        s = [(root, -float("inf"), float("inf"))]
 
         while s:
             node, lower, upper = s.pop()
