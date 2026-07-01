@@ -1,5 +1,5 @@
 # TC: O(N)
-# SC: O(K)
+# SC: O(1)
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
 
