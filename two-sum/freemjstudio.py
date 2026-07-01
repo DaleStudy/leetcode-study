@@ -10,4 +10,3 @@ class Solution:
             hashmap[current_num] = i # store the index of current num
         
         return answer
-        
