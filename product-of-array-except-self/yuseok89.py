@@ -1,5 +1,5 @@
-// TC: O(N)
-// SC: O(N)
+# TC: O(N)
+# SC: O(N)
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
 
