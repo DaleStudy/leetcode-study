@@ -13,7 +13,36 @@
 
 
 class Solution {
+
+	static {
+		Solution warmup = new Solution();
+		for (int i = 0; i < 500; ++i) {
+			warmup.productExceptSelf(new int[2]);
+		}
+	}
+
+
 	public int[] productExceptSelf(int[] nums) {
+		int[] answer = new int[nums.length];
+
+		Arrays.fill(answer, 1);
+
+		int leftProduct = 1;
+		for (int i = 0 ; i < nums.length - 1; i ++) {
+			leftProduct *= nums[i];
+			answer[i + 1] *= leftProduct;
+		}
+
+		int rightProduct = 1;
+		for (int i = nums.length - 1 ; i > 0 ; i --) {
+			rightProduct *= nums[i];
+			answer[i - 1] *= rightProduct;
+		}
+
+		return answer;
+	}
+
+	public int[] prevSubmission(int[] nums) {
 		int zeros = 0;
 		long totalProduct = 1;
 
