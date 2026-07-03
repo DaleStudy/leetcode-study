@@ -1,17 +1,14 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        zero_count = nums.count(0)
+        n = len(nums)
+        answer = [1] * n
 
-        if zero_count >= 2:
-            return [0] * len(nums)
+        for i in range(1, n):
+            answer[i] = answer[i -1] * nums[i - 1]
 
-        multiplied = 1
-        for num in nums:
-            if num == 0:
-                continue
-            multiplied = multiplied * num
+        R = 1
+        for i in range(n - 1, -1, -1):
+            answer[i] *= R
+            R *= nums[i]
 
-        if zero_count == 1:
-            return [multiplied if x == 0 else 0 for x in nums]
-
-        return [int(multiplied / x) for x in nums]
+        return answer
