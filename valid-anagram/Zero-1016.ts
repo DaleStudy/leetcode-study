@@ -19,7 +19,7 @@ function isAnagram(s: string, t: string): boolean {
 
   // 문자열 s와 t의 빈도수를 비교
   for (const [key, value] of sMap) {
-    if (value !== tMap.get(key) || !tMap.has(key)) return false;
+    if (value !== tMap.get(key)) return false;
   }
 
   return true;
