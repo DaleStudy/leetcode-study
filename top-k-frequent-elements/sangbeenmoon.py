@@ -29,3 +29,30 @@ class Solution:
         
 
         
+# TC: O(nlogn)
+# SC: O(n)
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count_map = {}
+
+        for num in nums:
+            if num in count_map:
+                count_map[num] = count_map[num] + 1
+            else:
+                count_map[num] = 1
+
+        tuple_list = []
+
+        for item in count_map.items():
+            tuple_list.append(item)
+
+        tuple_list.sort(key=lambda x: x[1], reverse=True)
+
+        answer = []
+        for i in range(k):
+            answer.append(tuple_list[i][0])
+
+        
+        return answer
+            
