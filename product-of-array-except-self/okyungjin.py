@@ -19,6 +19,8 @@
 
 # 시간 복잡도 : O(N)
 # 공간 복잡도 : O(1) (정답 배열 제외)
+from typing import List
+
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         size = len(nums)
@@ -36,3 +38,6 @@ class Solution:
             suffix *= nums[j]
 
         return answer
+
+print(Solution().productExceptSelf([1,2,3,4]))
+print(Solution().productExceptSelf([2,5,3,7]))
