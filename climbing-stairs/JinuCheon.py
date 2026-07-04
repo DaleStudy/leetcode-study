@@ -30,4 +30,24 @@ class Solution:
         # 새로운 결과가 있으면 무조건 저장.
         self.memo[n] = self.dfs(n - 1) + self.dfs(n - 2)
         return self.memo[n]
-    
+
+
+# yuseok89 님 피드백 반영.
+# 점화식(recursive relation): 수열의 항을 그 이전 항들을 이용해서 정의하는 식.
+# 함수 호출 오버헤드 제거 & 안정성
+class Solution3:
+    def climbStairs(self, n: int) -> int:
+        if n < 2:
+            return n
+        
+        dp = [0] * (n+1)
+
+        # set init values
+        dp[1] = 1
+        dp[2] = 2
+
+        # i 번째 계단 오르는 경우의 수: 1칸 + 2칸 경우의 수의 합
+        for i in range(3, n+1):
+            dp[i] = dp[i - 1] + dp[i - 2]
+        
+        return dp[n];
