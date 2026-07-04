@@ -3,3 +3,4 @@ class Solution:
         processed = "".join(ch.lower() for ch in s if ch.isalnum())
 
         return processed == processed[::-1]
+        
