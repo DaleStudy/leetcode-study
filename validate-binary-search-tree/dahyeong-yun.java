@@ -1,28 +1,24 @@
 /**
  * 0. 풀이 개요
- *   - 시간복잡도 : O(n log n)
+ *   - 시간복잡도 : O(n)
  *   - 공간복잡도 : O(n)
  */
 class Solution {
     /**
-     * 1. 풀이 과정
-     * 1.1 문제 이해
-     *   - 애니어그램이 가능한 문자열인지 판단하는 문제임. 두 문자열 s와 t가 주어지고, t가 s의 애니어그램이라면 true를 반환
-     * 1.2 제약 사항
-     *   - s, 와 t의 문자열의 길이가 5 * 10^4 이므로 문자열 길이 만큼 순회해야 한다면 O(n^2)은 불가능해 보임. O(n log n) 이하가 필요.
-     *   - 문자는 반드시 영소문자로만 구성되어 있으나, 만약 Follow up 질문 처럼 유니코드를 포함해야 된다면 이를 포괄하는 자료형이 필요. 
      * 1.3 풀이 아이디어
-     *   - 문자열을 정렬했을 때, 같은 문자열이라면 애니어그램이 될 것.
-     *   - 문자열의 character를 배열로 만들고 정렬하면, bulit-in 메서드에 의해 O(n log n)의 시간복잡도가 가짐,
-     *   - 문자열의 길이만큼 character 배열이 필요하므로 2n 만큼의 공간이 더 필요하므로 O(n)의 공간복잡도를 가짐.
+     *   - root의 좌측은 전부 root.value 보다 작아야 하고, 우측은 더 커야함.
+     *   - 각 부모 노드에 대해 좌측 자식 노드는 값이 더 작아야 하고, 우측은 더 커야함.
+     *   - 이 검증을 매 노드에 반복하여 이진트리 여부를 체크할 수 있음
+     *   - 모든 노드의 갯 수를 n 이라고 할 때 n 개의 노드를 모두 1번 방문하므로 O(n)의 시간복잡도를 가짐
+     *   - 별도의 자료구조를 생성하지는 않지만, 콜 스택이 쌓인 상태를 감안 했을 때 최악의 경우 O(n)의 공간복잡도를 가짐.
      */
-    public boolean isAnagram(String s, String t) {
-        char[] arrayS = s.toCharArray();
-        char[] arrayT = t.toCharArray();
+    public boolean isValidBST(TreeNode root) {
+        return check(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
 
-        Arrays.sort(arrayS);
-        Arrays.sort(arrayT);
-
-        return Arrays.equals(arrayS, arrayT);
+    boolean check(TreeNode cursor, long min, long max) {
+        if(cursor == null) return true; // 노드가 없는 경우 생략
+        if(cursor.val <= min || cursor.val >= max) return false;
+        return check(cursor.left, min, cursor.val) && check(cursor.right,cursor.val, max);
     }
 }
