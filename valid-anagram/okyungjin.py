@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/house-robber/description/
+# https://leetcode.com/problems/valid-anagram/description/
 
 # [요구사항]
 # 문자열 두 개가 주어졌을 때 애너그램이 맞는지 아닌지를 반환하는 문제
@@ -16,7 +16,7 @@
 
 from collections import Counter
 
-class Solution:
+class Solution01:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
@@ -30,3 +30,12 @@ class Solution:
                 return False
 
         return True
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        
+        # 파이썬은 == 로 값을 비교한다.
+        # 참조로 비교하려면 is 사용
+        return Counter(s) == Counter(t)
