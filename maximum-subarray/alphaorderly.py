@@ -65,8 +65,7 @@ class Solution:
         ans = nums[0]
 
         for i in range(1, N):
-            curr = max(nums[i], prev + nums[i])
-            prev = curr
-            ans = max(ans, curr)
+            prev = max(nums[i], prev + nums[i])
+            ans = max(ans, prev)
 
         return ans
