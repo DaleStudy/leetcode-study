@@ -30,3 +30,35 @@ class Solution:
                     left = left + 1
                     right = right - 1
         return answer
+
+
+# TC : O(n^2)
+# SC : O(n)
+
+class Solution:
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
+        
+        nums.sort()
+
+        answer_map = {}
+        answer = []
+        
+        for i in range(len(nums)):
+            target = -1 * nums[i]
+
+            left = i + 1
+            right = len(nums) - 1
+
+            while left < right:
+                if nums[left] + nums[right] == target:
+                    candidate = (target * -1, nums[left], nums[right])
+                    if candidate not in answer_map:
+                        answer_map[candidate] = True
+                        answer.append([target * -1, nums[left], nums[right]])
+                    left += 1
+                elif nums[left] + nums[right] < target:
+                    left += 1
+                else:
+                    right -= 1
+        return answer
+                

@@ -38,3 +38,38 @@ class Solution:
         if cur.right:
             self.go_right(cur.right, cur.val, MM)
 
+
+
+
+# ---------
+
+
+# Definition for a binary tree node.
+
+# TC: O(n)
+# SC: O(h)
+
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        
+        def isValid(mm, MM, cur: TreeNode) -> bool:
+            
+
+            if cur == None:
+                return True
+            
+            if mm != None and cur.val <= mm:
+                return False
+             
+            if MM != None and cur.val >= MM:
+                return False
+            
+            return isValid(mm, cur.val, cur.left) and isValid(cur.val, MM, cur.right)
+        
+        return isValid(None, None ,root)
+            
