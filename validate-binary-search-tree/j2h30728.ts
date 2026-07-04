@@ -10,13 +10,14 @@ class TreeNode {
 }
 
 function isValidBST(root: TreeNode | null): boolean {
-  function valid(node, min, max) {
-    if (!node) return true;
+  function validate(node: TreeNode | null, min: number, max: number): boolean {
+    if (node === null) return true;
 
     if (node.val <= min || node.val >= max) return false;
 
-    return valid(node.left, min, node.val) && valid(node.right, node.val, max);
+    return (
+      validate(node.left, min, node.val) && validate(node.right, node.val, max)
+    );
   }
-
-  return valid(root, -Infinity, Infinity);
+  return validate(root, -Infinity, Infinity);
 }
