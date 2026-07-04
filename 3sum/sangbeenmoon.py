@@ -56,6 +56,7 @@ class Solution:
                         answer_map[candidate] = True
                         answer.append([target * -1, nums[left], nums[right]])
                     left += 1
+                    right -= 1
                 elif nums[left] + nums[right] < target:
                     left += 1
                 else:

@@ -57,19 +57,19 @@ class Solution:
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
-        def isValid(mm, MM, cur: TreeNode) -> bool:
+        def isValid(min_val, max_val, cur: TreeNode) -> bool:
             
 
-            if cur == None:
+            if cur is None:
                 return True
             
-            if mm != None and cur.val <= mm:
+            if min_val is not None and cur.val <= min_val:
                 return False
              
-            if MM != None and cur.val >= MM:
+            if max_val is not None and cur.val >= max_val:
                 return False
             
-            return isValid(mm, cur.val, cur.left) and isValid(cur.val, MM, cur.right)
+            return isValid(min_val, cur.val, cur.left) and isValid(cur.val, max_val, cur.right)
         
         return isValid(None, None ,root)
             
