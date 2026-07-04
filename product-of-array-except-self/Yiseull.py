@@ -8,7 +8,7 @@ class Solution:
             answer.append(answer[i - 1] * nums[i - 1])
 
         tmp = 1
-        for i in range(n - 1, -1, -1):
+        for i in reversed(range(n)):
             answer[i] *= tmp
             tmp *= nums[i]
 
