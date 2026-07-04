@@ -30,3 +30,4 @@ class Solution:
         # 새로운 결과가 있으면 무조건 저장.
         self.memo[n] = self.dfs(n - 1) + self.dfs(n - 2)
         return self.memo[n]
+    
