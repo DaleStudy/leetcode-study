@@ -1,14 +1,18 @@
+/**
+ * 시간 복잡도 : O(n)
+ * 공간 복잡도 : O(1)
+ */
 function climbStairs(n: number): number {
-  if (n === 0 || n === 1) {
-    return 1;
+  if (n <= 2) return n;
+
+  let prev2 = 1;
+  let prev1 = 2;
+  let current = 0;
+
+  for (let i = 3; i <= n; i++) {
+    current = prev2 + prev1;
+    prev2 = prev1;
+    prev1 = current;
   }
-
-  const memo: number[] = [];
-  memo[0] = memo[1] = 1;
-
-  for (let i = 2; i <= n; i++) {
-    memo[i] = memo[i - 1] + memo[i - 2];
-  }
-
-  return memo[n];
+  return current;
 }
