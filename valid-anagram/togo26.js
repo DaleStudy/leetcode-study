@@ -14,11 +14,11 @@ var isAnagram = function (s, t) {
 var isAnagram = function (s, t) {
   if (s.length !== t.length) return false;
   const sCount = [...s].reduce((acc, cur) => {
-    acc[cur] = acc[cur] + 1 || 1;
+    acc[cur] = (acc[cur] ?? 0) + 1;
     return acc;
   }, {});
   const tCount = [...t].reduce((acc, cur) => {
-    acc[cur] = acc[cur] + 1 || 1;
+    acc[cur] = (acc[cur] ?? 0) + 1 ;
     return acc;
   }, {});
   return Object.keys(sCount).every(key => sCount[key] === tCount[key]);
