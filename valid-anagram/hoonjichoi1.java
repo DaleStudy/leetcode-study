@@ -11,22 +11,16 @@ public class hoonjichoi1 {
 
         for (int i = 0; i < s.length(); i++) {
             Character c = s.charAt(i);
-            if (map.containsKey(c)) {
-                int value = map.get(c) + 1;
-                map.put(c, value);
-            } else {
-                map.put(c, 1);
-            }
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
 
         for (int j = 0; j < t.length(); j++) {
-            Character c2 = t.charAt(j);
-            if (map.containsKey(c2)) {
-                int value = map.get(c2) - 1;
-                map.put(c2, value);
-            } else {
+            Character c = t.charAt(j);
+            if (!map.containsKey(c) || map.get(c) <= 0) {
                 return false;
             }
+
+            map.put(c, map.get(c) - 1);
         }
 
         for (Integer i : map.values()) {
