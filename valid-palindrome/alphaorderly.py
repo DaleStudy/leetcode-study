@@ -34,9 +34,9 @@ class Solution:
             if left >= right:
                 break
 
-            if s[left].lower() == s[right].lower():
-                left, right = left + 1, right - 1
-            else:
+            if s[left].lower() != s[right].lower():
                 return False
+
+            left, right = left + 1, right - 1
 
         return True
