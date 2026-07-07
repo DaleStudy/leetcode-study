@@ -1,5 +1,5 @@
-# TC: O(NlogN)
-# SC: O(logN)
+# TC: O(K*N!)
+# SC: O(K)
 class Solution:
 
     def rec(self, cur, candi, combi, sum, target, ans):
