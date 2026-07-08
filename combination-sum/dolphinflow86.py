@@ -1,3 +1,6 @@
+# 1) Backtrack every possible combination to find subsets that match the target condition.
+# TC: O(N^(T/M)) where N is the length of candidates, M is the minimum value in candidates, and T is the target number.
+# SC: O(T/M) - The maximum depth of the recursion stack.
 class Solution:
     def backtrack(self, candidates: List[int], remain: int, start_index: int, path:List[int], answer: List[List[int]]):
         if remain == 0:
