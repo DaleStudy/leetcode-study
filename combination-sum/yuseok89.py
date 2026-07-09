@@ -1,27 +1,28 @@
-# TC: O(K*N!)
-# SC: O(K)
+# TC: O(N^T)
+# SC: O(T)
 class Solution:
 
-    def rec(self, cur, candi, combi, sum, target, ans):
+    def rec(self, cur_idx, target, candi, cur_combi, ans):
 
-        if sum == target:
-            ans.append(combi)
+        if target == 0:
+            ans.append(cur_combi.copy())
 
+        if cur_idx == len(candi):
             return
 
-        for idx in range(cur, len(candi)):
+        for idx in range(cur_idx, len(candi)):
+            if target < candi[idx]:
+                continue
 
-            multi = 1
-
-            while sum + multi * candi[idx] <= target:
-                self.rec(idx + 1, candi, combi + [candi[idx]] * multi, sum + multi * candi[idx], target, ans)
-                multi += 1
+            cur_combi.append(candi[idx])
+            self.rec(idx, target - candi[idx], candi, cur_combi, ans)
+            cur_combi.pop()
 
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 
         ans = []
 
-        self.rec(0, candidates, [], 0, target, ans)
+        self.rec(0, target, candidates, [], ans)
 
         return ans
 
