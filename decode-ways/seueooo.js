@@ -8,12 +8,11 @@ var numDecodings = function (s) {
   let dp = new Array(s.length).fill(0);
   dp[0] = 1;
   for (let i = 1; i < s.length; i++) {
-    // 글자가 하나인 경우
     if (s[i] !== "0") {
       dp[i] += dp[i - 1];
     }
 
-    // 글자가 두 개인 경우 (마지막 두덩이를 하나로 생각)
+    // 두 자리 수인 경우 (마지막 두덩이를 하나로 생각)
     const two = Number(s.slice(i - 1, i + 1));
 
     if (two >= 10 && two <= 26) {

@@ -7,12 +7,10 @@
  */
 var isPalindrome = function (s) {
   let newArr = s.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
-  let answer = true;
   for (let i = 0; i < Math.ceil(newArr.length / 2); i++) {
     if (newArr[i] !== newArr[newArr.length - 1 - i]) {
-      answer = false;
-      return answer;
+      return false;
     }
   }
-  return answer;
+  return true;
 };
