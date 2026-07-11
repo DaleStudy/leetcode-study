@@ -19,7 +19,7 @@ class Solution:
         self, list1: Optional[ListNode], list2: Optional[ListNode]
     ) -> Optional[ListNode]:
         head = ListNode()
-        return_node = head
+        node = head
 
         while list1 and list2:
             if list1.val > list2.val:
@@ -31,12 +31,9 @@ class Solution:
 
             head = head.next
 
-        if list1:
-            head.next = list1
-        elif list2:
-            head.next = list2
+        head.next = list1 or list2
 
-        return return_node.next
+        return node.next
 
 """
 Time Complexity: O(N)
@@ -49,10 +46,8 @@ Space Complexity: O(N) - Recursive stack space
 """
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        if not list1:
-            return list2
-        elif not list2:
-            return list1
+        if not list1 or not list2:
+            return list1 or list2
 
         if list1.val > list2.val:
             list2.next = self.mergeTwoLists(list1, list2.next)

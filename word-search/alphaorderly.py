@@ -103,7 +103,7 @@ class Solution:
         ### Prevent overlapping
         check = [[False] * COL for _ in range(ROW)]
 
-        ### Define the four
+        ### Define the four possible directions
         DIR = [
             [-1, 0],
             [1, 0],
@@ -111,7 +111,7 @@ class Solution:
             [0, 1]
         ]
 
-        ### helper function to check bound
+        ### Helper function to check bound
         def bound(r: int, c: int) -> bool:
             return 0 <= r < ROW and 0 <= c < COL
 

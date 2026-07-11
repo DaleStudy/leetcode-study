@@ -14,10 +14,7 @@ class Solution:
             if left == 0:
                 return 0
 
-            if left < 0:
-                return LARGE
-
-            if coin >= len(coins):
+            if left < 0 or coin >= len(coins):
                 return LARGE
 
             a = dp(coin, left - coins[coin]) + 1
@@ -65,13 +62,11 @@ Space Complexity: O(amount)
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         N = len(coins)
-        dp = [float('inf')] * (amount + 1)
+        dp = [float("inf")] * (amount + 1)
         dp[0] = 0
 
         for c in range(N):
             for a in range(coins[c], amount + 1):
                 dp[a] = min(dp[a], dp[a - coins[c]] + 1)
 
-        ans = dp[-1]
-
-        return ans if ans != float('inf') else -1
+        return dp[-1] if dp[-1] != float("inf") else -1

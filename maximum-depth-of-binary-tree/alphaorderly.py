@@ -8,7 +8,7 @@
 Time Complexity: O(N)
 Space Complexity: O(N) - Recursive stack space
 
-### Recursive Solution ###
+### Recursive Solution ( DFS ) ###
 
 1. If the root is None, return 0
 2. Return the maximum of the depth of the left and right subtrees + 1
