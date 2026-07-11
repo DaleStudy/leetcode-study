@@ -26,4 +26,3 @@ class Solution:
             answer.append(v)
 
         return answer
-
