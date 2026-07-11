@@ -5,8 +5,8 @@ class Solution:
         for i in range(len(nums)):
             current_num = nums[i]
             diff = target - current_num
-            if diff in hashmap.keys(): 
-                return [i, hashmap[diff]] 
+            if diff in hashmap.keys():
+                return [i, hashmap[diff]]
             hashmap[current_num] = i # store the index of current num
-        
+
         return answer
