@@ -27,7 +27,7 @@ class Solution_01:
                 dfs(
                     i, 
                     total + num, # num 을 더한 합으로 호출
-                    combination + [num]) # deep copy된 combination을 인자로 넘긴다.
+                    combination + [num]) # 얕은 복사된 combination을 인자로 넘긴다.
 
         dfs(0, 0, [])
 
@@ -47,6 +47,7 @@ class Solution:
         def dfs(start_idx: int, total: int, combination: List[int]) -> None:
             # result 
             if total == target:
+                # combination을 얕은 복사 후 추가한다
                 result.append(combination.copy())
                 return
 
@@ -59,7 +60,7 @@ class Solution:
                 num = candidates[i]
 
                 # 반환 전 num 추가
-                # -> 정답 찾으면 result에 추가할 때 combination deep copy 필요
+                # -> 정답 찾으면 result에 추가할 때 combination 얕은 복사 필요
                 combination.append(num)
 
                 dfs(i, total + num, combination)
