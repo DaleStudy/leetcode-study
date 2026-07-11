@@ -58,12 +58,9 @@ var numDecodings = function (s) {
 
     let ways = 0;
 
-    if (codeMap[firstDigit]) {
-      ways += go(start + 1);
-    }
-
+    ways += go(start + 1);
     const twoDigits = firstDigit + secondDigit;
-    if (Number(twoDigits) <= 26 && codeMap[twoDigits]) {
+    if (Number(twoDigits) <= 26) {
       ways += go(start + 2);
     }
 
