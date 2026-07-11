@@ -12,7 +12,7 @@ var isPalindrome = function (s) {
 // TC: O(n) / SC: O(1)
 // With two pointers
 var isPalindrome = function (s) {
-  const nonAlphanumeric = new RegExp(/[^a-zA-Z0-9]+/);
+  const nonAlphanumeric = /[^a-zA-Z0-9]+/;
   let left = 0;
   let right = s.length - 1;
 
