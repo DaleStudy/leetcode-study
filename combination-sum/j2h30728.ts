@@ -1,6 +1,6 @@
 /**
- * 시간 복잡도: O(n^target)
- * 공간 복잡도: O(target)
+ * 시간 복잡도: O(k * n^k) (n: candidates 길이, k: target / min(candidates) 최대 깊이)
+ * 공간 복잡도: O(k)
  */
 function combinationSum(candidates: number[], target: number): number[][] {
   const result: number[][] = [];

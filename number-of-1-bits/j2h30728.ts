@@ -1,5 +1,5 @@
 /**
- * 시간 복잡도: O(log n)
+ * 시간 복잡도: O(n) (n: 입력값의 비트 수)
  * 공간 복잡도: O(1)
  */
 function hammingWeight(n: number): number {
