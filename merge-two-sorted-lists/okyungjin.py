@@ -28,7 +28,7 @@
 
 # list1의 노드 개수를 n, list2의 노드 개수를 m이라 할 때
 # 시간 복잡도: O(n + m)
-# 공간 복잡도: O(n + m) -> 
+# 공간 복잡도: O(n + m)
 class Solution_01:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         # 맨 앞에 더미 노드를 하나 추가한다
@@ -69,7 +69,7 @@ class Solution_01:
 # list1의 노드 개수를 n, list2의 노드 개수를 m이라 할 때
 # 시간 복잡도: O(n + m)
 # 공간 복잡도: O(1) -> dummy만 사용, 추가 공간 복잡도는 O(1)
-class Solution_01:
+class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         # 맨 앞에 더미 노드를 하나 추가한다
         # 없는 상태로 짰는데 if node: else: 구문 늘어나서 맨 앞에 가상의 노드를 하나 추가해줬다
