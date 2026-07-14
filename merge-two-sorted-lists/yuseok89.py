@@ -1,4 +1,4 @@
-# TC: O(N)
+# TC: O(N+M)
 # SC: O(1)
 # Definition for singly-linked list.
 # class ListNode:
@@ -20,15 +20,7 @@ class Solution:
                 list2 = list2.next
             cur = cur.next
 
-        while list1:
-            cur.next = list1
-            list1 = list1.next
-            cur = cur.next
-
-        while list2:
-            cur.next = list2
-            list2 = list2.next
-            cur = cur.next
+        cur.next = list1 if list1 else list2
 
         return ret.next
 
