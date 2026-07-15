@@ -1,5 +1,5 @@
-# TC: O(NML)
-# SC: O(1)
+# TC: O(4^L)
+# SC: O(L)
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
 

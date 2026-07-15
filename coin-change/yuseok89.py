@@ -1,5 +1,5 @@
-# TC: O(N)
-# SC: O(N)
+# TC: O(amount * len(coins))
+# SC: O(amount)
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
 
