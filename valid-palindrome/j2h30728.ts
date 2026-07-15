@@ -5,7 +5,7 @@
 function isPalindrome(s: string): boolean {
   let string = "";
   for (const ch of s) {
-    if ((ch >= "a" && ch <= "z") || (ch >= "A" && ch <= "Z")) {
+    if (/[a-zA-Z0-9]/.test(ch)) {
       string += ch.toLowerCase();
     }
   }
