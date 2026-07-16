@@ -1,10 +1,17 @@
-# TC: O(4^L)
+# TC: O(N*M*4^L)
 # SC: O(L)
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
 
         n = len(board)
         m = len(board[0])
+
+        board_counter = Counter(board[r][c] for r in range(n) for c in range(m))
+        word_counter = Counter(word)
+
+        for c, cnt in word_counter.items():
+            if board_counter[c] < cnt:
+                return False
 
         def rec(row, col, idx):
             if idx == len(word):
