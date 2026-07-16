@@ -18,3 +18,34 @@ class Solution:
                 nums.append(candidates[j])
                 self.go(j, candidates, nums, sum_ + candidates[j], target)
                 nums.pop()
+
+
+
+# ----
+
+# TC : O(n^(T/M))
+# SC : O(T/M)
+
+
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+
+        answer = []
+        
+        def go(sub_answer: List[int], idx: int, sub_sum: int):
+            
+            if sub_sum == target:
+                answer.append(sub_answer.copy())
+                return
+            
+            for i in range(idx, len(candidates)):
+                
+                if sub_sum + candidates[i] <= target:
+                    sub_answer.append(candidates[i])
+                    go(sub_answer, i, sub_sum + candidates[i])
+                    sub_answer.pop()
+        
+        go([], 0, 0)
+
+        return answer
+
