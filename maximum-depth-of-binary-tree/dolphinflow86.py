@@ -12,9 +12,10 @@ class Solution:
         if not node:
             return depth
 
-        left = self.dfs(node.left, depth + 1)
-        right = self.dfs(node.right, depth + 1)
-        return max(left, right)
+        return max(
+            self.dfs(node.left, depth + 1),
+            self.dfs(node.right, depth + 1)
+        )
 
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         return self.dfs(root, 0)
