@@ -7,6 +7,10 @@ class Solution:
 
         board_freq = Counter(ch for row in board for ch in row)
 
+        for ch, need in Counter(ch for ch in word).items():
+            if board_freq.get(ch, 0) < need:
+                return False
+
         if board_freq.get(word[0], 0) > board_freq.get(word[-1], 0):
             word = word[::-1]
 
@@ -17,10 +21,6 @@ class Solution:
             return 0 <= r < row_len and 0 <= c < col_len
 
         def backtrack(r: int, c: int, idx: int) -> bool:
-            for ch, need in Counter(word[idx:]).items():
-                if board_freq.get(ch, 0) < need:
-                    return False
-
             if idx == len(word) - 1:
                 return True
 
