@@ -19,15 +19,21 @@ class Solution:
         # min_coins[i]: i원을 만드는데 필요한 최소 동전의 개수
         min_coins = [NOT_POSSIBLE] * (amount + 1)
         min_coins[0] = 0
+
+        # 최적화를 위해 정렬
+        coins.sort()
         
         for cur_amount in range(1, amount + 1):
-            # coin: 선택한 동전
+            # coin: 선택한 동전의 금액
             for coin in coins:
-                if cur_amount >= coin:
-                    # 둘 중 더 작은 값으로 업데이트
-                    # 1. 기존에 구한 개수
-                    # 2. 현재 동전을 1개 추가해서 만드는 개수
-                    min_coins[cur_amount] = min(min_coins[cur_amount], min_coins[cur_amount - coin] + 1)
+                # coins가 정렬되어 있으므로, cur_amount 보다 동전의 금액이 더 크면 이후는 확인 불필요
+                if coin > cur_amount:
+                    break
+                
+                # 둘 중 더 작은 값으로 업데이트
+                # 1. 기존에 구한 개수
+                # 2. 현재 동전을 1개 추가해서 만드는 개수
+                min_coins[cur_amount] = min(min_coins[cur_amount], min_coins[cur_amount - coin] + 1)
         
         # 초기화된 값 그대로이면 불가능한 조합이므로 -1 반환
         if min_coins[amount] == NOT_POSSIBLE:
