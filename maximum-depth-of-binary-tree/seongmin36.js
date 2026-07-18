@@ -21,7 +21,5 @@ function maxDepth(root) {
   let left_depth = maxDepth(root.left);
   let right_depth = maxDepth(root.right);
 
-  let count = Math.max(left_depth, right_depth) + 1;
-
-  return count;
+  return Math.max(left_depth, right_depth) + 1;
 }
