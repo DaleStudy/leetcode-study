@@ -14,7 +14,7 @@ class Solution:
             if nums[low] > nums[mid]:
                 high = mid
             else:
-                low = mid
+                low = mid + 1
 
         return min(nums[low], nums[high])
 
