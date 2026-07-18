@@ -22,7 +22,7 @@ class Solution {
             if (node.right != null) dfs(node.right!!, depth + 1)
         }
 
-        dfs(root!!, 1)
+        dfs(root, 1)
 
         return maxDepth
     }
