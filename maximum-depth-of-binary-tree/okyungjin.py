@@ -62,3 +62,20 @@ class Solution:
             depth += 1
             
         return depth
+
+'''
+재귀 함수 풀이
+
+시간 복잡도: O(N)
+공간 복잡도: O(H), H: 스택의 높이
+'''
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+
+        left_depth = self.maxDepth(root.left)
+        right_depth = self.maxDepth(root.right)
+
+        # 현재 자신의 노드 하나를 더해서 최대 깊이를 반환
+        return max(left_depth, right_depth) + 1
