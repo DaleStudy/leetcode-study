@@ -141,4 +141,3 @@ class Solution:
                 stack.append(start_index)
 
         return False
-   
