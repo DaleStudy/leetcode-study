@@ -12,10 +12,12 @@
 # 공간 복잡도: O(1)
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-
-        # 왼쪽/오른쪽 값의 인덱스 계산
         left = 0 
         right = len(nums) - 1
+
+        # 이미 정렬된 상태인 경우 or n번 회전한 경우 분기 처리
+        if nums[left] <= nums[right]:
+            return nums[left]
 
         while left < right:
             # 중간값 인덱스
