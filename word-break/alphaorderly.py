@@ -4,7 +4,7 @@ Time Complexity: O(n * k * m)
     - k = number of words in wordDict
     - m = average word length in wordDict
 
-    At each index in s, we may check every word in wordDict and for each, compare up to m characters.
+    At each index in s, we may check every word in wordDict, and for each, compare up to m characters.
 
 Space Complexity: O(n)
     - n = len(s), due to recursion stack and memoization table (one entry per possible starting index).
@@ -69,3 +69,76 @@ class Solution:
                     dp[index] = dp[index - W]
 
         return bool(dp[-1])
+
+"""
+Time Complexity: O(n * k * m)
+    - n = len(s)
+    - k = number of words in wordDict
+    - m = average word length in wordDict
+
+    For every index in s, we consider each word in wordDict and, for each, match up to m characters.
+
+Space Complexity: O(n)
+    - n = len(s), required for the dp array.
+
+- Uses a trie to store the words in wordDict.
+- Returns a list of ending indices of the words that match the prefix (i.e., all indices where a word ends if we start matching from the given index).
+"""
+class Trie:
+    def __init__(self):
+        self.children = dict()
+        self.end = False
+
+    def insert(self, target: int):
+        node = self
+
+        for ch in target:
+            if ch not in node.children:
+                node.children[ch] = Trie()
+            node = node.children[ch]
+
+        node.end = True
+
+    def startsWith(self, target: str, start: int) -> List[int]:
+        ans = []
+        node = self
+
+        for i in range(start, len(target)):
+            ch = target[i]
+
+            if ch not in node.children:
+                return ans
+
+            node = node.children[ch]
+            if node.end:
+                ans.append(i + 1)
+
+        return ans
+
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        S = len(s)
+        t = Trie()
+        visited = [False] * (S + 1)
+
+        for word in wordDict:
+            t.insert(word)
+
+        stack = [0]
+
+        while stack:
+            start = stack.pop()
+
+            starts_with = t.startsWith(s, start)
+
+            for start_index in starts_with:
+                if start_index == S:
+                    return True
+                if visited[start_index]:
+                    continue
+                visited[start_index] = True
+                stack.append(start_index)
+
+        return False
+   
