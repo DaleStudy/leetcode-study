@@ -1,21 +1,22 @@
 """
-Time Complexity: O(n * k * m)
-    - n = len(s)
-    - k = number of words in wordDict
-    - m = average word length in wordDict
+Top-down dynamic programming with memoization.
 
-    At each index in s, we may check every word in wordDict, and for each, compare up to m characters.
+Time Complexity: O(k * n * (n + m)), or O(k * n^2) when m <= n
+    - n = len(s)
+    - k = len(wordDict)
+    - m = the maximum word length
+
+    There are at most n memoized states, and each state checks every word.
+    In this implementation, s[index:] also creates a suffix whose length is
+    O(n), while startswith may compare up to m characters.
 
 Space Complexity: O(n)
-    - n = len(s), due to recursion stack and memoization table (one entry per possible starting index).
+    The memoization table and recursion stack each contain at most n entries.
 
-- Uses top-down dynamic programming with memoization (via lru_cache).
-- The helper function dp(index) returns True if s[index:] can be fully segmented into words from wordDict.
-- Base case: If index == len(s), then the entire string is successfully segmented.
-- For each call, iterate through all words in the dictionary and check if s[index:] begins with that word.
-- If a match is found, recursively check for the remainder of the string starting after the matched word.
-- Return True as soon as any valid segmentation is found.
-- Return False if no segmentation is possible for this index.
+dp(index) returns whether the suffix beginning at index can be completely
+segmented. Reaching len(s) means that all characters have been consumed.
+For every dictionary word that matches the current suffix, the function
+recursively checks the remaining suffix and stops at the first valid split.
 """
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
@@ -36,22 +37,24 @@ class Solution:
         return dp(0)
 
 """
-Time Complexity: O(n * k * m)
-    - n = len(s)
-    - k = number of words in wordDict
-    - m = average word length in wordDict
+Bottom-up dynamic programming over prefixes of s.
 
-    For every index in s, we consider each word in wordDict and, for each, match up to m characters.
+Time Complexity: O(k * n * (n + m)), or O(k * n^2) when m <= n
+    - n = len(s)
+    - k = len(wordDict)
+    - m = the maximum word length
+
+    Each of the n + 1 prefix boundaries checks every word. The expression
+    s[index - W:] creates a suffix of up to O(n) characters, and startswith
+    may compare up to m characters.
 
 Space Complexity: O(n)
-    - n = len(s), required for the dp array.
+    The dp array stores one value for every prefix boundary.
 
-- Uses bottom-up dynamic programming.
-- The dp array indicates whether a prefix of s up to index can be segmented into words from wordDict.
-- Base case: dp[0] = 1, since the empty string can always be segmented.
-- For each index, iterate through all words, and for each, check if s[index - W : index] equals the word, assuming index >= W and dp[index - W] is True.
-- If a match is found, update dp[index] to reflect that segmentation.
-- Finally, return True if dp[-1] is set, indicating the entire string can be segmented; otherwise, return False.
+dp[index] indicates whether s[:index] can be segmented. dp[0] is true because
+the empty prefix needs no words. A word of length W can end at index when the
+preceding prefix, dp[index - W], is valid and the suffix beginning there starts
+with that word. The final entry represents the entire string.
 """
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
@@ -71,18 +74,24 @@ class Solution:
         return bool(dp[-1])
 
 """
-Time Complexity: O(n * k * m)
+Trie-assisted depth-first search over valid word boundaries.
+
+Time Complexity: O(L + n^2)
     - n = len(s)
-    - k = number of words in wordDict
-    - m = average word length in wordDict
+    - L = the total number of characters in wordDict
 
-    For every index in s, we consider each word in wordDict and, for each, match up to m characters.
+    Building the trie takes O(L). Each reachable boundary is processed once,
+    but a trie lookup may scan the remaining suffix, giving O(n^2) total work
+    in the worst case.
 
-Space Complexity: O(n)
-    - n = len(s), required for the dp array.
+Space Complexity: O(L + n)
+    The trie uses O(L) space. The visited array, DFS stack, and a lookup's list
+    of matching end positions use O(n) additional space.
 
-- Uses a trie to store the words in wordDict.
-- Returns a list of ending indices of the words that match the prefix (i.e., all indices where a word ends if we start matching from the given index).
+startsWith(target, start) follows the trie from target[start:] and returns every
+exclusive end index at which a dictionary word finishes. The DFS treats those
+indices as the next segmentation boundaries. visited prevents the same boundary
+from being added to the stack more than once.
 """
 class Trie:
     def __init__(self):
