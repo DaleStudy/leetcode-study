@@ -23,4 +23,3 @@ class Trie:
 
     def startsWith(self, prefix: str) -> bool:
         return prefix in self.prefix_set
-        
