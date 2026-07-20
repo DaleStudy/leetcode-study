@@ -125,6 +125,12 @@ jobs:
             done
           fi
 
+          failed=$(echo "$response" | jq '[.results[]? | select(.skipped != true and .approved != true)] | length')
+          if [ "$success" != "true" ] || [ "$failed" -gt 0 ]; then
+            echo "::error::승인 실패 ${failed}건 (success=$success)"
+            exit 1
+          fi
+
   merge-prs:
     name: Merge Open PRs 🚀
     runs-on: ubuntu-latest
@@ -149,7 +155,7 @@ jobs:
 
           # Build request payload
           week_input="${{ inputs.week }}"
-          merge_method="merge"
+          merge_method="squash"
 
           if [ -z "$week_input" ]; then
             payload="{\"repo_name\": \"${{ github.event.repository.name }}\", \"merge_method\": \"$merge_method\", \"excludes\": $excludes}"
@@ -230,4 +236,10 @@ jobs:
                 echo "- PR #$pr [$title]: ❌ failed (${error:-unknown})" >> $GITHUB_STEP_SUMMARY
               fi
             done
+          fi
+
+          failed=$(echo "$response" | jq '[.results[]? | select(.skipped != true and .merged != true)] | length')
+          if [ "$success" != "true" ] || [ "$failed" -gt 0 ]; then
+            echo "::error::머지 실패 ${failed}건 (success=$success)"
+            exit 1
           fi
