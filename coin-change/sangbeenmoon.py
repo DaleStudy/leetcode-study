@@ -30,3 +30,44 @@ class Solution:
         self.dp[x] = mm if mm != 100000 else -1 # memoization
             
         return self.dp[x]
+
+
+
+
+
+
+
+
+# --------
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        memo = {}
+
+
+        for coin in coins:
+            memo[coin] = 1
+    
+        def go(target: int) -> int:            
+            if target < 0:
+                return -1
+            
+            if target in memo:
+                return memo[target]
+        
+            min_val = 10001
+
+            for coin in coins:
+                res = go(target - coin)
+                if res >= 0:
+                    min_val = min(min_val, res)
+
+            memo[target] = (min_val + 1 if min_val != 10001 else -1)
+
+            return memo[target]
+                
+        if amount == 0:
+            return 0
+
+        return go(amount)
+
