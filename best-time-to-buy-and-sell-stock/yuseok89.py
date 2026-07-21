@@ -5,7 +5,7 @@ class Solution:
         min_until_now = prices[0]
         max_profit = 0
 
-        for price in prices[1:]:
+        for price in prices:
             max_profit = max(max_profit, price - min_until_now)
             min_until_now = min(min_until_now, price)
 
