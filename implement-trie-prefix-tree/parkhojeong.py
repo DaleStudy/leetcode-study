@@ -1,6 +1,5 @@
 class Node:
     def __init__(self, s: str):
-        self.s: str = s
         self.isLast: bool = False
         self.childs: dict[str, Node] = {}
 
