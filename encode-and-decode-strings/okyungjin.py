@@ -16,11 +16,10 @@ Constraints:
     strs[i] contains any possible characters out of 256 valid ASCII characters.
 """
 from typing import Final, List
-import ast
 
 """
 접근법:
-    encode: 각 단어 앞에 글자수 + 구분자를 붙여 하나의 문자열로 이어 붙입니다. (예: ["Hello", "World"] -> "5#Hello5#World")
+    encode: 각 단어 앞에 글자수 + 구분자를 붙여 하나의 문자열로 이어 붙입니다.
     decode: 문자열을 앞에서부터 읽으면서 구분자를 찾고, 그 앞의 숫자로 '글자수'를 알아낸 뒤 정확히 그 길이만큼만 잘라내어 원래 리스트로 복원합니다.
 
 복잡도:
@@ -45,16 +44,14 @@ class Solution:
         Return: "0#"
     """
     def encode(self, strs: List[str]) -> str:
-        parts: List[str] = (f"{len(s)}{self.DELIMITER}{s}" for s in strs)
-        
-        return ''.join(parts)
-        
+        return ''.join(f"{len(s)}{self.DELIMITER}{s}" for s in strs)
+
 
     """
-    1. idx 이후에 구분자가 등장하는 인덱스를 찾습니다.
-    2. 구분자 바로 앞에 있는 문자의 길이를 추출합니다.
-    3. 구분자 이후 ~ 문자의 길이 만큼 슬라이스해서 대상 단어를 추출합니다. 추출한 단어는 result에 담습니다.
-    4. result를 반환합니다.
+    1. 현재 위치부터 탐색하여 첫 번째 구분자(#)의 위치를 찾습니다.
+    2. 구분자 바로 앞의 숫자를 읽어내어 잘라낼 단어의 길이를 파악합니다.
+    3. 구분자 다음 위치부터 파악한 길이만큼 문자열을 잘라내어 결과 리스트에 담습니다.
+    4. 문자열 끝까지 위 과정을 반복한 후, 최종 리스트를 반환합니다.
     """
     def decode(self, s: str) -> List[str]:
         result = []
