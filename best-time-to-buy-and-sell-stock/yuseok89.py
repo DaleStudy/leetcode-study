@@ -6,8 +6,13 @@ class Solution:
         max_profit = 0
 
         for price in prices:
-            max_profit = max(max_profit, price - min_until_now)
-            min_until_now = min(min_until_now, price)
+            profit = price - min_until_now
+
+            if profit > max_profit:
+                max_profit = profit
+
+            if price < min_until_now:
+                min_until_now = price
 
         return max_profit
 
