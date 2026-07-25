@@ -98,7 +98,7 @@ class Trie:
         self.children = dict()
         self.end = False
 
-    def insert(self, target: str):
+    def insert(self, target: int):
         node = self
 
         for ch in target:
