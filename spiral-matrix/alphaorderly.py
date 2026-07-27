@@ -34,4 +34,5 @@ class Solution:
             r += DIR[d][0]
             c += DIR[d][1]
 
+
         return ans
