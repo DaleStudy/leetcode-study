@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 var isValid = function (s) {
-  console.log("test")
+  console.log("test2")
   const pairs = { ")": "(", "]": "[", "}": "{" };
   const stack = [];
 
