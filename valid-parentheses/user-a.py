@@ -1,2 +1,2 @@
 def solution(S):
-    return "test"
+    return "test2"
