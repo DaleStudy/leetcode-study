@@ -2,18 +2,20 @@
 # TC: O(N) where N is the len(s)
 # SC: O(N) where N is the len(s)
 class Solution:
-    def is_pair(self, open_bracket, close_bracket):
-        return ((open_bracket == '(' and close_bracket == ')') or
-            (open_bracket == '{' and close_bracket == '}') or
-            (open_bracket == '[' and close_bracket == ']'))
-            
+
     def isValid(self, s: str) -> bool:
+        pair = {
+                '(': ')',
+                '[': ']',
+                '{': '}',
+            }
+        
         stack = []
 
         for ch in s:
             if ch == '(' or ch == '{' or ch == '[':
                 stack.append(ch)
-            elif stack and self.is_pair(stack[-1], ch):
+            elif stack and pair[stack[-1]] == ch:
                 stack.pop()
             else: return False
             
