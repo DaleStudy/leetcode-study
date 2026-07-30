@@ -35,10 +35,9 @@ class WordDictionary:
                 if ch == '.':
                     for child in node.children.values():
                         search.append(child)
-                elif ch not in node.children:
-                    continue
-                else:
+                elif ch in node.children:
                     search.append(node.children[ch])
+                    
         return any(node.end for node in search)
 
 """
