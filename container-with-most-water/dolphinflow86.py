@@ -8,10 +8,8 @@ class Solution:
         
         max_area = 0
         while left < right:
-            min_height = height[left] if height[left] < height[right] else height[right]
-            area = min_height * (right - left)
-            if max_area < area: 
-                max_area = area
+            area = min(height[left], height[right]) * (right - left)
+            max_area = max(max_area, area)
 
             if height[left] < height[right]:
                 left += 1
