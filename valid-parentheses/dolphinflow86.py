@@ -13,7 +13,7 @@ class Solution:
         stack = []
 
         for ch in s:
-            if ch == '(' or ch == '{' or ch == '[':
+            if ch in pair:
                 stack.append(ch)
             elif stack and pair[stack[-1]] == ch:
                 stack.pop()
