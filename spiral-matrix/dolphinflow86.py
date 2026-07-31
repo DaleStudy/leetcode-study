@@ -24,15 +24,15 @@ class Solution:
             item = matrix[row][col]
             answer.append(item)
 
-            nextRow = row + dr[dir]
-            nextCol = col + dc[dir]
+            next_row = row + dr[dir]
+            next_col = col + dc[dir]
 
             if (
-                nextRow < 0
-                or nextRow >= n
-                or nextCol < 0
-                or nextCol >= m
-                or matrix[nextRow][nextCol] == VISIT
+                next_row < 0
+                or next_row >= n
+                or next_col < 0
+                or next_col >= m
+                or matrix[next_row][next_col] == VISIT
             ):
                 dir = (dir + 1) % 4
 
