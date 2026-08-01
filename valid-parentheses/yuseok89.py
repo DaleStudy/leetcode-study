@@ -1,5 +1,5 @@
 # TC: O(N)
-# SC: O(N/2)
+# SC: O(N)
 class Solution:
     def isValid(self, s: str) -> bool:
         pars = {'(': ')', '{': '}', '[': ']'}
@@ -9,7 +9,7 @@ class Solution:
             if c in pars:
                 stack.append(c)
             else:
-                if len(stack) == 0 or pars.get(stack.pop(), '') != c:
+                if not stack or pars[stack.pop()] != c:
                     return False
 
         return len(stack) == 0

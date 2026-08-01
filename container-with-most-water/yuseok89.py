@@ -18,5 +18,5 @@ class Solution:
             else:
                 r -= 1
 
-        return ans;
+        return ans
 

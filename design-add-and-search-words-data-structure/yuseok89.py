@@ -17,7 +17,7 @@ class WordDictionary:
 
         n = len(word)
 
-        def rec(cur, idx):
+        def rec(cur: dict, idx: int) -> bool:
             if idx == n:
                 return 0 in cur
 
