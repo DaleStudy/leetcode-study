@@ -38,3 +38,52 @@ class Solution:
         dfs(0,0,0)
                         
         return answer
+
+
+
+
+
+# ---------
+
+
+
+# 우 -> 하 -> 좌 -> 상 
+
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+
+        answer = []
+
+        dx = [1,0,-1,0]
+        dy = [0,1,0,-1]
+
+        row_len , col_len = len(matrix), len(matrix[0])
+        visited = [[False] * col_len for _ in range(row_len)]
+
+        xx = 0
+        yy = 0
+        answer.append(matrix[yy][xx])
+        visited[yy][xx] = True
+
+        if len(answer) == row_len * col_len:
+            return answer
+
+        d = 0
+        while True:            
+            nx = xx + dx[d]
+            ny = yy + dy[d]
+            if 0 <= nx and nx < col_len and 0 <= ny and ny < row_len:
+                if not visited[ny][nx]:
+                    answer.append(matrix[ny][nx])
+                    visited[ny][nx] = True
+
+                    if len(answer) == row_len * col_len:
+                        break
+
+                    xx = nx
+                    yy = ny
+                    continue
+            d = 0 if d == 3 else d + 1
+        
+        return answer
+
