@@ -16,4 +16,3 @@ class Solution:
                 r -= 1
                 length -= 1
         return size
-        
