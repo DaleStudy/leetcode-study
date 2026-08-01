@@ -53,55 +53,55 @@ class WordDictionary:
         return False
 
 """
-Soultion2: `word`와 길이가 같은 단어들만 탐색하는 방법
+Solution2: Trie 자료구조 활용
 """
-from collections import defaultdict
+class Trie:
+    def __init__(self):
+        self.children: dict[str, Trie] = {}
+        self.is_end = False
+
+
+    def addWord(self, word: str) -> None:
+        curr = self
+
+        for char in word:
+            if char not in curr.children:
+                curr.children[char] = Trie()
+            curr = curr.children[char]
+
+        curr.is_end = True
+
+
+    def search(self, word: str) -> bool:
+        def _dfs(node: Trie, idx) -> bool:
+            if idx == len(word):
+                return node.is_end
+
+            char = word[idx]
+
+            if char == '.':
+                return any(
+                         _dfs(child, idx + 1)
+                           for child in node.children.values())
+
+            if char not in node.children:
+                return False
+
+
+            return _dfs(node.children[char], idx + 1)
+
+        return _dfs(self, 0)
 
 
 class WordDictionary:
     def __init__(self):
-        self.buckets: defaultdict[int, set[str]] = defaultdict(set)
+        self.wordDict = Trie()
 
-    """
-    L: `word`의 길이
 
-    Time: O(L)
-    Space: O(L)
-    """
     def addWord(self, word: str) -> None:
-        bucket = self.buckets[len(word)]
+        self.wordDict.addWord(word)
 
-        if word not in bucket:
-            bucket.add(word)
 
-    """
-    L: `word`의 길이
-    N: 같은 길이를 가진 저장된 단어의 개수
-
-    Time: O(L) - 와일드카드 없을 때 / O(N*L) - 와일드카드 있을 때
-    Space: O(1)
-    """
     def search(self, word: str) -> bool:
-        # 글자수가 동일한 단어들만 탐색
-        bucket: set[str] = self.buckets[len(word)]
-
-        # 와일드카드 없을 때
-        if '.' not in word:
-            return word in bucket
-
-        for candidate in bucket:
-            if self._matches(word, candidate):
-                return True
-
-        return False
-
-    def _matches(self, word: str, candidate: str) -> bool:
-        for i, c in enumerate(word):
-            if c != '.' and c != candidate[i]:
-                return False
-
-        return True
-
-# wordDictionary = WordDictionary()
-# wordDictionary.addWord("bad")
-# wordDictionary.search("..d")
+        return self.wordDict.search(word)
+        
