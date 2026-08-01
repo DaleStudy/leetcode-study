@@ -104,4 +104,3 @@ class WordDictionary:
 
     def search(self, word: str) -> bool:
         return self.wordDict.search(word)
-        
