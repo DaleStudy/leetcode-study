@@ -7,7 +7,7 @@ class Solution:
         left, right, top, bottom = 0, len(matrix[0])-1, 0, len(matrix)-1    # borders
         i, j, d = 0, 0, direction[1]
 
-        while left <= right and top <= bottom and 0 <= i < len(matrix) and 0 <= j < len(matrix[0]):
+        while left <= right and top <= bottom:
             # change direction and borders
             if j == right and d == direction[1]:
                 d = direction[3] # right -> down

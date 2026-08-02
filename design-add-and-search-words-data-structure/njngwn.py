@@ -29,10 +29,10 @@ class WordDictionary:
                     if dfs(child, idx + 1):
                         return True
                 return False
-            else:
-                if ch not in node.children:
-                    return False
-                return dfs(node.children[ch], idx + 1)
+
+            if ch not in node.children:
+                return False
+            return dfs(node.children[ch], idx + 1)
 
         return dfs(self.root, 0)
 
