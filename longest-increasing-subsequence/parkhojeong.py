@@ -1,14 +1,12 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        dp = [0] * len(nums)
-        max_count = 0
+        arr = []
 
-        for i in range(len(nums)):
-            dp[i] = 1
-            for j in range(i):
-                if nums[j] < nums[i]:
-                    dp[i] = max(dp[j] + 1, dp[i])
+        for num in nums:
+            if len(arr) == 0 or arr[-1] < num:
+                arr.append(num)
+            else:
+                idx = bisect_left(arr, num)
+                arr[idx] = num
 
-            max_count = max(max_count, dp[i])
-
-        return max_count
+        return len(arr)
