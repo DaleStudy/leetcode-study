@@ -1,75 +1,43 @@
 class Node:
-    def __init__(self, ch: str, is_end: bool):
-        self.ch = ch
-        self.is_end = is_end
-        self.child: dict[str, Node] = {}
-
-    def get_child(self, ch) -> None:
-        if ch in self.child:
-            return self.child[ch]
-
-        return None
-
-    def get_all_child(self) -> List[Node]:
-        return self.child.values()
-
-    def add_child(self, node):
-        self.child[node.ch] = node
-
-class Trie:
     def __init__(self):
-        self.root = Node("", False)
-
-    def add_word(self, word) -> None:
-        i = 0
-        node = self.root
-        while i < len(word):
-            ch = word[i]
-            child_node = node.get_child(ch)
-            if child_node:
-                node = child_node
-                if i == len(word) - 1:
-                    node.is_end = True
-            else:
-                is_end = True if i == len(word) - 1 else False
-                child_node = Node(ch, is_end)
-                node.add_child(child_node)
-                node = child_node
-
-            i += 1
-
-    def search(self, word: str, i, node) -> bool:
-        if word[i] == ".":
-            child_nodes = node.get_all_child()
-        else:
-            child_node = node.get_child(word[i])
-            if child_node is None:
-                return False
-            child_nodes = [child_node]
-
-        for child_node in child_nodes:
-            if i == len(word) - 1:
-                if child_node.is_end is True:
-                    return True
-                else:
-                    continue
-
-            if self.search(word, i + 1, child_node):
-                return True
-
-        return False
-
+        self.is_end = False
+        self.children: dict[str, Node] = {}
 
 class WordDictionary:
     def __init__(self):
-        self.trie = Trie()
+        self.root = Node()
 
     def addWord(self, word: str) -> None:
-        self.trie.add_word(word)
+        node = self.root
+        for ch in word:
+            if ch not in node.children:
+                node.children[ch] = Node()
+
+            node = node.children[ch]
+
+        node.is_end = True
 
     def search(self, word: str) -> bool:
 
-        return self.trie.search(word, 0, self.trie.root)
+        return self._search(word, 0, self.root)
+
+    def _search(self, word: str, i: int, node: Node) -> bool:
+        if i == len(word):
+            return node.is_end
+
+        if word[i] == ".":
+            children_nodes = node.children.values()
+        else:
+            node = node.children.get(word[i])
+            if node is None:
+                return False
+            children_nodes = [node]
+
+        for node in children_nodes:
+            if self._search(word, i + 1, node):
+                return True
+
+        return False
 
 
 # Your WordDictionary object will be instantiated and called as such:
