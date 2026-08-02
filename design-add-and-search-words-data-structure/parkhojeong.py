@@ -1,66 +1,55 @@
 class Node:
-    ch = ""
-    is_end = False
-    child: List[Node] = None
-    child: dict[str, Node] = None
-
-    def __init__(self, ch, is_end):
+    def __init__(self, ch: str, is_end: bool):
         self.ch = ch
         self.is_end = is_end
-        self.child = {}
+        self.child: dict[str, Node] = {}
 
-    def getIsEnd(self):
-        return self.is_end
-
-    def setIsEndTrue(self):
-        self.is_end = True
-
-    def getChild(self, ch) -> None:
+    def get_child(self, ch) -> None:
         if ch in self.child:
             return self.child[ch]
 
         return None
 
-    def getAllChild(self) -> List[Node]:
+    def get_all_child(self) -> List[Node]:
         return self.child.values()
 
-    def addChild(self, node):
+    def add_child(self, node):
         self.child[node.ch] = node
 
 class Trie:
     def __init__(self):
         self.root = Node("", False)
 
-    def addWord(self, word) -> None:
+    def add_word(self, word) -> None:
         i = 0
         node = self.root
         while i < len(word):
             ch = word[i]
-            child_node = node.getChild(ch)
+            child_node = node.get_child(ch)
             if child_node:
                 node = child_node
                 if i == len(word) - 1:
-                    node.setIsEndTrue()
+                    node.is_end = True
             else:
                 is_end = True if i == len(word) - 1 else False
                 child_node = Node(ch, is_end)
-                node.addChild(child_node)
+                node.add_child(child_node)
                 node = child_node
 
             i += 1
 
     def search(self, word: str, i, node) -> bool:
         if word[i] == ".":
-            child_nodes = node.getAllChild()
+            child_nodes = node.get_all_child()
         else:
-            child_node = node.getChild(word[i])
+            child_node = node.get_child(word[i])
             if child_node is None:
                 return False
             child_nodes = [child_node]
 
         for child_node in child_nodes:
             if i == len(word) - 1:
-                if child_node.getIsEnd() is True:
+                if child_node.is_end is True:
                     return True
                 else:
                     continue
@@ -76,7 +65,7 @@ class WordDictionary:
         self.trie = Trie()
 
     def addWord(self, word: str) -> None:
-        self.trie.addWord(word)
+        self.trie.add_word(word)
 
     def search(self, word: str) -> bool:
 
