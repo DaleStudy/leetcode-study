@@ -38,7 +38,7 @@ class WordDictionary:
             return node.search(word, i+1)
         else:
             node = WordDictionary()
-            return node.search(word, i+1)
+            return False
         
         
 
