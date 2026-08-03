@@ -54,3 +54,28 @@ Combinatorial approach:
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         return comb(m + n - 2, n - 1)
+
+"""
+Time Complexity: O(m * n)
+Space Complexity: O(m * n)
+
+### Top down dynamic programming (with memoization) ###
+
+Approach:
+- Use recursion with memoization (via functools.cache) to store the number of unique paths to (row, col).
+- The recursive function dp(row, col) returns the number of unique paths from the top-left to (row, col).
+- Base case: If row == 1 or col == 1, there's only one unique path.
+- Otherwise, dp(row, col) = dp(row-1, col) + dp(row, col-1).
+- The answer is dp(m, n), the number of unique paths to the bottom-right cell.
+"""
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+
+        @cache
+        def dp(row: int, col: int) -> int:
+            if row == 1 or col == 1:
+                return 1
+
+            return dp(row - 1, col) + dp(row, col - 1)
+
+        return dp(m, n)
