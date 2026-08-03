@@ -66,13 +66,9 @@ Approach:
 - The answer is dp(m, n), the number of unique paths to the bottom-right cell.
 """
 class Solution:
+    @cache
     def uniquePaths(self, m: int, n: int) -> int:
+        if m == 1 or n == 1:
+            return 1
 
-        @cache
-        def dp(row: int, col: int) -> int:
-            if row == 1 or col == 1:
-                return 1
-
-            return dp(row - 1, col) + dp(row, col - 1)
-
-        return dp(m, n)
+        return self.uniquePaths(m - 1, n) + self.uniquePaths(m, n - 1)
