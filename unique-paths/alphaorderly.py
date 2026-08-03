@@ -10,16 +10,13 @@ Dynamic Programming (2D DP approach):
 """
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        maze = [[0 for _ in range(n)] for _ in range(m)]
+        maze = [[1] * n for _ in range(m)]
 
-        for i in range(m):
-            for j in range(n):
-                if i == 0 or j == 0:
-                    maze[i][j] = 1
-                else:
-                    maze[i][j] = maze[i-1][j] + maze[i][j-1]
-        
-        return maze[m-1][n-1]
+        for i in range(1, m):
+            for j in range(1, n):
+                maze[i][j] = maze[i - 1][j] + maze[i][j - 1]
+
+        return maze[m - 1][n - 1]
 
 """
 Time Complexity: O(m * n)
