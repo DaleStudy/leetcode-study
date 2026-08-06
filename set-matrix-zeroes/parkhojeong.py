@@ -6,11 +6,11 @@ class Solution:
 
         row_len = len(matrix)
         col_len = len(matrix[0])
-        MARKER = "#"
+        MARKER = sys.maxsize
 
         def dfs(row, col, d_row, d_col):
             if not (0 <= row < row_len and 0 <= col < col_len):
-                return 
+                return
 
             if matrix[row][col] == 0:
                 return
