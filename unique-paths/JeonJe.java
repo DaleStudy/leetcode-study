@@ -1,28 +1,19 @@
 import java.util.*;
 
 // TC: O(m * n)
-// SC: O(m * n)
+// SC: O(n)
 class Solution {
     public int uniquePaths(int m, int n) {
 
-        int[][] arr = new int[m][n];
+        int[] arr = new int[n];
+        Arrays.fill(arr, 1);
 
-        int upSide;
-        int leftSide;
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == 0 && j == 0) {
-                    arr[i][j] = 1;
-                    continue;
-                }
-
-                upSide = i - 1 < 0 ? 0 : arr[i - 1][j];
-                leftSide = j - 1 < 0 ? 0 : arr[i][j - 1];
-                arr[i][j] = upSide + leftSide;
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                arr[j] = arr[j] + arr[j - 1];
             }
         }
 
-        return arr[m - 1][n - 1];
+        return arr[n - 1];
     }
 }
