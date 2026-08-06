@@ -1,2 +1,2 @@
 def solution_a():
-    return "test-a"
+    return "test-a-updated"
