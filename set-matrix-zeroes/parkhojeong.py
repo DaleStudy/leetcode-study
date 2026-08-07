@@ -6,29 +6,20 @@ class Solution:
 
         row_len = len(matrix)
         col_len = len(matrix[0])
-        MARKER = sys.maxsize
 
-        def dfs(row, col, d_row, d_col):
-            if not (0 <= row < row_len and 0 <= col < col_len):
-                return
+        zero_row_set = set()
+        zero_col_set = set()
 
-            if matrix[row][col] == 0:
-                return
+        for r in range(row_len):
+            for c in range(col_len):
+                if matrix[r][c] == 0:
+                    zero_row_set.add(r)
+                    zero_col_set.add(c)
 
-            matrix[row][col] = MARKER
-            dfs(row + d_row, col + d_col, d_row, d_col)
+        for r in zero_row_set:
+            for c in range(col_len):
+                matrix[r][c] = 0
 
-        for row in range(row_len):
-            for col in range(col_len):
-                if matrix[row][col] == 0:
-
-                    matrix[row][col] = MARKER
-                    dfs(row + 1, col, 1, 0)
-                    dfs(row - 1, col, -1, 0)
-                    dfs(row, col + 1, 0, 1)
-                    dfs(row, col - 1, 0, -1)
-
-        for row in range(row_len):
-            for col in range(col_len):
-                if matrix[row][col] == MARKER:
-                    matrix[row][col] = 0
+        for c in zero_col_set:
+            for r in range(row_len):
+                matrix[r][c] = 0
