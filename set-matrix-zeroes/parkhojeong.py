@@ -16,10 +16,8 @@ class Solution:
                     zero_row_set.add(r)
                     zero_col_set.add(c)
 
-        for r in zero_row_set:
+        for r in range(row_len):
             for c in range(col_len):
-                matrix[r][c] = 0
+                if r in zero_row_set or c in zero_col_set:
+                    matrix[r][c] = 0
 
-        for c in zero_col_set:
-            for r in range(row_len):
-                matrix[r][c] = 0
