@@ -14,3 +14,30 @@ class Solution:
             answer = max(answer, i - start + 1)
             
         return answer
+
+
+# ------
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+
+        left = 0
+        right = 0
+
+        answer = 0
+
+        dictionary = {}
+
+        for i,ch in enumerate(s):
+            right += 1
+            if ch not in dictionary:
+                dictionary[ch] = i
+            else:
+                idx = dictionary[ch]
+                if left <= idx:
+                    left = idx + 1
+                dictionary[ch] = i
+
+            print(right, left)
+            answer = max(answer, right - left)
+
+        return answer
