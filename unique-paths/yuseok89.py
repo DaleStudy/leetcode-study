@@ -10,5 +10,5 @@ class Solution:
             for j in range(1, n):
                 cnt[j] += cnt[j - 1]
 
-        return cnt[n - 1];
+        return cnt[n - 1]
 
