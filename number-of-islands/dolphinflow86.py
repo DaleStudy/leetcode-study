@@ -33,4 +33,3 @@ class Solution:
                     dfs(row, col)
 
         return island_count
-
