@@ -14,8 +14,8 @@ class Solution:
         ROW = len(matrix)
         COL = len(matrix[0])
 
-        row_check = any(matrix[0][c] == 0 for c in range(COL))
-        col_check = any(matrix[r][0] == 0 for r in range(ROW))
+        row_zero_check = any(matrix[0][c] == 0 for c in range(COL))
+        col_zero_check = any(matrix[r][0] == 0 for r in range(ROW))
 
         for r in range(ROW):
             for c in range(COL):
@@ -28,10 +28,10 @@ class Solution:
                 if matrix[r][0] == 0 or matrix[0][c] == 0:
                     matrix[r][c] = 0
 
-        if row_check:
+        if row_zero_check:
             for c in range(COL):
                 matrix[0][c] = 0
 
-        if col_check:
+        if col_zero_check:
             for r in range(ROW):
                 matrix[r][0] = 0
