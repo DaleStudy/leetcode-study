@@ -52,7 +52,7 @@ class Solution:
 """
 class SegTree:
     def __init__(self):
-        # [문자 개수 합, 최대값]
+        # summation, largest
         self.tree = [[0, 0] for _ in range(26 * 4 + 1)]
 
     def _update(
@@ -97,7 +97,7 @@ class Solution:
         for right, value in enumerate(s):
             window.update(value, 1)
 
-            while window.tree[1][0] > 0 and window.tree[1][0] - window.tree[1][1] > k:
+            while window.tree[1][0] - window.tree[1][1] > k:
                 window.update(s[left], -1)
                 left += 1
 
