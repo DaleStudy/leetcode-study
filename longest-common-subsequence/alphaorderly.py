@@ -15,7 +15,7 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         if len(text1) > len(text2):
-            text1, text2 = text1, text2
+            text1, text2 = text2, text1
 
         T1, T2 = len(text1), len(text2)
         dp = [0] * (T1 + 1)
