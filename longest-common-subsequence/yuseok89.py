@@ -1,5 +1,5 @@
 # TC: O(N*M)
-# SC: O(N)
+# SC: O(M)
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
 
