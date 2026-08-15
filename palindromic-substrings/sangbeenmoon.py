@@ -1,7 +1,5 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        # abcba
-
         dp = [[0] * (len(s) + 1) for _ in range(len(s) + 1)]
 
         def isPalindrome(start, end) -> bool:
@@ -18,8 +16,6 @@ class Solution:
             if dp[start][end] == -1:
                 return False    
 
-            # memo[(start+1 , end-1)] = isPalindrome(start+1, end-1)
-# 0,2 -> 1,1
             if s[start] == s[end]:
                 return isPalindrome(start+1, end-1)    
 
