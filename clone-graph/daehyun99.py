@@ -1,5 +1,5 @@
-# Time: O(n)
-# Space: O(n)
+# Time: O(N + E
+# Space: O(N)
 """
 # Definition for a Node.
 class Node:

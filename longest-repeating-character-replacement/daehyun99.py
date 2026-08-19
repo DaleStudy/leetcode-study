@@ -1,6 +1,5 @@
 # Time: O(s)
-# Space: O(s)
-from collections import defaultdict
+# Space: O(1)from collections import defaultdict
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         count = defaultdict(int)
