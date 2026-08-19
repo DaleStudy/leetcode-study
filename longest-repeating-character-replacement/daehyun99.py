@@ -1,5 +1,6 @@
-# Time: O(s)
-# Space: O(1)from collections import defaultdict
+# Time: O(n)
+# Space: O(1)
+from collections import defaultdict
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         count = defaultdict(int)
@@ -18,8 +19,8 @@ class Solution:
         return res
 
 """
-# Time: O(s)
-# Space: O(s)
+# Time: O(n)
+# Space: O(1)
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         # find_bunch()
