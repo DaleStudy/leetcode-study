@@ -21,7 +21,7 @@ class Solution:
         MASK = 0xFFFF
         CHECK = 0x8000
 
-        ans = carry = left = 0
+        ans = carry = 0
         for i in range(16):
             a_bit = a & 1
             b_bit = b & 1
