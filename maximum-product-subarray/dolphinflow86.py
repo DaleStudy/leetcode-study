@@ -17,9 +17,7 @@ class Solution:
             num = nums[i]
 
             if num < 0:
-                tmp = cur_max
-                cur_max = cur_min
-                cur_min = tmp
+                cur_max, cur_min = cur_min, cur_max
 
             cur_max = max(num, cur_max * num)
             cur_min = min(num, cur_min * num)
