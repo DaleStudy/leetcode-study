@@ -19,4 +19,3 @@ class Solution:
             curr = curr.next
 
         return False
-        
