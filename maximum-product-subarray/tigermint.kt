@@ -1,5 +1,6 @@
 /**
- * TC: O(n), SC: O(1)
+ * TC: O(n)
+ * SC: O(1)
  * 음수가 있기 때문에 현 시점에 min/max 모두 추적해야한다
  */
 class Solution {
