@@ -30,7 +30,7 @@ class Solution:
                     nx = x + dx[k]
                     ny = y + dy[k]
 
-                    if 0 <= nx < n and 0 <= ny < m and not (nx, ny) in visited:
+                    if 0 <= nx < n and 0 <= ny < m and (nx, ny) not in visited:
                         if heights[nx][ny] <= heights[x][y]:
                             queue.append((nx, ny))
                             visited.add((nx, ny))
@@ -40,7 +40,7 @@ class Solution:
 
         for i in range(n):
             for j in range(m):
-                if bfs(i, j):
+                if bfs(i, j) is True:
                     answer.append([i, j])
 
         return answer
