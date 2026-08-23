@@ -19,11 +19,11 @@ class Solution:
             while queue:
                 x, y = queue.popleft()
                 # check if flows into pacific ocean
-                if x <= 0:
+                if x == 0 or y == 0:
                     visited_pacific = True
 
                 # check if flows into atlantic ocean
-                if x >= n:
+                if x == n-1 or y == m-1:
                     visited_atlantic = True
 
                 for k in range(4):
