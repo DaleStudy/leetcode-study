@@ -13,5 +13,3 @@ class Solution:
                 node.left, node.right = bfs(node.right), bfs(node.left)
             return node
         return bfs(root)                
-
-        
