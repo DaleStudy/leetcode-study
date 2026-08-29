@@ -1,35 +1,26 @@
-# TC: O(N)
-# SC: O(N)
+# TC: O(V + E)
+# SC: O(V + E)
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
 
-        prereq_dict = defaultdict(set)
+        graph = [[] for _ in range(numCourses)]
         in_deg = [0] * numCourses
-        is_completed = set()
 
-        for prereq in prerequisites:
-            prereq_dict[prereq[1]].add(prereq[0])
-            in_deg[prereq[0]] += 1
+        for nxt, prev in prerequisites:
+            graph[prev].append(nxt)
+            in_deg[nxt] += 1
 
-        while True:
-            course_list = []
+        queue = deque(idx for idx in range(numCourses) if in_deg[idx] == 0)
+        completed = 0
 
-            for idx in range(numCourses):
-                if idx not in is_completed and in_deg[idx] == 0:
-                    course_list.append(idx)
+        while queue:
+            course = queue.popleft()
+            completed += 1
 
-            if len(course_list) == 0:
-                break
+            for nxt in graph[course]:
+                in_deg[nxt] -= 1
+                if in_deg[nxt] == 0:
+                    queue.append(nxt)
 
-            for course in course_list:
-                is_completed.add(course)
-
-                for nxt in prereq_dict[course]:
-                    in_deg[nxt] -= 1
-
-        for idx in range(numCourses):
-            if idx not in is_completed:
-                return False
-
-        return True
+        return completed == numCourses
 
