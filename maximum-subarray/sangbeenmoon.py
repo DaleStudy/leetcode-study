@@ -10,3 +10,21 @@ class Solution:
             dp[i] = max(nums[i], nums[i] + dp[i-1])
 
         return max(dp)
+
+# ---
+# TC : O(n)
+# SC : O(1)
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        sub_sum = 0
+        ans = nums[0]
+
+        for num in nums:
+            if sub_sum >= 0:
+                sub_sum = sub_sum + num
+            else:
+                sub_sum = num
+            ans = max(ans, sub_sum)
+
+        return ans

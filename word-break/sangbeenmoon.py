@@ -27,3 +27,37 @@ class Solution:
                     self.go(i + len(word), s, wordDict)
         
         self.visited[s[i:]] = False
+
+
+
+
+
+
+
+# -----------
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+
+        visited = {}
+        dp = [True] * len(s)
+        for word in wordDict:
+            visited[word] = True
+                
+        def go(start: int) -> bool:
+            if start >= len(s):
+                return True
+            
+            if not dp[start]:
+                return False
+            
+            for end in range(start + 1, len(s) + 1):
+                target = s[start:end]
+                
+                if target in visited:
+                    if go(end):
+                        return True
+            
+            dp[start] = False
+            return False
+    
+        return go(0)
