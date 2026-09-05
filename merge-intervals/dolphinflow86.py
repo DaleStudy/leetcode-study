@@ -6,10 +6,7 @@
 class Solution:
 
     def merge(self, intervals: list[list[int]]) -> list[list[int]]:
-        if not intervals:
-            return []
-
-        intervals.sort(key=lambda x: x[0])
+        intervals.sort()
         merged = [intervals[0]]
 
         for interval in intervals[1:]:
