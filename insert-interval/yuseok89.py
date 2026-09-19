@@ -1,4 +1,4 @@
-#TD: O(1)
+#TC: O(1)
 #SC: O(2)
 class Solution:
     def insert(self, intervals: list[list[int]], newInterval: list[int]) -> list[list[int]]:
