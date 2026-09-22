@@ -33,3 +33,18 @@ class Solution:
         return answer
             
             
+# -------
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        candidates = {}
+
+        for target in strs:
+            sorted_target = "".join(sorted(target))
+            
+            if sorted_target in candidates:
+                candidates[sorted_target].append(target)
+            else:
+                candidates[sorted_target] = [target]
+    
+        return list(candidates.values())
