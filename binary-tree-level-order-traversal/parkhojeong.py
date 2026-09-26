@@ -9,23 +9,20 @@ class Solution:
         if root is None:
             return []
 
-        deq = deque()
-        deq.append(root)
+        deq = deque([root])
 
         output = []
         while deq:
-            child = []
-            level_nodes = []
+            nodes = []
 
-            while deq:
+            for _ in range(len(deq)):
                 node = deq.popleft()
-                level_nodes.append(node.val)
+                nodes.append(node.val)
                 if node.left:
-                    child.append(node.left)
+                    deq.append(node.left)
                 if node.right:
-                    child.append(node.right)
+                    deq.append(node.right)
 
-            output.append(level_nodes)
-            deq = deque(child)
+            output.append(nodes)
 
         return output
