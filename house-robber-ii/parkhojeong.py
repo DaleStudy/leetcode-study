@@ -1,17 +1,21 @@
 class Solution:
     def rob(self, nums: list[int]) -> int:
-        N = len(nums)
-        if N == 1:
+        if len(nums) == 1:
             return nums[0]
 
-        prefix_sum = [0] * (N + 1)
-        prefix_sum[1] = nums[0]
-        for i in range(2, N):
-            prefix_sum[i] = max(prefix_sum[i - 2] + nums[i - 1], prefix_sum[i - 1])
+        return max(
+            max(self.rob_linear(nums[:-1])),
+            max(self.rob_linear(nums[1:] ))
+        )
 
-        prefix_sum2 = [0] * (N + 1)
-        prefix_sum2[2] = nums[1]
-        for i in range(3, N + 1):
-            prefix_sum2[i] = max(prefix_sum2[i - 2] + nums[i - 1], prefix_sum2[i - 1])
+    def rob_linear(self, nums: list[int]):
+        N = len(nums)
 
-        return max(max(prefix_sum), max(prefix_sum2))
+        dp = [0] * (N + 1)
+        dp[1] = nums[0]
+
+        for i in range(2, N + 1):
+            dp[i] = max(dp[i - 2] + nums[i - 1], dp[i - 1])
+
+
+        return dp
