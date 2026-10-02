@@ -1,4 +1,4 @@
-# TC: O(N)
+# TC: O(N^2)
 # SC: O(1)
 class Solution:
     def longestPalindrome(self, s: str) -> str:
