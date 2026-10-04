@@ -3,11 +3,12 @@
 # SC: O(1) - unique letters and adjacency list bounded by 26 characters
 
 from collections import deque
+from typing import List
 
 
 class Solution:
 
-    def alienOrder(self, words) -> str:
+    def alienOrder(self, words: List[str]) -> str:
         adj = {char: set() for word in words for char in word}
         indegree = {char: 0 for word in words for char in word}
 
@@ -41,3 +42,5 @@ class Solution:
             return ""
 
         return "".join(result)
+
+    alien_order = alienOrder
