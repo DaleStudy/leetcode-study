@@ -9,4 +9,3 @@ class Solution:
                 result.append(char)
         
         return ''.join(result)
-        
