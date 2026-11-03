@@ -5,8 +5,8 @@ class Solution:
         result = []
 
         for char in s:
-            if ord(char) >= 65 and ord(char) <= 90:
-                result.append(chr(ord(char) + 32))
+            if 'A' <= char <= 'Z':
+                result.append(chr(ord(char) + ord('a') - ord('A')))
             else:
                 result.append(char)
         
