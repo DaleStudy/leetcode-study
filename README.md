@@ -10,6 +10,7 @@
 
 ## 차수
 
+- 9기 (Nov 2, 2026 - Feb 21, 2027): [프로젝트](https://github.com/orgs/DaleStudy/projects/30), [팀](https://github.com/orgs/DaleStudy/teams/leetcode09)
 - 8기 (Jun 21, 2026 - Oct 3, 2026): [프로젝트](https://github.com/orgs/DaleStudy/projects/29/views/2), [팀](https://github.com/orgs/DaleStudy/teams/leetcode08)
 - 7기 (Mar 1, 2026 - Jun 13, 2026): [프로젝트](https://github.com/orgs/DaleStudy/projects/26/views/3), [팀](https://github.com/orgs/DaleStudy/teams/leetcode07)
 - 6기 (Nov 8, 2025 - Feb 20, 2026): [프로젝트](https://github.com/orgs/DaleStudy/projects/23/views/3), [팀](https://github.com/orgs/DaleStudy/teams/leetcode06)
