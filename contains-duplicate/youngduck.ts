@@ -7,3 +7,4 @@ function containsDuplicate(nums: number[]): boolean {
 
     return uniqueNumsSet.size !== nums.length;
 };
+
