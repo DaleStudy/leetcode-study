@@ -2,8 +2,6 @@ name: Integration 🔄
 
 on:
   pull_request:
-    # 라벨 변경 시에도 다시 검사 (maintenance 라벨을 나중에 붙이는 경우)
-    types: [opened, synchronize, reopened, labeled, unlabeled]
   merge_group:
 
 jobs:
