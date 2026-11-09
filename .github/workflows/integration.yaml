@@ -2,6 +2,8 @@ name: Integration 🔄
 
 on:
   pull_request:
+    # 라벨 변경 시에도 다시 검사 (maintenance 라벨을 나중에 붙이는 경우)
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   merge_group:
 
 jobs:
@@ -172,19 +174,23 @@ jobs:
           echo "PR 작성자: $PR_AUTHOR"
 
           # maintenance 라벨이 있으면 검사하지 않음
-          if gh pr view "$PR_NUMBER" -R "$REPO" --json labels -q '.labels[].name' | grep -qx 'maintenance'; then
+          # 조회 실패 시 미완료로 오판하지 않도록 결과를 먼저 받아둠 (실패하면 step 실패)
+          labels=$(gh pr view "$PR_NUMBER" -R "$REPO" --json labels -q '.labels[].name')
+          if echo "$labels" | grep -qx 'maintenance'; then
             echo "⏭️ maintenance 라벨이 있어 건너뜀"
             exit 0
           fi
 
           # 온보딩 PR은 검사 대상에서 제외
-          if gh api "repos/$REPO/pulls/$PR_NUMBER/files" --paginate -q '.[].filename' | grep -q '^to-lower-case/'; then
+          files=$(gh api "repos/$REPO/pulls/$PR_NUMBER/files" --paginate -q '.[].filename')
+          if echo "$files" | grep -q '^to-lower-case/'; then
             echo "⏭️ 온보딩 PR이므로 건너뜀"
             exit 0
           fi
 
           # 최신 base 브랜치에 온보딩 답안이 있는지 확인 (계정명 대소문자 무시)
-          if gh api "repos/$REPO/contents/to-lower-case?ref=$BASE_REF" -q '.[].name' | grep -qi "^${PR_AUTHOR}\."; then
+          answers=$(gh api "repos/$REPO/contents/to-lower-case?ref=$BASE_REF" -q '.[].name')
+          if echo "$answers" | grep -qi "^${PR_AUTHOR}\."; then
             echo "✅ 온보딩 완료"
           else
             echo "❌ 온보딩 미완료: $PR_AUTHOR"
