@@ -9,7 +9,7 @@ dp[i-2]와 dp[i-1]만 있으면 dp[i]를 구할 수 있으므로, dp 배열을 �
 점화식: dp[i] = max(dp[i−2] + nums[i], dp[i−1])
 Dynamic Programming 기법에 의해, secondLast와 last를 다음 Iteration에서 재사용할 수 있도록 저장하여 공간 최적화(Space-Optimisation)를 활용할 수 있다.
 */
-const novacat25_rob = (nums: number[]): number => {
+const rob = (nums: number[]): number => {
   const n = nums.length
 
   if (n === 0) return 0
