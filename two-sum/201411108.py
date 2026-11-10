@@ -1,3 +1,5 @@
+# TC: O(n)
+# SC: O(n)
 from collections import defaultdict
 
 class Solution:
@@ -9,3 +11,4 @@ class Solution:
             if diff in dictionary and i != dictionary[diff]:
                 return [i, dictionary[diff]]
             dictionary[num] = i
+
