@@ -22,9 +22,9 @@ const twoSum = (nums: number[], target: number): number[] => {
       arr[1] = i
 
       break
-    } else {
-      map.set(currentNum, i)
     }
+
+    map.set(currentNum, i)
   }
 
   return arr
