@@ -16,9 +16,9 @@ const containsDuplicate = (nums: number[]): boolean => {
     const currentNum = nums[i]
     if (set.has(currentNum)) {
       return true
-    } else {
-      set.add(currentNum)
     }
+
+    set.add(currentNum)
   }
 
   return false
