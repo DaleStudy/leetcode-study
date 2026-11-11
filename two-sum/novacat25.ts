@@ -1,31 +1,34 @@
-/* 
+/*
   시간 복잡도(Time Complexity): 평균 O(n)
-  공간 복잡도(Space Complexity): 평균 O(n)
-  풀이 알고리즘: JS의 HashMap / Map 이용
+  공간 복잡도(Space Complexity): O(n)
+  풀이 알고리즘: Hash Map (JavaScript Map) 활용
 
   풀이 History
-  1트: 완전 탐색을 이용해 정답은 맞췄으나, Time Complexity가 O(n²)
-  2트: HasyMap을 통해 Key - value 플로를 응용하여 O(n)으로 단축 완료
+  1트: 완전 탐색을 이용해 정답은 맞췄으나,
+       시간 복잡도가 O(n²)로 비효율적이었음.
+
+  2트: Hash Map (JavaScript Map)을 활용하여
+       숫자와 인덱스를 Key-Value 형태로 관리.
+       보완해야 할 숫자의 존재 여부를 평균 O(1)에 탐색하여
+       전체 시간 복잡도를 O(n)으로 개선.
 */
 
 const twoSum = (nums: number[], target: number): number[] => {
-  const map: Map<number, number> = new Map()
-  const arr = [0, 0]
+  const numToIndexMap: Map<number, number> = new Map()
 
   for (let i = 0; i < nums.length; i++) {
     const currentNum = nums[i]
-    const anotherPair = target - currentNum
+    const complement = target - currentNum
 
-    if (map.has(anotherPair)) {
-      // map.has로 값을 가지고 있음이 확정되어 있으므로 non-null assertion을 통해 값 강제
-      arr[0] = map.get(anotherPair)!
-      arr[1] = i
+    const complementIndex = numToIndexMap.get(complement)
 
-      break
+    if (complementIndex !== undefined) {
+      return [complementIndex, i]
     }
 
-    map.set(currentNum, i)
+    numToIndexMap.set(currentNum, i)
   }
 
-  return arr
+  // Fallback 값으로 임의로 반환하지 않고, 예외를 발생시켜 문제 조건에 맞지 않는 경우를 명시적으로 처리함.
+  throw new Error("No valid pair found")
 }
