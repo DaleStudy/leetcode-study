@@ -1,12 +1,18 @@
-/* 
+/*
   시간 복잡도(Time Complexity): 평균 O(n)
-  공간 복잡도(Space Complexity): 평균 O(n)
-  풀이 알고리즘: JS의 HashMap / Map 이용
+  공간 복잡도(Space Complexity): O(n)
+  풀이 알고리즘: Hash Set (JavaScript Set) 활용
 
   풀이 History
-  1트: 예전에 JS의 find() 메서드를 이용해 풀었을 때에는 TLE에 걸리기 일쑤였으니, JS 배열을 정렬(Quick Sort)하고 Binary Search로 일관된 정렬 시간을 확보하자!(X) -> 비효율적인 정렬 코스트로 TLE가 발생하여 틀렸다.
-  2트: 이 문제에 정렬(sort) 과정이 필요한가? -> X. 따라서 탐색에 훨씬 유리한 자료구조를 찾아서 푸는 게 낫다고 판단함.
-  3트: Map/HashMap을 이용해 Key 기반의 빠른 탐색 및 저장으로 풀자
+  1트: Array.find()를 이용해 중복 여부를 탐색했으나,
+       반복적인 배열 탐색으로 인해 시간 초과(TLE) 발생.
+
+  2트: 배열 정렬 후 Binary Search를 활용하는 방법을 고려했으나,
+       정렬에 필요한 추가적인 시간 비용으로 비효율적이라고 판단.
+
+  3트: Hash Set을 이용한 풀이로 변경.
+       Set.has()를 통해 기존 데이터의 존재 여부를 평균 O(1)에 확인하고,
+       Set.add()를 통해 방문한 숫자를 기록.
 */
 
 const containsDuplicate = (nums: number[]): boolean => {

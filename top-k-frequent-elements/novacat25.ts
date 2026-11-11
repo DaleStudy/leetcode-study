@@ -11,8 +11,7 @@ const getBucketSort = (freqArr: number[][], n: number) => {
   // freq 값을 그대로 index로 활용하고 싶기 때문에 n+1개의 버킷을 생성한다.(index 0은 사용하지 않음)
   const buckets: number[][] = Array.from({ length: n + 1 }, () => [])
 
-  for (let i = 0; i < freqArr.length; i++) {
-    const [num, freq] = freqArr[i]
+  for (const [num, freq] of freqArr) {
     buckets[freq].push(num)
   }
 
