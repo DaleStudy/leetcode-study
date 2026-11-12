@@ -11,19 +11,19 @@
 */
 
 const novacatLongestConsecutive = (nums: number[]): number => {
-  const st = new Set<number>()
+  const numberSet = new Set<number>()
   let result = 0
 
   for (const val of nums) {
-    st.add(val)
+    numberSet.add(val)
   }
 
-  const setArr = [...st]
+  const setArr = [...numberSet]
   for (const val of setArr) {
-    if (!st.has(val - 1)) {
+    if (!numberSet.has(val - 1)) {
       let cur = val
       let cnt = 0
-      while (st.has(cur)) {
+      while (numberSet.has(cur)) {
         cur++
         cnt++
       }
