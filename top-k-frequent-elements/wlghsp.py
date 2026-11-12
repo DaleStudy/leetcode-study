@@ -1,25 +1,24 @@
 """
- * Time Complexity: O(n + ulogk)
+ * Time Complexity: O(n)
  * Space Complexity: O(n)
 """
-import heapq
-
-
+from collections import Counter
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        nums_freq = {}
-        for n in nums: # n번
-            if n in nums_freq:
-                nums_freq[n] += 1
-            else:
-                nums_freq[n] = 1
-        heap = []
-        for num, freq in nums_freq.items(): # u번 (unique한 원소 갯수)
-            if len(heap) >= k:
-                if heap[0][0] < freq:
-                    heapq.heappop(heap)
-                    heapq.heappush(heap, (freq, num))
-            else:
-                heapq.heappush(heap, (freq, num))
-        return [k for _, k in heap]
-           
+        # 1. 빈도 계산: O(N)
+        count = Counter(nums)
+
+        # 2. 빈도를 인덱스로 사용하는 버킷 배열 생성: O(N)
+        # 최대 빈도는 len(nums)이므로 크기는 len(nums) + 1
+        buckets = [[] for _ in range(len(nums) + 1)]
+        for num, freq in count.items():
+            buckets[freq].append(num)
+
+        # 3. 높은 빈도(뒤쪽 인덱스)부터 k개 추출: O(N)
+        res = []
+        for freq in range(len(buckets) - 1, 0, -1):
+            for num in buckets[freq]:
+                res.append(num)
+                if len(res) == k:
+                    return res
+        return res
