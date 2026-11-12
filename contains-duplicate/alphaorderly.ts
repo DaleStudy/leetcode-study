@@ -3,11 +3,11 @@
 function containsDuplicate(nums: number[]): boolean {
     const list = new Set<number>();
 
-    for (const number of nums) {
-        if (list.has(number)) {
+    for (const num of nums) {
+        if (list.has(num)) {
             return true;
         }
-        list.add(number);
+        list.add(num);
     }
 
     return false;
