@@ -16,15 +16,15 @@
 */
 
 const containsDuplicate = (nums: number[]): boolean => {
-  const set = new Set()
+  const numSet = new Set()
 
   for (let i = 0; i < nums.length; i++) {
     const currentNum = nums[i]
-    if (set.has(currentNum)) {
+    if (numSet.has(currentNum)) {
       return true
     }
 
-    set.add(currentNum)
+    numSet.add(currentNum)
   }
 
   return false
