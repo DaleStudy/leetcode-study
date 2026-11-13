@@ -12,7 +12,7 @@ public:
             auto it = idx_map.find(other_num);
 
             if (it != idx_map.end()) {
-               return {i, it->second};
+                return {i, it->second};
             }
 
             idx_map[nums[i]] = i;
