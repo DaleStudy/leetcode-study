@@ -1,4 +1,4 @@
-from collections import defaultdict #defaultdict 사용 위
+from collections import defaultdict #defaultdict 사용 위함
 
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
@@ -17,6 +17,6 @@ class Solution:
         for key in result:
             output.append(key)
             if len(output)==k:
-                break
+                return output
         return output
         
