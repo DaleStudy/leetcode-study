@@ -20,7 +20,8 @@ public:
 
 // 풀이 2 - sort한 후 근접 요소 비교
 // TC: O(n log n) - sorting 비용 n log n > for문 비용 n
-// SC: O(1) - 새로 쓰는 변수 없음
+// SC: O(log n) - std::sort는 introsort 방식을 쓰므로 log n의 재귀 스택을 사용
+//              - introsort란? 퀵소트로 시작해서, 재귀가 너무 깊어지면 힙소트로, 작은 구간은 삽입정렬로 처리하는 하이브리드 정렬
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
