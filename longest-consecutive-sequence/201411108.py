@@ -1,23 +1,19 @@
-# TC: O(n log n), sorted의 시간복잡도, 이후  복잡도는 n
-# SC : O(n)
+# TC: O(n), set의 원소를 하나씩 확인하기 때문에 O(n)
+# SC : O(n), 최대 n개의 원소가 set에 들어갈 수 있기 때문에 O(n)
 class Solution:
     def longestConsecutive(self, nums: list[int]) -> int:
-        sorted_nums = sorted(nums)
-        acc = 1
-        max_len = 1
+        nums_set = set(nums)
+        max_len = 0
 
-        if len(nums) == 0:
-            return 0
-
-        for i, num in enumerate(sorted_nums):
-            if i != 0:
-                if num == sorted_nums[i - 1]:
-                    continue
-                if num - 1 == sorted_nums[i - 1]:
-                    acc += 1
-                    max_len = max(max_len, acc)
-                else:
-                    acc = 1
+        for num in nums_set:
+            if num - 1 in nums_set: # 이전 숫자가 존재하는(연속 시작점이 있는) 경우에는 continue
+                continue
+            
+            acc = 1
+            while num + acc in nums_set:
+                acc += 1
+            
+            max_len = max(max_len, acc)
         
         return max_len
 
