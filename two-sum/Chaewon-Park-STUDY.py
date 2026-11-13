@@ -1,12 +1,12 @@
 class Solution:
     #시간, 공간 복잡도:O(n)
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        arr={} #elem를 key로 바로 저장하여 시간복잡도 O(1)
+        num_index={} #elem를 key로 바로 저장하여 시간복잡도 O(1) # 리뷰 후 수정!!: 기존에 arr로 선언하였는데 딕셔너리를 arr로 두면 변수명에 혼란이 있을 수 있기에 수정
         for i, elem in enumerate(nums): 
-            if target -elem in arr: #왜 arr에서 찾는지 nums에서 찾으면 리스트라서 역시 복잡도 올라감
-            # 두 수의 합이므로 나머지 짝이 arr에 있는지 확인
-                return [arr[target - elem], i]
-            arr[elem] = i #없으면 arr에 저장
+            if target -elem in num_index: #왜 num_index에서 찾는지 nums에서 찾으면 리스트라서 역시 복잡도 올라감
+            # 두 수의 합이므로 나머지 짝이 num_index에 있는지 확인
+                return [num_index[target - elem], i]
+            num_index[elem] = i #없으면 저장
 
 
 
