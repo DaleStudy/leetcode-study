@@ -12,7 +12,6 @@ Dynamic Programming 기법에 의해, secondLast와 last를 다음 Iteration에�
 const rob = (nums: number[]): number => {
   const n = nums.length
 
-  if (n === 0) return 0
   if (n === 1) return nums[0]
 
   let secondLast = 0
