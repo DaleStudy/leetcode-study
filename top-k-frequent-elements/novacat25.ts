@@ -20,17 +20,11 @@ const getBucketSort = (freqArr: Map<number, number>, n: number): number[][] => {
 
 const topKFrequent = (nums: number[], k: number): number[] => {
   const answerArr: number[] = []
-  const entryArr: number[][] = []
-
   const freqMap = new Map<number, number>()
 
   for (const val of nums) {
     const count = (freqMap.get(val) || 0) + 1
     freqMap.set(val, count)
-  }
-
-  for (const entry of freqMap.entries()) {
-    entryArr.push(entry)
   }
 
   const bucketArr = getBucketSort(freqMap, nums.length)
