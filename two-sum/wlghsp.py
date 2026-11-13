@@ -11,3 +11,4 @@ class Solution:
                 return [num_dict[other], i]
             num_dict[e] = i
         return []
+    
