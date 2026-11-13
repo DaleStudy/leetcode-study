@@ -2,7 +2,7 @@ class Solution:
     def rob(self, nums: list[int]) -> int:
         #시간, 공간 복잡도: O(n)
         if len(nums)==1:
-            return sum(nums)
+            return nums[0]
         elif len(nums)==2:
             return max(nums)
         dp=nums.copy() # dp[i] = i번째 집의 money를 훔칠 때의 최대 누적 금액
