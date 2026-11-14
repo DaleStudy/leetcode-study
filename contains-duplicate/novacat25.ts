@@ -18,13 +18,12 @@
 const containsDuplicate = (nums: number[]): boolean => {
   const numSet = new Set()
 
-  for (let i = 0; i < nums.length; i++) {
-    const currentNum = nums[i]
-    if (numSet.has(currentNum)) {
+  for (const num of nums) {
+    if (numSet.has(num)) {
       return true
     }
 
-    numSet.add(currentNum)
+    numSet.add(num)
   }
 
   return false
