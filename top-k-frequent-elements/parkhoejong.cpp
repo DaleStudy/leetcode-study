@@ -1,6 +1,5 @@
-// n: number of elements, m: number of distinct values
-// Time Complexity: O(n + m log m) on average
-// Space Complexity: O(m)
+// Time Complexity: O(n) on average
+// Space Complexity: O(n)
 
 #include <unordered_map>
 
@@ -8,17 +7,15 @@ class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> freq;
-
         for(int n: nums) freq[n]++;
 
-        vector<pair<int, int>> v(freq.begin(), freq.end());
-        sort(v.begin(), v.end(), [](const auto& a, const auto& b) {
-            return a.second > b.second;
-        });
+        vector<vector<int>> bucket(nums.size() + 1);
+        for (auto& [num, f]: freq) bucket[f].push_back(num);
+
 
         vector<int> res;
-        for(int i = 0; i < k; i++)
-            res.push_back(v[i].first);
+        for (int f = nums.size(); f >= 1 && res.size() < k; f--)
+            for (int n: bucket[f]) res.push_back(n);
 
         return res;
     }
