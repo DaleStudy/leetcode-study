@@ -2,7 +2,7 @@ name: Wrapup 📦
 
 on:
   schedule:
-    # 매주 월요일 자정 (KST 기준)
+    # 매주 월요일 00:00 KST (일요일 15:00 UTC)
     - cron: "0 0 * * 1"
       timezone: "Asia/Seoul"
   workflow_dispatch:
