@@ -2,8 +2,8 @@ name: Wrapup 📦
 
 on:
   schedule:
-    # 매주 일요일 오전 10시 (KST 기준, UTC로는 일요일 1시)
-    - cron: "0 1 * * 0"
+    # 매주 월요일 자정 (KST 기준, UTC로는 일요일 15시)
+    - cron: "0 15 * * 0"
   workflow_dispatch:
     inputs:
       date:
