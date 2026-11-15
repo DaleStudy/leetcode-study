@@ -16,3 +16,4 @@ class Solution:
                 return [indexed_nums[left][0], indexed_nums[right][0]]
 
         return []
+
