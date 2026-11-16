@@ -8,27 +8,29 @@
 2트: Map을 이용해 정렬 연산을 제거하고 탐색 연산 역시 줄이는 데 성공함. 공간 복잡도의 경우 O(k)(문자 종류가 늘어날수록 저장 공간도 증가)
 3트: 배열을 이용할 경우 공간 복잡도를 O(k)에서 O(1)로 더욱 줄일 수 있으므로, 알파벳 수를 26개로 고정하여 문제 해결. 
 */
+const BASE_CHAR_CODE = "a".charCodeAt(0)
+
+const getCodeIndex = (code: number) => code - BASE_CHAR_CODE
 
 const isAnagram = (s: string, t: string): boolean => {
   if (s.length !== t.length) return false
 
-  const BASE_CHAR_CODE = "a".charCodeAt(0)
   const countArr = new Array<number>(26).fill(0)
 
   for (const sWord of s) {
     const code = sWord.charCodeAt(0)
-    countArr[code - BASE_CHAR_CODE]++
+    countArr[getCodeIndex(code)]++
   }
 
   for (const tWord of t) {
     const code = tWord.charCodeAt(0)
-    const accessedValue = countArr[code - BASE_CHAR_CODE]
+    const accessedValue = countArr[getCodeIndex(code)]
 
     if (accessedValue <= 0) {
       return false
     }
 
-    countArr[code - BASE_CHAR_CODE]--
+    countArr[getCodeIndex(code)]--
   }
 
   return true
