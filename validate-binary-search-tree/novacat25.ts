@@ -17,11 +17,11 @@ class TreeNode {
 }
 
 const dfs = (node: TreeNode | null, low: number, high: number): boolean => {
-  if (!node) return true
-  if (!(low < node.val && node.val < high)) return false
-  return dfs(node.left, low, node.val) && dfs(node.right, node.val, high)
+  if (!node) return true // Null인 Node는 BST 조건을 만족한다고 간주해 재귀적으로 True를 반환한다.
+  if (!(low < node.val && node.val < high)) return false // 현재 Node의 값이 허용 범위에 속하지 않으면 False를 반환한다.
+  return dfs(node.left, low, node.val) && dfs(node.right, node.val, high) // 왼쪽 서브트리와 오른쪽 서브트리를 재귀적으로 확인하며, 허용 범위를 갱신한다.
 }
 
 const isValidBST = (root: TreeNode | null): boolean => {
-  return dfs(root, -Infinity, Infinity)
+  return dfs(root, -Infinity, Infinity) // 초기 허용 범위를 -Infinity와 Infinity로 설정하여 Root Node부터 시작한다.
 }
