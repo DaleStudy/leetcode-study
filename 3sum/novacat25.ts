@@ -30,8 +30,11 @@ const threeSum = (nums: number[]): number[][] => {
         // 중복값 제외
         while (j < k && nums[j] === nums[j - 1]) j++
         while (j < k && nums[k] === nums[k + 1]) k--
-      } else if (sum < SUM_TARGET) j++
-      else k--
+      } else if (sum < SUM_TARGET) {
+        j++
+      } else {
+        k--
+      }
     }
   }
 
