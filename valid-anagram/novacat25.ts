@@ -13,7 +13,7 @@ const isAnagram = (s: string, t: string): boolean => {
   if (s.length !== t.length) return false
 
   const BASE_CHAR_CODE = "a".charCodeAt(0)
-  const countArr = new Array(26).fill(0)
+  const countArr = new Array<number>(26).fill(0)
 
   for (const sWord of s) {
     const code = sWord.charCodeAt(0)
