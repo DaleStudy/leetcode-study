@@ -2,6 +2,7 @@
 시간 복잡도(TC): O(n)
 공간 복잡도(SC): O(1)
 풀이: Dynamic Programming을 활용하여 작은 문제 단위로 쪼갠다. Memoisation 혹은 Tabluation을 통해 시간 복잡도를 크게 단축시키는 것이 관건.
+기타: Dynamic Programming은 이론과 달리 실제 문제에 적용하는 것이 익숙하지 않은 상황. 따라서 추후 보충 학습이 필요함.
 
 풀이 이력
 1트: Dynamic Programming을 활용했으나, Memoisation & Tabluation을 적용하지 않아 시간 복잡도가 O(2^n). TLE 발생.
