@@ -9,6 +9,15 @@
 2트: Memoisation 적용 
 3트: Tabulation 적용
 4트: Tabulation & Space-Optimisation
+
+원리
+i < 0: 계단을 내려간 경우, 0을 반환한다. (불가능)
+i = 0: 계단을 다 내려간 경우, 1을 반환한다. (가능)
+본 문제에서 1 <= n <= 45을 제시했으므로, n < 0은 고려하지 않고 i <= 1일 때의 경우만 고려한다.
+
+점화식: dp[i] = dp[i-1] + dp[i-2]
+n = 2부터 for iteration을 전개하여 dp[i]를 계산한다. dp[i]는 i번째 계단에 도달하는 방법의 수를 의미한다.
+Space-Optimisation: dp[i]를 계산할 때, dp[i-1]과 dp[i-2]만 필요하므로, dp 배열을 선언하지 않고 prev1, prev2 변수를 활용하여 공간 복잡도를 O(1)로 줄인다.
 */
 
 const climbStairs = (n: number): number => {
@@ -29,7 +38,7 @@ const climbStairs = (n: number): number => {
 /* 풀이 이력(History) */
 /* 1트: Only Dynamic Programming(NG)
 
-const climbStairs = (n: number): number => {
+const factrorialClimbStairs = (n: number): number => {
     if(n < 0) return 0
     if(n === 0) return 1
 
@@ -41,6 +50,7 @@ const climbStairs = (n: number): number => {
 /* 2트: Memoisation 활용(Top-down DP)
 
 const countRecur = (n: number, memo: number[]) => {
+    // Base case
     if (n < 0)
         return 0
 
@@ -52,27 +62,28 @@ const countRecur = (n: number, memo: number[]) => {
         return memo[n]
     }
 
-    // Memoize the state 
+    // Memoise the state (dp[n] = dp[n-1] + dp[n-2])
     memo[n] = countRecur(n - 1, memo) + 
               countRecur(n - 2, memo)
 
     return memo[n]
 }
 
-const climbStairs = (n: number) => {
+const memoisedClimbStairs = (n: number) => {
     const memo = Array(n + 1).fill(-1)
     return countRecur(n, memo)
 }
 */
 
 /* 3트: Tabulation(Bottom-up) -> 시간 복잡도는 충족. 하지만 공간 복잡도 역시 개선 가능한 상황.
-const climbStairs = (n: number): number => {
+const tabulatedClimbStairs = (n: number): number => {
     const dp = new Array(n + 1).fill(0)
-    dp[0] = 1
+    dp[0] = 1 // n = 0일 때에는 1로 고정이 된다. 아래 for itearion은 n = 1부터 시작하므로 dp[0]을 초기화해주어야 한다.
 
     for(let i = 1; i <= n; i++) {
         dp[i] = 0
 
+        // 점화식: dp[i] = dp[i-1] + dp[i-2]에 의해 Tabulation 작업을 수행함.
         if (i - 1 >= 0) dp[i] += dp[i - 1]
         if (i - 2 >= 0) dp[i] += dp[i - 2]
     }
