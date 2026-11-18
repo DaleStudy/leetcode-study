@@ -6,10 +6,7 @@ def convertStrToMap(target: str):
     converted_dict = defaultdict(int)
 
     for target_char in target:
-        if target_char in converted_dict:
-            converted_dict[target_char] += 1
-        else:
-            converted_dict[target_char] = 1
+        converted_dict[target_char] += 1
     
     return converted_dict
 
