@@ -1,35 +1,39 @@
-# TC: O(n^2), dictionary의 key를 하나 확인하고, 그 이후 key를 한 번 더 확인하기 때문에
-# SC: O(n), 최대 n개의 숫자가 dictionary에 저장
+# TC: O(n^2), 첫 번째 요소를 기준으로 n - 2번, left와 right를 기준으로 n번 반복 실행
+# SC: O(n), 최대 n개
 # 풀이
 #   1. dictionary를 만들어서, 만들 수 있는 조합을 확인하는 방식. 문제는 풀리지만 시간 복잡도가 O(n^2)로 비효율적
-from collections import defaultdict
-
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
         result = []
-        nums_dict = defaultdict(int)
 
         sorted_nums = nums[:]
         sorted_nums.sort()
 
-        for num in sorted_nums:
-            nums_dict[num] += 1
+        for i in range(len(sorted_nums) - 2):
+            if i > 0 and sorted_nums[i] == sorted_nums[i - 1]: # 이미 확인한 숫자는 continue
+                continue
 
-        for key in nums_dict:
-            sub_result = [key]
-            nums_dict[key] -= 1
-            for key2 in nums_dict:
-                if key2 < key or nums_dict[key2] <= 0:
-                    continue
-                sub_result.append(key2)
-                nums_dict[key2] -= 1
-                diff = 0 - sum(sub_result)
-                if diff in nums_dict and diff >= key2 and nums_dict[diff] > 0:
-                    sub_result.append(diff)
-                    result.append(sub_result)
-                sub_result = [key]
-                nums_dict[key2] += 1
-            nums_dict[key] += 1
-        
+            left = i + 1
+            right = len(sorted_nums) - 1
+
+            while left < right:
+                total = sorted_nums[i] + sorted_nums[left] + sorted_nums[right]
+
+                if total < 0:
+                    left += 1
+                elif total > 0:
+                    right -= 1
+                else:
+                    result.append([sorted_nums[i], sorted_nums[left], sorted_nums[right]])
+
+                    # 이미 확인한 숫자는 skip
+                    while left < right and sorted_nums[left] == sorted_nums[left + 1]:
+                        left += 1
+                    while left < right and sorted_nums[right] == sorted_nums[right - 1]:
+                        right -= 1
+                        
+                    left += 1
+                    right -= 1
+                
         return result
 
