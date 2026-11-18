@@ -21,10 +21,6 @@ class Solution:
 
         if len(s_dict.keys()) != len(t_dict.keys()):
             return False
-        
-        for key in s_dict:
-            if s_dict[key] != t_dict[key]:
-                return False
-        
-        return True
+
+        return s_dict == t_dict
 
