@@ -16,5 +16,5 @@ class Solution:
             right[i] = right[i + 1] * nums[i + 1]
 
         for i in range(n):
-            answer[i] = left[i] * right[n]
+            answer[i] = left[i] * right[i]
         return answer
