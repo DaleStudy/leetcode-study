@@ -1,7 +1,8 @@
 # TC: O(n^2), 첫 번째 요소를 기준으로 n - 2번, left와 right를 기준으로 n번 반복 실행
 # SC: O(n), 최대 n개
 # 풀이
-#   1. dictionary를 만들어서, 만들 수 있는 조합을 확인하는 방식. 문제는 풀리지만 시간 복잡도가 O(n^2)로 비효율적
+#   1. dictionary를 만들어서, 만들 수 있는 조합을 확인하는 방식
+#   2. 정렬 후, 첫 번째 요소를 기준으로 left와 right를 두고 합이 0이 되는 조합을 찾는 방식
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
         result = []
