@@ -15,11 +15,13 @@ const novacatProductExceptSelf = (nums: number[]): number[] => {
 
   const lastIdx = nums.length - 1
 
+  // Left Product 계산
   for (let i = 1; i <= lastIdx; i++) {
     leftProductedVal *= nums[i - 1]
     resultArr[i] = leftProductedVal
   }
 
+  // Right Product 계산
   for (let i = lastIdx - 1; i >= 0; i--) {
     rightProductedVal *= nums[i + 1]
     resultArr[i] *= rightProductedVal
