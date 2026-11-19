@@ -13,22 +13,14 @@ const novacatProductExceptSelf = (nums: number[]): number[] => {
   let leftProductedVal = 1
   let rightProductedVal = 1
 
-  const START_IDX = 0
-  const ARRAY_TOP = nums.length - 1
+  const lastIdx = nums.length - 1
 
-  for (let i = START_IDX; i <= ARRAY_TOP; i++) {
-    if (i === START_IDX) {
-      resultArr[i] = 1
-      continue
-    }
-
+  for (let i = 1; i <= lastIdx; i++) {
     leftProductedVal *= nums[i - 1]
     resultArr[i] = leftProductedVal
   }
 
-  for (let i = ARRAY_TOP; i >= START_IDX; i--) {
-    if (i === ARRAY_TOP) continue
-
+  for (let i = lastIdx - 1; i >= 0; i--) {
     rightProductedVal *= nums[i + 1]
     resultArr[i] *= rightProductedVal
   }
