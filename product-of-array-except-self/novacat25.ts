@@ -8,7 +8,7 @@
 2트: Left Product & Right Product를 구할 때, slice()를 이용하지 않고, 단순 반복문을 통해 값을 곱하여 결과값을 도출. 시간 복잡도 O(n)으로 개선.
 */
 const novacatProductExceptSelf = (nums: number[]): number[] => {
-  const resultArr: number[] = new Array(nums.length).fill(1)
+  const resultArr = new Array<number>(nums.length).fill(1)
 
   let leftProductedVal = 1
   let rightProductedVal = 1
