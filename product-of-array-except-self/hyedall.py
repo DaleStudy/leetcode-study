@@ -16,7 +16,7 @@ class Solution:
             prefix *= nums[i]
 
         suffix = 1
-        for i in range(size-1, -1, -1):
+        for i in reversed(range(size)):
             answer[i] *= suffix
             suffix *= nums[i]
         
