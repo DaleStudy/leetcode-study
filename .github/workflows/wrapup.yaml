@@ -95,15 +95,16 @@ jobs:
         env:
           WEEK_LABEL: ${{ steps.week.outputs.week_label }}
           EXCLUDES: ${{ steps.excludes.outputs.json }}
+          REPO_OWNER: ${{ github.repository_owner }}
           REPO_NAME: ${{ github.event.repository.name }}
         run: |
           echo "👍 ${WEEK_LABEL} PR 승인 중..."
 
           response=$(curl -sS -X POST "https://github.dalestudy.com/approve-prs" \
             -H "Content-Type: application/json" \
-            -d "$(jq -nc --arg repo "$REPO_NAME" --arg week "$WEEK_LABEL" \
+            -d "$(jq -nc --arg owner "$REPO_OWNER" --arg repo "$REPO_NAME" --arg week "$WEEK_LABEL" \
                   --argjson excludes "$EXCLUDES" \
-                  '{repo_name: $repo, week: $week, excludes: $excludes}')")
+                  '{repo_owner: $owner, repo_name: $repo, week: $week, excludes: $excludes}')")
 
           echo "$response" | jq '.'
           echo "response=$(echo "$response" | jq -c '.')" >> $GITHUB_OUTPUT
@@ -119,15 +120,16 @@ jobs:
         env:
           WEEK_LABEL: ${{ steps.week.outputs.week_label }}
           EXCLUDES: ${{ steps.excludes.outputs.json }}
+          REPO_OWNER: ${{ github.repository_owner }}
           REPO_NAME: ${{ github.event.repository.name }}
         run: |
           echo "🚀 ${WEEK_LABEL} PR 병합 중..."
 
           response=$(curl -sS -X POST "https://github.dalestudy.com/merge-prs" \
             -H "Content-Type: application/json" \
-            -d "$(jq -nc --arg repo "$REPO_NAME" --arg week "$WEEK_LABEL" \
+            -d "$(jq -nc --arg owner "$REPO_OWNER" --arg repo "$REPO_NAME" --arg week "$WEEK_LABEL" \
                   --argjson excludes "$EXCLUDES" \
-                  '{repo_name: $repo, week: $week, merge_method: "squash", excludes: $excludes}')")
+                  '{repo_owner: $owner, repo_name: $repo, week: $week, merge_method: "squash", excludes: $excludes}')")
 
           echo "$response" | jq '.'
           echo "response=$(echo "$response" | jq -c '.')" >> $GITHUB_OUTPUT
