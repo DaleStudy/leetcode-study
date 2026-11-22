@@ -23,11 +23,7 @@ var isAnagram = function (s, t) {
   if (freqS.size !== freqT.size) return false;
 
   for (const [key, value] of freqS) {
-    if (!freqT.has(key)) return false;
-
-    const valueB = freqT.get(key);
-
-    if (value !== valueB) return false;
+    if (freqT.get(key) !== value) return false;
   }
 
   return true;
