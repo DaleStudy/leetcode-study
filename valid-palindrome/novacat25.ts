@@ -9,24 +9,25 @@
 풀이 이력
 1트: 투 포인터 기법을 일부 사용했으나, 그 과정에서 불필요하게 배열을 나누었으며 처리 로직이 꼬여 답이 틀렸음.
 2트: 아래와 같이 수정하여 정답 획득.
-개선점: 있음(replace(), toLowerCase()를 사용하지 않고 공간 복잡도 최적화가 가능하다고 함)
+3트: 문자열을 따로 수정하지 않고 투 포인터 기법을 적용. 다만, toLowerCase()로 비교 가능한 상황이므로 두 문자열 비교 메소드는 배제하기로 함.
+4트: j < k 방어 로직을 달지 않아 무한 루프가 터짐.
+5트: 방어 로직을 달아 해결 완료.
 */
-const removeNonAlphanumeric = (str: string) =>
-  str.replace(/[^A-Za-z0-9]/g, "").toLowerCase()
+const isAlphanumeric = (str: string) => /^[a-zA-Z0-9]$/.test(str)
 
 const isPalindrome = (s: string): boolean => {
-  const removedNonAlphanumericString = removeNonAlphanumeric(s)
+  if (!s) return true
 
-  if (!removedNonAlphanumericString) return true
-
-  const n = removedNonAlphanumericString.length
+  const n = s.length
 
   let j = 0
   let k = n - 1
 
   while (j < k) {
-    if (removedNonAlphanumericString[j] !== removedNonAlphanumericString[k])
-      return false
+    while (j < k && !isAlphanumeric(s[j])) j++
+    while (j < k && !isAlphanumeric(s[k])) k--
+
+    if (s[j].toLowerCase() !== s[k].toLowerCase()) return false
 
     j++
     k--
@@ -63,5 +64,91 @@ function failedIsPalindrome(s: string): boolean {
     }
 
     return true
+}
+*/
+
+/* 2트 풀이: 원리는 맞췄으나, 공간 복잡도 개선이 필요했음. */
+/*
+
+const removeNonAlphanumeric = (str: string) =>
+  str.replace(/[^A-Za-z0-9]/g, "").toLowerCase()
+
+const isPalindrome = (s: string): boolean => {
+  const removedNonAlphanumericString = removeNonAlphanumeric(s)
+
+  if (!removedNonAlphanumericString) return true
+
+  const n = removedNonAlphanumericString.length
+
+  let j = 0
+  let k = n - 1
+
+  while (j < k) {
+    if (removedNonAlphanumericString[j] !== removedNonAlphanumericString[k])
+      return false
+
+    j++
+    k--
+  }
+
+  return true
+}
+*/
+
+/* 3트 풀이: 공간 복잡도 개선 완료. 다만, Regex 코드를 조금 더 최적화할 수 있어서 기각. */
+/*
+const isAlphanumeric = (str: string) => new RegExp(/^[a-zA-Z0-9]+$/).test(str)
+
+// 4트에서 터진 ".," 반례는 엉뚱하게도 comStr(undefined, undefined)가 true를 반환하는 바람에 생뚱맞게 통과했다...
+const comStr = (s1: string, s2: string) => new RegExp(`^${s1}$`, "i").test(s2)
+
+const isPalindrome = (s: string): boolean => {
+  if (!s) return true
+
+  const n = s.length
+
+  let j = 0
+  let k = n - 1
+
+  while (j < k) {
+    while(!isAlphanumeric(s[j])) j++
+    while(!isAlphanumeric(s[k])) k--
+
+    if (!comStr(s[j],s[k]))
+      return false
+
+    j++
+    k--
+  }
+
+  return true
+}
+*/
+
+/* 4트 풀이: 원리는 맞췄으나, while 문의 방어 조건을 고려하지 않아 TLE가 발생. 개선 도중 아깝게 실패함. */
+/*
+const isAlphanumeric = (str: string) =>  /^[a-zA-Z0-9]$/.test(str)
+
+const isPalindrome = (s: string): boolean => {
+  if (!s) return true
+
+  const n = s.length
+
+  let j = 0
+  let k = n - 1
+
+  // ".," 코드에서 반례가 터졌다! 방어 로직 필수.
+  while (j < k) {
+    while(!isAlphanumeric(s[j])) j++
+    while(!isAlphanumeric(s[k])) k--
+
+    if (s[j].toLowerCase() !== s[k].toLowerCase())
+      return false
+
+    j++
+    k--
+  }
+
+  return true
 }
 */
