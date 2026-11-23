@@ -1,6 +1,6 @@
 /*
-공간 복잡도: O(N^(T/M)) // N: candidates, T: target, M: the minimum candidate value
-시간 복잡도: O(T/M)
+시간 복잡도: O(T/M) // N: candidates, T: target, M: the minimum candidate value
+공간 복잡도: O(N)
 풀이: Backtracking & Pruning 기법 활용 ([백트랙킹] 개념 추가 보충 학습 필요!)
 (1) 오름차순 정렬을 수행한다. 이점은 다음과 같다.
 - 후보 순서가 [2,2,..], [2,3]로 이루어지며 [3,2] 등의 불필요한 후보를 고르지 않게 할 수 있다.
