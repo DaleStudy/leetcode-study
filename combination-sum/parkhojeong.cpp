@@ -1,3 +1,5 @@
+// N = candidates.size(), T = target, M = min(candidates)
+// Time: O(N^(T/M)), Space: O(T/M)
 class Solution {
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
