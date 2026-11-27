@@ -26,6 +26,7 @@ on:
 jobs:
   wrapup:
     name: Wrap Up the Week 📦
+    if: github.repository == 'DaleStudy/leetcode-study'
     runs-on: ubuntu-latest
     permissions:
       contents: write # 릴리즈 생성
