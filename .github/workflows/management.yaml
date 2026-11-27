@@ -48,9 +48,9 @@ jobs:
           # Build request payload
           week_input="${{ inputs.week }}"
           if [ -z "$week_input" ]; then
-            payload="{\"repo_name\": \"${{ github.event.repository.name }}\", \"excludes\": $excludes}"
+            payload="{\"repo_owner\": \"${{ github.repository_owner }}\", \"repo_name\": \"${{ github.event.repository.name }}\", \"excludes\": $excludes}"
           else
-            payload="{\"repo_name\": \"${{ github.event.repository.name }}\", \"week\": \"Week $week_input\", \"excludes\": $excludes}"
+            payload="{\"repo_owner\": \"${{ github.repository_owner }}\", \"repo_name\": \"${{ github.event.repository.name }}\", \"week\": \"Week $week_input\", \"excludes\": $excludes}"
           fi
 
           echo "주차 필터: ${week_input:-전체}"
@@ -158,9 +158,9 @@ jobs:
           merge_method="squash"
 
           if [ -z "$week_input" ]; then
-            payload="{\"repo_name\": \"${{ github.event.repository.name }}\", \"merge_method\": \"$merge_method\", \"excludes\": $excludes}"
+            payload="{\"repo_owner\": \"${{ github.repository_owner }}\", \"repo_name\": \"${{ github.event.repository.name }}\", \"merge_method\": \"$merge_method\", \"excludes\": $excludes}"
           else
-            payload="{\"repo_name\": \"${{ github.event.repository.name }}\", \"merge_method\": \"$merge_method\", \"week\": \"Week $week_input\", \"excludes\": $excludes}"
+            payload="{\"repo_owner\": \"${{ github.repository_owner }}\", \"repo_name\": \"${{ github.event.repository.name }}\", \"merge_method\": \"$merge_method\", \"week\": \"Week $week_input\", \"excludes\": $excludes}"
           fi
 
           echo "머지 방식: $merge_method"
