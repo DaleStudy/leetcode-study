@@ -9,7 +9,7 @@ function combinationSum(candidates: number[], target: number): number[][] {
 
 function backtracking(nums: number[], index: number, target: number, ans: number[][], app: number[]): void {
     if (target == 0) {
-        ans.push(structuredClone(app));
+        ans.push([...app]);
         return;
     }
 
