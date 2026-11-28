@@ -10,7 +10,7 @@
 1트: 투 포인터 기법을 일부 사용했으나, 그 과정에서 불필요하게 배열을 나누었으며 처리 로직이 꼬여 답이 틀렸음.
 2트: 아래와 같이 수정하여 정답 획득.
 3트: 문자열을 따로 수정하지 않고 투 포인터 기법을 적용. 다만, toLowerCase()로 비교 가능한 상황이므로 두 문자열 비교 메소드는 배제하기로 함.
-4트: j < k 방어 로직을 달지 않아 무한 루프가 터짐.
+4트: l(left) < r(right) 방어 로직을 달지 않아 무한 루프가 터짐.
 5트: 방어 로직을 달아 해결 완료.
 */
 const isAlphanumeric = (str: string) => /^[a-zA-Z0-9]$/.test(str)
@@ -20,17 +20,17 @@ const isPalindrome = (s: string): boolean => {
 
   const n = s.length
 
-  let j = 0
-  let k = n - 1
+  let l = 0
+  let r = n - 1
 
-  while (j < k) {
-    while (j < k && !isAlphanumeric(s[j])) j++
-    while (j < k && !isAlphanumeric(s[k])) k--
+  while (l < r) {
+    while (l < r && !isAlphanumeric(s[l])) l++
+    while (l < r && !isAlphanumeric(s[r])) r--
 
-    if (s[j].toLowerCase() !== s[k].toLowerCase()) return false
+    if (s[l].toLowerCase() !== s[r].toLowerCase()) return false
 
-    j++
-    k--
+    l++
+    r--
   }
 
   return true

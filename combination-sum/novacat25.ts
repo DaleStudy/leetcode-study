@@ -12,8 +12,9 @@
 const combinationSum = (candidates: number[], target: number): number[][] => {
   const result: number[][] = []
   candidates.sort((a, b) => a - b)
+  const current: number[] = []
 
-  const backtrack = (start: number, remaining: number, current: number[]) => {
+  const backtrack = (start: number, remaining: number) => {
     if (remaining === 0) {
       result.push([...current])
       return
@@ -26,12 +27,12 @@ const combinationSum = (candidates: number[], target: number): number[][] => {
 
       const substractedRemaining = remaining - currentCandidate
 
-      backtrack(i, substractedRemaining, current)
+      backtrack(i, substractedRemaining)
       current.pop()
     }
   }
 
-  backtrack(0, target, [])
+  backtrack(0, target)
 
   return result
 }
